@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../../static/css/reset.css" />
+  <link rel="stylesheet" href="./css/layout_inhabitant.css" />
+  <link rel="stylesheet" href="../../static/css/goods_detail_inhabitant.css" />
+  <script type="text/javascript" src="../../static/assets/adaptive/adaptive-version2.js"></script>
+  <script>
+  window['adaptive'].desinWidth = 750; // 设计图宽度
+  window['adaptive'].baseFont = 30; // 没有缩放时的字体大小
+  window['adaptive'].maxWidth = 750; // 页面最大宽度 默认540
+  window['adaptive'].init(); // 调用初始化方法
+  </script>
+  <style type="text/css"></style>
+  <title>商城-商品详情</title>
+</head>
+
+<body>
+  <div id="goodsDetail">
+    <div class="goods-img-cnt">
+    </div>
+  </div>
+</body>
+<script type="text/x-dot-template" id="temp-detail">
+  {{~ it :value :index}}
+  <div class="mainInfo">
+    <div class="goods-img-cnt">
+      <div class="mainImg">
+        <ul>
+          {{~ value.picList :picObj :index}}
+          <li>
+            <img src="{{=picObj}}" alt="商品主图">
+          </li>
+          {{~}}
+        </ul>
+      </div>
+    </div>
+    <p class="pinfo pd20"><span>{{=value.name}}</span><span class="specification">{{=value.specifications}}</span></p>
+    <div class="price pd20">
+      <p><span>￥</span><span>{{=it.convertMoney(value.price)}}</span></p>
+      <p>{{=value.title}}</p>
+    </div>
+  </div>
+  <div class="normalInfo pd20">
+    <ul>
+      <li>品牌：{{=value.brand}}</li>
+    </ul>
+  </div>
+  <div class="introduction">
+    <div class="title">药品介绍</div>
+    <div class="introductionContent">
+      {{=value.content}}
+    </div>
+  </div>
+  {{~}}
+</script>
+<script src="../../static/assets/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../static/assets/unslider/unslider.min.js"></script>
+<script src="../../static/assets/doT-master/doT.min.js"></script>
+<script type="text/javascript" src="../../static/js/Util.js"></script>
+<script type="text/javascript">
+$(function() {
+  //        Util.demoUrl = "../../static/rss/getGoodsDetail.json";
+  var data = {
+    id: Util.getUrlParam("id")
+  };
+  Util.fetch({
+    url: Util.host + '/hca/api/business/inhabitant/getGoodsDetails',
+    data: JSON.stringify(data),
+    type: "POST",
+    demoUrl: "../../static/rss/getGoodsDetail.json",
+    dataType: "json",
+    success: function(data) {
+      if (data.ret_code === 1) {
+        var redData = data["ret_data"];
+        $.extend(redData, { getPicUrl: Util.getPicUrl, convertMoney: Util.convertMoney });
+        console.log(redData);
+        Util.render($("#temp-detail"), $("#goodsDetail"), redData);
+        $('.mainImg').unslider();
+      }
+    },
+    error: function(err) {
+      console.log(JSON.stringify(err));
+    }
+  });
+  console.log(Util.getUrlParam("id"));
+});
+</script>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>疾病风险评估入口</title>
+    <script type="text/javascript" src="../js/lib/jquery-1.9.1.min.js"></script>
+    <style type="text/css">
+        html,body,ul,li,p,div{padding:0;margin:0;}
+        body{background:#f0f5fb;padding:30px;}
+        ul{border-top:1px solid #e2e6e7;}
+        li{list-style: none;border-bottom:1px solid #e2e6e7;height:66px;line-height:66px;padding:0 30px;}
+        li:nth-child(2n+1){background:#f0f5fb;}
+        li:nth-child(2n){background:#f6f7fb;}
+        .cnt{
+            background:#fff;
+            padding:30px;
+        }
+        a{
+            display:block;
+            font-size:16px;
+            text-decoration:none;
+            color:#333;
+        }
+    </style>
+</head>
+<body>
+<div class="cnt">
+    <ul>
+        <li><a href="questionnaire/riskOfColorectalCancer.html">大肠癌健康问卷</a></li>
+        <li id="rxa"><a href="questionnaire/breastCancer.html">乳腺癌健康问卷</a></li>
+        <li><a href="questionnaire/coronaryHeartDisease.html">冠心病健康问卷</a></li>
+        <li><a href="questionnaire/diabetes.html">糖尿病健康问卷</a></li>
+        <li><a href="questionnaire/lungCancer.html">肺癌健康问卷</a></li>
+        <li><a href="questionnaire/cardiovascular.html">心血管病健康问卷</a></li>
+    </ul>
+    <!--<a href="questionnaire/riskOfColorectalCancer.html" class="btn btn-main">大肠癌风险评估</a><br><br>
+    <a href="questionnaire/breastCancer.html" class="btn btn-main">乳腺癌风险评估</a><br><br>
+    <a href="questionnaire/coronaryHeartDisease.html" class="btn btn-main">冠心病风险评估</a><br><br>
+    <a href="questionnaire/diabetes.html" class="btn btn-main">糖尿病风险评估</a>-->
+</div>
+</body>
+<script type="text/javascript" src="../js/lib/require.js" data-main="../js/risk_disease"></script>
+<script type="text/javascript">
+    $(function(){
+        var href = window.location.href;
+        var arg = href.split("?")[1];
+        $.each($('a'),function(ele,index){
+            var url = $(index).attr('href');
+            $(index).attr('href',url+"?"+arg);
+        });
+    })
+</script>
+</html>

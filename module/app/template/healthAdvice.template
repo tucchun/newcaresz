@@ -1,0 +1,16 @@
+{{~ it.healthSuggestionList :value:index}}
+  <div class="container {{? index > 0}}mt20{{?}}">
+    <div class="item clearfix">
+      <div class="pull-left">医生名字</div>
+      <div class="pull-right">{{= value.doctorName}}</div>
+    </div>
+    <div class="item clearfix">
+      <div class="pull-left">创建时间</div>
+      <div class="pull-right">{{= it.Util.formatDate(value.createDate)}}</div>
+    </div>
+    <div class="item clearfix">
+      <div>健康建议</div>
+      <div class="pt5">{{= value.suggestion}}</div>
+    </div>
+  </div>
+{{~}}

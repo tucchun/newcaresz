@@ -1,0 +1,1131 @@
+<div class="container">
+  <div class="item clearfix">
+    <div class="pull-left">姓名</div>
+    <div class="pull-right"><%= residentName%></div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">档案编号</div>
+    <div class="pull-right"><%= residentNo%></div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">性别</div>
+    <div class="pull-right"><%= residentSex%></div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">出生日期</div>
+    <div class="pull-right"><%= Util.formatDate(birthday)%></div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">监护人姓名</div>
+    <div class="pull-right"><%= guardianName%></div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">与儿童关系</div>
+    <div class="pull-right"><%= guardianRelation%></div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">联系电话</div>
+    <div class="pull-right"><%= guardianPhone%></div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">家庭现住址</div>
+    <div class="pull-right"><%= babyAddress%></div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">户籍地址</div>
+    <div class="pull-right"><%= permanentAddress%></div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">迁入时间</div>
+    <div class="pull-right"><%= Util.formatDate(migrationTime)%></div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">迁出时间</div>
+    <div class="pull-right"><%= Util.formatDate(emigrationTime)%></div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">迁出原因</div>
+    <div class="pull-right"><%= emigrationReason%></div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">疫苗异常反应史</div>
+    <div class="pull-right"><%= abnormalReaction%></div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">接种禁忌</div>
+    <div class="pull-right"><%= vaccinationTaboo%></div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">传染病史</div>
+    <div class="pull-right"><%= historyInfection%></div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">建卡日期</div>
+    <div class="pull-right"><%= Util.formatDate(createDate)%></div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">建卡人</div>
+    <div class="pull-right"><%= createByName%></div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="item bgColor">
+    <div class="sub-title">
+      疫苗与剂次
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+
+  <%
+  var temp = _.filter(vaccineRecordList, {recoVaccineName: '乙肝疫苗'});
+  temp = _.sortBy(temp, 'recoInouclationDose');
+  _.each(temp, function(value,index){
+  if(index == 0){
+  %>
+  <div class="container flex horizental">
+    <div class="item flex align-center border-right w230">
+      <div>乙肝疫苗</div>
+    </div>
+    <div class="container <% if(temp.length == 1){%>  border-bottom <%}%>">
+      <%
+      }
+
+      if(value.recoInouclationDose > 0){
+      %>
+      <div class="container flex horizental">
+        <div class="flex vertical justify-center align-center border-right border-bottom bgWhite w60">
+          <div><%=value.recoInouclationDose%></div>
+          <div>次</div>
+        </div>
+        <div class="container border-bottom">
+          <%
+          }
+
+          %>
+
+          <div class="item clearfix">
+            <div class="pull-left">接种日期</div>
+            <div class="pull-right"><%=Util.formatDate(value.recoInouclationDate)%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">接种部位</div>
+            <div class="pull-right"><%=value.recoInouclationSite%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">疫苗批号</div>
+            <div class="pull-right"><%=value.recoVaccineNum%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">接种医生</div>
+            <div class="pull-right"><%=value.recoInouclationDoctor%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">备注</div>
+            <div class="pull-right"><%=value.recoMark%></div>
+          </div>
+
+          <%
+
+          if(value.recoInouclationDose > 0){
+          %>
+        </div>
+      </div>
+      <%
+      }
+      if(index == (temp.length - 1)){
+      %>
+    </div>
+  </div>
+  <%
+  }
+  });
+  %>
+
+
+  <%
+  var temp = _.filter(vaccineRecordList, {recoVaccineName: '卡介苗'});
+  temp = _.sortBy(temp, 'recoInouclationDose');
+  _.each(temp, function(value,index){
+  if(index == 0){
+  %>
+  <div class="container flex horizental">
+    <div class="item flex align-center border-right w230">
+      <div>卡介苗</div>
+    </div>
+    <div class="container <% if(temp.length == 1){%>  border-bottom <%}%>">
+      <%
+      }
+
+      if(value.recoInouclationDose > 0){
+      %>
+      <div class="container flex horizental">
+        <div class="flex vertical justify-center align-center border-right border-bottom bgWhite w60">
+          <div><%=value.recoInouclationDose%></div>
+          <div>次</div>
+        </div>
+        <div class="container border-bottom">
+          <%
+          }
+
+          %>
+
+          <div class="item clearfix">
+            <div class="pull-left">接种日期</div>
+            <div class="pull-right"><%=Util.formatDate(value.recoInouclationDate)%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">接种部位</div>
+            <div class="pull-right"><%=value.recoInouclationSite%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">疫苗批号</div>
+            <div class="pull-right"><%=value.recoVaccineNum%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">接种医生</div>
+            <div class="pull-right"><%=value.recoInouclationDoctor%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">备注</div>
+            <div class="pull-right"><%=value.recoMark%></div>
+          </div>
+
+          <%
+
+          if(value.recoInouclationDose > 0){
+          %>
+        </div>
+      </div>
+      <%
+      }
+      if(index == (temp.length - 1)){
+      %>
+    </div>
+  </div>
+  <%
+  }
+  });
+  %>
+
+  <%
+  var temp = _.filter(vaccineRecordList, {recoVaccineName: '脊灰疫苗'});
+  temp = _.sortBy(temp, 'recoInouclationDose');
+  _.each(temp, function(value,index){
+  if(index == 0){
+  %>
+  <div class="container flex horizental">
+    <div class="item flex align-center border-right w230">
+      <div>脊灰疫苗</div>
+    </div>
+    <div class="container <% if(temp.length == 1){%>  border-bottom <%}%>">
+      <%
+      }
+
+      if(value.recoInouclationDose > 0){
+      %>
+      <div class="container flex horizental">
+        <div class="flex vertical justify-center align-center border-right border-bottom bgWhite w60">
+          <div><%=value.recoInouclationDose%></div>
+          <div>次</div>
+        </div>
+        <div class="container border-bottom">
+          <%
+          }
+
+          %>
+
+          <div class="item clearfix">
+            <div class="pull-left">接种日期</div>
+            <div class="pull-right"><%=Util.formatDate(value.recoInouclationDate)%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">接种部位</div>
+            <div class="pull-right"><%=value.recoInouclationSite%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">疫苗批号</div>
+            <div class="pull-right"><%=value.recoVaccineNum%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">接种医生</div>
+            <div class="pull-right"><%=value.recoInouclationDoctor%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">备注</div>
+            <div class="pull-right"><%=value.recoMark%></div>
+          </div>
+
+          <%
+
+          if(value.recoInouclationDose > 0){
+          %>
+        </div>
+      </div>
+      <%
+      }
+      if(index == (temp.length - 1)){
+      %>
+    </div>
+  </div>
+  <%
+  }
+  });
+  %>
+
+
+  <%
+  var temp = _.filter(vaccineRecordList, {recoVaccineName: '百白破疫苗'});
+  temp = _.sortBy(temp, 'recoInouclationDose');
+  _.each(temp, function(value,index){
+  if(index == 0){
+  %>
+  <div class="container flex horizental">
+    <div class="item flex align-center border-right w230">
+      <div>百白破疫苗</div>
+    </div>
+    <div class="container <% if(temp.length == 1){%>  border-bottom <%}%>">
+      <%
+      }
+
+      if(value.recoInouclationDose > 0){
+      %>
+      <div class="container flex horizental">
+        <div class="flex vertical justify-center align-center border-right border-bottom bgWhite w60">
+          <div><%=value.recoInouclationDose%></div>
+          <div>次</div>
+        </div>
+        <div class="container border-bottom">
+          <%
+          }
+
+          %>
+
+          <div class="item clearfix">
+            <div class="pull-left">接种日期</div>
+            <div class="pull-right"><%=Util.formatDate(value.recoInouclationDate)%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">接种部位</div>
+            <div class="pull-right"><%=value.recoInouclationSite%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">疫苗批号</div>
+            <div class="pull-right"><%=value.recoVaccineNum%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">接种医生</div>
+            <div class="pull-right"><%=value.recoInouclationDoctor%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">备注</div>
+            <div class="pull-right"><%=value.recoMark%></div>
+          </div>
+
+          <%
+
+          if(value.recoInouclationDose > 0){
+          %>
+        </div>
+      </div>
+      <%
+      }
+      if(index == (temp.length - 1)){
+      %>
+    </div>
+  </div>
+  <%
+  }
+  });
+  %>
+
+  <%
+  var temp = _.filter(vaccineRecordList, {recoVaccineName: '白破疫苗'});
+  temp = _.sortBy(temp, 'recoInouclationDose');
+  _.each(temp, function(value,index){
+  if(index == 0){
+  %>
+  <div class="container flex horizental">
+    <div class="item flex align-center border-right w230">
+      <div>白破疫苗</div>
+    </div>
+    <div class="container <% if(temp.length == 1){%>  border-bottom <%}%>">
+      <%
+      }
+
+      if(value.recoInouclationDose > 0){
+      %>
+      <div class="container flex horizental">
+        <div class="flex vertical justify-center align-center border-right border-bottom bgWhite w60">
+          <div><%=value.recoInouclationDose%></div>
+          <div>次</div>
+        </div>
+        <div class="container border-bottom">
+          <%
+          }
+
+          %>
+
+          <div class="item clearfix">
+            <div class="pull-left">接种日期</div>
+            <div class="pull-right"><%=Util.formatDate(value.recoInouclationDate)%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">接种部位</div>
+            <div class="pull-right"><%=value.recoInouclationSite%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">疫苗批号</div>
+            <div class="pull-right"><%=value.recoVaccineNum%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">接种医生</div>
+            <div class="pull-right"><%=value.recoInouclationDoctor%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">备注</div>
+            <div class="pull-right"><%=value.recoMark%></div>
+          </div>
+
+          <%
+
+          if(value.recoInouclationDose > 0){
+          %>
+        </div>
+      </div>
+      <%
+      }
+      if(index == (temp.length - 1)){
+      %>
+    </div>
+  </div>
+  <%
+  }
+  });
+  %>
+
+  <%
+  var temp = _.filter(vaccineRecordList, {recoVaccineName: '麻风疫苗'});
+  temp = _.sortBy(temp, 'recoInouclationDose');
+  _.each(temp, function(value,index){
+  if(index == 0){
+  %>
+  <div class="container flex horizental">
+    <div class="item flex align-center border-right w230">
+      <div>麻风疫苗</div>
+    </div>
+    <div class="container <% if(temp.length == 1){%>  border-bottom <%}%>">
+      <%
+      }
+
+      if(value.recoInouclationDose > 0){
+      %>
+      <div class="container flex horizental">
+        <div class="flex vertical justify-center align-center border-right border-bottom bgWhite w60">
+          <div><%=value.recoInouclationDose%></div>
+          <div>次</div>
+        </div>
+        <div class="container border-bottom">
+          <%
+          }
+
+          %>
+
+          <div class="item clearfix">
+            <div class="pull-left">接种日期</div>
+            <div class="pull-right"><%=Util.formatDate(value.recoInouclationDate)%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">接种部位</div>
+            <div class="pull-right"><%=value.recoInouclationSite%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">疫苗批号</div>
+            <div class="pull-right"><%=value.recoVaccineNum%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">接种医生</div>
+            <div class="pull-right"><%=value.recoInouclationDoctor%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">备注</div>
+            <div class="pull-right"><%=value.recoMark%></div>
+          </div>
+
+          <%
+
+          if(value.recoInouclationDose > 0){
+          %>
+        </div>
+      </div>
+      <%
+      }
+      if(index == (temp.length - 1)){
+      %>
+    </div>
+  </div>
+  <%
+  }
+  });
+  %>
+
+
+  <%
+  var temp = _.filter(vaccineRecordList, {recoVaccineName: '麻腮风疫苗'});
+  temp = _.sortBy(temp, 'recoInouclationDose');
+  _.each(temp, function(value,index){
+  if(index == 0){
+  %>
+  <div class="container flex horizental">
+    <div class="item flex align-center border-right w230">
+      <div>麻腮风疫苗</div>
+    </div>
+    <div class="container <% if(temp.length == 1){%>  border-bottom <%}%>">
+      <%
+      }
+
+      if(value.recoInouclationDose > 0){
+      %>
+      <div class="container flex horizental">
+        <div class="flex vertical justify-center align-center border-right border-bottom bgWhite w60">
+          <div><%=value.recoInouclationDose%></div>
+          <div>次</div>
+        </div>
+        <div class="container border-bottom">
+          <%
+          }
+
+          %>
+
+          <div class="item clearfix">
+            <div class="pull-left">接种日期</div>
+            <div class="pull-right"><%=Util.formatDate(value.recoInouclationDate)%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">接种部位</div>
+            <div class="pull-right"><%=value.recoInouclationSite%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">疫苗批号</div>
+            <div class="pull-right"><%=value.recoVaccineNum%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">接种医生</div>
+            <div class="pull-right"><%=value.recoInouclationDoctor%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">备注</div>
+            <div class="pull-right"><%=value.recoMark%></div>
+          </div>
+
+          <%
+
+          if(value.recoInouclationDose > 0){
+          %>
+        </div>
+      </div>
+      <%
+      }
+      if(index == (temp.length - 1)){
+      %>
+    </div>
+  </div>
+  <%
+  }
+  });
+  %>
+
+
+  <%
+  var temp = _.filter(vaccineRecordList, {recoVaccineName: '麻腮疫苗'});
+  temp = _.sortBy(temp, 'recoInouclationDose');
+  _.each(temp, function(value,index){
+  if(index == 0){
+  %>
+  <div class="container flex horizental">
+    <div class="item flex align-center border-right w230">
+      <div>麻腮疫苗</div>
+    </div>
+    <div class="container <% if(temp.length == 1){%>  border-bottom <%}%>">
+      <%
+      }
+
+      if(value.recoInouclationDose > 0){
+      %>
+      <div class="container flex horizental">
+        <div class="flex vertical justify-center align-center border-right border-bottom bgWhite w60">
+          <div><%=value.recoInouclationDose%></div>
+          <div>次</div>
+        </div>
+        <div class="container border-bottom">
+          <%
+          }
+
+          %>
+
+          <div class="item clearfix">
+            <div class="pull-left">接种日期</div>
+            <div class="pull-right"><%=Util.formatDate(value.recoInouclationDate)%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">接种部位</div>
+            <div class="pull-right"><%=value.recoInouclationSite%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">疫苗批号</div>
+            <div class="pull-right"><%=value.recoVaccineNum%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">接种医生</div>
+            <div class="pull-right"><%=value.recoInouclationDoctor%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">备注</div>
+            <div class="pull-right"><%=value.recoMark%></div>
+          </div>
+
+          <%
+
+          if(value.recoInouclationDose > 0){
+          %>
+        </div>
+      </div>
+      <%
+      }
+      if(index == (temp.length - 1)){
+      %>
+    </div>
+  </div>
+  <%
+  }
+  });
+  %>
+
+  <%
+  var temp = _.filter(vaccineRecordList, {recoVaccineName: '麻疹疫苗'});
+  temp = _.sortBy(temp, 'recoInouclationDose');
+  _.each(temp, function(value,index){
+  if(index == 0){
+  %>
+  <div class="container flex horizental">
+    <div class="item flex align-center border-right w230">
+      <div>麻疹疫苗</div>
+    </div>
+    <div class="container <% if(temp.length == 1){%>  border-bottom <%}%>">
+      <%
+      }
+
+      if(value.recoInouclationDose > 0){
+      %>
+      <div class="container flex horizental">
+        <div class="flex vertical justify-center align-center border-right border-bottom bgWhite w60">
+          <div><%=value.recoInouclationDose%></div>
+          <div>次</div>
+        </div>
+        <div class="container border-bottom">
+          <%
+          }
+
+          %>
+
+          <div class="item clearfix">
+            <div class="pull-left">接种日期</div>
+            <div class="pull-right"><%=Util.formatDate(value.recoInouclationDate)%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">接种部位</div>
+            <div class="pull-right"><%=value.recoInouclationSite%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">疫苗批号</div>
+            <div class="pull-right"><%=value.recoVaccineNum%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">接种医生</div>
+            <div class="pull-right"><%=value.recoInouclationDoctor%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">备注</div>
+            <div class="pull-right"><%=value.recoMark%></div>
+          </div>
+
+          <%
+
+          if(value.recoInouclationDose > 0){
+          %>
+        </div>
+      </div>
+      <%
+      }
+      if(index == (temp.length - 1)){
+      %>
+    </div>
+  </div>
+  <%
+  }
+  });
+  %>
+
+
+  <%
+  var temp = _.filter(vaccineRecordList, {recoVaccineName: 'A群流脑疫苗'});
+  temp = _.sortBy(temp, 'recoInouclationDose');
+  _.each(temp, function(value,index){
+  if(index == 0){
+  %>
+  <div class="container flex horizental">
+    <div class="item flex align-center border-right w230">
+      <div>A群流脑疫苗</div>
+    </div>
+    <div class="container <% if(temp.length == 1){%>  border-bottom <%}%>">
+      <%
+      }
+
+      if(value.recoInouclationDose > 0){
+      %>
+      <div class="container flex horizental">
+        <div class="flex vertical justify-center align-center border-right border-bottom bgWhite w60">
+          <div><%=value.recoInouclationDose%></div>
+          <div>次</div>
+        </div>
+        <div class="container border-bottom">
+          <%
+          }
+
+          %>
+
+          <div class="item clearfix">
+            <div class="pull-left">接种日期</div>
+            <div class="pull-right"><%=Util.formatDate(value.recoInouclationDate)%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">接种部位</div>
+            <div class="pull-right"><%=value.recoInouclationSite%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">疫苗批号</div>
+            <div class="pull-right"><%=value.recoVaccineNum%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">接种医生</div>
+            <div class="pull-right"><%=value.recoInouclationDoctor%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">备注</div>
+            <div class="pull-right"><%=value.recoMark%></div>
+          </div>
+
+          <%
+
+          if(value.recoInouclationDose > 0){
+          %>
+        </div>
+      </div>
+      <%
+      }
+      if(index == (temp.length - 1)){
+      %>
+    </div>
+  </div>
+  <%
+  }
+  });
+  %>
+
+
+  <%
+  var temp = _.filter(vaccineRecordList, {recoVaccineName: 'A+C群流脑疫苗'});
+  temp = _.sortBy(temp, 'recoInouclationDose');
+  _.each(temp, function(value,index){
+  if(index == 0){
+  %>
+  <div class="container flex horizental">
+    <div class="item flex align-center border-right w230">
+      <div>A+C群流脑疫苗</div>
+    </div>
+    <div class="container <% if(temp.length == 1){%>  border-bottom <%}%>">
+      <%
+      }
+
+      if(value.recoInouclationDose > 0){
+      %>
+      <div class="container flex horizental">
+        <div class="flex vertical justify-center align-center border-right border-bottom bgWhite w60">
+          <div><%=value.recoInouclationDose%></div>
+          <div>次</div>
+        </div>
+        <div class="container border-bottom">
+          <%
+          }
+
+          %>
+
+          <div class="item clearfix">
+            <div class="pull-left">接种日期</div>
+            <div class="pull-right"><%=Util.formatDate(value.recoInouclationDate)%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">接种部位</div>
+            <div class="pull-right"><%=value.recoInouclationSite%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">疫苗批号</div>
+            <div class="pull-right"><%=value.recoVaccineNum%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">接种医生</div>
+            <div class="pull-right"><%=value.recoInouclationDoctor%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">备注</div>
+            <div class="pull-right"><%=value.recoMark%></div>
+          </div>
+
+          <%
+
+          if(value.recoInouclationDose > 0){
+          %>
+        </div>
+      </div>
+      <%
+      }
+      if(index == (temp.length - 1)){
+      %>
+    </div>
+  </div>
+  <%
+  }
+  });
+  %>
+
+  <%
+  var temp = _.filter(vaccineRecordList, {recoVaccineName: '乙脑（减毒）活疫苗'});
+  temp = _.sortBy(temp, 'recoInouclationDose');
+  _.each(temp, function(value,index){
+  if(index == 0){
+  %>
+  <div class="container flex horizental">
+    <div class="item flex align-center border-right w230">
+      <div>乙脑（减毒）活疫苗</div>
+    </div>
+    <div class="container <% if(temp.length == 1){%>  border-bottom <%}%>">
+      <%
+      }
+
+      if(value.recoInouclationDose > 0){
+      %>
+      <div class="container flex horizental">
+        <div class="flex vertical justify-center align-center border-right border-bottom bgWhite w60">
+          <div><%=value.recoInouclationDose%></div>
+          <div>次</div>
+        </div>
+        <div class="container border-bottom">
+          <%
+          }
+
+          %>
+
+          <div class="item clearfix">
+            <div class="pull-left">接种日期</div>
+            <div class="pull-right"><%=Util.formatDate(value.recoInouclationDate)%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">接种部位</div>
+            <div class="pull-right"><%=value.recoInouclationSite%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">疫苗批号</div>
+            <div class="pull-right"><%=value.recoVaccineNum%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">接种医生</div>
+            <div class="pull-right"><%=value.recoInouclationDoctor%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">备注</div>
+            <div class="pull-right"><%=value.recoMark%></div>
+          </div>
+
+          <%
+
+          if(value.recoInouclationDose > 0){
+          %>
+        </div>
+      </div>
+      <%
+      }
+      if(index == (temp.length - 1)){
+      %>
+    </div>
+  </div>
+  <%
+  }
+  });
+  %>
+
+
+  <%
+  var temp = _.filter(vaccineRecordList, {recoVaccineName: '乙脑灭活疫苗'});
+  temp = _.sortBy(temp, 'recoInouclationDose');
+  _.each(temp, function(value,index){
+  if(index == 0){
+  %>
+  <div class="container flex horizental">
+    <div class="item flex align-center border-right w230">
+      <div>乙脑灭活疫苗</div>
+    </div>
+    <div class="container <% if(temp.length == 1){%>  border-bottom <%}%>">
+      <%
+      }
+
+      if(value.recoInouclationDose > 0){
+      %>
+      <div class="container flex horizental">
+        <div class="flex vertical justify-center align-center border-right border-bottom bgWhite w60">
+          <div><%=value.recoInouclationDose%></div>
+          <div>次</div>
+        </div>
+        <div class="container border-bottom">
+          <%
+          }
+
+          %>
+
+          <div class="item clearfix">
+            <div class="pull-left">接种日期</div>
+            <div class="pull-right"><%=Util.formatDate(value.recoInouclationDate)%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">接种部位</div>
+            <div class="pull-right"><%=value.recoInouclationSite%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">疫苗批号</div>
+            <div class="pull-right"><%=value.recoVaccineNum%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">接种医生</div>
+            <div class="pull-right"><%=value.recoInouclationDoctor%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">备注</div>
+            <div class="pull-right"><%=value.recoMark%></div>
+          </div>
+
+          <%
+
+          if(value.recoInouclationDose > 0){
+          %>
+        </div>
+      </div>
+      <%
+      }
+      if(index == (temp.length - 1)){
+      %>
+    </div>
+  </div>
+  <%
+  }
+  });
+  %>
+
+  <%
+  var temp = _.filter(vaccineRecordList, {recoVaccineName: '甲肝减毒活疫苗'});
+  temp = _.sortBy(temp, 'recoInouclationDose');
+  _.each(temp, function(value,index){
+  if(index == 0){
+  %>
+  <div class="container flex horizental">
+    <div class="item flex align-center border-right w230">
+      <div>甲肝减毒活疫苗</div>
+    </div>
+    <div class="container <% if(temp.length == 1){%>  border-bottom <%}%>">
+      <%
+      }
+
+      if(value.recoInouclationDose > 0){
+      %>
+      <div class="container flex horizental">
+        <div class="flex vertical justify-center align-center border-right border-bottom bgWhite w60">
+          <div><%=value.recoInouclationDose%></div>
+          <div>次</div>
+        </div>
+        <div class="container border-bottom">
+          <%
+          }
+
+          %>
+
+          <div class="item clearfix">
+            <div class="pull-left">接种日期</div>
+            <div class="pull-right"><%=Util.formatDate(value.recoInouclationDate)%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">接种部位</div>
+            <div class="pull-right"><%=value.recoInouclationSite%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">疫苗批号</div>
+            <div class="pull-right"><%=value.recoVaccineNum%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">接种医生</div>
+            <div class="pull-right"><%=value.recoInouclationDoctor%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">备注</div>
+            <div class="pull-right"><%=value.recoMark%></div>
+          </div>
+
+          <%
+
+          if(value.recoInouclationDose > 0){
+          %>
+        </div>
+      </div>
+      <%
+      }
+      if(index == (temp.length - 1)){
+      %>
+    </div>
+  </div>
+  <%
+  }
+  });
+  %>
+
+  <%
+  var temp = _.filter(vaccineRecordList, {recoVaccineName: '甲肝灭活疫苗'});
+  temp = _.sortBy(temp, 'recoInouclationDose');
+  _.each(temp, function(value,index){
+  if(index == 0){
+  %>
+  <div class="container flex horizental">
+    <div class="item flex align-center border-right w230">
+      <div>甲肝灭活疫苗</div>
+    </div>
+    <div class="container <% if(temp.length == 1){%>  border-bottom <%}%>">
+      <%
+      }
+
+      if(value.recoInouclationDose > 0){
+      %>
+      <div class="container flex horizental">
+        <div class="flex vertical justify-center align-center border-right border-bottom bgWhite w60">
+          <div><%=value.recoInouclationDose%></div>
+          <div>次</div>
+        </div>
+        <div class="container border-bottom">
+          <%
+          }
+
+          %>
+
+          <div class="item clearfix">
+            <div class="pull-left">接种日期</div>
+            <div class="pull-right"><%=Util.formatDate(value.recoInouclationDate)%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">接种部位</div>
+            <div class="pull-right"><%=value.recoInouclationSite%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">疫苗批号</div>
+            <div class="pull-right"><%=value.recoVaccineNum%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">接种医生</div>
+            <div class="pull-right"><%=value.recoInouclationDoctor%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">备注</div>
+            <div class="pull-right"><%=value.recoMark%></div>
+          </div>
+
+          <%
+
+          if(value.recoInouclationDose > 0){
+          %>
+        </div>
+      </div>
+      <%
+      }
+      if(index == (temp.length - 1)){
+      %>
+    </div>
+  </div>
+  <%
+  }
+  });
+  %>
+
+
+  <%
+  var temp = _.filter(vaccineRecordList, {recoVaccineName: '其他疫苗'});
+  temp = _.sortBy(temp, 'recoInouclationDose');
+  _.each(temp, function(value,index){
+  if(index == 0){
+  %>
+  <div class="container flex horizental">
+    <div class="item flex align-center border-right w230">
+      <div>其他疫苗</div>
+    </div>
+    <div class="container <% if(temp.length == 1){%>  border-bottom <%}%>">
+      <%
+      }
+
+      if(value.recoInouclationDose > 0){
+      %>
+      <div class="container flex horizental">
+        <div class="flex vertical justify-center align-center border-right border-bottom bgWhite w60">
+          <div><%=value.recoInouclationDose%></div>
+          <div>次</div>
+        </div>
+        <div class="container border-bottom">
+          <%
+          }
+
+          %>
+
+          <div class="item clearfix">
+            <div class="pull-left">接种日期</div>
+            <div class="pull-right"><%=Util.formatDate(value.recoInouclationDate)%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">接种部位</div>
+            <div class="pull-right"><%=value.recoInouclationSite%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">疫苗批号</div>
+            <div class="pull-right"><%=value.recoVaccineNum%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">接种医生</div>
+            <div class="pull-right"><%=value.recoInouclationDoctor%></div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">备注</div>
+            <div class="pull-right"><%=value.recoMark%></div>
+          </div>
+
+          <%
+
+          if(value.recoInouclationDose > 0){
+          %>
+        </div>
+      </div>
+      <%
+      }
+      if(index == (temp.length - 1)){
+      %>
+    </div>
+  </div>
+  <%
+  }
+  });
+  %>
+
+</div>

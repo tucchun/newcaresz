@@ -1,0 +1,57 @@
+/**问卷调查样式**/
+.wrap-questionnaire {
+  background: #fff;
+}
+.wrap-questionnaire .container {
+  padding: 0;
+}
+.wrap-questionnaire label {
+  font-weight: normal;
+}
+.wrap-questionnaire .sub-title {
+  padding: 20px 0;
+}
+.wrap-questionnaire .container {
+  margin: 0 auto;
+}
+.wrap-questionnaire .item {
+  padding: 20px;
+}
+.wrap-questionnaire .item dt {
+  font-size: 15px;
+  color: #333333;
+  font-weight: 600;
+}
+.wrap-questionnaire .item dd,
+.wrap-questionnaire .item dt {
+  margin-bottom: 15px;
+  line-height: 1;
+}
+.wrap-questionnaire .item input[type=checkbox],
+.wrap-questionnaire .item input[type=radio] {
+  margin: -1px 4px 0 0;
+  vertical-align: middle;
+}
+.wrap-questionnaire .item .tip {
+  color: #00a0e9;
+}
+.wrap-questionnaire .item:nth-child(2n-1) {
+  background-color: #f7f8fc;
+}
+.wrap-questionnaire .border {
+  border: 1px solid #e5e5e5;
+}
+.wrap-questionnaire .submit {
+  padding: 40px 0;
+  text-align: center;
+}
+.wrap-questionnaire .submit button[type=button] {
+  padding: 16px 225px;
+  font-size: 18px;
+}
+.wrap-questionnaire .table {
+  background-color: #fff;
+}
+.wrap-questionnaire .bgColor {
+  background-color: #f7f7f7;
+}

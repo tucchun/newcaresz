@@ -1,0 +1,82 @@
+.filter{
+    height:.82rem;
+    line-height:.82rem;
+    margin:0;
+    padding-left:1.05rem;
+}
+.filter a{
+    font-size:.24rem;
+    font-weight:bold;
+}
+.goodslist,#classify{
+    padding-left:1.05rem;
+}
+#classify .onecate li,#classify .sendcate li{
+    padding:.2rem .3rem;
+}
+#classify .onecate li.active{
+    background:#eaeaea;
+}
+#classify .sendcate li.active{
+    color:#376be9;
+}
+.goodslist li{
+    float:left;
+    width: 2.9rem;
+    height:4rem;
+    margin-right:.25rem;
+    margin-bottom:.45rem;
+}
+.goodslist .mainImg img{
+    width:100%;
+}
+.goodslist li p{
+    font-size:.24rem;
+    line-height:1.5;
+    margin:0;
+}
+.goodslist li p:last-child{
+    margin-top:.15rem;
+}
+.goodslist .imgs{
+    height:3rem;
+    overflow:hidden;
+}
+.goodslist .mainImg{
+    margin-bottom:.15rem;
+    height:3rem;
+    display: table;
+    }
+.goodslist .mainImg div{
+    display: table-cell;
+    vertical-align: middle;
+}
+.goodslist li p a{
+    color:#376be9;
+    font-weight:bolder;
+}
+#goodslist li a{
+    display:block;
+}
+#goodslist li a .price{
+    color:#ff0505;
+}
+.article-category{
+    overflow: hidden;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+}
+.article-category::-webkit-scrollbar {
+    display: none
+    /* 隐藏滚动条，但依旧具备可以滚动的功能 */
+}
+.article-category .article-category-item{
+    white-space: nowrap;
+    display: inline-block;
+    padding-left: 0.1rem;
+    padding-right: 0.1rem;
+    color: #505050;
+    text-decoration: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,.3);
+}

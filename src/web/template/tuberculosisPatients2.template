@@ -1,0 +1,202 @@
+<div class="container">
+    <table class="tb tb-auto tb-border">
+        <thead>
+        <tr>
+            <th colspan="6" class="bgColor text-left">
+                肺结核患者随访服务记录表
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="label text-right bgColor w200">姓名</td>
+            <td class="text-left w630">{{=it.residentName}}</td>
+            <td class="label text-right bgColor w200">档案编号</td>
+            <td class="text-left w630">{{=it.residentNo}}</td>
+        </tr>
+        <tr>
+            <td class="label text-right bgColor w200">随访日期</td>
+            <td class="text-left w630">{{=it.Util.formatDate(it.createDate)}}</td>
+            <td class="label text-right bgColor w200">治疗月序</td>
+            <td class="text-left w630">第{{=it.phthVisitMonth}}月</td>
+        </tr>
+        <tr>
+            <td class="label text-right bgColor w200">督导人员选择</td>
+            <td class="text-left w630">{{=it.phthSupervisorStr}}</td>
+            <td class="label text-right bgColor w200">随访方式</td>
+            <td class="text-left w630">{{=it.phthVisitStyleStr}}</td>
+        </tr>
+        <tr>
+            <td class="label text-right bgColor w200">症状及体征</td>
+            <td class="text-left w630" colspan="3">{{=it.bodySymptomStr}}</td>
+        </tr>
+        </tbody>
+    </table>
+    <table class="tb tb-auto tb-border border-top-none">
+        <tbody>
+        <tr>
+            <td rowspan="2" class="text-center bgColor w200 label">
+                生活方式评估
+            </td>
+            <td class="text-right bgColor label w200">
+                吸烟
+            </td>
+            <td class="text-left">
+                {{=it.phthCurrentSmoke}}/{{=it.phthTargerSmoke}}支/天
+            </td>
+        </tr>
+        <tr>
+            <td class="text-right bgColor label">
+                饮酒
+            </td>
+            <td class="text-left" >
+                {{=it.phthCurrentDrink}}/{{=it.phthTargerDrink}}两/天
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="4" class="text-center bgColor w200 label">
+                用药
+            </td>
+            <td class="text-right bgColor label w200">
+                化疗方案
+            </td>
+            <td class="text-left">
+                {{=it.phthChemotherapy}}
+            </td>
+        </tr>
+        <tr>
+            <td class="text-right bgColor label">
+                用法
+            </td>
+            <td class="text-left" >
+                {{=it.phthDrugUsagStr}}
+            </td>
+        </tr>
+        <tr>
+            <td class="text-right bgColor label">
+                药品剂型
+            </td>
+            <td class="text-left" >
+                {{=it.phthDrugFormulaStr}}
+            </td>
+        </tr>
+        <tr>
+            <td class="text-right bgColor label">
+                漏服药次数
+            </td>
+            <td class="text-left" >
+                {{=it.phthDrugMiss}}次
+            </td>
+        </tr>
+
+        <tr>
+            <td class="text-right bgColor label" colspan="2">
+                药物不良反应
+            </td>
+            <td class="text-left">
+                {{=it.phthDrugReactionStr}}
+            </td>
+        </tr>
+        <tr>
+            <td class="text-right bgColor label" colspan="2">
+                并发症或合并症
+            </td>
+            <td class="text-left">
+                {{=it.phthDrugNeopathyStr}}
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="3" class="text-center bgColor w200 label">
+                转诊
+            </td>
+            <td class="text-right bgColor label w200">
+                科别
+            </td>
+            <td class="text-left">
+                {{=it.phthReferralHospital}}
+            </td>
+        </tr>
+        <tr>
+            <td class="text-right bgColor label">
+                原因
+            </td>
+            <td class="text-left" >
+                {{=it.phthReferralReason}}
+            </td>
+        </tr>
+        <tr>
+            <td class="text-right bgColor label">
+                2周内随访，随访结果
+            </td>
+            <td class="text-left" >
+                {{=it.phthReferralVisit}}
+            </td>
+        </tr>
+        <tr>
+            <td class="text-right bgColor label" colspan="2">
+                处理意见
+            </td>
+            <td class="text-left">
+                {{=it.phthOpinion}}
+            </td>
+        </tr>
+        <tr>
+            <td class="text-right bgColor label" colspan="2">
+                下次随访时间
+            </td>
+            <td class="text-left">
+                {{=it.Util.formatDate(it.nextVisitDate)}}
+            </td>
+        </tr>
+       <!-- <tr>
+            <td class="text-right bgColor label" colspan="2">
+                随访医生签名
+            </td>
+            <td class="text-left">
+                {{=it.phthVisitDoctor}}
+            </td>
+        </tr>-->
+        <tr>
+            <td rowspan="2" class="text-center bgColor w200 label">
+                停止治疗及原因
+            </td>
+            <td class="text-right bgColor label w200">
+                出现停止治疗时间
+            </td>
+            <td class="text-left">
+                {{=it.Util.formatDate(it.phthStopDate)}}
+            </td>
+        </tr>
+        <tr>
+            <td class="text-right bgColor label">
+                停止治疗原因
+            </td>
+            <td class="text-left" >
+                {{=it.phthStopReasonStr}}
+            </td>
+        </tr>
+
+        <tr>
+            <td rowspan="2" class="text-center bgColor w200 label">
+                全程管理情况
+            </td>
+            <td class="text-left" colspan="2">
+                应访视患者2次，实际访视1次；
+            </td>
+        </tr>
+        <tr>
+            <td class="text-left" colspan="2">
+                患者在疗程中，应服药 88次，实际服药 88 次，服药率100%。
+            </td>
+        </tr>
+       <!-- <tr>
+            <td class="text-right bgColor label">
+                评估医生签名
+            </td>
+            <td class="text-left" >
+                {{=it.phthAssessDoctor}}
+            </td>
+        </tr>-->
+        </tbody>
+    </table>
+</div>

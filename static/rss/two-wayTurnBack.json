@@ -1,0 +1,36 @@
+{
+  "ret_code": 1,
+  "ret_data":
+  {
+    "residentName": "居民2",
+    "residentNo": "42118200100100012",
+    "address": "西新村社区居委会11栋1单元",
+    "residentSex": "女",
+    "residentAge": 47,
+    "residentMobile": "13500000000",
+
+    "imageUrlList": [
+      "abcxcvxd",
+      "abcxcvxd"
+    ],
+    "imageDataUrl": "",
+    "rotationDate": 1496029880545,
+    "rotationHospital": "北大医院",
+    "rotationDoctor": "张曹杨",
+    "referralDoctor": "张某某",
+    "toOrganization": "测试",
+    "referralDate": 1496029880545,
+    "diagnosisResult": "测试",
+    "inpatientMedicalNo": "测试",
+    "inspectionResults": "测试",
+    "treatmentOutcome": "测试",
+    "fromHospital": "深圳医院",
+    "fromDoctor": "伊",
+    "fromDoctorMobile": "1231231",
+    "fromDate": 1496029880545,
+    "createBy": null,
+    "createDate": 1496029880545,
+    "updateBy": null,
+    "updateDate": 1496029880545
+  }
+}

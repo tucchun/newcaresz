@@ -1,0 +1,88 @@
+{
+  "ret_code": 1,
+  "ret_data": {
+    "count": 13,
+    "goodsList": [
+      {
+        "id": 112,
+        "name": "999感冒灵颗粒",
+        "brand": "999",
+        "specifications": "10g 9袋",
+        "price": 2200,
+        "img": "group1/M00/00/03/wKgB-lkpWz2AY9cYAAy6GM4iM-06148458"
+      },
+      {
+        "id": 100,
+        "name": "999感冒灵颗粒",
+        "brand": "999",
+        "specifications": "10g 9袋",
+        "price": 2200,
+        "img": null
+      },
+      {
+        "id": 101,
+        "name": "999感冒灵颗粒",
+        "brand": "999",
+        "specifications": "10g 9袋",
+        "price": 2200,
+        "img": null
+      },
+      {
+        "id": 102,
+        "name": "999感冒灵颗粒",
+        "brand": "999",
+        "specifications": "10g 9袋",
+        "price": 2200,
+        "img": null
+      },
+      {
+        "id": 103,
+        "name": "999感冒灵颗粒",
+        "brand": "999",
+        "specifications": "10g 9袋",
+        "price": 2200,
+        "img": null
+      },
+      {
+        "id": 104,
+        "name": "999感冒灵颗粒",
+        "brand": "999",
+        "specifications": "10g 9袋",
+        "price": 2200,
+        "img": null
+      },
+      {
+        "id": 105,
+        "name": "999感冒灵颗粒",
+        "brand": "999",
+        "specifications": "10g 9袋",
+        "price": 2200,
+        "img": null
+      },
+      {
+        "id": 106,
+        "name": "999感冒灵颗粒",
+        "brand": "999",
+        "specifications": "10g 9袋",
+        "price": 2200,
+        "img": null
+      },
+      {
+        "id": 107,
+        "name": "999感冒灵颗粒",
+        "brand": "999",
+        "specifications": "10g 9袋",
+        "price": 2200,
+        "img": null
+      },
+      {
+        "id": 108,
+        "name": "999感冒灵颗粒",
+        "brand": "999",
+        "specifications": "10g 9袋",
+        "price": 2200,
+        "img": null
+      }
+    ]
+  }
+}

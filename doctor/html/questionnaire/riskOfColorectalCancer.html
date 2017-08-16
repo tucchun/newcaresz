@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=4, user-scalable=0" name="viewport">
+    <title>医生端-大肠癌健康问卷</title>
+    <link rel="stylesheet" href="../../dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../dist/css/app.min.css" />
+</head>
+<body>
+<!--<header>
+    <div class="content clearfix">
+        <div class="pull-left">
+            <img src="../../dist/img/pic/logo.png" alt="logo">医生端
+        </div>
+        <div class="pull-right">
+            <img src="../../dist/img/pic/avatar.png" alt="头像" class="avatar">
+            <span><a href="#">小安南</a><a href="#">修改密码</a><a href="#">退出</a></span>
+        </div>
+    </div>
+</header>-->
+<div id="content" class="wrap-questionnaire">
+    <form id="rxa_risk">
+        <div class="container sub-title">
+            大肠癌健康问卷
+        </div>
+        <div class="container sub-title">
+            请根据近一年的体验和感觉，回答以下问题。
+        </div>
+        <div class="container border">
+            <div class="item">
+                <table class="table table-bordered align-center">
+                    <tbody>
+                    <tr>
+                        <td class="bgColor">性别</td>
+                        <td id="gender">男</td>
+                        <td class="bgColor">年龄</td>
+                        <td id="age">29</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="item">
+                <dl>
+                    <dt>1.您的家族成员中，有过大肠癌的患病史吗？</dt>
+                    <dd>
+                        <label><input type="radio" name="cancerHistory" value="1"><span>有</span></label>
+                    </dd>
+                    <dd>
+                        <label><input type="radio" name="cancerHistory" value="2"><span>无</span></label>
+                    </dd>
+                </dl>
+            </div>
+            <div class="item">
+                <dl>
+                    <dt>2.您的生活习惯是怎样的？（若以下都没有，则无需选择）<span class="tip">[多选题]</span></dt>
+                    <dd>
+                        <input type="radio" name="habbit" value="0" checked="checked" class="hidden"/>
+                        <label><input type="checkbox" name="habbit" value="1"><span>有吸烟</span></label>
+                    </dd>
+                    <dd>
+                        <label><input type="checkbox" name="habbit" value="2"><span>有饮酒</span></label>
+                    </dd>
+                    <dd>
+                        <label><input type="checkbox" name="habbit" value="3"><span>每天锻炼大于等于30分钟</span></label>
+                    </dd>
+                    <dd>
+                        <label><input type="checkbox" name="habbit" value="4"><span>每天吃蔬菜大于等于1次</span></label>
+                    </dd>
+                </dl>
+            </div>
+            <div class="item">
+                <dl>
+                    <dt>3.您是否患有以下既往病史？（若以下都没有，则无需选择）<span class="tip">[多选题]</span></dt>
+                    <dd>
+                        <input type="radio" value="0" name="diseaseHistory" checked="checked" class="hidden" />
+                        <label><input type="checkbox" name="diseaseHistory" value="1"><span>阑尾炎史</span></label>
+                    </dd>
+                    <dd>
+                        <label><input type="checkbox" name="diseaseHistory" value="2"><span>消化道溃疡史</span></label>
+                    </dd>
+                    <dd>
+                        <label><input type="checkbox" name="diseaseHistory" value="3"><span>慢性直结肠炎史</span></label>
+                    </dd>
+                    <dd>
+                        <label><input type="checkbox" name="diseaseHistory" value="4"><span>结直肠息肉史</span></label>
+                    </dd>
+                    <dd>
+                        <label><input type="checkbox" name="diseaseHistory" value="5"><span>胆囊疾病史</span></label>
+                    </dd>
+                    <dd>
+                        <label><input type="checkbox" name="diseaseHistory" value="6"><span>腹泻史</span></label>
+                    </dd>
+                    <dd>
+                        <label><input type="checkbox" name="diseaseHistory" value="7"><span>便秘史</span></label>
+                    </dd>
+                    <dd>
+                        <label><input type="checkbox" name="diseaseHistory" value="8"><span>血便</span></label>
+                    </dd>
+                    <dd>
+                        <label><input type="checkbox" name="diseaseHistory" value="9"><span>黏液便</span></label>
+                    </dd>
+                    <input type="hidden" name="type" value="COLORECTAL_CANCER">
+                </dl>
+            </div>
+        </div>
+        <div class="container submit">
+            <button type="submit" class="btn btn-main">提&nbsp;交</button>
+        </div>
+    </form>
+</div>
+</body>
+<script type="text/javascript" src="../../js/lib/require.js" data-main="../../js/rxa_risk"></script>
+</html>

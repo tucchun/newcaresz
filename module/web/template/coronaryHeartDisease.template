@@ -1,0 +1,203 @@
+<div class="container">
+  <table class="tb tb-auto tb-border">
+    <thead>
+    <th colspan="6" class="bgColor text-left">
+      冠心病专项档案
+    </th>
+    </thead>
+    <tbody>
+    <tr>
+      <td class="text-left sub-title" colspan="4">基本信息</td>
+    </tr>
+    <tr>
+      <td class="text-right bgColor label w200">姓名</td>
+      <td class="text-left w630">{{= it.residentName}}</td>
+      <td class="text-right bgColor label w200">档案编号</td>
+      <td class="text-left w630">{{= it.residentNo}}</td>
+    </tr>
+    <tr>
+      <td class="text-right bgColor label">性别</td>
+      <td class="text-left">{{= it.residentSexStr}}</td>
+      <td class="text-right bgColor label">身份证号</td>
+      <td class="text-left">{{= it.residentPersonId}}</td>
+    </tr>
+    <tr>
+      <td class="text-right bgColor label">年龄</td>
+      <td class="text-left">{{= it.residentAge}}</td>
+      <td class="text-right bgColor label">民族</td>
+      <td class="text-left">{{= it.residentEthnic}}</td>
+    </tr>
+    <tr>
+      <td class="text-right bgColor label">婚姻状况</td>
+      <td class="text-left">{{= it.residentMaritalStatusStr}}</td>
+      <td class="text-right bgColor label">电话</td>
+      <td class="text-left">{{= it.residentPhone}}</td>
+    </tr>
+    <tr>
+      <td class="text-right bgColor label">住址</td>
+      <td class="text-left">{{= it.residentAddress}}</td>
+      <td class="text-right bgColor label">建档日期</td>
+      <td class="text-left">{{= it.Util.formatDate(it.createDate)}}</td>
+    </tr>
+    <tr>
+      <td class="text-right bgColor label">诊断时间</td>
+      <td class="text-left">{{= it.Util.formatDate(it.coronDiagnosisDate) }}</td>
+      <td class="text-right bgColor label">诊断医院</td>
+      <td class="text-left">{{= it.coronDiagnosisHospital}}</td>
+    </tr>
+    <tr>
+      <td class="text-right bgColor label">诊断部位</td>
+      <td class="text-left">{{= it.coronDiagnosisPosition}}</td>
+      <td class="text-right bgColor label">病例来源</td>
+      <td class="text-left">{{= it.coronCaseSourceStr}}</td>
+    </tr>
+    <tr>
+      <td class="text-left sub-title" colspan="4">以往情况</td>
+    </tr>
+    <tr>
+      <td class="text-right bgColor label">冠心病类型</td>
+      <td class="text-left">{{= it.coronTypeStr}}</td>
+      <td class="text-right bgColor label">您是否服用抗心绞痛药</td>
+      <td class="text-left">{{= it.coronAnginaDrugsStr }}</td>
+    </tr>
+    <tr>
+      <td class="text-right bgColor label">不服或不规律的原因</td>
+      <td class="text-left">{{= it.coronIrregularReasonStr}}</td>
+      <td class="text-right bgColor label">未服降压药水平</td>
+      <td class="text-left">{{= it.coronBeforeBloodpressureLow}}/{{= it.coronBeforeBloodpressureHigh}}mmHg</td>
+    </tr>
+    <tr>
+      <td class="text-right bgColor label">每月服用降压药的费用</td>
+      <td class="text-left">{{= it.coronDrugsCost}}元</td>
+      <td class="text-right bgColor label">现平均每日体育活动时间</td>
+      <td class="text-left">{{= it.coronSportTime}}分钟</td>
+    </tr>
+    <tr>
+      <td class="text-right bgColor label">吸烟者(目前吸烟量)</td>
+      <td class="text-left">{{= it.coronSmokingAmount}}支/日</td>
+      <td class="text-right bgColor label">饮酒者(目前平均饮酒量)</td>
+      <td class="text-left">{{= it.coronDrinkingAmount}}两/日</td>
+    </tr>
+    <tr>
+      <td class="text-right bgColor label">目前平均食盐量</td>
+      <td class="text-left" colspan="3">{{= it.coronEatSalt}}克/日</td>
+    </tr>
+    <tr>
+      <td class="text-left sub-title" colspan="4">就诊情况</td>
+    </tr>
+    <tr>
+      <td class="text-right bgColor label">主观资料</td>
+      <td class="text-left">{{= it.bodySymptomStr}}</td>
+      <td class="text-right bgColor label">发病诱因</td>
+      <td class="text-left">{{= it.predisposingFactorsStr}}</td>
+    </tr>
+    </tbody>
+  </table>
+  <table class="tb tb-auto tb-border border-top-none">
+    <tbody>
+    <tr>
+      <td class="text-center bgColor label w200" rowspan="18">
+        客观资料
+      </td>
+      <td class="text-center bgColor label w200" rowspan="10">体征</td>
+      <td class="text-right bgColor label w200">血压(mmHg)</td>
+      <td class="text-left">{{= it.coronBloodPressLow}}/{{= it.coronBloodPressHeigh}}</td>
+    </tr>
+    <tr>
+      <td class="text-right bgColor label w200">腰围(cm)</td>
+      <td class="text-left">{{= it.coronWaist}}</td>
+    </tr>
+    <tr>
+      <td class="text-right bgColor label w200">BMI</td>
+      <td class="text-left">{{= (Number(it.coronBmi) || 0).toFixed(2)}}</td>
+    </tr>
+    <tr>
+      <td class="text-right bgColor label w200">心律(次/分)</td>
+      <td class="text-left">{{= it.coronRhythm}}</td>
+    </tr>
+    <tr>
+      <td class="text-right bgColor label w200">心率(次/分)</td>
+      <td class="text-left">{{= it.coronHeartRate}}</td>
+    </tr>
+    <tr>
+      <td class="text-right bgColor label w200">意识</td>
+      <td class="text-left">{{= it.coronConsciousness}}</td>
+    </tr>
+    <tr>
+      <td class="text-right bgColor label w200">身高(cm)</td>
+      <td class="text-left">{{= it.coronHeight}}</td>
+    </tr>
+    <tr>
+      <td class="text-right bgColor label w200">眼底</td>
+      <td class="text-left">{{= it.coronFundusOculi}}</td>
+    </tr>
+    <tr>
+      <td class="text-right bgColor label w200">体重(kg)</td>
+      <td class="text-left">{{= it.coronWeight}}</td>
+    </tr>
+    <tr>
+      <td class="text-right bgColor label w200">浮肿</td>
+      <td class="text-left">{{= it.coronEdema}}</td>
+    </tr>
+    <tr>
+      <td class="text-center bgColor label w200" rowspan="8">检查</td>
+      <td class="text-right bgColor label w200">心电图</td>
+      <td class="text-left">{{= it.coronInspectCardiogram}}</td>
+    </tr>
+    <tr>
+      <td class="text-right bgColor label w200">LDL(%)</td>
+      <td class="text-left">{{= it.coronInspectLdl}}</td>
+    </tr>
+    <tr>
+      <td class="text-right bgColor label w200">血糖(mmol/L)</td>
+      <td class="text-left">{{= it.coronInspectGlucose}}</td>
+    </tr>
+    <tr>
+      <td class="text-right bgColor label w200">LDH(%)</td>
+      <td class="text-left">{{= it.coronInspectLdh}}</td>
+    </tr>
+    <tr>
+      <td class="text-right bgColor label w200">TC(mmol/L)</td>
+      <td class="text-left">{{= it.coronInspectTc}}</td>
+    </tr>
+    <tr>
+      <td class="text-right bgColor label w200">CK-MB</td>
+      <td class="text-left">{{= it.coronInspectCkMb}}</td>
+    </tr>
+    <tr>
+      <td class="text-right bgColor label w200">TG(mmol/L)</td>
+      <td class="text-left">{{= it.coronInspectTg}}</td>
+    </tr>
+    <tr>
+      <td class="text-right bgColor label w200">HDL(mmol/L)</td>
+      <td class="text-left">{{= it.coronInspectHdl}}</td>
+    </tr>
+    </tbody>
+  </table>
+  <table class="tb tb-auto tb-border border-top-none">
+    <tbody>
+    <tr>
+      <td class="text-right bgColor label w200">并发症</td>
+      <td class="text-left" colspan="3">{{= it.complicationRecordStr}}</td>
+    </tr>
+    <tr>
+      <td class="text-right bgColor label w200">第一次随访时间</td>
+      <td class="text-left">{{= it.Util.formatDate(it.coronFirstDate)}}</td>
+      <td class="text-right bgColor label w200">随访方式</td>
+      <td class="text-left">{{= it.coronVisitStyleStr}}</td>
+    </tr>
+    <tr>
+      <td class="text-right bgColor label w200">撤销随访管理日期</td>
+      <td class="text-left">{{= it.Util.formatDate(it.coronRevocationDate)}}</td>
+      <td class="text-right bgColor label w200">撤销随访管理原因</td>
+      <td class="text-left">{{= it.coronRevocationReasonStr}}</td>
+    </tr>
+    <tr>
+     <!--  <td class="text-right bgColor label w200">建档医生</td>
+     <td class="text-left">{{= it.coronDoctor}}</td> -->
+      <td class="text-right bgColor label w200">填表时间</td>
+      <td class="text-left" colspan="3">{{= it.Util.formatDate(it.coronRecordDate)}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

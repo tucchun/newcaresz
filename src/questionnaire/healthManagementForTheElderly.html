@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>老年人中医药健康管理服务记录表</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <script type="text/javascript" src="../../static/assets/adaptive/adaptive.js"></script>
+  <script>
+  // 设计图宽度
+  window['adaptive'].desinWidth = 1920;
+  // body 字体大小 会将body字体大小设置为 baseFont / 100 + 'rem'
+  window['adaptive'].baseFont = 30;
+  window['adaptive'].maxWidth = 1920;
+  window['adaptive'].init();
+  </script>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+  <form id="js-healthManagementForTheElderly-form">
+    <div class="container sub-title">
+      请根据近一年的体验和感觉，回答以下问题。
+    </div>
+    <div class="container border">
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>01 您精力充沛吗?(指精神头足，乐于做事)</dt>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item1" value="1" required>
+              <span>没有(根本不/从来没有)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item1" value="2">
+              <span>很少(有一点/偶尔)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item1" value="3">
+              <span>有时(有些/少数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item1" value="4">
+              <span>经常(相当/多数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item1" value="5">
+              <span>总是(非常/每天)</span>
+            </label>
+          </dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>02 您容易疲乏吗？(指体力如何，是否稍微活动一下或做一点家务劳动就感到累)</dt>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item2" value="1" required>
+              <span>没有(根本不/从来没有)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item2" value="2">
+              <span>很少(有一点/偶尔)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item2" value="3">
+              <span>有时(有些/少数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item2" value="4">
+              <span>经常(相当/多数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item2" value="5">
+              <span>总是(非常/每天)</span>
+            </label>
+          </dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>03 您容易气短,呼吸急促,接不上气吗?</dt>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item3" value="1" required>
+              <span>没有(根本不/从来没有)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item3" value="2">
+              <span>很少(有一点/偶尔)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item3" value="3">
+              <span>有时(有些/少数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item3" value="4">
+              <span>经常(相当/多数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item3" value="5">
+              <span>总是(非常/每天)</span>
+            </label>
+          </dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>04 您说话声音低弱无力吗?(指说话没有力气)</dt>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item4" value="1" required>
+              <span>没有(根本不/从来没有)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item4" value="2">
+              <span>很少(有一点/偶尔)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item4" value="3">
+              <span>有时(有些/少数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item4" value="4">
+              <span>经常(相当/多数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item4" value="5">
+              <span>总是(非常/每天)</span>
+            </label>
+          </dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>05 您感到闷闷不乐,绪低沉吗?(指心情不愉快，情绪低落)</dt>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item5" value="1" required>
+              <span>没有(根本不/从来没有)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item5" value="2">
+              <span>很少(有一点/偶尔)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item5" value="3">
+              <span>有时(有些/少数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item5" value="4">
+              <span>经常(相当/多数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item5" value="5">
+              <span>总是(非常/每天)</span>
+            </label>
+          </dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>06 您容易精神紧张,焦虑不安吗?(指遇事是否心情紧张)</dt>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item6" value="1" required>
+              <span>没有(根本不/从来没有)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item6" value="2">
+              <span>很少(有一点/偶尔)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item6" value="3">
+              <span>有时(有些/少数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item6" value="4">
+              <span>经常(相当/多数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item6" value="5">
+              <span>总是(非常/每天)</span>
+            </label>
+          </dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>07 您因为生活状态改变而感到孤独,失落吗?</dt>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item7" value="1" required>
+              <span>没有(根本不/从来没有)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item7" value="2">
+              <span>很少(有一点/偶尔)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item7" value="3">
+              <span>有时(有些/少数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item7" value="4">
+              <span>经常(相当/多数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item7" value="5">
+              <span>总是(非常/每天)</span>
+            </label>
+          </dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>08 您容易感到害怕或受到惊吓吗?</dt>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item8" value="1" required>
+              <span>没有(根本不/从来没有)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item8" value="2">
+              <span>很少(有一点/偶尔)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item8" value="3">
+              <span>有时(有些/少数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item8" value="4">
+              <span>经常(相当/多数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item8" value="5">
+              <span>总是(非常/每天)</span>
+            </label>
+          </dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>09 您感到身体超重不轻松吗?(感觉身体沉重)[BMI指数=体重(kg)/身高²(m)]</dt>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item9" value="1" required>
+              <span>没有(根本不/从来没有)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item9" value="2">
+              <span>很少(有一点/偶尔)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item9" value="3">
+              <span>有时(有些/少数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item9" value="4">
+              <span>经常(相当/多数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item9" value="5">
+              <span>总是(非常/每天)</span>
+            </label>
+          </dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>10 您眼睛干涩吗?</dt>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item10" value="1" required>
+              <span>没有(根本不/从来没有)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item10" value="2">
+              <span>很少(有一点/偶尔)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item10" value="3">
+              <span>有时(有些/少数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item10" value="4">
+              <span>经常(相当/多数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item10" value="5">
+              <span>总是(非常/每天)</span>
+            </label>
+          </dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>11 您手脚发凉吗?(不包含因周围温度低或穿的少导致的手脚发冷)</dt>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item11" value="1" required>
+              <span>没有(根本不/从来没有)</span>
+            </label>
+            <dd>
+              <label>
+                <input type="radio" name="tcm_item11" value="2">
+                <span>很少(有一点/偶尔)</span>
+              </label>
+            </dd>
+            <dd>
+              <label>
+                <input type="radio" name="tcm_item11" value="3">
+                <span>有时(有些/少数时间)</span>
+              </label>
+            </dd>
+            <dd>
+              <label>
+                <input type="radio" name="tcm_item11" value="4">
+                <span>经常(相当/多数时间)</span>
+              </label>
+            </dd>
+            <dd>
+              <label>
+                <input type="radio" name="tcm_item11" value="5">
+                <span>总是(非常/每天)</span>
+              </label>
+            </dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>12 您胃脘部,背部或腰膝怕冷吗?(指上腹、背部、腰部或膝关节等,有一处或多处怕冷)</dt>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item12" value="1" required>
+              <span>没有(根本不/从来没有)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item12" value="2">
+              <span>很少(有一点/偶尔)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item12" value="3">
+              <span>有时(有些/少数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item12" value="4">
+              <span>经常(相当/多数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item12" value="5">
+              <span>总是(非常/每天)</span>
+            </label>
+          </dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>13 您比一般人耐受不了寒冷吗?(指比别人容易害怕冬天或是夏天的冷空调、电扇等)</dt>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item13" value="1" required>
+              <span>没有(根本不/从来没有)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item13" value="2">
+              <span>很少(有一点/偶尔)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item13" value="3">
+              <span>有时(有些/少数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item13" value="4">
+              <span>经常(相当/多数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item13" value="5">
+              <span>总是(非常/每天)</span>
+            </label>
+          </dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>14 您容易患感冒吗?(指每年感冒的次数)</dt>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item14" value="5">
+              <span>没有(根本不/从来没有)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item14" value="2">
+              <span>很少(有一点/偶尔)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item14" value="3">
+              <span>有时(有些/少数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item14" value="4">
+              <span>经常(相当/多数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item14" value="5">
+              <span>总是(非常/每天)</span>
+            </label>
+          </dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>15 您没有感冒时也会鼻塞、流鼻涕吗?</dt>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item15" value="1" required>
+              <span>没有(根本不/从来没有)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item15" value="2">
+              <span>很少(有一点/偶尔)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item15" value="3">
+              <span>有时(有些/少数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item15" value="4">
+              <span>经常(相当/多数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item15" value="5">
+              <span>总是(非常/每天)</span>
+            </label>
+          </dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>16 您有口粘口腻,或睡眠打鼾吗?</dt>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item16" value="1" required>
+              <span>没有(根本不/从来没有)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item16" value="2">
+              <span>很少(有一点/偶尔)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item16" value="3">
+              <span>有时(有些/少数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item16" value="4">
+              <span>经常(相当/多数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item16" value="5">
+              <span>总是(非常/每天)</span>
+            </label>
+          </dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>17 您容易过敏吗?(对药物、食物、气味、花粉或在季节交替、气候变化时)</dt>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item17" value="1" required>
+              <span>没有(根本不/从来没有)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item17" value="2">
+              <span>很少(有一点/偶尔)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item17" value="3">
+              <span>有时(有些/少数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item17" value="4">
+              <span>经常(相当/多数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item17" value="5">
+              <span>总是(非常/每天)</span>
+            </label>
+          </dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>18 您的皮肤容易起荨麻疹吗?(包括风团、风疹块、风疙瘩)</dt>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item18" value="1" required>
+              <span>没有(根本不/从来没有)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item18" value="2">
+              <span>很少(有一点/偶尔)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item18" value="3">
+              <span>有时(有些/少数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item18" value="4">
+              <span>经常(相当/多数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item18" value="5">
+              <span>总是(非常/每天)</span>
+            </label>
+          </dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>19 您的皮肤在不知不觉中会出现青紫瘀斑、皮下出血吗?(指皮肤在没有外伤的情况下出现青一块紫一块的情况)</dt>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item19" value="1" required>
+              <span>没有(根本不/从来没有)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item19" value="2">
+              <span>很少(有一点/偶尔)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item19" value="3">
+              <span>有时(有些/少数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item19" value="4">
+              <span>经常(相当/多数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item19" value="5">
+              <span>总是(非常/每天)</span>
+            </label>
+          </dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>20 您的皮肤一抓就红，并出现抓痕吗?(指被指甲或钝物划过后皮肤的反应)</dt>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item20" value="1" required>
+              <span>没有(根本不/从来没有)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item20" value="2">
+              <span>很少(有一点/偶尔)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item20" value="3">
+              <span>有时(有些/少数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item20" value="4">
+              <span>经常(相当/多数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item20" value="5">
+              <span>总是(非常/每天)</span>
+            </label>
+          </dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>21 您皮肤或口唇干吗?</dt>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item21" value="1" required>
+              <span>没有(根本不/从来没有)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item21" value="2">
+              <span>很少(有一点/偶尔)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item21" value="3">
+              <span>有时(有些/少数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item21" value="4">
+              <span>经常(相当/多数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item21" value="5">
+              <span>总是(非常/每天)</span>
+            </label>
+          </dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>22 您有肢体麻木或固定部位疼痛的感觉吗?</dt>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item22" value="1" required>
+              <span>没有(根本不/从来没有)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item22" value="2">
+              <span>很少(有一点/偶尔)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item22" value="3">
+              <span>有时(有些/少数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item22" value="4">
+              <span>经常(相当/多数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item22" value="5">
+              <span>总是(非常/每天)</span>
+            </label>
+          </dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>23 您面部或鼻部有油腻感或者油亮发光吗?(指脸上或鼻子)</dt>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item23" value="1" required>
+              <span>没有(根本不/从来没有)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item23" value="2">
+              <span>很少(有一点/偶尔)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item23" value="3">
+              <span>有时(有些/少数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item23" value="4">
+              <span>经常(相当/多数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item23" value="5">
+              <span>总是(非常/每天)</span>
+            </label>
+          </dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>24 您面色或目眶晦黯，或出现褐色斑块/斑点吗?</dt>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item24" value="1" required>
+              <span>没有(根本不/从来没有)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item24" value="2">
+              <span>很少(有一点/偶尔)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item24" value="3">
+              <span>有时(有些/少数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item24" value="4">
+              <span>经常(相当/多数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item24" value="5">
+              <span>总是(非常/每天)</span>
+            </label>
+          </dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>25 您有皮肤湿疹、疮疖吗?</dt>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item25" value="1" required>
+              <span>没有(根本不/从来没有)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item25" value="2">
+              <span>很少(有一点/偶尔)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item25" value="3">
+              <span>有时(有些/少数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item25" value="4">
+              <span>经常(相当/多数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item25" value="5">
+              <span>总是(非常/每天)</span>
+            </label>
+          </dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>26 您感到口干咽燥、总想喝水吗?</dt>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item26" value="1" required>
+              <span>没有(根本不/从来没有)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item26" value="2">
+              <span>很少(有一点/偶尔)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item26" value="3">
+              <span>有时(有些/少数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item26" value="4">
+              <span>经常(相当/多数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item26" value="5">
+              <span>总是(非常/每天)</span>
+            </label>
+          </dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>27 您感到口苦或嘴里有异味吗?(指口苦或口臭)</dt>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item27" value="1" required>
+              <span>没有(根本不/从来没有)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item27" value="2">
+              <span>很少(有一点/偶尔)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item27" value="3">
+              <span>有时(有些/少数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item27" value="4">
+              <span>经常(相当/多数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item27" value="5">
+              <span>总是(非常/每天)</span>
+            </label>
+          </dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>28 您腹部肥大吗?(指腹部脂肪肥厚)</dt>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item28" value="1" required>
+              <span>没有(根本不/从来没有)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item28" value="2">
+              <span>很少(有一点/偶尔)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item28" value="3">
+              <span>有时(有些/少数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item28" value="4">
+              <span>经常(相当/多数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item28" value="5">
+              <span>总是(非常/每天)</span>
+            </label>
+          </dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>29 您吃(喝)凉的东西会感到不舒服或者怕吃(喝)凉的东西吗?(指不喜欢吃凉的食物，或吃了凉的食物后会不舒服)</dt>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item29" value="1" required>
+              <span>没有(根本不/从来没有)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item29" value="2">
+              <span>很少(有一点/偶尔)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item29" value="3">
+              <span>有时(有些/少数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item29" value="4">
+              <span>经常(相当/多数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item29" value="5">
+              <span>总是(非常/每天)</span>
+            </label>
+          </dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>30 您有大便黏滞不爽、解不尽的感觉吗?(大便容易粘在马桶或便坑壁上)</dt>
+          <dd>
+            <input type="radio" name="tcm_item30" value="1" required>
+            <span>没有(根本不/从来没有)</span>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item30" value="2">
+              <span>很少(有一点/偶尔)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item30" value="3">
+              <span>有时(有些/少数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item30" value="4">
+              <span>经常(相当/多数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item30" value="5">
+              <span>总是(非常/每天)</span>
+            </label>
+          </dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>31 您容易大便干燥吗?</dt>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item31" value="1" required>
+              <span>没有(根本不/从来没有)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item31" value="2">
+              <span>很少(有一点/偶尔)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item31" value="3">
+              <span>有时(有些/少数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item31" value="4">
+              <span>经常(相当/多数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item31" value="5">
+              <span>总是(非常/每天)</span>
+            </label>
+          </dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>32 您舌苔厚腻或有舌苔厚厚的感觉吗?(如果自我感觉不清楚可由调查员观察后填写)</dt>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item32" value="1" required>
+              <span>没有(根本不/从来没有)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item32" value="2">
+              <span>很少(有一点/偶尔)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item32" value="3">
+              <span>有时(有些/少数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item32" value="4">
+              <span>经常(相当/多数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item32" value="5">
+              <span>总是(非常/每天)</span>
+            </label>
+          </dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>33 您舌下静脉瘀紫或增粗吗?(可由调查员辅助观察后填写)</dt>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item33" value="1" required>
+              <span>没有(根本不/从来没有)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item33" value="2">
+              <span>很少(有一点/偶尔)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item33" value="3">
+              <span>有时(有些/少数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item33" value="4">
+              <span>经常(相当/多数时间)</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="tcm_item33" value="5">
+              <span>总是(非常/每天)</span>
+            </label>
+          </dd>
+        </dl>
+      </div>
+    </div>
+    <div class="container submit" id>
+      <button type="button" id="js-healthManagementForTheElderly-submit" class="btn">下一步</button>
+      <button type="button" id="js-healthManagementForTheElderly-submit2" class="btn" style="display: none">确认</button>
+    </div>
+  </form>
+  <div class="module" style="display: none" id="js-moudule">
+    <div class="module-content">
+      <div class="module-content-title">辨识结果</div>
+      <div class="module-content-inner" id='js-moudule-result'>
+        <!--  <div class="module-content-item clearfix" >
+         <div>和平质</div>
+         <div>基本是(得分:16)</div>
+       </div>
+       <div class="module-content-item clearfix">
+         <div>阳虚质</div>
+         <div>否(得分:1)</div>
+       </div>
+       <div class="module-content-item clearfix">
+         <div>气虚质</div>
+         <div>倾向是(得分:16)</div>
+       </div>
+       <div class="module-content-item clearfix">
+         <div>阴虚质</div>
+         <div>倾向是(得分:16)</div>
+       </div>
+       <div class="module-content-item clearfix">
+         <div>痰热质</div>
+         <div>倾向是(得分:16)</div>
+       </div>
+       <div class="module-content-item clearfix">
+         <div>湿热质</div>
+         <div>倾向是(得分:16)</div>
+       </div>
+       <div class="module-content-item clearfix">
+         <div>雪瘀质</div>
+         <div>倾向是(得分:16)</div>
+       </div>
+       <div class="module-content-item clearfix">
+         <div>气郁质</div>
+         <div>倾向是(得分:16)</div>
+       </div>
+       <div class="module-content-item clearfix">
+         <div>特秉质</div>
+         <div>倾向是(得分:16)</div>
+       </div> -->
+      </div>
+      <div class="module-content-title">
+        <button class="btn" type="button" id="js-finish" style="padding: .15rem 1rem">返回</button>
+      </div>
+    </div>
+    <div class="module-bdground"></div>
+  </div>
+  <script src="../../static/assets/jquery/jquery-1.9.1.min.js"></script>
+  <script src="../../static/js/Util.js"></script>
+  <script src="../../static/js/jquery.validate.js"></script>
+  <script src="../../static/js/messages_zh.js"></script>
+  <script src="../../static/assets/doT-master/doT.min.js"></script>
+  <script type="text/x-dot-template" id="js-result-template">
+    <div class="module-content-item clearfix">
+      <div>平和质</div>
+      <div>{{= it.tcmPeaceDes }}(得分:{{= it.tcmPeaceScore}})</div>
+    </div>
+    <div class="module-content-item clearfix">
+      <div>阳虚质</div>
+      <div>{{= it.tcmYangDes}}(得分:{{= it.tcmYangScore}})</div>
+    </div>
+    <div class="module-content-item clearfix">
+      <div>气虚质</div>
+      <div>{{= it.tcmDeficiencyDes}}(得分:{{= it.tcmDeficiencyScore}})</div>
+    </div>
+    <div class="module-content-item clearfix">
+      <div>阴虚质</div>
+      <div>{{= it.tcmYinDes}}(得分:{{= it.tcmYinScore}})</div>
+    </div>
+    <div class="module-content-item clearfix">
+      <div>痰湿质</div>
+      <div>{{= it.tcmPhlegmDes}}(得分:{{= it.tcmPhlegmScore}})</div>
+    </div>
+    <div class="module-content-item clearfix">
+      <div>湿热质</div>
+      <div>{{= it.tcmDampDes}}(得分:{{= it.tcmDampScore}})</div>
+    </div>
+    <div class="module-content-item clearfix">
+      <div>血瘀质</div>
+      <div>{{= it.tcmBloodDes}}(得分:{{= it.tcmBloodScore}})</div>
+    </div>
+    <div class="module-content-item clearfix">
+      <div>气郁质</div>
+      <div>{{= it.tcmStagnationDes}}(得分:{{= it.tcmStagnationScore}})</div>
+    </div>
+    <div class="module-content-item clearfix">
+      <div>特秉质</div>
+      <div>{{= it.tcmSpecialDes}}(得分:{{= it.tcmSpecialScore}})</div>
+    </div>
+  </script>
+  <script>
+  var params = Util.param(location.href);
+  var $form = $("#js-healthManagementForTheElderly-form");
+  var $submit_form_btn = $("#js-healthManagementForTheElderly-submit")
+  var $submit_form_btn2 = $("#js-healthManagementForTheElderly-submit2")
+  if (params['form_type'] === 'submit') {
+    $submit_form_btn.hide();
+    $submit_form_btn2.show();
+  }
+
+  var validate = $form.validate({
+    showErrors: function(errorMap, errorList) {
+      if (errorList.length > 0) {
+        var error = errorList[0];
+        var $el = $(error.element);
+        $el.focus();
+        Util.alert("请选择：" + $el.parents("dl").find("dt").html());
+      }
+
+    }
+  });
+
+  $("#js-finish").on("touchend", function(e) {
+    Util.finish();
+  });
+
+  $submit_form_btn2.on("touchend", function(e) {
+    if (validate.form()) {
+      var paramArr = $("#js-healthManagementForTheElderly-form").serializeArray();
+      var paramObj = {};
+      for (var i = 0; i < paramArr.length; i++) {
+        paramObj[paramArr[i]["name"]] = paramArr[i]["value"];
+      }
+      //        common.load();
+      Util.fetch({
+        url: Util.host + '/hca/api/business/gettcmquestion',
+        demoUrl: "../../static/rss/gettcmquestion.json",
+        data: JSON.stringify({
+          "user_id_doc": params["user_id_doc"],
+          "activity_id": params["activity_id"],
+          "data": paramObj,
+          "src_type": "HECadre APP", //请求源的类型，如"HECadre APP"、"Inhabitant APP"等
+          "pf_type": Util.pf_type, //请求源的终端平台类型，如"Android"、"iOS"、"Web"等
+          "user_id": Util.userId, //用户ID，u64
+          "auth_str": Util.getCommunicationAuth() //通信认证密文串
+        }),
+        success: function(data) {
+          //                common.hideLoad();
+          data = data || {};
+          if (data.ret_code === 1) {
+            var html = $("#js-result-template").html();
+            var template = doT.template(html);
+            $("#js-moudule-result").html(template(data.ret_data));
+            $("#js-moudule").show();
+          } else {
+            Util.alert(data.ret_msg || "查询信息错误！");
+          }
+        },
+        error: function(err) {
+          Util.alert("网络错误！");
+          console.log(err)
+        }
+      })
+    }
+  });
+
+
+  $submit_form_btn.on("touchend", function(e) {
+    if (validate.form()) {
+      var paramArr = $("#js-healthManagementForTheElderly-form").serializeArray();
+      var paramObj = {};
+      for (var i = 0; i < paramArr.length; i++) {
+        paramObj[paramArr[i]["name"]] = paramArr[i]["value"];
+      }
+      //        common.load();
+      Util.fetch({
+        url: Util.host + '/hca/web/hecadre/oldtcm',
+        data: JSON.stringify({
+          "user_id_doc": params["user_id_doc"],
+          "activity_id": params["activity_id"],
+          "data": paramObj,
+          "src_type": "HECadre APP", //请求源的类型，如"HECadre APP"、"Inhabitant APP"等
+          "pf_type": Util.pf_type, //请求源的终端平台类型，如"Android"、"iOS"、"Web"等
+          "user_id": Util.userId, //用户ID，u64
+          "auth_str": Util.getCommunicationAuth() //通信认证密文串
+        }),
+        success: function(data) {
+          //                common.hideLoad();
+          data = data || {};
+          if (data.ret_code === 1) {
+            Util.result();
+          } else {
+            Util.alert(data.ret_msg || "查询信息错误！");
+          }
+        },
+        error: function(err) {
+          Util.alert("网络错误！");
+          console.log(err)
+        }
+      })
+    }
+  })
+  </script>
+</body>
+</html>

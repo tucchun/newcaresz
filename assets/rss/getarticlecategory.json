@@ -1,0 +1,17 @@
+{
+  "ret_code": 1,
+  "ret_data": [
+    {
+      "lookup_value": "高血压",
+      "lookup_code": "CATEGORY_1"
+    },
+    {
+      "lookup_value": "糖尿病",
+      "lookup_code": "CATEGORY_2"
+    },
+    {
+      "lookup_value": "冠心病",
+      "lookup_code": "CATEGORY_3"
+    }
+  ]
+}

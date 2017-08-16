@@ -1,0 +1,55 @@
+body{
+    background-color:#f0f5fb;
+}
+.cred{
+    color:#ff0505 !important;
+}
+.fz30{
+    font-size:.3rem !important;
+}
+.box{
+    display:flex;
+}
+.flex{
+    flex:1;
+}
+.wrap-content{
+    padding:.6rem .3rem 0 .6rem;
+}
+.wrap-content .thumb{
+    width:3.55rem;
+    margin-right:.3rem;
+}
+.wrap-content .thumb li{
+    float:left;
+}
+.wrap-content .thumb img,.details img,.wrap-content table{
+    width:100%;
+}
+.wrap-content .description{
+    line-height:1.8;
+}
+.wrap-content .description *{
+    background-color:#fff;
+}
+.wrap-content .description ul{
+    padding:.45rem 0 0 .45rem;
+    margin:0;
+}
+.wrap-content .description li,.wrap-content table td{
+    color:#4c4c4c;
+    font-size:.24rem;
+}
+.goodsName{
+    color:#333 !important;
+    font-weight:bolder;
+}
+.tips{
+    margin:.1rem 0;
+}
+.details{
+    padding-left:.45rem;
+}
+.description .desimg{
+    margin-top:.3rem;
+}

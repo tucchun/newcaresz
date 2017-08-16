@@ -1,0 +1,56 @@
+{
+    "ret_code": 1,
+    "ret_data": {
+        "residentName": "test01",
+        "residentNo": "11011300103100011",
+
+        "tcmId": 1,
+        "actId": null,
+        "userId": 2039,
+        "tcmScopeAge": 1,
+        "tcmSixProposal1": 1,
+        "tcmSixProposal2": 0,
+        "tcmSixProposal3": 1,
+        "tcmSixProposal4": 0,
+        "tcmSixProposalSec": 1,
+        "tcmSixProposal": "xxx",
+        "tcmSixDate": 1496029880545,
+        "tcmSixNext": 1496029880545,
+        "tcmSixDoctor": "xxx",
+        "tcmTwelveProposal1": 0,
+        "tcmTwelveProposal2": 0,
+        "tcmTwelveProposal3": 1,
+        "tcmTwelveProposal4": 0,
+        "tcmTwelveProposalSec": 0,
+        "tcmTwelveProposal": "",
+        "tcmTwelveDate": 1496029880545,
+        "tcmTwelveNext": 1496029880545,
+        "tcmTwelveDoctor": "",
+        "tcmEighteenProposal1": 1,
+        "tcmEighteenProposal2": 0,
+        "tcmEighteenProposal3": 1,
+        "tcmEighteenProposal4": 0,
+        "tcmEighteenProposalSec": 0,
+        "tcmEighteenProposal": "",
+        "tcmEighteenDate": 1496029880545,
+        "tcmEighteenNext": 1496029880545,
+        "tcmEighteenDoctor": "xxx",
+        "impactDataUrl": "xxx",
+        "createBy": 0,
+        "createDate": 1496029880545,			
+        "updateBy": 0,
+        "updateDate": 0,
+        "sixProposalStr": [
+            "中医饮食调养指导",
+            "传授摩腹、捏脊方法",
+            "xxx"
+        ],
+        "twelveProposalStr": [
+            "传授摩腹、捏脊方法"
+        ],
+        "eighteenProposalStr": [
+            "中医饮食调养指导",
+            "传授按揉迎香穴、足三里穴方法"
+        ]
+    }
+}

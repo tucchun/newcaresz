@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>孕产妇结题</title>
+  <link rel="stylesheet" href="../../../static/assets/viewerjs/viewer.min.css">
+  <link rel="stylesheet" href="../css/dist.css">
+</head>
+<body>
+<div class="container">
+  <table class="tb tb-auto tb-border">
+    <thead>
+    <th colspan="4" class="bgColor text-left">
+      孕产妇结题
+    </th>
+    </thead>
+    <tbody>
+    <tr>
+      <td class="label text-right bgColor w200">姓名:</td>
+      <td class="text-left w630">苏宝宝</td>
+      <td class="label text-right bgColor w200">档案编号:</td>
+      <td class="text-left w630">8882254556545</td>
+    </tr>
+    <tr>
+      <td class="label text-right bgColor">结题:</td>
+      <td class="text-left" colspan="3">
+        8882254556545
+      </td>
+    </tr>
+    <tr>
+      <td class="label text-right bgColor">发生时间:</td>
+      <td class="text-left" colspan="3">
+        8882254556545
+      </td>
+    </tr>
+    <tr>
+      <td class="label text-right bgColor">医学凭证:</td>
+      <td class="text-left" colspan="3">
+        <div class="images-cnt clearfix" id="js-images-cnt">
+          <div class="images-item">
+            <img src="../image/boy.png" class="js-img" alt="">
+          </div>
+          <div class="images-item">
+            <img src="../image/boy.png" class="js-img" alt="">
+          </div>
+          <div class="images-item">
+            <img src="../image/boy.png" class="js-img" alt="">
+          </div>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<script src="../../../static/assets/viewerjs/viewer.min.js"></script>
+<script>
+  var dom_imgArr = document.querySelectorAll(".js-img");
+  dom_imgArr.forEach(function(item, index){
+    var width = item.width;
+    var height = item.height;
+    if(width > height){
+      item.style.width = "auto";
+      item.style.height = "100%";
+    }else{
+      item.style.width = "100%";
+      item.style.height = "auto";
+    }
+  });
+
+  var dom_imagesCnt = document.getElementById("js-images-cnt");
+  var viewer = new Viewer(dom_imagesCnt, {});
+</script>
+</body>
+</html>

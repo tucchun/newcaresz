@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+  <link rel="stylesheet" href="../../static/css/reset.css" />
+  <link rel="stylesheet" href="./css/layout_inhabitant.css" />
+  <link rel="stylesheet" href="./css/article_list_inhabitant.css" />
+  <script type="text/javascript" src="../../static/assets/adaptive/adaptive.js"></script>
+  <script>
+  window['adaptive'].desinWidth = 750; // 设计图宽度
+  window['adaptive'].baseFont = 30; // 没有缩放时的字体大小
+  window['adaptive'].maxWidth = 750; // 页面最大宽度 默认540
+  window['adaptive'].init(); // 调用初始化方法
+  </script>
+  <title>收藏列表</title>
+</head>
+
+<body>
+  <div class="article_list" style="margin-top: 0">
+    <ul id="js-article-list">
+    </ul>
+    <div class="tip hide" id="js-loading-tip">加载中。。。</div>
+  </div>
+</body>
+<script type="text/x-dot-template" id="js-template-article-list">
+  {{~ it.articleList :value:index}}
+  <li class="box js-{{= value.article_category}} js-article_item" data-url="./article_detail.html?article_id={{= value.article_id}}&source=collection_list">
+    <div class="flex">
+      <p class="title">{{= value.article_title}}</p>
+      <div class="author"><span>{{= value.article_author}}</span><span>{{= value.create_dateStr}}</span></div>
+    </div>
+    <div class="article-img"><img src="{{= value.article_img_url}}" alt="示例图片" /></div>
+  </li>
+  {{~}}
+</script>
+<script src="../../static/assets/jquery/jquery-1.9.1.min.js"></script>
+<script src="../../static/assets/tap/tap.min.js"></script>
+<script src="../../static/assets/doT-master/doT.min.js"></script>
+<script src="../../static/js/Util.js"></script>
+<script type="text/javascript">
+var params = {
+  "begin": 0,
+  "count": 10,
+  "user_id": parseInt(Util.userId)
+};
+
+var $list = $("#js-article-list");
+var $loading_tip = $("#js-loading-tip");
+
+$list.on("tap", ".js-article_item", function(e) {
+  var $this = $(e.target);
+  var $currentTarget = $(e.currentTarget);
+  var url = $currentTarget.data("url");
+  location.href = url;
+  e.stopPropagation();
+  e.preventDefault();
+})
+
+
+var fetchFlag = 0; // 0: 未开始请求； 1：请求中； 2：请求完成；
+$(window).scroll(function() {
+  if (fetchFlag == 1) return;
+  var viewH = $(window).height(),
+    contentH = $(document.body).height(),
+    scrollTop = $(window).scrollTop();
+  if (viewH + scrollTop === contentH) {
+    params.begin += 1;
+    fetchFlag = 1;
+    $loading_tip.show();
+    getList(params).done(function() {
+      fetchFlag = 2;
+      $loading_tip.hide();
+    }).fail(function() {
+      params.begin -= 1;
+      $loading_tip.hide();
+    });
+  }
+});
+
+
+function getList(params) {
+  return Util.fetch({
+    url: Util.host + "/hca/web/inhabitant/getarticlefavoritlist",
+    data: JSON.stringify($.extend(params, {
+      "src_type": "Inhabitant APP",
+      "pf_type": Util.pf_type,
+      "auth_str": Util.getCommunicationAuth()
+    })),
+    demoUrl: "../../static/rss/getarticlefavoritlist.json",
+    success: function(data) {
+      data = data || {};
+      if (data.ret_code === 1) {
+        var template = doT.template($("#js-template-article-list").html());
+        var htmlStr = template($.extend(data.ret_data, {
+          getPicUrl: Util.getPicUrl
+        }));
+        $list.append(htmlStr);
+      } else {
+        Util.alert(data.ret_msg || "查询信息错误！");
+      }
+    },
+    error: function(err, errorType, errThrow) {
+      console.log(err, errorType, errThrow);
+      Util.alert("网络错误!");
+    }
+  })
+}
+
+getList(params);
+</script>
+
+</html>

@@ -1,0 +1,23 @@
+{
+  "ret_code": 1,
+  "ret_data": {
+    "residentName": "热敷123",
+    "residentNo": "44030500900600003",
+    "fileId": 19,
+    "actId": 0,
+    "userId": 2242,
+    "docType": 0,
+    "docId": "",
+    "fileDate": "",
+    "fileType": 1,
+    "busType": 2,
+    "fileUri": "[\"group1/M00/00/14/wKgB-llabh6AHbYoAABPahdME1E6545186\"]",
+    "createBy": 2064,
+    "createDate": 1499069982094,
+    "updateBy": "",
+    "updateDate": "",
+    "fileUrls": [
+      "group1/M00/00/14/wKgB-llabh6AHbYoAABPahdME1E6545186"
+    ]
+  }
+}

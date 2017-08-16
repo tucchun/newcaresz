@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../static/css/reset.css"/>
+  <link rel="stylesheet" href="../../static/assets/bootstrap/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="./css/expert.css"/>
+  <script type="text/javascript" src="../../static/assets/adaptive/adaptive.js"></script>
+  <script>
+    window['adaptive'].desinWidth = 1920;// 设计图宽度
+    window['adaptive'].baseFont = 30;// 没有缩放时的字体大小
+    window['adaptive'].maxWidth = 1920;// 页面最大宽度 默认540
+    window['adaptive'].init();// 调用初始化方法
+  </script>
+  <title>专家讲堂-文章列表</title>
+</head>
+<body>
+<div class="cnt">
+  <header class="header">
+    <div class="title">文章列表</div>
+    <!--<div class="text-right"><a href="./newArticle.html" class="btn btn-main">发表文章</a></div>-->
+  </header>
+  <div class="">
+    <table class="table table-striped table-bordered">
+      <thead>
+      <tr>
+        <th class="text-center">文章标题</th>
+        <th class="text-center" width="15%">所属分类</th>
+        <th class="text-center" width="15%">来源</th>
+        <th class="text-center" width="10%">作者</th>
+        <th class="text-center" width="7%">阅读量</th>
+        <th class="text-center" width="12%">创建时间</th>
+        <!--<th class="text-center" width="7%">操作</th>-->
+      </tr>
+      </thead>
+      <tbody id="js-exoert-list">
+
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
+<script src="../../static/assets/jquery/jquery-1.9.1.min.js"></script>
+<script src="../../static/assets/doT-master/doT.min.js"></script>
+<script src="../../static/js/Util.js"></script>
+<script type="text/x-dot-template" id="js-template-article-list">
+  {{~ it.articleList :value:index}}
+  <tr>
+    <td class="text-center"><a href="../inhabitant/article_detail.html?article_id={{= value.article_id}}&source=pad">{{= value.article_title}}</a></td>
+    <td class="text-center">{{= value.article_category_name}}</td>
+    <td class="text-center">{{= value.article_source}}</td>
+    <td class="text-center">{{= value.article_author}}</td>
+    <td class="text-center">{{= value.article_reading_count}}</td>
+    <td class="text-center">{{= value.create_dateStr}}</td>
+    <!--<td class="text-center"><a href="javascript:void(0)" data-articleId="{{= value.article_id}}" class="js-article-modify">编辑</a></td>-->
+  </tr>
+  {{~}}
+</script>
+<script type="text/javascript">
+
+  var params = {
+    "begin": 0,
+    "count": 15
+  };
+
+  var $list = $("#js-exoert-list");
+
+  $list.on("touchend", ".js-article-modify", function (e) {
+    var articleId = $(this).data("articleid");
+    location.href = "./newArticle.html?article_id=" + articleId;
+  })
+
+
+  $(window).scroll(function () {
+    var viewH = $(this).height(),
+      contentH = $(document).height(),
+      scrollTop = $(this).scrollTop();
+    if (viewH + scrollTop === contentH) {
+      Util.load("加载数据中...");
+      getList(params).done(function () {
+        Util.hideLoad();
+      });
+    }
+  });
+
+
+  function getList(params) {
+    Util.load("加载数据中...");
+    return Util.fetch({
+      url: Util.host + "/hca/web/hecadre/getarticlelist",
+      data: JSON.stringify(params),
+      demoUrl: "../../static/rss/getarticlelist.json",
+      success: function (data) {
+        Util.hideLoad();
+        data = data || {};
+        if (data.ret_code === 1) {
+          params.begin += 1;
+          var template = doT.template($("#js-template-article-list").html());
+          var htmlStr = template($.extend(data.ret_data, {common: Util}));
+          $list.append(htmlStr);
+        } else {
+          Util.hideLoad();
+          Util.alert(data.ret_msg || "查询信息错误！");
+        }
+      },
+      error: function(){
+        Util.hideLoad();
+        Util.alert("网络错误！");
+      }
+    });
+  }
+
+  getList(params);
+
+</script>
+</html>

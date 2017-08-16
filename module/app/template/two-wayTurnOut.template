@@ -1,0 +1,135 @@
+<div class="container">
+  <div class="item bgColor">
+    <div class="importantColor">
+      就诊者的主观资料：
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="item">
+    <div class="txt">
+      患者姓名：{{= it.residentName}}； 性别：{{= it.residentSex}}； 年龄：{{= it.residentAge}}； 档案编号：{{= it.residentNo}}； 家庭住址：{{= it.address}}； 联系方式：{{= it.residentMobile}}； 于{{= it.Util.formatDate(it.transDate)}}因病情需要， 转入{{= it.toHospital}}单位， {{= it.toDepartment}}科室 {{= it.toDoctor}}接诊医生。
+    </div>
+  </div>
+</div>
+<div class="container mt8">
+  <!--  <div class="item clearfix">
+    <div class="pull-left">转诊医生签字</div>
+    <div class="pull-right">{{= it.fromDoctor}}</div>
+  </div>-->
+  <div class="item clearfix">
+    <div class="pull-left">日期</div>
+    <div class="pull-right">{{= it.Util.formatDate(it.fromDate)}}</div>
+  </div>
+</div>
+<div class="container">
+  <div class="item bgColor">
+    <div class="importantColor">
+      双向转诊(转出)单
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="item">
+    <div>
+      {{= it.toHospital}}（机构名称）：
+      <br/> 现有{{= it.residentName}}， 性别{{= it.residentSex}}， 年龄{{= it.residentAge}}，因为病情需要，需转入贵单位，请予以接诊。
+    </div>
+  </div>
+</div>
+<div class="container mt8">
+  <div class="item">
+    <div>
+      <h1 class="title">初步印象</h1>
+      <div>
+        {{= it.initialImpression}}
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container mt8">
+  <div class="item">
+    <div>
+      <h1 class="title">主要现病史（转出原因）</h1>
+      <div>
+        {{= it.currentStatus}}
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container mt8">
+  <div class="item">
+    <div>
+      <h1 class="title">主要既往史</h1>
+      <div>
+        {{= it.pastIllness}}
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container mt8">
+  <div class="item">
+    <div>
+      <h1 class="title">治疗经过</h1>
+      <div>
+        {{= it.treatmentCourse}}
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container mt8">
+  <!--  <div class="item clearfix">
+    <div class="pull-left">转诊医生签字</div>
+    <div class="pull-right">{{= it.fromDoctor}}</div>
+  </div>-->
+  <div class="item clearfix">
+    <div class="pull-left">联系电话</div>
+    <div class="pull-right">{{= it.fromDoctorPhone}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">机构名称</div>
+    <div class="pull-right">{{= it.fromHospital}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">日期</div>
+    <div class="pull-right">{{= it.Util.formatDate(it.fromDate)}}</div>
+  </div>
+  <div class="item clearfix">
+    <div>影像资料</div>
+    <div class="images clearfix" id="js-images-cnt">
+      {{~ it.imageUrlList :value:index}}
+      <div class="images-item">
+        <img class="js-img" src="{{= it.Util.getPicUrl(value)}}" alt="">
+      </div>
+      {{~}}
+    </div>
+  </div>
+</div>
+<script>
+var dom_imgArr = $('.js-img');
+dom_imgArr.each(function() {
+  var width = this.width;
+  var height = this.height;
+  if (width > height) {
+    this.style.width = "auto";
+    this.style.height = "100%";
+  } else {
+    this.style.width = "100%";
+    this.style.height = "auto";
+  }
+});
+if (window.jsObj.showGalleryImages) {
+  var img_src_arr = [];
+
+  dom_imgArr.each(function() {
+    img_src_arr.push(this.getAttribute('src'));
+  });
+
+  dom_imgArr.on('click', function() {
+    window.jsObj.showGalleryImages(img_src_arr);
+  });
+} else {
+  var dom_imagesCnt = document.getElementById("js-images-cnt");
+  var viewer = new Viewer(dom_imagesCnt, {});
+}
+</script>

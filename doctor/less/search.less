@@ -1,0 +1,64 @@
+/**医生输入身份证，搜索结果**/
+.form_search{
+  padding:20px 0;
+  input.form-control{
+    width:395px;
+    height:45px;
+    display:inline-block;
+    margin-right:12px;
+  }
+  button.btn{
+    width:100px;
+    height:45px;
+  }
+}
+.wrap_result{
+  background:#fff;
+  .title{
+    background:#f7f7f7;
+    font-size:16px;
+    padding:15px;
+    border:1px solid #e5e5e5;
+    border-bottom:none;
+  }
+  .show_doc{
+    margin-left:60px;
+  }
+  &>table{
+    &>tbody>tr{
+      &>td:first-child{
+        text-align:right;
+        width:15%;
+      }
+      &:last-child{
+        td{
+          text-align:center;
+          button.btn{
+            width:300px;
+            text-align:center;
+            height:50px;
+            margin-top:30px;
+          }
+        }
+      }
+    }
+    thead{
+      background:#f7f7f7;
+      th{
+        border-bottom:none;
+      }
+    }
+    table{
+      width:680px;
+      *{
+        text-align:center;
+      }
+    }
+    table:last-child{
+      width:600px;
+    }
+  }
+  .assement{
+    padding-bottom:15px;
+  }
+}

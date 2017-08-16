@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>医生端-糖尿病糖尿病健康问卷</title>
+    <link rel="stylesheet" href="../../dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../dist/css/app.min.css" />
+</head>
+<body>
+<!--<header>
+    <div class="content clearfix">
+        <div class="pull-left">
+            <img src="../../dist/img/pic/logo.png" alt="logo">医生端
+        </div>
+        <div class="pull-right">
+            <img src="../../dist/img/pic/avatar.png" alt="头像" class="avatar">
+            <span><a href="#">小安南</a><a href="#">修改密码</a><a href="#">退出</a></span>
+        </div>
+    </div>
+</header>-->
+<div id="content" class="wrap-questionnaire">
+    <div class="container sub-title">糖尿病健康问卷</div>
+    <form id="rxa_risk">
+    <div class="container border">
+        <div class="item">
+            <table class="table table-bordered align-center">
+                <tbody>
+                <tr>
+                    <td class="bgColor">性别</td>
+                    <td id="gender">男</td>
+                    <td class="bgColor">年龄</td>
+                    <td id="age">29</td>
+                </tr>
+                <tr>
+                    <td class="bgColor">身高(m)</td>
+                    <td><input type="text" name="height"></td>
+                    <td class="bgColor">体重(kg)</td>
+                    <td><input type="text" name="weight"></td>
+                </tr>
+                <tr>
+                    <td class="bgColor">腰围(cm)</td>
+                    <td><input type="text" name="waist"></td>
+                    <td class="bgColor">收缩压(mmHg)</td>
+                    <td><input type="text" name="compression"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="item">
+            <dl>
+                <dt>有无糖尿病家族史？（父母、同胞、子女）</dt>
+                <dd>
+                    <label>
+                        <input type="radio" name="diabetesHistory" value="1">
+                        <span>有</span>
+                    </label>
+                </dd>
+                <dd>
+                    <label>
+                        <input type="radio" name="diabetesHistory" value="2">
+                        <span>无</span>
+                        <input type="hidden" name="type" value="DIABETES">
+                    </label>
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <div class="container submit">
+        <button type="submit" class="btn btn-main">提&nbsp;交</button>
+    </div>
+    </form>
+</div>
+</body>
+<script type="text/javascript" src="../../js/lib/require.js" data-main="../../js/rxa_risk"></script>
+</html>

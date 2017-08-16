@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>心血管病健康问卷</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="../../dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../dist/css/app.min.css" />
+</head>
+<body>
+    <div id="content" class="wrap-questionnaire">
+        <form id="rxa_risk">
+            <div class="container sub-title">心血管病健康问卷</div>
+            <div class="container border">
+                    <div class="item">
+                        <table class="table table-bordered align-center">
+                            <tbody>
+                            <tr>
+                                <td class="bgColor">性别</td>
+                                <td id="gender">男</td>
+                                <td class="bgColor">年龄</td>
+                                <td id="age">29</td>
+                            </tr>
+                            <tr>
+                                <td class="bgColor">胆固醇(mmol/L)</td>
+                                <td><input type="text" name="cholesterol"></td>
+                                <td class="bgColor">收缩压(mmhg)</td>
+                                <td><input type="text" name="compression"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="item">
+                        <dl>
+                            <dt>是否有吸烟？</dt>
+                            <dd>
+                                <label>
+                                    <input type="radio" name="smoke" value="1">
+                                    <span>有</span>
+                                </label>
+                            </dd>
+                            <dd>
+                                <label>
+                                    <input type="radio" name="smoke" value="2">
+                                    <span>无</span>
+                                    <!--<input type="hidden" name="type" value="DIABETES">-->
+                                </label>
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="item">
+                        <dl>
+                            <dt>有无糖尿病？</dt>
+                            <dd>
+                                <label>
+                                    <input type="radio" name="diabetes" value="1">
+                                    <span>有</span>
+                                </label>
+                            </dd>
+                            <dd>
+                                <label>
+                                    <input type="radio" name="diabetes" value="2">
+                                    <span>无</span>
+                                    <input type="hidden" name="type" value="CARDIOVASCULAR_DISEASE">
+                                </label>
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="container submit">
+                        <button type="submit" class="btn btn-main">提&nbsp;交</button>
+                    </div>
+                </div>
+        </form>
+    </div>
+</body>
+<script type="text/javascript" src="../../js/lib/require.js" data-main="../../js/rxa_risk"></script>
+</html>

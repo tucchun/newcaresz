@@ -1,0 +1,173 @@
+{
+  "ret_code": 1,
+  "ret_data":
+  {
+    "residentName": "安吉",
+    "residentNo": "42010601001001116",
+    "dangerousAct":
+    {
+      "dangaId": 57,
+      "userId": 15957,
+      "docType": 250,
+      "docId": 23,
+      "dangaFlag": 2,
+      "dangaMildTrouble": 0,
+      "dangaAccident": 0,
+      "dangaZhaohuo": 0,
+      "dangaAttemptedSuicide": 0,
+      "dangaSelfInjury": 0,
+      "dangaOtherHazards": 0
+    },
+    "mentaId": 23,
+    "userId": 15957,
+    "mentaGuardian": "安吉",
+    "mentaRelation": "父子",
+    "mentaGuardianAddress": "湖北省武汉市武昌区首义路街办事处中南大社区居委会test_8021单元502",
+    "mentaGuardianMobile": "13148891137",
+    "mentaAreavillage": "吃vv",
+    "mentaAreavillageMobile": "286685258",
+    "mentaResidence": 1,
+    "mentaResidenceName": "城镇",
+    "mentaEmploymentSituation": 1,
+    "mentaEmploymentSituationName": "在岗工人",
+    "mentaInformedAgree": 2,
+    "mentaInformedAgreeName": "同意",
+    "mentaInformedSign": "",
+    "mentaInformedDate": 0,
+    "mentaFirstDate": 1500307200000,
+    "mentaPastLock": 3,
+    "mentaPastLockName": "关锁已经解除",
+    "mentaOutDepartment": 3,
+    "mentaOutDepartmentName": "连续门诊治疗",
+    "mentaFirstDrug": 1500307200000,
+    "mentaHistory": "",
+    "mentaHistoryOther": "",
+    "bodySymptoms": [
+    {
+      "sympId": 4445,
+      "docType": 250,
+      "docId": 23,
+      "userId": 15957,
+      "symName": "sym_go_without",
+      "symType": 0,
+      "symDescribe": ""
+    },
+    {
+      "sympId": 4447,
+      "docType": 250,
+      "docId": 23,
+      "userId": 15957,
+      "symName": "sym_hallucination",
+      "symType": 1,
+      "symDescribe": ""
+    },
+    {
+      "sympId": 4449,
+      "docType": 250,
+      "docId": 23,
+      "userId": 15957,
+      "symName": "sym_from_laughing",
+      "symType": 0,
+      "symDescribe": ""
+    },
+    {
+      "sympId": 4451,
+      "docType": 250,
+      "docId": 23,
+      "userId": 15957,
+      "symName": "sym_excited_words",
+      "symType": 0,
+      "symDescribe": ""
+    },
+    {
+      "sympId": 4453,
+      "docType": 250,
+      "docId": 23,
+      "userId": 15957,
+      "symName": "sym_changing_moods",
+      "symType": 0,
+      "symDescribe": ""
+    },
+    {
+      "sympId": 4455,
+      "docType": 250,
+      "docId": 23,
+      "userId": 15957,
+      "symName": "sym_bizarre_behavior",
+      "symType": 0,
+      "symDescribe": ""
+    },
+    {
+      "sympId": 4457,
+      "docType": 250,
+      "docId": 23,
+      "userId": 15957,
+      "symName": "sym_unsociable_lazy",
+      "symType": 0,
+      "symDescribe": ""
+    },
+    {
+      "sympId": 4459,
+      "docType": 250,
+      "docId": 23,
+      "userId": 15957,
+      "symName": "sym_communication_difficulties",
+      "symType": 1,
+      "symDescribe": ""
+    },
+    {
+      "sympId": 4461,
+      "docType": 250,
+      "docId": 23,
+      "userId": 15957,
+      "symName": "sym_worldweary",
+      "symType": 0,
+      "symDescribe": ""
+    },
+    {
+      "sympId": 4463,
+      "docType": 250,
+      "docId": 23,
+      "userId": 15957,
+      "symName": "sym_wounding_destruction",
+      "symType": 0,
+      "symDescribe": ""
+    },
+    {
+      "sympId": 4465,
+      "docType": 250,
+      "docId": 23,
+      "userId": 15957,
+      "symName": "sym_suspicion",
+      "symType": 1,
+      "symDescribe": ""
+    },
+    {
+      "sympId": 4467,
+      "docType": 250,
+      "docId": 23,
+      "userId": 15957,
+      "symName": "sym_other",
+      "symType": 1,
+      "symDescribe": ""
+    }],
+    "mentaHistoryOtherName": "幻觉、 交流困难、 猜疑、 ",
+    "mentaHospitalization": 2,
+    "mentaDiagnosisCurrent": "无",
+    "mentaDiagnosisHospital": "龙华医院",
+    "mentaDiagnosisDate": 1500307200000,
+    "mentaRecentTreatment": 4,
+    "mentaRecentTreatmentName": "加重",
+    "mentaDangerousAct": 1,
+    "mentaDangerousActName": "有",
+    "mentaEconomicSituation": 2,
+    "mentaEconomicSituationName": "非贫困",
+    "mentaDoctorGuide": "无所谓",
+    "mentaSignDate": "",
+    "mentaSignDoctor": "",
+    "createBy": 1339,
+    "createDate": 1500344852799,
+    "updateBy": "",
+    "updateDate": ""
+  }
+}

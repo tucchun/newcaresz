@@ -1,0 +1,55 @@
+{
+    "ret_code": 1,
+    "ret_data": {
+        "residentName": "test01",
+        "residentNo": "11011300103100011",
+        "tcmId": 2,
+        "actId": null,
+        "userId": 2039,
+        "tcmScopeAge": 2,
+        "tcmSixProposal1": 1,
+        "tcmSixProposal2": 0,
+        "tcmSixProposal3": 1,
+        "tcmSixProposal4": 1,
+        "tcmSixProposalSec": 2,
+        "tcmSixProposal": "",
+        "tcmSixDate": 1496029880545,
+        "tcmSixNext": 1496029880545,
+        "tcmSixDoctor": "xxx",
+        "tcmTwelveProposal1": 1,
+        "tcmTwelveProposal2": 0,
+        "tcmTwelveProposal3": 1,
+        "tcmTwelveProposal4": 0,
+        "tcmTwelveProposalSec": 1,
+        "tcmTwelveProposal": "yyy",
+        "tcmTwelveDate": 1496029880545,
+        "tcmTwelveNext": 1496029880545,
+        "tcmTwelveDoctor": "",
+        "tcmEighteenProposal1": 0,
+        "tcmEighteenProposal2": 0,
+        "tcmEighteenProposal3": 1,
+        "tcmEighteenProposal4": 0,
+        "tcmEighteenProposalSec": 0,
+        "tcmEighteenProposal": "",
+        "tcmEighteenDate": 1496029880545,
+        "tcmEighteenNext": 1496029880545,
+        "tcmEighteenDoctor": "xxx",
+        "impactDataUrl": "xxx",	
+        "createBy": 0,
+        "createDate": 1496029880545,
+        "updateBy": 0,
+        "updateDate": 0,
+        "sixProposalStr": [
+            "中医饮食调养指导",
+            "传授按揉迎香穴、足三里穴方法 "
+        ],
+        "twelveProposalStr": [
+            "中医饮食调养指导",
+            "传授按揉四神聪穴方法",
+            "yyy"
+        ],	
+        "eighteenProposalStr": [
+            "传授按揉四神聪穴方法"
+        ]
+    }
+}

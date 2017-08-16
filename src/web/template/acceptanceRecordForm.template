@@ -1,0 +1,91 @@
+<div class="container">
+  <table class="tb tb-auto tb-border">
+    <thead>
+      <tr>
+        <th colspan="4" class="bgColor text-left">
+          接诊记录表
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="label text-right bgColor w200">姓名</td>
+        <td class="text-left w630">{{=it.residentName}}</td>
+        <td class="label text-right bgColor w200">档案编号</td>
+        <td class="text-left w630">{{=it.residentNo}}</td>
+      </tr>
+      <tr>
+        <td class="label text-right bgColor">就诊者的主观
+          <br/>资料</td>
+        <td class="text-left" colspan="3">
+          {{=it.subjectiveData}}
+        </td>
+      </tr>
+      <tr>
+        <td class="label text-right bgColor">就诊者的客观
+          <br/>资料</td>
+        <td class="text-left" colspan="3">
+          {{=it.objectiveData}}
+        </td>
+      </tr>
+      <tr>
+        <td class="label text-right bgColor">评估</td>
+        <td class="text-left" colspan="3">
+          {{=it.assessment}}
+        </td>
+      </tr>
+      <tr>
+        <td class="label text-right bgColor">处置计划</td>
+        <td class="text-left" colspan="3">
+          {{=it.disposalPlan}}
+        </td>
+      </tr>
+      <tr>
+        <td class="label text-right bgColor">接诊日期</td>
+        <td class="text-left" colspan="3">{{=it.Util.formatDate(it.acceptanceDate)}}</td>
+        <!-- <td class="label text-right bgColor">医生签字</td>
+            <td class="text-left">{{=it.doctorSign}}</td>-->
+      </tr>
+      <tr>
+        <td class="text-right bgColor label">影像资料</td>
+        <td class="text-left" colspan="3">
+          <div class="images-cnt clearfix" id="js-images-cnt">
+            {{~ it.imageUrlList :value:index}}
+            <div class="images-item">
+              <img class="js-img" src="{{= it.Util.getPicUrl(value)}}" alt="">
+            </div>
+            {{~}}
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<script>
+var dom_imgArr = $('.js-img');
+dom_imgArr.each(function() {
+  var width = this.width;
+  var height = this.height;
+  if (width > height) {
+    this.style.width = "auto";
+    this.style.height = "100%";
+  } else {
+    this.style.width = "100%";
+    this.style.height = "auto";
+  }
+});
+if (window.jsObj.showGalleryImages) {
+  var img_src_arr = [];
+
+  dom_imgArr.each(function() {
+    img_src_arr.push(this.getAttribute('src'));
+  });
+
+  dom_imgArr.on('click', function() {
+    window.jsObj.showGalleryImages(img_src_arr);
+  });
+} else {
+  var dom_imagesCnt = document.getElementById("js-images-cnt");
+  var viewer = new Viewer(dom_imagesCnt, {});
+}
+</script>

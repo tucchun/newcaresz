@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>糖尿病风险评分表</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <script src="../static/assets/adaptive-master/js/adaptive-version2.js"></script>
+  <script>
+		// 设计图宽度
+		window['adaptive'].desinWidth = 1920;
+		// body 字体大小 会将body字体大小设置为 baseFont / 100 + 'rem'
+		window['adaptive'].baseFont = 30;
+		window['adaptive'].maxWidth = 1920;
+		window['adaptive'].init();
+  </script>
+  <link rel="stylesheet" href="../static/css/questionnaire.css">
+</head>
+<body>
+<div class="container mt">
+  <table class="tb tb-auto tb-border">
+    <tbody>
+    <tr>
+      <td class="bgColor">身高(m)</td>
+      <td><input type="text"></td>
+      <td class="bgColor">体重(kg)</td>
+      <td><input type="text"></td>
+    </tr>
+    <tr>
+      <td class="bgColor">腰围(cm)</td>
+      <td><input type="text"></td>
+      <td class="bgColor">收缩压(mmHg)</td>
+      <td><input type="text"></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<div class="container border mt">
+  <div class="item">
+    <dl>
+      <dt>有无糖尿病家族史？（父母、同胞、子女）</dt>
+      <dd>
+        <input type="radio">
+        <span>小于12岁</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>12至13岁</span>
+      </dd>
+    </dl>
+  </div>
+
+
+</div>
+
+<div class="container submit">
+  <button type="button" class="btn">提&nbsp;交</button>
+</div>
+</body>
+</html>

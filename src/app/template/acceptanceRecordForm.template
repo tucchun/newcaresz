@@ -1,0 +1,106 @@
+<div class="container">
+  <div class="item clearfix">
+    <div class="pull-left">姓名</div>
+    <div class="pull-right">{{=it.residentName}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">档案编号</div>
+    <div class="pull-right">{{=it.residentNo}}</div>
+  </div>
+</div>
+<div class="container">
+  <div class="item bgColor">
+    <div class="sub-title">
+      就诊者的主观资料：
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="item clearfix">
+    <div>{{=it.subjectiveData}}</div>
+  </div>
+</div>
+<div class="container">
+  <div class="item bgColor">
+    <div class="sub-title">
+      就诊者的客观资料：
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="item clearfix">
+    <div>{{=it.objectiveData}}</div>
+  </div>
+</div>
+<div class="container">
+  <div class="item bgColor">
+    <div class="sub-title">
+      评估：
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="item clearfix">
+    <div>{{=it.assessment}}</div>
+  </div>
+</div>
+<div class="container">
+  <div class="item bgColor">
+    <div class="sub-title">
+      处置计划：
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="item clearfix">
+    <div>{{=it.disposalPlan}}</div>
+  </div>
+</div>
+<div class="container mt8">
+  <!--<div class="item clearfix">
+    <div class="pull-left">医生签字</div>
+    <div class="pull-right">{{=it.doctorSign}}</div>
+</div>-->
+  <div class="item clearfix">
+    <div class="pull-left">接诊日期</div>
+    <div class="pull-right">{{=it.Util.formatDate(it.acceptanceDate)}}</div>
+  </div>
+  <div class="item clearfix">
+    <div>影像资料</div>
+    <div class="images clearfix" id="js-images-cnt">
+      {{~ it.imageUrlList :value:index}}
+      <div class="images-item">
+        <img class="js-img" src="{{= it.Util.getPicUrl(value)}}" alt="">
+      </div>
+      {{~}}
+    </div>
+  </div>
+</div>
+<script>
+var dom_imgArr = $('.js-img');
+dom_imgArr.each(function() {
+  var width = this.width;
+  var height = this.height;
+  if (width > height) {
+    this.style.width = "auto";
+    this.style.height = "100%";
+  } else {
+    this.style.width = "100%";
+    this.style.height = "auto";
+  }
+});
+if (window.jsObj.showGalleryImages) {
+  var img_src_arr = [];
+
+  dom_imgArr.each(function() {
+    img_src_arr.push(this.getAttribute('src'));
+  });
+
+  dom_imgArr.on('click', function() {
+    window.jsObj.showGalleryImages(img_src_arr);
+  });
+} else {
+  var dom_imagesCnt = document.getElementById("js-images-cnt");
+  var viewer = new Viewer(dom_imagesCnt, {});
+}
+</script>

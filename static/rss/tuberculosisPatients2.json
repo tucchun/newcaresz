@@ -1,0 +1,76 @@
+{
+    "ret_code": 1,
+    "ret_data": {
+        "residentName": "test01",
+        "residentNo": "11011300103100011",
+        "datetabSet": [
+            {
+                "docCreateDate": 123131,
+                "docId": 1
+            },
+            {
+            "docCreateDate": 123131,
+            "docId": 2
+            },
+            {
+            "docCreateDate": 123131,
+            "docId": 3
+            },
+            {
+            "docCreateDate": 123131,
+            "docId": 4
+            }
+            ],
+        "bodySymptomList": [],
+        "phthId": 1,
+        "actId": null,
+        "userId": 2039,
+        "phthVisitMonth": 6,
+        "phthVisitDate": 1496025248976,
+        "phthDiseaseSymptom": 0,
+        "phthSupervisor": 2,
+        "phthVisitStyle": 1,
+        "phthCurrentSmoke": 3,
+        "phthTargerSmoke": 5,
+        "phthCurrentDrink": 1,
+        "phthTargerDrink": 3,
+        "phthChemotherapy": "xxx",
+        "phthDrugUsag": 1,
+        "phthDrugType": 1,
+        "phthCompoundPreparation": 1,
+        "phthBulkLoading": 0,
+        "phthPlateCombination": 1,
+        "phthInjection": 0,
+        "phthDrugMiss": 3,
+        "phthDrugReaction": 2,
+        "phthDrugDescribe": "",
+        "phthDrugNeopathy": 1,
+        "phthNeopathyDescribe": "xxxx",
+        "phthReferralReason": "xxx",
+        "phthReferralHospital": "xxx",
+        "phthReferralVisit": "xxx",
+        "phthOpinion": "xxx",
+        "nextVisitDate": 2017,
+        "phthVisitDoctor": "xxx",
+        "phthStopDate": 1496025248976,
+        "phthStopReason": "3",
+        "phthShouldVisit": 3,
+        "phthActualVisit": 2,
+        "phthShouldDrug": 3,
+        "phthActualDrug": 2,
+        "phthDrugRate": 60,
+        "phthAssessDoctor": "xxx",
+        "createBy": 0,
+        "createDate": 0,
+        "updateBy": 0,
+        "updateDate": 0,
+        "bodySymptomStr": "",
+        "phthVisitStyleStr": "门诊",
+        "phthDrugUsagStr": "每日",
+        "phthSupervisorStr": "家属",
+        "phthDrugReactionStr": "无",
+        "phthDrugFormulaStr": "固定剂量复合制剂、 板式组合药",
+        "phthDrugNeopathyStr": "xxxx",
+		"phthStopReasonStr": "自服药"
+    }
+}

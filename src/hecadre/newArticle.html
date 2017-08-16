@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../static/css/reset.css"/>
+  <link rel="stylesheet" href="../../static/assets/bootstrap/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="./css/newArtile.css"/>
+  <script type="text/javascript" src="../../static/assets/adaptive/adaptive.js"></script>
+  <script>
+    window['adaptive'].desinWidth = 1920;// 设计图宽度
+    window['adaptive'].baseFont = 30;// 没有缩放时的字体大小
+    window['adaptive'].maxWidth = 1920;// 页面最大宽度 默认540
+    window['adaptive'].init();// 调用初始化方法
+  </script>
+  <title>专家讲堂-新增文章</title>
+</head>
+<body>
+<form id="js-newArticle-form">
+</form>
+</body>
+<script src="../../static/assets/jquery/jquery-1.9.1.min.js"></script>
+<script src="../../static/assets/doT-master/doT.min.js"></script>
+<script src="../../static/assets/kinditor/kindeditor-4.1.7/kindeditor-all-min.js"></script>
+<script src="../../static/assets/kinditor/kindeditor-4.1.7/lang/zh_CN.js"></script>
+<script src="../../static/js/jquery.validate.js"></script>
+<script src="../../static/js/messages_zh.js"></script>
+<script src="../../static/js/Util.js"></script>
+<script type="text/x-dot-template" id="js-article-detail">
+  <table>
+    <tr>
+      <td class="col-sm-2">所属分类：</td>
+      <td>
+        <div>
+          <select name="article_category" data-label="所属分类" required id="js-article_category" class="form-control">
+          </select>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="col-sm-2">来源：</td>
+      <td>
+        <div>
+          <input type="text" data-label="来源" name="article_source" required value="{{= it.article_source || ''}}" class="form-control">
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="col-sm-2">标题：</td>
+      <td>
+        <div>
+          <input type="text" data-label="标题" name="article_title" required value="{{= it.article_title || ''}}" class="form-control">
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="col-sm-2">作者：</td>
+      <td>
+        <div>
+          <input type="text" data-label="作者" name="article_author" required value="{{= it.article_author || ''}}" class="form-control">
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="col-sm-2">关键词：</td>
+      <td>
+        <div>
+          <input type="text" data-label="关键词" name="article_keywords" required value="{{= it.article_keywords || ''}}" class="form-control">
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="col-sm-2">封面：</td>
+      <td>
+        <div>
+          <input type="button" data-label="封面" value="上传照片" id="js-newArticle-upload">
+        </div>
+        <div id="js-newArticle-imgcnt">
+        <!--  {{? it.article_img_url }}
+          <img src="{{= it.getPicUrl(it.article_img_url)}}" class="fill" alt="" id="js-newArticle-img">
+          {{?}}-->
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="col-sm-2">摘要：</td>
+      <td>
+        <div>
+          <textarea data-label="摘要" cols="30" rows="3" required name="article_summary"
+                    class="form-control">{{= it.article_summary || ''}}</textarea>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="col-sm-2">正文：</td>
+      <td>
+        <div>
+          <textarea data-label="正文" cols="30" rows="20" required name="article_content" id="js-article-content" class="form-control">{{= it.article_content || ''}}</textarea>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <button type="button" id="js-newArticle-submit" class="btn btn-main btn-lg">保存</button>
+        <button type="button" class="btn btn-default btn-lg" id="js-newArticle-cancle">取消</button>
+      </td>
+    </tr>
+  </table>
+</script>
+<script type="text/x-dot-template" id="js-article-category">
+  {{~ it :value:index}}
+  <option value="{{= value.lookup_code}}">{{= value.lookup_value}}</option>
+  {{~}}
+</script>
+<script type="text/javascript">
+  var img_url = "";
+  var editor = {};
+
+  $("#js-newArticle-form").on("touchend", "#js-newArticle-upload", function () {
+    //window.jsObj.pickAndUploadPic(1, "pickAndUploadPic_success", "pickAndUploadPic_error");
+    Util.upload({
+      maxsize: 1,
+      success: "pickAndUploadPic_success",
+      error: "pickAndUploadPic_error"
+    });
+  });
+
+  window.pickAndUploadPic_success = function (url) {
+    var imgUrl = Util.getPicUrl(url);
+    img_url = url;
+    console.log("url:" + url + ";imageUrl:" + Util.getPicUrl(url));
+    var img = $("<img src='" + imgUrl + "'  class='fill'/>")
+    $("#js-newArticle-imgcnt").html(img);
+  };
+
+
+
+  window.pickAndUploadPic_error = function () {
+    Util.alert("上传照片失败！")
+  };
+
+  var deferred = $.Deferred();
+  var params = Util.param(location.href);
+  var article_id = params["article_id"];
+  if (article_id) {
+    Util.fetch({
+      url: Util.host + "/hca/web/hecadre/getarticlemod",
+      data: JSON.stringify({
+        "article_id": parseInt(article_id)
+      }),
+      demoUrl: "../../static/rss/articleDetail.json",
+      success: function (data) {
+        data = data || {};
+        if (data.ret_code === 1) {
+          img_url = data.ret_data.article.article_img_url;
+          deferred.resolve(data.ret_data);
+        } else {
+          deferred.reject(data.ret_msg || "查询信息错误！");
+        }
+      }
+    })
+  } else {
+    deferred.resolve({});
+  }
+
+  deferred.done(function (data) {
+    var template = doT.template($("#js-article-detail").html());
+    var htmlStr = template($.extend(data.article || {}, {"getPicUrl": Util.getPicUrl}));
+    $("#js-newArticle-form").append(htmlStr);
+    var $form = $("#js-newArticle-form");
+    var validate = $form.validate({
+      onfocusout: false,
+      showErrors:function(errorMap,errorList) {
+        if(errorList.length > 0){
+          var error = errorList[0];
+          var $el = $(error.element);
+          $el.focus();
+          Util.alert($el.data("label") + "必填");
+        }
+
+      }
+    });
+    $("#js-newArticle-cancle").on("touchend", function(e){
+      history.back();
+    });
+    $("#js-newArticle-submit").on("touchend", function (e) {
+      var paramArr = $("#js-newArticle-form").serializeArray();
+      var paramObj = {};
+      for (var i = 0; i < paramArr.length; i++) {
+        paramObj[paramArr[i]["name"]] = paramArr[i]["value"];
+      }
+      var url = Util.host + '/hca/web/hecadre/submitarticle';
+      var demoUrl = "../../static/rss/submitarticle.json";
+      if (article_id) {
+        // 修改
+        url = Util.host + '/hca/web/hecadre/modarticle';
+        demoUrl = "../../static/rss/modarticle.json";
+        paramObj["article_id"] = article_id;
+      }
+      paramObj["article_content"] = editor.html();
+      paramObj["article_img_url"] = img_url;
+      paramObj['user_id'] = Util.userId;
+//      paramObj["article_content"] = $articleContent.html();
+      if(validate.form()){
+        if(!img_url){
+          Util.alert("请选择：封面");
+          return false;
+        }
+        Util.load("请稍等...");
+        Util.fetch({
+          url: url,
+          demoUrl: demoUrl,
+          data: JSON.stringify($.extend(paramObj, {
+            "src_type":"HECadre APP",
+            "pf_type": Util.pf_type,
+            "auth_str":  Util.getCommunicationAuth()
+          })),
+          success: function (data) {
+//              common.hideLoad();
+            data = data || {};
+            if (data.ret_code === 1) {
+              //alert(data.ret_msg || "操作成功！");
+//              Util.result();
+              history.back();
+            } else {
+              Util.alert(data.ret_msg || "操作失败！");
+            }
+            Util.hideLoad();
+          },
+          error: function (err, errorType, errorMsg) {
+            console.log(err + "、" + errorType + "、" + errorMsg);
+            Util.hideLoad();
+            Util.alert("网络错误");
+
+          }
+        })
+      }
+    })
+  }).done(function (result) {
+    // 获取分类
+    Util.load("获取分类.....");
+    Util.fetch({
+      url: Util.host + "/hca/web/hecadre/getarticlecategory",
+      data: JSON.stringify({}),
+      demoUrl: "../../static/rss/getarticlecategory.json",
+      success: function (data) {
+        data = data || {};
+        if (data.ret_code === 1) {
+          var template = doT.template($("#js-article-category").html());
+          var htmlStr = template(data.ret_data);
+          var $article_category = $("#js-article_category").html(htmlStr);
+
+          if (JSON.stringify(result) !== "{}") {
+            $article_category.val(result.article.article_category);
+          }
+        } else {
+          Util.alert(data.ret_msg || "查询信息错误！");
+        }
+        Util.hideLoad();
+      },
+      error: function (err, errType, errThrow) {
+        console.log("err:" + err + "; errType:" + errType + "; errThrow:" + errThrow);
+        Util.alert("网络错误");
+        Util.hideLoad();
+      }
+    });
+  }).done(function () {
+    // 添加上传照片插件
+    KindEditor.plugin('myUpload', function(K) {
+      var editor = this, name = 'myUpload';
+
+
+      // 点击图标时执行
+      editor.clickToolbar(name, function() {
+        Util.upload({
+          maxsize: 1,
+          success: "insertImage_success",
+          error: "pickAndUploadPic_error"
+        }, 2);
+        console.log(arguments);
+      });
+    });
+
+    KindEditor.lang({
+      myUpload : '上传照片'
+    });
+
+    editor = KindEditor.create('#js-article-content',{
+      resizeType : 1,
+      allowPreviewEmoticons: false,
+      allowImageUpload:true,//允许上传图片
+      allowFileManager:true, //允许对上传图片进行管理
+      items : [
+        'fontname','fontsize', '|','forecolor', 'hilitecolor','bold', 'italic','underline',
+        'removeformat','|', 'justifyleft','justifycenter', 'justifyright','insertorderedlist',
+        'insertunorderedlist','|', 'emoticons','link','media','|','myUpload']
+    });
+  }).fail(function (err) {
+    console.log(err);
+    Util.alert(err);
+  });
+
+  window.insertImage_success = function (url) {
+    var imgUrl = url;
+    console.log("url:" + url + ";imageUrl:" +imgUrl);
+    editor.insertHtml("<img src='" + imgUrl + "'  class='fill'/>");
+  };
+
+
+</script>
+</html>

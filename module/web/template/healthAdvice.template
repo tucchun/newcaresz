@@ -1,0 +1,28 @@
+{{~ it.healthSuggestionList :value:index}}
+<table class="tb tb-auto tb-border {{? index > 0}}mt20{{?}}">
+  {{? index == 0}}
+  <thead>
+    <tr>
+      <th colspan="4" class="bgColor text-left">
+        健康建议
+      </th>
+    </tr>
+  </thead>
+  {{?}}
+
+  <tbody>
+  <tr>
+    <td class="label text-right bgColor w200">医生姓名</td>
+    <td class="text-left w630">{{= value.doctorName}}</td>
+    <td class="label text-right bgColor w200">创建时间</td>
+    <td class="text-left w630">{{= it.Util.formatDate(value.createDate)}}</td>
+  </tr>
+  <tr>
+    <td class="label text-right bgColor">健康建议</td>
+    <td class="text-left" colspan="3">
+      {{= value.suggestion}}
+    </td>
+  </tr>
+  </tbody>
+</table>
+{{~}}

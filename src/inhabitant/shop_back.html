@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <link rel="stylesheet" href="../../static/css/reset.css"/>
+    <link rel="stylesheet" href="./css/layout_inhabitant.css" />
+    <link rel="stylesheet" href="../../static/css/shop_inhabitant.css" />
+    <script type="text/javascript" src="../../static/assets/adaptive/adaptive.js"></script>
+    <script>
+        window['adaptive'].desinWidth = 750;// 设计图宽度
+        window['adaptive'].baseFont = 30;// 没有缩放时的字体大小
+        window['adaptive'].maxWidth = 750;// 页面最大宽度 默认540
+        window['adaptive'].init();// 调用初始化方法
+    </script>
+    <title>商城-主页</title>
+</head>
+<body>
+    <div id="classify"></div>
+    <div class="goodslist">
+        <ul class="clear" id="goodslist"></ul>
+    </div>
+</body>
+<script src="../../static/assets/jquery/jquery-1.9.1.min.js"></script>
+<script src="../../static/assets/doT-master/doT.min.js"></script>
+<script type="text/javascript" src="../../static/js/Util.js"></script>
+<script type="text/javascript" src="../../static/assets/iscroll/iScroll.js"></script>
+<script type="text/javascript" src="../../static/js/navSlider.js"></script>
+<script type="text/x-dot-template" id="temp-classify">
+    <ul class="box filter">
+        {{~ it.OneCateList :value :index}}
+        <li class="flex"><a href="#" {{?index == 0}}class="active"{{?}} data-code = "{{=value.code}}">{{=value.name}}</a></li>
+        {{~}}
+    </ul>
+    <div class="wrapper" id="nav_send">
+        <div class="scroller">
+            <ul class="filter clear">
+                <li class="sendClassify"><a href="#" class="active">全部药品</a></li>
+                {{~ it.twoCateList :value :index}}
+                {{? value.parentid == 1}}
+                <li class="sendClassify" data-pid = "{{=value.parentid}}"><a href="#" data-code="{{=value.code}}">{{=value.name}}</a></li>
+                {{??}}
+                <li class="hide sendClassify" data-pid = "{{=value.parentid}}"><a href="#" data-code="{{=value.code}}">{{=value.name}}</a></li>
+                {{?}}
+                {{~}}
+            </ul>
+        </div>
+    </div>
+</script>
+<script type="text/x-dot-template" id="temp-goods">
+    {{~ it.goodsList :value :index}}
+    <li>
+        <a href="goods_detail.html?id={{=value.id}}">
+            <div class="mainImg"><img src="{{= it.getPicUrl(value.img)}}" alt="商品主图"></div>
+            <p>{{=value.name}}</p>
+            <div class="specification"><span>￥{{=(value.price/100)}}</span><span>{{=value.specifications}}</span></div>
+        </a>
+    </li>
+    {{~}}
+</script>
+<script type="text/javascript">
+    $(function(){
+        getClassify();
+        getGoods(1,1);
+        var pageNumber = 1;
+        function getClassify(){
+            var data = {};
+            Util.fetch({
+                url: Util.host + "/hca/api/business/inhabitant/getGoodsType",
+                data:JSON.stringify({}),
+                demoUrl:demoUrl = "../../static/rss/getGoodsType.json",
+                success:function(data){
+                    data = data || {};
+                    if(data.ret_code === 1){
+                        Util.data = data["ret_data"];
+                        Util.render($("#temp-classify"),$("#classify"),Util.data);
+                        $('.wrapper').navbarscroll();
+                    }
+                }
+            });
+        }
+        function getGoods(pageNumber,onecateId,diseaseId){
+            var paramObj = {pageSize:10,onecate:onecateId,diseaseId:diseaseId?diseaseId:'',pageNumber:pageNumber};
+            Util.fetch({
+                url:Util.host +'/hca/api/business/inhabitant/getGoodsPage',
+                data:JSON.stringify(paramObj),
+                success:function(data){
+                    data = data || {};
+                    if(data.ret_code === 1){
+                        Util.data = data["ret_data"];
+                        if(pageNumber > 1){
+                            Util.render($("#temp-goods"),$("#goodslist"),Util.data,"append");
+                        }else{
+                            Util.render($("#temp-goods"),$("#goodslist"),Util.data);
+                        }
+                    }
+                }
+            });
+        }
+        $("#classify").on("click","a",function(){
+            var $ul = $(this).parents("ul"),onecateId = '',diseaseId = '';
+            pageNumber = 1;
+            if(!$ul.parents("#nav_send").length){
+                var cid = $(this).attr("data-code"),$childLi = $ul.next().find("li");
+                $childLi.addClass("hide");
+                $("li[data-pid="+cid+"]").addClass("flex").removeClass("hide");
+                $($childLi[0]).removeClass("hide");
+                onecateId = $(this).attr("data-code");
+                diseaseId = "";
+            }else{
+                diseaseId = $(this).attr("data-code");
+                onecateId = $ul.parents("#nav_send").prev().find("a.active").attr("data-code");
+            }
+            getGoods(pageNumber,onecateId,diseaseId);
+            $ul.find("a").removeClass("active");
+            $(this).addClass("active");
+        });
+        $(window).scroll(function(){
+            var viewH = $(this).height(),contentH = $(document).height(),scrollTop = $(this).scrollTop();
+            var onecateId = $($("#classify ul").get(0)).find("a.active").attr("data-code"),diseaseId = $($("#classify ul").get(1)).find("a.active").attr("data-code");
+            if(viewH + scrollTop === contentH){
+                pageNumber = pageNumber+1;
+                getGoods(pageNumber,onecateId,diseaseId)
+            }
+        });
+    })
+</script>
+</html>

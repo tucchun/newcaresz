@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="item clearfix">
+    <div class="pull-left">姓名</div>
+    <div class="pull-right">{{= it.resdientName}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">档案编号</div>
+    <div class="pull-right">{{= it.residentNo}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">身高（cm）</div>
+    <div class="pull-right">{{= it.residentHeight}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">体重（kg）</div>
+    <div class="pull-right">{{= it.residentWeight}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">体质指数（BMI）（Kg/m²）</div>
+    <div class="pull-right">{{= (Number(it.residentBmi) || 0).toFixed(2)}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">体温（°C）</div>
+    <div class="pull-right">{{= it.residentTemperature}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">血压（mmHg）</div>
+    <div class="pull-right">{{= it.residentBloodPressureLow}}/{{= it.residentBloodPressureHeight}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">脉搏（bpm）</div>
+    <div class="pull-right">{{= it.residentPulse}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">血糖（mmol/L）</div>
+    <div class="pull-right">{{= it.residentBloodSugar}}</div>
+  </div>
+
+</div>

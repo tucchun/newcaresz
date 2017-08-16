@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>大肠癌风险评估</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <script src="../static/assets/adaptive-master/js/adaptive-version2.js"></script>
+  <script>
+		// 设计图宽度
+		window['adaptive'].desinWidth = 1920;
+		// body 字体大小 会将body字体大小设置为 baseFont / 100 + 'rem'
+		window['adaptive'].baseFont = 30;
+		window['adaptive'].maxWidth = 1920;
+		window['adaptive'].init();
+  </script>
+  <link rel="stylesheet" href="../static/css/questionnaire.css">
+</head>
+<body>
+<div class="container sub-title">
+  请根据近一年的体验和感觉，回答以下问题。
+</div>
+<div class="container border">
+  <div class="item">
+    <dl>
+      <dt>1.您的家族成员中，有过大肠癌的患病史吗？</dt>
+      <dd>
+        <input type="radio">
+        <span>有</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>无</span>
+      </dd>
+    </dl>
+  </div>
+
+  <div class="item">
+    <dl>
+      <dt>2.您的生活习惯是怎样的？（若以下都没有，则无需选择）<span class="tip">[多选题]</span></dt>
+      <dd>
+        <input type="checkbox">
+        <span>有吸烟</span>
+      </dd>
+      <dd>
+        <input type="checkbox">
+        <span>有饮酒</span>
+      </dd>
+      <dd>
+        <input type="checkbox">
+        <span>每天锻炼大于等于30分钟</span>
+      </dd>
+      <dd>
+        <input type="checkbox">
+        <span>每天吃蔬菜大于等于1次</span>
+      </dd>
+    </dl>
+  </div>
+
+  <div class="item">
+    <dl>
+      <dt>3.您是否患有以下既往病史？（若以下都没有，则无需选择）<span class="tip">[多选题]</span></dt>
+      <dd>
+        <input type="checkbox">
+        <span>阑尾炎史</span>
+      </dd>
+      <dd>
+        <input type="checkbox">
+        <span>消化道溃疡史</span>
+      </dd>
+      <dd>
+        <input type="checkbox">
+        <span>慢性直结肠炎史</span>
+      </dd>
+      <dd>
+        <input type="checkbox">
+        <span>结直肠息肉史</span>
+      </dd>
+      <dd>
+        <input type="checkbox">
+        <span>胆囊疾病史</span>
+      </dd>
+      <dd>
+        <input type="checkbox">
+        <span>腹泻史</span>
+      </dd>
+      <dd>
+        <input type="checkbox">
+        <span>便秘史</span>
+      </dd>
+      <dd>
+        <input type="checkbox">
+        <span>血便</span>
+      </dd>
+      <dd>
+        <input type="checkbox">
+        <span>黏液便</span>
+      </dd>
+    </dl>
+
+  </div>
+
+</div>
+
+<div class="container submit">
+  <button type="button" class="btn">提&nbsp;交</button>
+</div>
+</body>
+</html>

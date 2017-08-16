@@ -1,0 +1,150 @@
+<div class="container">
+  <table class="tb tb-auto tb-border">
+    <thead>
+      <th colspan="4" class="bgColor text-left">
+        双向转诊单
+      </th>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="text-left" colspan="4">
+        患者姓名：{{= it.residentName}}； 性别：{{= it.residentSex}}； 年龄：{{= it.residentAge}}； 档案编号：{{= it.residentNo}}；<br/> 家庭住址：{{= it.address}}； 联系方式：{{= it.residentMobile}}；<br/> 于{{= it.Util.formatDate(it.transDate)}}因病情需要， 转入{{= it.toHospital}}单位， {{= it.toDepartment}}科室 {{= it.toDoctor}}接诊医生。
+        </td>
+      </tr>
+      <!-- <tr>
+        <td class="label text-right bgColor w200">患者姓名</td>
+        <td class="text-left w630">{{= it.residentName}}</td>
+        <td class="label text-right bgColor w200">性别</td>
+        <td class="text-left w630">{{= it.residentSex}}</td>
+      </tr>
+      <tr>
+        <td class="label text-right bgColor w200">年龄</td>
+        <td class="text-left w630">{{= it.residentAge}}</td>
+        <td class="label text-right bgColor w200">健康档案编号</td>
+        <td class="text-left w630">{{= it.residentNo}}</td>
+      </tr>
+      <tr>
+        <td class="label text-right bgColor w200">家庭住址</td>
+        <td class="text-left w630">{{= it.address}}</td>
+        <td class="label text-right bgColor w200">联系方式</td>
+        <td class="text-left w630">{{= it.residentMobile}}</td>
+      </tr>
+      <tr>
+        <td class="label text-right bgColor">转出原因</td>
+        <td class="text-left" colspan="3">
+          于{{= it.Util.formatDate(it.transDate)}}因病情需要，转入{{= it.toHospital}}单位，{{= it.toDepartment}}科室{{= it.toDoctor}}接诊医生。
+        </td>
+      </tr> -->
+      <tr>
+        <!--<td class="label text-right bgColor">转诊医生签字</td>
+      <td class="text-left">
+        {{= it.fromDoctor}}
+      </td>-->
+        <td class="label text-right bgColor w200">日期</td>
+        <td class="text-left" colspan="3">
+          {{= it.Util.formatDate(it.fromDate)}}
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4" class="sub-title h27">
+        </td>
+      </tr>
+      <tr>
+        <th colspan="4" class="text-left bgColor border-bottom">
+          双向转诊（转出）单
+        </th>
+      </tr>
+      <tr>
+        <td class="label text-left" colspan="4">
+          {{= it.toHospital}}：
+          <br/> 现有{{= it.residentName}}， 性别{{= it.residentSex}}， 年龄{{= it.residentAge}}，因为病情需要，需转入贵单位，请予以接诊。
+        </td>
+      </tr>
+      <tr>
+        <td class="label text-right bgColor">初步印象</td>
+        <td class="text-left" colspan="3">
+          {{= it.initialImpression}}
+        </td>
+      </tr>
+      <tr>
+        <td class="label text-right bgColor">主要现病史
+          <br/>(转出原因)</td>
+        <td class="text-left" colspan="3">
+          {{= it.currentStatus}}
+        </td>
+      </tr>
+      <tr>
+        <td class="label text-right bgColor">主要既往史</td>
+        <td class="text-left" colspan="3">
+          {{= it.pastIllness}}
+        </td>
+      </tr>
+      <tr>
+        <td class="label text-right bgColor">治疗经过</td>
+        <td class="text-left" colspan="3">
+          {{= it.treatmentCourse}}
+        </td>
+      </tr>
+      <tr>
+        <!--<td class="label text-right bgColor">转诊医生签字</td>
+      <td class="text-left">
+        {{= it.fromDoctor}}
+      </td>-->
+        <td class="label text-right bgColor">联系电话</td>
+        <td class="text-left" colspan="3">
+          {{= it.fromDoctorPhone}}
+        </td>
+      </tr>
+      <tr>
+        <td class="label text-right bgColor">机构名称</td>
+        <td class="text-left">
+          {{= it.fromHospital}}
+        </td>
+        <td class="label text-right bgColor">日期</td>
+        <td class="text-left">
+          {{= it.Util.formatDate(it.fromDate)}}
+        </td>
+      </tr>
+      <tr>
+        <td class="text-right bgColor label">影像资料</td>
+        <td class="text-left" colspan="3">
+          <div class="images-cnt clearfix" id="js-images-cnt">
+            {{~ it.imageUrlList :value:index}}
+            <div class="images-item">
+              <img class="js-img" src="{{= it.Util.getPicUrl(value)}}" alt="">
+            </div>
+            {{~}}
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<script>
+var dom_imgArr = $('.js-img');
+dom_imgArr.each(function() {
+  var width = this.width;
+  var height = this.height;
+  if (width > height) {
+    this.style.width = "auto";
+    this.style.height = "100%";
+  } else {
+    this.style.width = "100%";
+    this.style.height = "auto";
+  }
+});
+if (window.jsObj.showGalleryImages) {
+  var img_src_arr = [];
+
+  dom_imgArr.each(function() {
+    img_src_arr.push(this.getAttribute('src'));
+  });
+
+  dom_imgArr.on('click', function() {
+    window.jsObj.showGalleryImages(img_src_arr);
+  });
+} else {
+  var dom_imagesCnt = document.getElementById("js-images-cnt");
+  var viewer = new Viewer(dom_imagesCnt, {});
+}
+</script>

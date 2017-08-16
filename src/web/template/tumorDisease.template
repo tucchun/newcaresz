@@ -1,0 +1,117 @@
+<div class="container">
+    <table class="tb tb-auto tb-border">
+        <thead>
+        <th colspan="6" class="bgColor text-left">
+            肿瘤病例随访表
+        </th>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="text-right bgColor label w200">姓名</td>
+            <td class="text-left">{{=it.residentName}}</td>
+            <td class="text-right bgColor label w200">档案编号</td>
+            <td class="text-left">{{=it.residentNo}}</td>
+        </tr>
+        <tr>
+            <td class="text-right bgColor label">性别</td>
+            <td class="text-left">{{=it.residentSexStr}}</td>
+            <td class="text-right bgColor label">年龄</td>
+            <td class="text-left">{{=it.residentAge}}</td>
+        </tr>
+        <tr>
+            <td class="text-right bgColor label">本次随访日期</td>
+            <td class="text-left">{{=it.Util.formatDate(it.createDate)}}</td>
+            <td class="text-right bgColor label">随访方式</td>
+            <td class="text-left">{{=it.tumorVisitStyleStr}}</td>
+        </tr>
+        <tr>
+            <td class="text-right bgColor label">随访地点</td>
+            <td class="text-left" colspan="3">{{=it.tumourVisitAddress}}</td>
+        </tr>
+        </tbody>
+    </table>
+    <table class="tb tb-auto tb-border border-top-none">
+        <tbody>
+        <tr>
+            <td class="sub-title text-left" colspan="5">
+                随访内容
+            </td>
+        </tr>
+        <tr>
+            <td class="text-right bgColor label w200">生存状态</td>
+            <td class="text-left" colspan="4">{{=it.tumourSurvivalStateStr}}</td>
+        </tr>
+        <tr>
+            <td class="text-center bgColor label w200" rowspan="4">意识状态</td>
+            <td class="text-right bgColor label w200">烦躁</td>
+            <td class="text-left" colspan="3">{{=it.tumourConsciousnessIrritabilityStr}}</td>
+        </tr>
+        <tr>
+            <td class="text-right bgColor label">昏迷</td>
+            <td class="text-left" colspan="3">{{=it.tumourConsciousnessComaStr}}</td>
+        </tr>
+        <tr>
+            <td class="text-right bgColor label">嗜睡</td>
+            <td class="text-left" colspan="3">{{=it.tumourConsciousnessSleepinessStr}}</td>
+        </tr>
+        <tr>
+            <td class="text-right bgColor label">清醒</td>
+            <td class="text-left" colspan="3">{{=it.tumourConsciousnessSoberStr}}</td>
+        </tr>
+        <tr>
+            <td class="text-center bgColor label" rowspan="3">治疗情况</td>
+            <td class="text-right bgColor label">药物</td>
+            <td class="text-left" colspan="3">{{=it.tumourTreatmentDrugStr}}</td>
+        </tr>
+        <tr>
+            <td class="text-right bgColor label">化疗</td>
+            <td class="text-left" colspan="3">{{=it.tumourTreatmentChemotherapyStr}}</td>
+        </tr>
+        <tr>
+            <td class="text-right bgColor label">放疗</td>
+            <td class="text-left" colspan="3">{{=it.tumourTreatmentRadiotherapyStr}}</td>
+        </tr>
+
+        <tr>
+            <td class="text-center bgColor label" rowspan="3">病情变化</td>
+            <td class="text-right bgColor label">好转</td>
+            <td class="text-left" colspan="3">{{=it.tumourIllnessImproveStr}}</td>
+        </tr>
+        <tr>
+            <td class="text-right bgColor label">恶化</td>
+            <td class="text-left" colspan="3">{{=it.tumourIllnessDeteriorateStr}}</td>
+        </tr>
+        <tr>
+            <td class="text-right bgColor label">转移</td>
+            <td class="text-left" colspan="3">{{=it.tumourIllnessTransferStr}}</td>
+        </tr>
+
+        <tr>
+            <td class="text-right bgColor label">家庭护理情况</td>
+            <td class="text-left" colspan="4">{{=it.tumourFamilyNursingStr}}</td>
+        </tr>
+
+        <tr>
+            <td class="text-center bgColor label" rowspan="3">日常情况</td>
+            <td class="text-right bgColor label">戒烟</td>
+            <td class="text-left">{{=it.tumourNoSmokingStr}}</td>
+            <td class="text-right bgColor label w200">戒酒</td>
+            <td class="text-left">{{=it.tumourNoDrinkStr}}</td>
+        </tr>
+        <tr>
+            <td class="text-right bgColor label">运动频率</td>
+            <td class="text-left" colspan="3">{{=it.tumourSportRate}}次/周，{{=it.tumourSportTime}}分钟/次</td>
+        </tr>
+        <tr>
+            <td class="text-right bgColor label">合理饮食</td>
+            <td class="text-left">{{=it.tumourReasonableDietStr}}</td>
+            <td class="text-right bgColor label">定期医院检查</td>
+            <td class="text-left">{{=it.tumourHospitalExaminationStr}}</td>
+        </tr>
+        <tr>
+            <td class="text-right bgColor label">下次随访时间</td>
+            <td class="text-left" colspan="4">{{= it.Util.formatDate(it.nextVisitDate)}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

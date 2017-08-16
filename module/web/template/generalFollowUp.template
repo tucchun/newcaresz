@@ -1,0 +1,53 @@
+<div class="container">
+  <table class="tb tb-auto tb-border">
+    <thead>
+    <th colspan="4" class="bgColor text-left">
+      一般随访表
+    </th>
+    </thead>
+    <tbody>
+    <tr>
+      <td class="label text-right bgColor w200">姓名</td>
+      <td class="text-left w630">{{= it.resdientName}}</td>
+      <td class="label text-right bgColor w200">档案编号</td>
+      <td class="text-left w630">{{= it.residentNo}}</td>
+    </tr>
+    <tr>
+      <td class="label text-right bgColor">身高（cm）</td>
+      <td class="text-left">
+        {{= it.residentHeight}}
+      </td>
+      <td class="label text-right bgColor">体重（kg）</td>
+      <td class="text-left">
+        {{= it.residentWeight}}
+      </td>
+    </tr>
+    <tr>
+      <td class="label text-right bgColor">体质指数（BMI）（Kg/m²）</td>
+      <td class="text-left">
+       {{= (Number(it.residentBmi) || 0).toFixed(2)}}
+      </td>
+      <td class="label text-right bgColor">体温（°C）</td>
+      <td class="text-left">
+        {{= it.residentTemperature}}
+      </td>
+    </tr>
+    <tr>
+      <td class="label text-right bgColor">血压（mmHg）</td>
+      <td class="text-left">
+        {{= it.residentBloodPressureLow}}/{{= it.residentBloodPressureHeight}}
+      </td>
+      <td class="label text-right bgColor">脉搏（bpm）</td>
+      <td class="text-left">
+        {{= it.residentPulse}}
+      </td>
+    </tr>
+    <tr>
+      <td class="label text-right bgColor">血糖（mmol/L）</td>
+      <td class="text-left" colspan="3">
+        {{= it.residentBloodSugar}}
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

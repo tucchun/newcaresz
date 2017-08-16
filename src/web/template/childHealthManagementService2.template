@@ -1,0 +1,101 @@
+<div class="container">
+    <table class="tb tb-auto tb-border">
+        <thead>
+        <tr>
+            <th colspan="6" class="bgColor text-left">
+                24月龄儿童中医药健康管理服务记录表
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="label text-right bgColor w200">姓名</td>
+            <td class="text-left w630">{{=it.residentName}}</td>
+            <td class="label text-right bgColor w200">档案编号</td>
+            <td class="text-left w630">{{=it.residentNo}}</td>
+        </tr>
+        <tr>
+            <td class="label text-right bgColor w200">随访日期</td>
+            <td class="text-left w630" colspan="3">{{=it.Util.formatDate(it.tcmSixDate)}}</td>
+        </tr>
+        <tr>
+            <td class="label text-right bgColor w200">中医药健康管理服务</td>
+            <td class="text-left w630" colspan="3">{{=it.sixProposalStr.join("、")}}</td>
+        </tr>
+        <tr>
+            <td class="label text-right bgColor w200">下次随访时间</td>
+            <td class="text-left w630"  colspan="3">{{=it.Util.formatDate(it.tcmSixNext)}}</td>
+         <!--   <td class="label text-right bgColor w200">随访医生签名</td>
+            <td class="text-left w630">{{=it.tcmSixDoctor}}</td>-->
+        </tr>
+        </tbody>
+    </table>
+    <div class="sub-title">
+        &nbsp;
+    </div>
+    <table class="tb tb-auto tb-border">
+        <thead>
+        <tr>
+            <th colspan="6" class="bgColor text-left">
+                30月龄儿童中医药健康管理服务记录表
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="label text-right bgColor w200">姓名</td>
+            <td class="text-left w630">{{=it.residentName}}</td>
+            <td class="label text-right bgColor w200">档案编号</td>
+            <td class="text-left w630">{{=it.residentNo}}</td>
+        </tr>
+        <tr>
+            <td class="label text-right bgColor w200">随访日期</td>
+            <td class="text-left w630" colspan="3">{{=it.Util.formatDate(it.tcmTwelveDate)}}</td>
+        </tr>
+        <tr>
+            <td class="label text-right bgColor w200">中医药健康管理服务</td>
+            <td class="text-left w630" colspan="3">{{=it.twelveProposalStr.join("、")}}</td>
+        </tr>
+        <tr>
+            <td class="label text-right bgColor w200">下次随访时间</td>
+            <td class="text-left w630" colspan="3">{{=it.Util.formatDate(it.tcmTwelveNext)}}</td>
+           <!-- <td class="label text-right bgColor w200" >随访医生签名</td>
+            <td class="text-left w630">{{=it.tcmTwelveDoctor}}</td>-->
+        </tr>
+        </tbody>
+    </table>
+    <div class="sub-title">
+        &nbsp;
+    </div>
+    <table class="tb tb-auto tb-border">
+        <thead>
+        <tr>
+            <th colspan="6" class="bgColor text-left">
+                36月龄儿童中医药健康管理服务记录表
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="label text-right bgColor w200">姓名</td>
+            <td class="text-left w630">{{=it.residentName}}</td>
+            <td class="label text-right bgColor w200">档案编号</td>
+            <td class="text-left w630">{{=it.residentNo}}</td>
+        </tr>
+        <tr>
+            <td class="label text-right bgColor w200">随访日期</td>
+            <td class="text-left w630" colspan="3">{{=it.Util.formatDate(it.tcmEighteenDate)}}</td>
+        </tr>
+        <tr>
+            <td class="label text-right bgColor w200">中医药健康管理服务</td>
+            <td class="text-left w630" colspan="3">{{=it.eighteenProposalStr.join("、")}}</td>
+        </tr>
+        <tr>
+            <td class="label text-right bgColor w200">下次随访时间</td>
+            <td class="text-left w630" colspan="3">{{=it.Util.formatDate(it.tcmEighteenNext)}}</td>
+           <!-- <td class="label text-right bgColor w200">随访医生签名</td>
+            <td class="text-left w630">{{=it.tcmEighteenDoctor}}</td>-->
+        </tr>
+        </tbody>
+    </table>
+</div>

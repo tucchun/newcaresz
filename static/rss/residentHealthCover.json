@@ -1,0 +1,16 @@
+{
+  "ret_code": 1,
+  "ret_data": {
+    "residentNo": "44030100000000012",
+    "resdientName": "www",
+    "residentAddress": "广东省深圳市市辖区专干第22小区B栋B",
+    "residentHouseholdAddr": "gvgvhbbhjbjbbj",
+    "residentMobile": "18565841305",
+    "streetName": "",
+    "villageName": "",
+    "docUnit": "",
+    "docCreateBy": "",
+    "docDoctor": "",
+    "docCreateDate": ""
+  }
+}

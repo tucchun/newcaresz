@@ -1,0 +1,1147 @@
+<div class="container">
+  <table class="tb tb-auto tb-border">
+    <thead>
+    <th colspan="6" class="bgColor text-left">
+      个人基本信息表
+    </th>
+    </thead>
+    <tbody>
+    <tr>
+      <td class="label text-right bgColor w200">姓名</td>
+      <td class="text-left w630"><%= residentName%></td>
+      <td class="label text-right bgColor w200">档案编号</td>
+      <td class="text-left w630"><%= residentNo%></td>
+    </tr>
+    <tr>
+      <td class="label text-right bgColor">性别</td>
+      <td class="text-left">
+        <%
+          if(residentSex === 1){
+        %>
+          男
+        <%
+          }else{
+        %>
+          女
+        <%
+          }
+        %>
+      </td>
+      <td class="label text-right bgColor">出生日期</td>
+      <td class="text-left"><%= Util.formatDate(birthday)%></td>
+    </tr>
+    <tr>
+      <td class="label text-right bgColor">身份证号</td>
+      <td class="text-left"><%= residentCardId%></td>
+      <td class="label text-right bgColor">工作单位</td>
+      <td class="text-left"><%= residentEmployer%></td>
+    </tr>
+    <tr>
+      <td class="label text-right bgColor">本人电话</td>
+      <td class="text-left"><%= residentMobile%></td>
+      <td class="label text-right bgColor">联系人姓名</td>
+      <td class="text-left"><%= contactName%></td>
+    </tr>
+    <tr>
+      <td class="label text-right bgColor">联系人电话</td>
+      <td class="text-left"><%= contactMobile%></td>
+      <td class="label text-right bgColor">常住类型</td>
+      <td class="text-left">
+        <%
+          if(residentAddressType === 1){
+        %>
+        户籍
+        <%
+          }else if(residentAddressType === 2){
+        %>
+        非户籍
+        <%
+          }
+        %>
+      </td>
+    </tr>
+    <tr>
+      <td class="label text-right bgColor">民族</td>
+      <td class="text-left"><%= nation%></td>
+      <td class="label text-right bgColor">血型/RH阴性</td>
+      <td class="text-left">
+        <%
+          if(residentBloodType === 1){
+        %>
+        A型
+        <%
+          }else if(residentBloodType === 2){
+        %>
+        B型
+        <%
+          }else if(residentBloodType === 3){
+        %>
+        O型
+        <%
+          }else if(residentBloodType === 4){
+        %>
+        AB型
+        <%
+          }else if(residentBloodType === 5){
+        %>
+        不详
+        <%
+          }
+        %>
+
+        <%
+          if(residentBloodType != 0  || residentRhType != 0){
+        %>
+        /
+        <%
+          }
+        %>
+
+        <%
+          if(residentRhType === 1){
+        %>
+        否
+        <%
+          }else if(residentRhType === 2){
+        %>
+        是
+        <%
+          }else if(residentRhType === 3){
+        %>
+        不详
+        <%
+          }
+        %>
+      </td>
+    </tr>
+    <tr>
+      <td class="label text-right bgColor">文化程度</td>
+      <td class="text-left">
+        <%
+          if(residentCulturalLevel === 1){
+        %>
+        文盲及半文盲
+        <%
+          }else if(residentCulturalLevel === 2){
+        %>
+        小学
+        <%
+          }else if(residentCulturalLevel === 3){
+        %>
+        初中
+        <%
+          }else if(residentCulturalLevel === 4){
+        %>
+        高中/技校/中专
+        <%
+          }else if(residentCulturalLevel === 5){
+        %>
+        大学专科及以上
+        <%
+          }else if(residentCulturalLevel === 6){
+        %>
+        不详
+        <%
+          }
+        %>
+      </td>
+      <td class="label text-right bgColor">职业</td>
+      <td class="text-left">
+        <%
+        if(residentCareer === 1){
+        %>
+        国家机关、党群组织、企业、事业单位负责人
+        <%
+        }else if(residentCareer === 2){
+        %>
+        专业技术人员
+        <%
+        }else if(residentCareer === 3){
+        %>
+        办事人员和有关员
+        <%
+        }else if(residentCareer === 4){
+        %>
+        商业、服务业人员
+        <%
+        }else if(residentCareer === 5){
+        %>
+        农、林、牧、渔、水利业生产人员
+        <%
+        }else if(residentCareer === 6){
+        %>
+        生产、运输设备操作人员及有关人员
+        <%
+        }else if(residentCareer === 7){
+        %>
+        军人
+        <%
+        }else if(residentCareer === 8){
+        %>
+        不便分类的其他从业人员
+        <%
+        }
+        %>
+      </td>
+    </tr>
+    <tr>
+      <td class="label text-right bgColor">婚姻状况</td>
+      <td class="text-left">
+        <%
+        if(residentMaritalStatus === 1){
+        %>
+        未婚
+        <%
+        }else if(residentMaritalStatus === 2){
+        %>
+        已婚
+        <%
+        }else if(residentMaritalStatus === 3){
+        %>
+        丧偶
+        <%
+        }else if(residentMaritalStatus === 4){
+        %>
+        离婚
+        <%
+        }else if(residentMaritalStatus === 5){
+        %>
+        未说明的婚姻状况
+        <%
+        }
+        %>
+      </td>
+      <td class="label text-right bgColor">医疗费用支付方式</td>
+      <td class="text-left">
+        <%
+        if(residentMedicalPay === 1){
+        %>
+        城镇职工基本医疗保险
+        <%
+        }else if(residentMedicalPay === 2){
+        %>
+        城镇居民基本医疗保险
+        <%
+        }else if(residentMedicalPay === 3){
+        %>
+        新型农村合作医疗
+        <%
+        }else if(residentMedicalPay === 4){
+        %>
+        贫困救助
+        <%
+        }else if(residentMedicalPay === 5){
+        %>
+        商业医疗保险
+        <%
+        }else if(residentMedicalPay === 6){
+        %>
+        全公费
+        <%
+        }else if(residentMedicalPay === 7){
+        %>
+        全自费
+        <%
+        }else if(residentMedicalPay === 8){
+        %>
+        <%= residentMedicalPayText%>
+        <%
+        }
+        %>
+      </td>
+    </tr>
+    <tr>
+      <td class="label text-right bgColor">药物过敏史</td>
+      <td class="text-left">
+        <%
+          if(drupAllergy && drupAllergy.drugFlag === 1){
+            if(drupAllergy.drugPenicillin === 1){
+        %>
+              青霉素
+        <%
+            }
+            if(drupAllergy.drugSulfa === 1){
+        %>
+              磺胺
+        <%
+            }
+            if(drupAllergy.drugStreptomycin === 1){
+        %>
+             链霉素
+        <%
+            }
+            if(drupAllergy.drugOtherSelect === 1){
+        %>
+              <%= drupAllergy.drugOther%>
+        <%
+            }
+          }else{
+        %>
+            无
+        <%
+          }
+        %>
+      </td>
+      <td class="label text-right bgColor">暴露史</td>
+      <td class="text-left">
+        <%
+        if(exposureHistory && exposureHistory.expoFlag === 1){
+          var arr = [];
+          if(exposureHistory.expoChemical === 1){
+            arr.push("化学品");
+          }
+          if(exposureHistory.expoPoison === 1){
+            arr.push("毒物");
+          }
+          if(exposureHistory.expoRadial === 1){
+            arr.push("射线");
+          }
+
+        %>
+        <%= arr.join("、")%>
+        <%
+        }else{
+        %>
+            无
+        <%
+        }
+        %>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <%
+    function diseaseListMap(diseaseList){
+      return  {
+        "diseHypertension": {
+          value: diseaseList.diseHypertension,
+          txt: "高血压",
+          date: diseaseList.diseHypertensionDate
+        },
+        "diseDiabetes": {
+          value: diseaseList.diseDiabetes,
+          txt: "糖尿病",
+          date: diseaseList.diseDiabetesDate
+        },
+        "diseCoronaryHeart": {
+          value: diseaseList.diseCoronaryHeart,
+          txt: "冠心病",
+          date: diseaseList.coronaryHeartDate
+        },
+        "diseChronicObstructive": {
+          value: diseaseList.diseChronicObstructive,
+          txt: "慢性阻塞性肺疾病",
+          date: diseaseList.chronicObstructiveDate
+        },
+        "diseMalignantTumor": {
+          value: diseaseList.diseMalignantTumor,
+          txt: "恶性肿瘤" + diseaseList.diseTumorName,
+          date: diseaseList.diseTumorDate
+        },
+        "diseCerebralApoplexy": {
+          value: diseaseList.diseCerebralApoplexy,
+          txt: "脑卒中",
+          date: diseaseList.cerebralApoplexyDate
+        },
+        "diseMentalDisorder": {
+          value: diseaseList.diseMentalDisorder,
+          txt: "严重精神障碍",
+          date: diseaseList.mentalDisorderDate
+        },
+        "diseTuberculosis": {
+          value: diseaseList.diseTuberculosis,
+          txt: "结核病",
+          date: diseaseList.diseTuberculosisDate
+        },
+        "diseHepatitis": {
+          value: diseaseList.diseHepatitis,
+          txt: "肝炎",
+          date: diseaseList.diseHepatitisDate
+        },
+        "diseOtherNotifiable": {
+          value: diseaseList.diseOtherNotifiable,
+          txt: "其他法定传染病",
+          date: diseaseList.otherNotifiableDate
+        },
+        "diseLustreNaturae": {
+          value: diseaseList.diseLustreNaturae,
+          txt: "先天畸形",
+          date: ''
+        },
+        "diseCareer": {
+          value: diseaseList.diseCareer,
+          txt: diseaseList.diseCareerName,
+          date: diseaseList.diseCareerDate
+        },
+        "diseOther": {
+          value: diseaseList.diseOther,
+          txt: diseaseList.diseOtherName,
+          date: diseaseList.diseOtherDate
+        }
+      };
+
+    }
+    var _userDiseaseList = _.find(familyDiseaseList, {diseRelation: 0, diseFlag: 1}); // 个人疾病
+    var _fatherDiseaseList = _.find(familyDiseaseList, {diseRelation: 2, diseFlag: 1}); // 个人父亲疾病
+    var _monthDiseaseList = _.find(familyDiseaseList, {diseRelation: 3, diseFlag: 1}); // 个人母亲疾病
+    var _brotherDiseaseList = _.find(familyDiseaseList, {diseRelation: 4, diseFlag: 1}); // 个人兄弟姐妹疾病
+    var _childDiseaseList = _.find(familyDiseaseList, {diseRelation: 5, diseFlag: 1}); // 个人子女疾病
+    var _grandparents = _.find(familyDiseaseList, {diseRelation: 6, diseFlag: 1}); // 个人祖父母疾病
+    var _Grandparents = _.find(familyDiseaseList, {diseRelation: 7, diseFlag: 1}); // 个人外祖父母疾病
+    var _grandchildren = _.find(familyDiseaseList, {diseRelation: 8, diseFlag: 1}); // 个人孙子女疾病
+    var _Grandchildren = _.find(familyDiseaseList, {diseRelation: 9, diseFlag: 1}); // 个人外孙子女疾病
+    var surgery = _.filter(personHistoryList, {pastType: 1});  // 手术
+    var trauma = _.filter(personHistoryList, {pastType: 2});   // 外伤
+    var blood = _.filter(personHistoryList, {pastType: 3});    // 输血
+    var diseaseList = {};
+    if(_userDiseaseList){
+      diseaseList = diseaseListMap(_userDiseaseList);
+    }
+    _userDiseaseList = _.filter(diseaseList, {value: 1});
+
+  %>
+  <table class="tb tb-auto tb-border border-top-none">
+    <tbody>
+    <tr>
+      <td rowspan="<%= (_userDiseaseList.length == 0 ? 1 : _userDiseaseList.length) + (surgery.length === 0 ? 1 : surgery.length) + (trauma.length === 0 ? 1 : trauma.length) + (blood.length === 0 ? 1 : blood.length)%> " class="text-center bgColor w200 label">
+        既往史
+      </td>
+
+      <%
+      if(_userDiseaseList.length === 0){
+      %>
+      <td colspan="2" class="text-right bgColor label" width="20%">
+        疾病
+      </td>
+      <td class="text-left">
+        无
+      </td>
+      <%
+      }else{
+      %>
+      <td rowspan="<%=_userDiseaseList.length %>" class="text-center bgColor w115 label">
+        疾病
+      </td>
+      <td class="text-right w200 bgColor label">
+        <%
+        var temp = _userDiseaseList.shift();
+        %>
+        <%= temp.txt%>
+      </td>
+      <td>
+        确诊时间：<%= Util.formatDate(temp.date)%>
+      </td>
+      <%
+      }
+      %>
+    </tr>
+
+
+    <%
+      for(var i = 0; i < _userDiseaseList.length; i++){
+    %>
+    <tr>
+      <td class="text-right bgColor label">
+        <%= _userDiseaseList[i].txt%>
+      </td>
+      <td>
+        确诊时间：<%= Util.formatDate(_userDiseaseList[i].date)%>
+      </td>
+    </tr>
+    <%
+      }
+    %>
+
+    <%
+      if(surgery.length > 0){
+        temp = surgery.shift();
+    %>
+      <tr>
+        <td rowspan="<%= surgery.length + 1%>" class="text-center bgColor label">
+          手术
+        </td>
+        <td class="text-right bgColor label">
+          <%= temp.pastName%>
+        </td>
+        <td>
+          时间：<%= Util.formatDate(temp.pastDate)%>
+        </td>
+      </tr>
+    <%
+        _.forEach(surgery, function(item){
+    %>
+        <tr>
+          <td class="text-right bgColor label">
+            <%= item.pastName%>
+          </td>
+          <td>
+            时间：<%= Util.formatDate(item.pastDate)%>
+          </td>
+        </tr>
+    <%
+        });
+      }else{
+    %>
+    <tr>
+      <td  colspan="2" class="text-right bgColor label">
+        手术
+      </td>
+      <td>
+        无
+      </td>
+    </tr>
+    <%
+      }
+    %>
+
+
+    <%
+    if(trauma.length > 0){
+    temp = trauma.shift();
+    %>
+    <tr>
+      <td rowspan="<%= trauma.length + 1%>" class="text-center bgColor label">
+        外伤
+      </td>
+      <td class="text-right bgColor label">
+        <%= temp.pastName%>
+      </td>
+      <td>
+        时间：<%= Util.formatDate(temp.pastDate)%>
+      </td>
+    </tr>
+    <%
+    _.forEach(trauma, function(item){
+    %>
+    <tr>
+      <td class="text-right bgColor label">
+        <%= item.pastName%>
+      </td>
+      <td>
+        时间：<%= Util.formatDate(item.pastDate)%>
+      </td>
+    </tr>
+    <%
+    });
+    }else{
+    %>
+    <tr>
+      <td  colspan="2" class="text-right bgColor label">
+        外伤
+      </td>
+      <td>
+        无
+      </td>
+    </tr>
+    <%
+    }
+    %>
+
+    <!--<tr>-->
+      <!--<td  colspan="2" class="text-right bgColor label">-->
+        <!--外伤-->
+      <!--</td>-->
+      <!--<td>-->
+        <!--无-->
+      <!--</td>-->
+    <!--</tr>-->
+
+    <%
+    if(blood.length > 0){
+    temp = blood.shift();
+    %>
+    <tr>
+      <td rowspan="<%= blood.length + 1%>" class="text-center bgColor label">
+        输血
+      </td>
+      <td class="text-right bgColor label">
+        <%= temp.pastName%>
+      </td>
+      <td>
+        时间：<%= Util.formatDate(temp.pastDate)%>
+      </td>
+    </tr>
+    <%
+    _.forEach(blood, function(item){
+    %>
+    <tr>
+      <td class="text-right bgColor label">
+        <%= item.pastName%>
+      </td>
+      <td>
+        时间：<%= Util.formatDate(item.pastDate)%>
+      </td>
+    </tr>
+    <%
+    });
+    }else{
+    %>
+    <tr>
+      <td  colspan="2" class="text-right bgColor label">
+        输血
+      </td>
+      <td>
+        无
+      </td>
+    </tr>
+    <%
+    }
+    %>
+    <!--<tr>-->
+      <!--<td colspan="2" class="text-right bgColor label">-->
+        <!--输血-->
+      <!--</td>-->
+      <!--<td>-->
+        <!--无-->
+      <!--</td>-->
+    <!--</tr>-->
+    <%
+      if(_fatherDiseaseList){
+    _fatherDiseaseList = diseaseListMap(_fatherDiseaseList);
+      }
+      _fatherDiseaseList = _.filter(_fatherDiseaseList, {value: 1});
+
+      if(_monthDiseaseList){
+    _monthDiseaseList = diseaseListMap(_monthDiseaseList);
+      }
+      _monthDiseaseList = _.filter(_monthDiseaseList, {value: 1});
+
+      if(_brotherDiseaseList){
+    _brotherDiseaseList = diseaseListMap(_brotherDiseaseList);
+      }
+      _brotherDiseaseList = _.filter(_brotherDiseaseList, {value: 1});
+
+      if(_childDiseaseList){
+    _childDiseaseList = diseaseListMap(_childDiseaseList);
+      }
+      _childDiseaseList = _.filter(_childDiseaseList, {value: 1});
+
+      if(_grandparents){
+    _grandparents = diseaseListMap(_grandparents);
+      }
+      _grandparents = _.filter(_grandparents, {value: 1});
+
+      if(_Grandparents){
+    _Grandparents = diseaseListMap(_Grandparents);
+      }
+      _Grandparents = _.filter(_Grandparents, {value: 1});
+
+      if(_grandchildren){
+    _grandchildren = diseaseListMap(_grandchildren);
+      }
+      _grandchildren = _.filter(_grandchildren, {value: 1});
+
+      if(_Grandchildren){
+    _Grandchildren = diseaseListMap(_Grandchildren);
+      }
+      _Grandchildren = _.filter(_Grandchildren, {value: 1});
+
+
+
+     var length = (_fatherDiseaseList.length === 0 ? 1 : _fatherDiseaseList.length) +
+                  (_monthDiseaseList.length === 0 ? 1 : _monthDiseaseList.length) +
+                  (_brotherDiseaseList.length === 0 ? 1 : _brotherDiseaseList.length) +
+                  (_childDiseaseList.length === 0 ? 1 : _childDiseaseList.length) +
+                  (_grandparents.length === 0 ? 1 : _grandparents.length) +
+                  (_Grandparents.length === 0 ? 1 : _Grandparents.length) +
+                  (_grandchildren.length === 0 ? 1 : _grandchildren.length) +
+                  (_Grandchildren.length === 0 ? 1 : _Grandchildren.length);
+    %>
+    <tr>
+      <td class="text-center bgColor label" rowspan="<%= length %>">家族史</td>
+      <td colspan="2" rowspan="<%= _grandparents.length%>" class="text-right bgColor label">
+        祖父母
+      </td>
+      <td class="text-left">
+        <%
+        if(_grandparents.length == 0){
+        %>
+        无
+        <%
+        }else{
+        temp = _grandparents.shift();
+        %>
+        <%= temp.txt%>
+        <%
+        }
+        %>
+      </td>
+    </tr>
+    <%
+    _.forEach(_grandparents, function(item){
+    %>
+    <tr>
+      <td><%= item.txt%></td>
+    </tr>
+    <%
+    });
+    %>
+
+
+    <tr>
+      <td colspan="2" rowspan="<%= _Grandparents.length%>" class="text-right bgColor label">
+        外祖父母
+      </td>
+      <td class="text-left">
+        <%
+        if(_Grandparents.length == 0){
+        %>
+        无
+        <%
+        }else{
+        temp = _Grandparents.shift();
+        %>
+        <%= temp.txt%>
+        <%
+        }
+        %>
+      </td>
+    </tr>
+    <%
+    _.forEach(_Grandparents, function(item){
+    %>
+    <tr>
+      <td><%= item.txt%></td>
+    </tr>
+    <%
+    });
+    %>
+
+
+    <tr>
+      <td colspan="2" rowspan="<%= _fatherDiseaseList.length%>" class="text-right bgColor label">
+        父亲
+      </td>
+      <td class="text-left">
+        <%
+          if(_fatherDiseaseList.length == 0){
+        %>
+         无
+        <%
+          }else{
+            temp = _fatherDiseaseList.shift();
+        %>
+            <%= temp.txt%>
+        <%
+          }
+        %>
+      </td>
+    </tr>
+    <%
+
+      _.forEach(_fatherDiseaseList, function(item){
+    %>
+        <tr>
+          <td><%= item.txt%></td>
+        </tr>
+    <%
+      });
+    %>
+
+
+
+    <tr>
+      <td colspan="2" rowspan="<%= _monthDiseaseList.length%>" class="text-right bgColor label">
+        母亲
+      </td>
+      <td class="text-left">
+      <%
+      if(_monthDiseaseList.length == 0){
+      %>
+      无
+      <%
+      }else{
+      temp = _monthDiseaseList.shift();
+      %>
+      <%= temp.txt%>
+      <%
+      }
+      %>
+      </td>
+    </tr>
+    <%
+    _.forEach(_monthDiseaseList, function(item){
+    %>
+    <tr>
+      <td><%= item.txt%></td>
+    </tr>
+    <%
+    });
+    %>
+
+
+    <tr>
+      <td colspan="2" rowspan="<%= _brotherDiseaseList.length%>" class="text-right bgColor label">
+        兄弟姐妹
+      </td>
+      <td class="text-left">
+      <%
+      if(_brotherDiseaseList.length == 0){
+      %>
+      无
+      <%
+      }else{
+      temp = _brotherDiseaseList.shift();
+      %>
+      <%= temp.txt%>
+      <%
+      }
+      %>
+      </td>
+    </tr>
+    <%
+    _.forEach(_brotherDiseaseList, function(item){
+    %>
+    <tr>
+      <td><%= item.txt%></td>
+    </tr>
+    <%
+    });
+    %>
+
+    <tr>
+      <td colspan="2" rowspan="<%= _childDiseaseList.length%>" class="text-right bgColor label">
+        子女
+      </td>
+      <td class="text-left">
+        <%
+        if(_childDiseaseList.length == 0){
+        %>
+        无
+      <%
+      }else{
+      temp = _childDiseaseList.shift();
+      %>
+      <%= temp.txt%>
+      <%
+      }
+      %>
+      </td>
+    </tr>
+    <%
+    _.forEach(_childDiseaseList, function(item){
+    %>
+    <tr>
+      <td><%= item.txt%></td>
+    </tr>
+    <%
+    });
+    %>
+
+    <tr>
+      <td colspan="2" rowspan="<%= _grandchildren.length%>" class="text-right bgColor label">
+        孙子女
+      </td>
+      <td class="text-left">
+        <%
+        if(_grandchildren.length == 0){
+        %>
+        无
+        <%
+        }else{
+        temp = _grandchildren.shift();
+        %>
+        <%= temp.txt%>
+        <%
+        }
+        %>
+      </td>
+    </tr>
+    <%
+    _.forEach(_grandchildren, function(item){
+    %>
+    <tr>
+      <td><%= item.txt%></td>
+    </tr>
+    <%
+    });
+    %>
+
+    <tr>
+      <td colspan="2" rowspan="<%= _Grandchildren.length%>" class="text-right bgColor label">
+        外孙子女
+      </td>
+      <td class="text-left">
+        <%
+        if(_Grandchildren.length == 0){
+        %>
+        无
+        <%
+        }else{
+        temp = _Grandchildren.shift();
+        %>
+        <%= temp.txt%>
+        <%
+        }
+        %>
+      </td>
+    </tr>
+    <%
+    _.forEach(_Grandchildren, function(item){
+    %>
+    <tr>
+      <td><%= item.txt%></td>
+    </tr>
+    <%
+    });
+    %>
+
+
+
+    <tr>
+      <td class="text-right bgColor label">
+        遗传病史
+      </td>
+      <td colspan="5">
+        <%
+          if(residentGeneticSelect === 1){
+        %>
+          <%= residentGeneticDescribe%>
+        <%
+          }else{
+        %>
+         无
+        <%
+          }
+        %>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right bgColor label">
+        残疾情况
+      </td>
+      <td colspan="4">
+        <%
+          if(deformityRecord && deformityRecord.defoFlag === 1){
+            temp = [];
+            if(deformityRecord.defoVision === 1){
+              temp.push("视力残疾");
+            }
+            if(deformityRecord.defoHearing === 1){
+              temp.push("听力残疾");
+            }
+            if(deformityRecord.defoSpeech === 1){
+              temp.push("言语残疾");
+            }
+            if(deformityRecord.defoLimbs === 1){
+              temp.push("肢体残疾");
+            }
+            if(deformityRecord.defoRetarded === 1){
+              temp.push("智力残疾");
+            }
+            if(deformityRecord.defoMental === 1){
+              temp.push("精神残疾");
+            }
+            if(deformityRecord.defoOtherFlag === 1){
+              temp.push(deformityRecord.defoOther);
+            }
+        %>
+          <%= temp.join("、")%>
+        <%
+          }else{
+        %>
+          无
+        <%
+          }
+        %>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-center bgColor label" rowspan="5">生活环境*</td>
+      <td colspan="2" class="text-right bgColor label">
+        厨房排风设施
+      </td>
+      <td>
+        <%
+          switch(residentKitchenExhaust){
+            case 1:
+        %>
+        无
+        <%
+              break;
+            case 2:
+        %>
+        油烟机
+        <%
+              break;
+            case 3:
+        %>
+        换气扇
+        <%
+              break;
+            case 4:
+        %>
+        烟囱
+        <%
+              break;
+          }
+        %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="text-right bgColor label">
+        燃料类型
+      </td>
+      <td>
+        <%
+          switch(residentFuelType){
+            case 1:
+        %>
+        无
+        <%
+              break;
+            case 2:
+        %>
+        液化气
+        <%
+              break;
+            case 3:
+        %>
+        煤
+        <%
+              break;
+            case 4:
+        %>
+        天然气
+        <%
+              break;
+            case 5:
+        %>
+        沼气
+        <%
+              break;
+            case 6:
+        %>
+        柴火
+        <%
+              break;
+            case 7:
+        %>
+        其他
+        <%
+              break;
+          }
+        %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="text-right bgColor label">
+        饮水
+      </td>
+      <td>
+        <%
+        switch(residentWaterType){
+        case 1:
+        %>
+        无
+        <%
+        break;
+        case 2:
+        %>
+        自来水
+        <%
+        break;
+        case 3:
+        %>
+        经净化过滤的水
+        <%
+        break;
+        case 4:
+        %>
+        井水
+        <%
+        break;
+        case 5:
+        %>
+        河湖水
+        <%
+        break;
+        case 6:
+        %>
+        塘水
+        <%
+        break;
+        case 7:
+        %>
+        其他
+        <%
+        break;
+        }
+        %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="text-right bgColor label">
+        厕所
+      </td>
+      <td>
+        <%
+        switch(residentToiletType){
+        case 1:
+          %>
+          无
+          <%
+        break;
+        case 2:
+          %>
+          卫生厕所
+          <%
+        break;
+        case 3:
+          %>
+          一格或二粪池式
+          <%
+        break;
+        case 4:
+          %>
+          马桶
+          <%
+        break;
+        case 5:
+          %>
+          露天粪坑
+          <%
+        break;
+        case 6:
+          %>
+          简易棚厕
+          <%
+        break;
+        }
+        %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="text-right bgColor label">
+        禽畜栏
+      </td>
+      <td>
+        <%
+          switch(residentBeastColumn){
+            case 1:
+                %>
+                无
+                <%
+              break;
+            case 2:
+                %>
+                单设
+                <%
+              break;
+            case 3:
+                %>
+                室内
+                <%
+              break;
+            case 4:
+              %>
+              室外
+              <%
+              break;
+          }
+        %>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

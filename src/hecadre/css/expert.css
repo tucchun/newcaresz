@@ -1,0 +1,26 @@
+.cnt{
+    padding: .3rem;
+}
+.wrap-content{
+    padding:.2rem 0 .5rem 0;
+}
+.btn-main{
+    width:2.65rem;
+    font-size:.24rem;
+}
+.title{
+    font-size: .4rem;
+    font-weight: bold;
+    text-align: center;
+}
+.table{
+    margin:0;
+}
+
+.header{
+    padding: .2rem 0;
+    margin-top: 0;
+}
+td{
+    vertical-align: middle!important;
+}

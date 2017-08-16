@@ -1,0 +1,150 @@
+<div class="container">
+    <table class="tb tb-auto tb-border">
+        <tbody>
+        <tr>
+            <td colspan="4" class="text-left bgColor">产后42天健康检查记录表</td>
+        </tr>
+        <tr>
+            <td class="label text-right bgColor w200">姓名:</td>
+            <td class="text-left w630">{{=it.residentName}}</td>
+            <td class="label text-right bgColor w200">档案编号:</td>
+            <td class="text-left">{{=it.residentNo}}</td>
+        </tr>
+        <tr>
+            <td class="label text-right bgColor">产后(天)</td>
+            <td class="text-left">{{=it.interPostpartumDay}}</td>
+            <td class="label text-right bgColor">体重(kg)</td>
+            <td class="text-left">{{=it.interWeight}}</td>
+        </tr>
+        <tr>
+            <td class="label text-right bgColor">随访日期</td>
+            <td class="text-left">{{=it.Util.formatDate(it.createDate)}}</td>
+            <td class="label text-right bgColor">分娩日期</td>
+            <td class="text-left">{{=it.Util.formatDate(it.interChildbirthDate)}}</td>
+        </tr>
+        <tr>
+            <td class="label text-right bgColor">出院日期</td>
+            <td class="text-left">{{=it.Util.formatDate(it.interLeaveDate)}}</td>
+            <td class="label text-right bgColor">一般健康情况</td>
+            <td class="text-left">{{=it.interHealthStaus}}</td>
+        </tr>
+        <tr>
+            <td class="label text-right bgColor">一般心理状况</td>
+            <td class="text-left">{{=it.interPsychologicalStatus}}</td>
+            <td class="label text-right bgColor">血压（ mmHg ）</td>
+            <td class="text-left" colspan="3">{{=it.bloodPressureLow}}mmHg /{{=it.bloodPressureHigh}}mmHg </td>
+        </tr>
+        <tr>
+
+        </tr>
+        <tr>
+            <td class="label text-right bgColor">乳房</td>
+            <td class="text-left" colspan="3">
+                {{? it.interBreast == 1}}
+                {{= it.interBreastExce}}
+                {{??}}
+                {{= it.interBreastName}}
+                {{?}}
+            </td>
+        </tr>
+        <tr>
+            <td class="label text-right bgColor">恶露</td>
+            <td class="text-left" colspan="3">
+                {{? it.interLochia == 1}}
+                {{= it.interLochiaExce}}
+                {{??}}
+                {{= it.interLochiaName}}
+                {{?}}
+            </td>
+        </tr>
+        <tr>
+            <td class="label text-right bgColor">子宫</td>
+            <td class="text-left" colspan="3">
+                {{= it.gynaecology && it.gynaecology.gynaPalaceDes}}
+            </td>
+        </tr>
+        <tr>
+            <td class="label text-right bgColor">宫颈</td>
+            <td class="text-left" colspan="3">
+                {{= it.gynaecology && it.gynaecology.gynaCervicalDes}}
+            </td>
+        </tr>
+        <tr>
+            <td class="label text-right bgColor">附件</td>
+            <td class="text-left" colspan="3">
+               {{= it.gynaecology && it.gynaecology.gynaEnclosureDes}}
+            </td>
+        </tr>
+        <tr>
+            <td class="label text-right bgColor">伤口</td>
+            <td class="text-left" colspan="3">
+                {{? it.interWound == 1}}
+                {{= it.interWoundExce}}
+                {{??}}
+                {{= it.interWoundName}}
+                {{?}}
+            </td>
+        </tr>
+        <tr>
+            <td class="label text-right bgColor">外阴</td>
+            <td class="text-left" colspan="3">
+               {{= it.gynaecology && it.gynaecology.gynaVulvadDes}}
+            </td>
+        </tr>
+        <tr>
+            <td class="label text-right bgColor">阴道</td>
+            <td class="text-left" colspan="3">
+               {{= it.gynaecology && it.gynaecology.gynaVaginaDes}}
+            </td>
+        </tr>
+        <tr>
+            <td class="label text-right bgColor">其他</td>
+            <td class="text-left" colspan="3">{{= it.interOther}}</td>
+        </tr>
+        <tr>
+            <td class="label text-right bgColor">分类</td>
+            <td class="text-left" colspan="3">
+                {{? it.interClassification == 1}}
+                {{= it.interClassificationExce}}
+                {{??}}
+                已恢复
+                {{?}}
+            </td>
+        </tr>
+        <tr>
+            <td class="label text-right bgColor">指导</td>
+            <td class="text-left" colspan="3">{{= it.healthGuideText}}</td>
+        </tr>
+        {{? it.interReferral == 1}}
+        <tr>
+            <td class="label text-right bgColor" rowspan="3">处理</td>
+            <td class="label text-right bgColor" rowspan="3">转诊</td>
+            <td class="label text-right bgColor">原因</td>
+            <td>{{=it.interReferralReason}}</td>
+        </tr>
+        <tr>
+            <td class="label text-right bgColor" colspan="1">机构及科室</td>
+            <td class="text-left" colspan="2">{{=it.interReferralOrg}}</td>
+        </tr>
+        <tr>
+            <td class="label text-right bgColor" colspan="1">转诊日期</td>
+            <td class="text-left" colspan="2">{{= it.Util.formatDate(it.interReferralDate)}}</td>
+        </tr>
+       <!-- <tr>
+            <td class="label text-right bgColor">医院或科室</td>
+            <td class="text-left" colspan="2">{{=it.interReferralOrg}}</td>
+        </tr>-->
+        {{??}}
+        <tr>
+            <td class="label text-right bgColor">处理</td>
+            <td class="text-left" colspan="3">结案</td>
+        </tr>
+        {{?}}
+
+      <!--  <tr>
+            <td class="label text-right bgColor">随访医生签名</td>
+            <td class="text-left" colspan="3">{{=it.visitDoctor}}</td>
+        </tr>-->
+        </tbody>
+    </table>
+</div>

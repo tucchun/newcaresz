@@ -1,0 +1,1289 @@
+<div class="container">
+  <div class="item clearfix">
+    <div class="pull-left">姓名</div>
+    <div class="pull-right">{{= it.residentName}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">档案编号</div>
+    <div class="pull-right">{{= it.residentNo }}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">性别</div>
+    <div class="pull-right">
+      {{? it.residentSex === 1}}
+      男
+      {{??}}
+      女
+      {{?}}
+    </div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">出生日期</div>
+    <div class="pull-right">{{= it.Util.formatDate(it.birthday) }}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">身份证号</div>
+    <div class="pull-right">{{= it.residentCardId }}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">工作单位</div>
+    <div class="pull-right">{{= it.residentEmployer }}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">本人电话</div>
+    <div class="pull-right">{{= it.residentMobile }}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">联系人姓名</div>
+    <div class="pull-right">{{= it.contactName }}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">联系人电话</div>
+    <div class="pull-right">{{= it.contactMobile }}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">常住类型</div>
+    <div class="pull-right">
+      {{? it.residentAddressType === 1 }}
+      户籍
+      {{?? it.residentAddressType === 2 }}
+      非户籍
+      {{??}}
+      &nbsp;
+      {{? }}
+    </div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">民族</div>
+    <!--<div class="pull-right">少数民族<span class="unit">白族</span></div>-->
+    <div class="pull-right">{{= it.nation }}</div>
+  </div>
+  <div class="container flex horizental">
+    <div class="item flex align-center border-right w230">
+      <div>血型</div>
+    </div>
+    <div class="container border-bottom">
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">
+          {{? it.residentBloodType === 1 }}
+          A型
+          {{?? it.residentBloodType === 2 }}
+          B型
+          {{?? it.residentBloodType === 3}}
+          O型
+          {{?? it.residentBloodType === 4}}
+          AB型
+          {{?? it.residentBloodType === 5}}
+          不详
+          {{? }}
+        </div>
+      </div>
+      <div class="item clearfix">
+        <div class="pull-left">RH阴性</div>
+        <div class="pull-right">
+          {{? it.residentRhType === 1 }}
+          否
+          {{?? it.residentRhType === 2}}
+          是
+          {{?? it.residentRhType === 3}}
+          不详
+          {{? }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">文化程度</div>
+    <div class="pull-right">
+      {{? it.residentCulturalLevel === 1}}
+      文盲及半文盲
+      {{?? it.residentCulturalLevel === 2}}
+      小学
+      {{?? it.residentCulturalLevel === 3}}
+      初中
+      {{?? it.residentCulturalLevel === 4}}
+      高中/技校/中专
+      {{?? it.residentCulturalLevel === 5}}
+      大学专科及以上
+      {{?? it.residentCulturalLevel === 6}}
+      不详
+      {{??}}
+      &nbsp;
+      {{? }}
+    </div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">职业</div>
+    <div class="pull-right">
+      {{? it.residentCareer === 1}}
+      国家机关、党群组织、企业、事业单位负责人
+      {{?? it.residentCareer === 2}}
+      专业技术人员
+      {{?? it.residentCareer === 3}}
+      办事人员和有关员
+      {{?? it.residentCareer === 4}}
+      商业、服务业人员
+      {{?? it.residentCareer === 5}}
+      农、林、牧、渔、水利业生产人员
+      {{?? it.residentCareer === 6}}
+      生产、运输设备操作人员及有关人员
+      {{?? it.residentCareer === 7}}
+      军人
+      {{?? it.residentCareer === 8}}
+      不便分类的其他从业人员
+      {{??}}
+      &nbsp;
+      {{?}}
+    </div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">婚姻状况</div>
+    <div class="pull-right">
+      {{? it.residentMaritalStatus === 1}}
+      未婚
+      {{?? it.residentMaritalStatus === 2}}
+      已婚
+      {{?? it.residentMaritalStatus === 3}}
+      丧偶
+      {{?? it.residentMaritalStatus === 4}}
+      离婚
+      {{?? it.residentMaritalStatus === 5}}
+      未说明的婚姻状况
+      {{??}}
+      &nbsp;
+      {{?}}
+    </div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">医疗费用支付方式</div>
+    <div class="pull-right">
+      {{? it.residentMedicalPay === 1}}
+      城镇职工基本医疗保险
+      {{?? it.residentMedicalPay === 2}}
+      城镇居民基本医疗保险
+      {{?? it.residentMedicalPay === 3}}
+      新型农村合作医疗
+      {{?? it.residentMedicalPay === 4}}
+      贫困救助
+      {{?? it.residentMedicalPay === 5}}
+      商业医疗保险
+      {{?? it.residentMedicalPay === 6}}
+      全公费
+      {{?? it.residentMedicalPay === 7}}
+      全自费
+      {{?? it.residentMedicalPay === 8}}
+      {{= it.residentMedicalPayText}}
+      {{??}}
+      &nbsp;
+      {{?}}
+    </div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">药物过敏史</div>
+    <div class="pull-right">
+      {{? it.drupAllergy && it.drupAllergy.drugFlag === 1}}
+        {{? it.drupAllergy.drugPenicillin === 1}}
+        <span class="unit">青霉素</span>
+        {{?}}
+        {{? it.drupAllergy.drugSulfa === 1}}
+        <span class="unit">磺胺</span>
+        {{?}}
+        {{? it.drupAllergy.drugStreptomycin === 1}}
+        <span class="unit">链霉素</span>
+        {{?}}
+        {{? it.drupAllergy.drugOtherSelect === 1}}
+        <span class="unit">{{= it.drupAllergy.drugOther}}</span>
+        {{?}}
+      {{??}}
+      无
+      {{?}}
+    </div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">暴露史</div>
+    <div class="pull-right">
+      {{? it.exposureHistory && it.exposureHistory.expoFlag === 1}}
+        {{? it.exposureHistory.expoChemical === 1}}
+        <span class="unit">化学</span>
+        {{?}}
+        {{? it.exposureHistory.expoPoison === 1}}
+        <span class="unit">毒物</span>
+        {{?}}
+        {{? it.exposureHistory.expoRadial === 1}}
+        <span class="unit">射线</span>
+        {{?}}
+      {{??}}
+        无
+      {{?}}
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="item bgColor">
+    <div class="sub-title">
+      既往史
+    </div>
+  </div>
+</div>
+<div class="container">
+  <!-- 疾病 -->
+  {{? it.Util.data("__userDiseaseList__",  it._.find(it.familyDiseaseList, {diseRelation: 0}), it) && it["__userDiseaseList__"].diseFlag === 1}}
+    <div class="container flex horizental">
+      <div class="item flex align-center border-right w230">
+        <div>疾病</div>
+      </div>
+      <div class="container border-bottom">
+          {{? it["__userDiseaseList__"].diseHypertension === 1}}
+          <div class="item clearfix">
+            <div class="pull-left">高血压</div>
+            <div class="pull-right">{{= it.Util.formatDate(it["__userDiseaseList__"].diseHypertensionDate)}}</div>
+          </div>
+          {{?}}
+          {{? it["__userDiseaseList__"].diseDiabetes === 1}}
+          <div class="item clearfix">
+            <div class="pull-left">糖尿病</div>
+            <div class="pull-right">{{= it.Util.formatDate(it["__userDiseaseList__"].diseDiabetesDate)}}</div>
+          </div>
+          {{?}}
+          {{? it["__userDiseaseList__"].diseCoronaryHeart === 1}}
+          <div class="item clearfix">
+            <div class="pull-left">冠心病</div>
+            <div class="pull-right">{{= it.Util.formatDate(it["__userDiseaseList__"].coronaryHeartDate)}}</div>
+          </div>
+          {{?}}
+          {{? it["__userDiseaseList__"].diseChronicObstructive === 1}}
+          <div class="item clearfix">
+            <div class="pull-left">慢性阻塞性肺疾病</div>
+            <div class="pull-right">{{= it.Util.formatDate(it["__userDiseaseList__"].chronicObstructiveDate)}}</div>
+          </div>
+          {{?}}
+          {{? it["__userDiseaseList__"].diseMalignantTumor === 1}}
+          <div class="item clearfix">
+            <div class="pull-left">恶性肿瘤{{= it["__userDiseaseList__"].diseTumorName}}</div>
+            <div class="pull-right">{{= it.Util.formatDate(it["__userDiseaseList__"].diseTumorDate)}}</div>
+          </div>
+          {{?}}
+          {{? it["__userDiseaseList__"].diseCerebralApoplexy === 1}}
+          <div class="item clearfix">
+            <div class="pull-left">脑卒中</div>
+            <div class="pull-right">{{= it.Util.formatDate(it["__userDiseaseList__"].cerebralApoplexyDate)}}</div>
+          </div>
+          {{?}}
+          {{? it["__userDiseaseList__"].diseMentalDisorder === 1}}
+          <div class="item clearfix">
+            <div class="pull-left">严重精神障碍</div>
+            <div class="pull-right">{{= it.Util.formatDate(it["__userDiseaseList__"].mentalDisorderDate)}}</div>
+          </div>
+          {{?}}
+          {{? it["__userDiseaseList__"].diseTuberculosis === 1}}
+          <div class="item clearfix">
+            <div class="pull-left">结核病</div>
+            <div class="pull-right">{{= it.Util.formatDate(it["__userDiseaseList__"].diseTuberculosisDate)}}</div>
+          </div>
+          {{?}}
+          {{? it["__userDiseaseList__"].diseHepatitis === 1}}
+          <div class="item clearfix">
+            <div class="pull-left">肝炎</div>
+            <div class="pull-right">{{= it.Util.formatDate(it["__userDiseaseList__"].diseHepatitisDate)}}</div>
+          </div>
+          {{?}}
+          {{? it["__userDiseaseList__"].diseOtherNotifiable === 1}}
+          <div class="item clearfix">
+            <div class="pull-left">其他法定传染病</div>
+            <div class="pull-right">{{= it.Util.formatDate(it["__userDiseaseList__"].otherNotifiableDate)}}</div>
+          </div>
+          {{?}}
+          {{? it["__userDiseaseList__"].diseCareer === 1}}
+          <div class="item clearfix">
+            <div class="pull-left">{{= it["__userDiseaseList__"].diseCareerName}}</div>
+            <div class="pull-right">{{= it.Util.formatDate(it["__userDiseaseList__"].diseCareerDate)}}</div>
+          </div>
+          {{?}}
+          {{? it["__userDiseaseList__"].diseOther === 1}}
+          <div class="item clearfix">
+            <div class="pull-left">{{= it["__userDiseaseList__"].diseOtherName}}</div>
+            <div class="pull-right">{{= it.Util.formatDate(it["__userDiseaseList__"].diseOtherDate)}}</div>
+          </div>
+          {{?}}
+      </div>
+    </div>
+  {{??}}
+    <div class="item clearfix">
+      <div class="pull-left">疾病</div>
+      <div class="pull-right">无</div>
+    </div>
+  {{?}}
+
+  <!-- 手术 pastType=1 -->
+
+  {{? it.Util.data("__surgery__",  it._.filter(it.personHistoryList, {pastType: 1}), it) && it["__surgery__"].length > 0}}
+    <div class="container flex horizental">
+      <div class="item flex align-center border-right w230">
+        <div>手术</div>
+      </div>
+      <div class="container border-bottom">
+        {{~ it["__surgery__"] :value:index}}
+          <div class="item clearfix">
+            <div class="pull-left">{{=value.pastName}}</div>
+            <div class="pull-right">{{=it.Util.formatDate(value.pastDate)}}</div>
+          </div>
+        {{~}}
+      </div>
+    </div>
+  {{??}}
+    <div class="item clearfix">
+      <div class="pull-left">手术</div>
+      <div class="pull-right">无</div>
+    </div>
+  {{?}}
+
+  <!-- 外伤 pastType=2 -->
+
+  {{? it.Util.data("__trauma__",  it._.filter(it.personHistoryList, {pastType: 2}), it) && it["__trauma__"].length > 0}}
+  <div class="container flex horizental">
+    <div class="item flex align-center border-right w230">
+      <div>外伤</div>
+    </div>
+    <div class="container border-bottom">
+      {{~ it["__trauma__"] :value:index}}
+      <div class="item clearfix">
+        <div class="pull-left">{{=value.pastName}}</div>
+        <div class="pull-right">{{=it.Util.formatDate(value.pastDate)}}</div>
+      </div>
+      {{~}}
+    </div>
+  </div>
+  {{??}}
+  <div class="item clearfix">
+    <div class="pull-left">外伤</div>
+    <div class="pull-right">无</div>
+  </div>
+  {{?}}
+
+  <!-- 外伤 bloodTransfusion=3 -->
+
+  {{? it.Util.data("__bloodTransfusion__",  it._.filter(it.personHistoryList, {pastType: 2}), it) && it["__bloodTransfusion__"].length > 0}}
+  <div class="container flex horizental">
+    <div class="item flex align-center border-right w230">
+      <div>输血</div>
+    </div>
+    <div class="container border-bottom">
+      {{~ it["__bloodTransfusion__"] :value:index}}
+      <div class="item clearfix">
+        <div class="pull-left">{{=value.pastName}}</div>
+        <div class="pull-right">{{=it.Util.formatDate(value.pastDate)}}</div>
+      </div>
+      {{~}}
+    </div>
+  </div>
+  {{??}}
+  <div class="item clearfix">
+    <div class="pull-left">输血</div>
+    <div class="pull-right">无</div>
+  </div>
+  {{?}}
+
+</div>
+
+<div class="container">
+  <div class="item bgColor">
+    <div class="sub-title">
+      家族史
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <!--祖父母-->
+  {{? it.Util.data("__grandparents__",  it._.find(it.familyDiseaseList, {diseRelation: 6}), it) && it["__grandparents__"].diseFlag === 1}}
+  <div class="container flex horizental">
+    <div class="item flex align-center border-right w230">
+      <div>祖父母</div>
+    </div>
+    <div class="container border-bottom">
+      {{? it["__grandparents__"].diseHypertension === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">高血压</div>
+      </div>
+      {{?}}
+      {{? it["__grandparents__"].diseDiabetes === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">糖尿病</div>
+      </div>
+      {{?}}
+      {{? it["__grandparents__"].diseCoronaryHeart === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">冠心病</div>
+      </div>
+      {{?}}
+      {{? it["__grandparents__"].diseChronicObstructive === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">慢性阻塞肺疾病</div>
+      </div>
+      {{?}}
+      {{? it["__grandparents__"].diseMalignantTumor === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">{{= it["__grandparents__"].diseTumorName}}</div>
+      </div>
+      {{?}}
+      {{? it["__grandparents__"].diseCerebralApoplexy === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">脑卒中</div>
+      </div>
+      {{?}}
+      {{? it["__grandparents__"].diseMentalDisorder === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">严重精神障碍</div>
+      </div>
+      {{?}}
+      {{? it["__grandparents__"].diseTuberculosis === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">结核病</div>
+      </div>
+      {{?}}
+      {{? it["__grandparents__"].diseHepatitis === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">肝炎</div>
+      </div>
+      {{?}}
+      {{? it["__grandparents__"].diseLustreNaturae === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">先天畸形</div>
+      </div>
+      {{?}}
+      {{? it["__grandparents__"].diseOtherNotifiable === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">其他法定传染病</div>
+      </div>
+      {{?}}
+      {{? it["__grandparents__"].diseCareer === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">{{= it["__grandparents__"].diseCareerName}}</div>
+      </div>
+      {{?}}
+      {{? it["__grandparents__"].diseOther === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">{{= it["__grandparents__"].diseOtherName}}</div>
+      </div>
+      {{?}}
+    </div>
+  </div>
+  {{??}}
+  <div class="item clearfix">
+    <div class="pull-left">祖父母</div>
+    <div class="pull-right">无</div>
+  </div>
+  {{?}}
+  <!--祖父母-->
+  {{? it.Util.data("__Grandparents__",  it._.find(it.familyDiseaseList, {diseRelation: 7}), it) && it["__Grandparents__"].diseFlag === 1}}
+  <div class="container flex horizental">
+    <div class="item flex align-center border-right w230">
+      <div>外祖父母</div>
+    </div>
+    <div class="container border-bottom">
+      {{? it["__Grandparents__"].diseHypertension === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">高血压</div>
+      </div>
+      {{?}}
+      {{? it["__Grandparents__"].diseDiabetes === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">糖尿病</div>
+      </div>
+      {{?}}
+      {{? it["__Grandparents__"].diseCoronaryHeart === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">冠心病</div>
+      </div>
+      {{?}}
+      {{? it["__Grandparents__"].diseChronicObstructive === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">慢性阻塞肺疾病</div>
+      </div>
+      {{?}}
+      {{? it["__Grandparents__"].diseMalignantTumor === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">{{= it["__Grandparents__"].diseTumorName}}</div>
+      </div>
+      {{?}}
+      {{? it["__Grandparents__"].diseCerebralApoplexy === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">脑卒中</div>
+      </div>
+      {{?}}
+      {{? it["__Grandparents__"].diseMentalDisorder === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">严重精神障碍</div>
+      </div>
+      {{?}}
+      {{? it["__Grandparents__"].diseTuberculosis === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">结核病</div>
+      </div>
+      {{?}}
+      {{? it["__Grandparents__"].diseHepatitis === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">肝炎</div>
+      </div>
+      {{?}}
+      {{? it["__Grandparents__"].diseLustreNaturae === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">先天畸形</div>
+      </div>
+      {{?}}
+      {{? it["__Grandparents__"].diseOtherNotifiable === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">其他法定传染病</div>
+      </div>
+      {{?}}
+      {{? it["__Grandparents__"].diseCareer === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">{{= it["__Grandparents__"].diseCareerName}}</div>
+      </div>
+      {{?}}
+      {{? it["__Grandparents__"].diseOther === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">{{= it["__Grandparents__"].diseOtherName}}</div>
+      </div>
+      {{?}}
+    </div>
+  </div>
+  {{??}}
+  <div class="item clearfix">
+    <div class="pull-left">外祖父母</div>
+    <div class="pull-right">无</div>
+  </div>
+  {{?}}
+  <!--父亲-->
+  {{? it.Util.data("__fatherDiseaseList__",  it._.find(it.familyDiseaseList, {diseRelation: 2}), it) && it["__fatherDiseaseList__"].diseFlag === 1}}
+    <div class="container flex horizental">
+      <div class="item flex align-center border-right w230">
+        <div>父亲</div>
+      </div>
+      <div class="container border-bottom">
+        {{? it["__fatherDiseaseList__"].diseHypertension === 1}}
+        <div class="item clearfix">
+          <div class="pull-left"></div>
+          <div class="pull-right">高血压</div>
+        </div>
+        {{?}}
+        {{? it["__fatherDiseaseList__"].diseDiabetes === 1}}
+        <div class="item clearfix">
+          <div class="pull-left"></div>
+          <div class="pull-right">糖尿病</div>
+        </div>
+        {{?}}
+        {{? it["__fatherDiseaseList__"].diseCoronaryHeart === 1}}
+        <div class="item clearfix">
+          <div class="pull-left"></div>
+          <div class="pull-right">冠心病</div>
+        </div>
+        {{?}}
+        {{? it["__fatherDiseaseList__"].diseChronicObstructive === 1}}
+        <div class="item clearfix">
+          <div class="pull-left"></div>
+          <div class="pull-right">慢性阻塞肺疾病</div>
+        </div>
+        {{?}}
+        {{? it["__fatherDiseaseList__"].diseMalignantTumor === 1}}
+        <div class="item clearfix">
+          <div class="pull-left"></div>
+          <div class="pull-right">{{= it["__fatherDiseaseList__"].diseTumorName}}</div>
+        </div>
+        {{?}}
+        {{? it["__fatherDiseaseList__"].diseCerebralApoplexy === 1}}
+        <div class="item clearfix">
+          <div class="pull-left"></div>
+          <div class="pull-right">脑卒中</div>
+        </div>
+        {{?}}
+        {{? it["__fatherDiseaseList__"].diseMentalDisorder === 1}}
+        <div class="item clearfix">
+          <div class="pull-left"></div>
+          <div class="pull-right">严重精神障碍</div>
+        </div>
+        {{?}}
+        {{? it["__fatherDiseaseList__"].diseTuberculosis === 1}}
+        <div class="item clearfix">
+          <div class="pull-left"></div>
+          <div class="pull-right">结核病</div>
+        </div>
+        {{?}}
+        {{? it["__fatherDiseaseList__"].diseHepatitis === 1}}
+        <div class="item clearfix">
+          <div class="pull-left"></div>
+          <div class="pull-right">肝炎</div>
+        </div>
+        {{?}}
+        {{? it["__fatherDiseaseList__"].diseLustreNaturae === 1}}
+        <div class="item clearfix">
+          <div class="pull-left"></div>
+          <div class="pull-right">先天畸形</div>
+        </div>
+        {{?}}
+        {{? it["__fatherDiseaseList__"].diseOtherNotifiable === 1}}
+        <div class="item clearfix">
+          <div class="pull-left"></div>
+          <div class="pull-right">其他法定传染病</div>
+        </div>
+        {{?}}
+        {{? it["__fatherDiseaseList__"].diseCareer === 1}}
+        <div class="item clearfix">
+          <div class="pull-left"></div>
+          <div class="pull-right">{{= it["__fatherDiseaseList__"].diseCareerName}}</div>
+        </div>
+        {{?}}
+        {{? it["__fatherDiseaseList__"].diseOther === 1}}
+        <div class="item clearfix">
+          <div class="pull-left"></div>
+          <div class="pull-right">{{= it["__fatherDiseaseList__"].diseOtherName}}</div>
+        </div>
+        {{?}}
+      </div>
+    </div>
+  {{??}}
+    <div class="item clearfix">
+      <div class="pull-left">父亲</div>
+      <div class="pull-right">无</div>
+    </div>
+  {{?}}
+
+  <!--母亲-->
+  {{? it.Util.data("__monthDiseaseList__",  it._.find(it.familyDiseaseList, {diseRelation: 3}), it) && it["__monthDiseaseList__"].diseFlag === 1}}
+  <div class="container flex horizental">
+    <div class="item flex align-center border-right w230">
+      <div>母亲</div>
+    </div>
+    <div class="container border-bottom">
+      {{? it["__monthDiseaseList__"].diseHypertension === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">高血压</div>
+      </div>
+      {{?}}
+      {{? it["__monthDiseaseList__"].diseDiabetes === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">糖尿病</div>
+      </div>
+      {{?}}
+      {{? it["__monthDiseaseList__"].diseCoronaryHeart === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">冠心病</div>
+      </div>
+      {{?}}
+      {{? it["__monthDiseaseList__"].diseChronicObstructive === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">慢性阻塞肺疾病</div>
+      </div>
+      {{?}}
+      {{? it["__monthDiseaseList__"].diseMalignantTumor === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">{{= it["__monthDiseaseList__"].diseTumorName}}</div>
+      </div>
+      {{?}}
+      {{? it["__monthDiseaseList__"].diseCerebralApoplexy === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">脑卒中</div>
+      </div>
+      {{?}}
+      {{? it["__monthDiseaseList__"].diseMentalDisorder === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">严重精神障碍</div>
+      </div>
+      {{?}}
+      {{? it["__monthDiseaseList__"].diseTuberculosis === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">结核病</div>
+      </div>
+      {{?}}
+      {{? it["__monthDiseaseList__"].diseHepatitis === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">肝炎</div>
+      </div>
+      {{?}}
+      {{? it["__monthDiseaseList__"].diseLustreNaturae === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">先天畸形</div>
+      </div>
+      {{?}}
+      {{? it["__monthDiseaseList__"].diseOtherNotifiable === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">其他法定传染病</div>
+      </div>
+      {{?}}
+      {{? it["__monthDiseaseList__"].diseCareer === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">{{= it["__monthDiseaseList__"].diseCareerName}}</div>
+      </div>
+      {{?}}
+      {{? it["__monthDiseaseList__"].diseOther === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">{{= it["__monthDiseaseList__"].diseOtherName}}</div>
+      </div>
+      {{?}}
+    </div>
+  </div>
+  {{??}}
+  <div class="item clearfix">
+    <div class="pull-left">母亲</div>
+    <div class="pull-right">无</div>
+  </div>
+  {{?}}
+
+  <!--兄弟姐妹-->
+  {{? it.Util.data("__brotherDiseaseList__",  it._.find(it.familyDiseaseList, {diseRelation: 4}), it) && it["__brotherDiseaseList__"].diseFlag === 1}}
+  <div class="container flex horizental">
+    <div class="item flex align-center border-right w230">
+      <div>兄弟姐妹</div>
+    </div>
+    <div class="container border-bottom">
+      {{? it["__brotherDiseaseList__"].diseHypertension === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">高血压</div>
+      </div>
+      {{?}}
+      {{? it["__brotherDiseaseList__"].diseDiabetes === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">糖尿病</div>
+      </div>
+      {{?}}
+      {{? it["__brotherDiseaseList__"].diseCoronaryHeart === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">冠心病</div>
+      </div>
+      {{?}}
+      {{? it["__brotherDiseaseList__"].diseChronicObstructive === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">慢性阻塞肺疾病</div>
+      </div>
+      {{?}}
+      {{? it["__brotherDiseaseList__"].diseMalignantTumor === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">{{= it["__brotherDiseaseList__"].diseTumorName}}</div>
+      </div>
+      {{?}}
+      {{? it["__brotherDiseaseList__"].diseCerebralApoplexy === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">脑卒中</div>
+      </div>
+      {{?}}
+      {{? it["__brotherDiseaseList__"].diseMentalDisorder === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">严重精神障碍</div>
+      </div>
+      {{?}}
+      {{? it["__brotherDiseaseList__"].diseTuberculosis === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">结核病</div>
+      </div>
+      {{?}}
+      {{? it["__brotherDiseaseList__"].diseHepatitis === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">肝炎</div>
+      </div>
+      {{?}}
+      {{? it["__brotherDiseaseList__"].diseLustreNaturae === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">先天畸形</div>
+      </div>
+      {{?}}
+      {{? it["__brotherDiseaseList__"].diseOtherNotifiable === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">其他法定传染病</div>
+      </div>
+      {{?}}
+      {{? it["__brotherDiseaseList__"].diseCareer === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">{{= it["__brotherDiseaseList__"].diseCareerName}}</div>
+      </div>
+      {{?}}
+      {{? it["__brotherDiseaseList__"].diseOther === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">{{= it["__brotherDiseaseList__"].diseOtherName}}</div>
+      </div>
+      {{?}}
+    </div>
+  </div>
+  {{??}}
+  <div class="item clearfix">
+    <div class="pull-left">兄弟姐妹</div>
+    <div class="pull-right">无</div>
+  </div>
+  {{?}}
+
+  <!--子女-->
+  {{? it.Util.data("__childDiseaseList__",  it._.find(it.familyDiseaseList, {diseRelation: 5}), it) && it["__childDiseaseList__"].diseFlag === 1}}
+  <div class="container flex horizental">
+    <div class="item flex align-center border-right w230">
+      <div>子女</div>
+    </div>
+    <div class="container border-bottom">
+      {{? it["__childDiseaseList__"].diseHypertension === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">高血压</div>
+      </div>
+      {{?}}
+      {{? it["__childDiseaseList__"].diseDiabetes === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">糖尿病</div>
+      </div>
+      {{?}}
+      {{? it["__childDiseaseList__"].diseCoronaryHeart === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">冠心病</div>
+      </div>
+      {{?}}
+      {{? it["__childDiseaseList__"].diseChronicObstructive === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">慢性阻塞肺疾病</div>
+      </div>
+      {{?}}
+      {{? it["__childDiseaseList__"].diseMalignantTumor === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">{{= it["__childDiseaseList__"].diseTumorName}}</div>
+      </div>
+      {{?}}
+      {{? it["__childDiseaseList__"].diseCerebralApoplexy === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">脑卒中</div>
+      </div>
+      {{?}}
+      {{? it["__childDiseaseList__"].diseMentalDisorder === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">严重精神障碍</div>
+      </div>
+      {{?}}
+      {{? it["__childDiseaseList__"].diseTuberculosis === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">结核病</div>
+      </div>
+      {{?}}
+      {{? it["__childDiseaseList__"].diseHepatitis === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">肝炎</div>
+      </div>
+      {{?}}
+      {{? it["__childDiseaseList__"].diseLustreNaturae === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">先天畸形</div>
+      </div>
+      {{?}}
+      {{? it["__childDiseaseList__"].diseOtherNotifiable === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">其他法定传染病</div>
+      </div>
+      {{?}}
+      {{? it["__childDiseaseList__"].diseCareer === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">{{= it["__childDiseaseList__"].diseCareerName}}</div>
+      </div>
+      {{?}}
+      {{? it["__childDiseaseList__"].diseOther === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">{{= it["__childDiseaseList__"].diseOtherName}}</div>
+      </div>
+      {{?}}
+    </div>
+  </div>
+  {{??}}
+  <div class="item clearfix">
+    <div class="pull-left">子女</div>
+    <div class="pull-right">无</div>
+  </div>
+  {{?}}
+
+  <!--孙子女-->
+  {{? it.Util.data("__grandchildren__",  it._.find(it.familyDiseaseList, {diseRelation: 5}), it) && it["__grandchildren__"].diseFlag === 1}}
+  <div class="container flex horizental">
+    <div class="item flex align-center border-right w230">
+      <div>孙子女</div>
+    </div>
+    <div class="container border-bottom">
+      {{? it["__grandchildren__"].diseHypertension === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">高血压</div>
+      </div>
+      {{?}}
+      {{? it["__grandchildren__"].diseDiabetes === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">糖尿病</div>
+      </div>
+      {{?}}
+      {{? it["__grandchildren__"].diseCoronaryHeart === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">冠心病</div>
+      </div>
+      {{?}}
+      {{? it["__grandchildren__"].diseChronicObstructive === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">慢性阻塞肺疾病</div>
+      </div>
+      {{?}}
+      {{? it["__grandchildren__"].diseMalignantTumor === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">{{= it["__grandchildren__"].diseTumorName}}</div>
+      </div>
+      {{?}}
+      {{? it["__grandchildren__"].diseCerebralApoplexy === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">脑卒中</div>
+      </div>
+      {{?}}
+      {{? it["__grandchildren__"].diseMentalDisorder === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">严重精神障碍</div>
+      </div>
+      {{?}}
+      {{? it["__grandchildren__"].diseTuberculosis === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">结核病</div>
+      </div>
+      {{?}}
+      {{? it["__grandchildren__"].diseHepatitis === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">肝炎</div>
+      </div>
+      {{?}}
+      {{? it["__grandchildren__"].diseLustreNaturae === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">先天畸形</div>
+      </div>
+      {{?}}
+      {{? it["__grandchildren__"].diseOtherNotifiable === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">其他法定传染病</div>
+      </div>
+      {{?}}
+      {{? it["__grandchildren__"].diseCareer === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">{{= it["__grandchildren__"].diseCareerName}}</div>
+      </div>
+      {{?}}
+      {{? it["__grandchildren__"].diseOther === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">{{= it["__grandchildren__"].diseOtherName}}</div>
+      </div>
+      {{?}}
+    </div>
+  </div>
+  {{??}}
+  <div class="item clearfix">
+    <div class="pull-left">孙子女</div>
+    <div class="pull-right">无</div>
+  </div>
+  {{?}}
+
+  <!--外孙子女-->
+  {{? it.Util.data("__Grandchildren__",  it._.find(it.familyDiseaseList, {diseRelation: 5}), it) && it["__Grandchildren__"].diseFlag === 1}}
+  <div class="container flex horizental">
+    <div class="item flex align-center border-right w230">
+      <div>外孙子女</div>
+    </div>
+    <div class="container border-bottom">
+      {{? it["__Grandchildren__"].diseHypertension === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">高血压</div>
+      </div>
+      {{?}}
+      {{? it["__Grandchildren__"].diseDiabetes === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">糖尿病</div>
+      </div>
+      {{?}}
+      {{? it["__Grandchildren__"].diseCoronaryHeart === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">冠心病</div>
+      </div>
+      {{?}}
+      {{? it["__Grandchildren__"].diseChronicObstructive === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">慢性阻塞肺疾病</div>
+      </div>
+      {{?}}
+      {{? it["__Grandchildren__"].diseMalignantTumor === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">{{= it["__Grandchildren__"].diseTumorName}}</div>
+      </div>
+      {{?}}
+      {{? it["__Grandchildren__"].diseCerebralApoplexy === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">脑卒中</div>
+      </div>
+      {{?}}
+      {{? it["__Grandchildren__"].diseMentalDisorder === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">严重精神障碍</div>
+      </div>
+      {{?}}
+      {{? it["__Grandchildren__"].diseTuberculosis === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">结核病</div>
+      </div>
+      {{?}}
+      {{? it["__Grandchildren__"].diseHepatitis === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">肝炎</div>
+      </div>
+      {{?}}
+      {{? it["__Grandchildren__"].diseLustreNaturae === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">先天畸形</div>
+      </div>
+      {{?}}
+      {{? it["__Grandchildren__"].diseOtherNotifiable === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">其他法定传染病</div>
+      </div>
+      {{?}}
+      {{? it["__Grandchildren__"].diseCareer === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">{{= it["__Grandchildren__"].diseCareerName}}</div>
+      </div>
+      {{?}}
+      {{? it["__Grandchildren__"].diseOther === 1}}
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">{{= it["__Grandchildren__"].diseOtherName}}</div>
+      </div>
+      {{?}}
+    </div>
+  </div>
+  {{??}}
+  <div class="item clearfix">
+    <div class="pull-left">外孙子女</div>
+    <div class="pull-right">无</div>
+  </div>
+  {{?}}
+
+</div>
+
+<div class="container mt8">
+  <div class="item clearfix">
+    <div class="pull-left">遗传病史</div>
+    <div class="pull-right">
+      {{? it.residentGeneticSelect === 1}}
+        {{=it.residentGeneticDescribe}}
+      {{??}}
+        无
+      {{?}}
+    </div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">残疾情况</div>
+    <div class="pull-right">
+      {{? it.deformityRecord && it.deformityRecord.defoFlag === 1}}
+        {{? it.deformityRecord.defoVision === 1}}
+        <span class="unit">视力残疾</span>
+        {{?}}
+        {{? it.deformityRecord.defoHearing === 1}}
+        <span class="unit">听力残疾</span>
+        {{?}}
+        {{? it.deformityRecord.defoSpeech === 1}}
+        <span class="unit">言语残疾</span>
+        {{?}}
+        {{? it.deformityRecord.defoLimbs === 1}}
+        <span class="unit">肢体残疾</span>
+        {{?}}
+        {{? it.deformityRecord.defoRetarded === 1}}
+        <span class="unit">智力残疾</span>
+        {{?}}
+        {{? it.deformityRecord.defoMental === 1}}
+        <span class="unit">精神残疾</span>
+        {{?}}
+        {{? it.deformityRecord.defoOtherFlag === 1}}
+        <span class="unit">{{= it.deformityRecord.defoOther}}</span>
+        {{?}}
+      {{??}}
+      无残疾
+      {{?}}
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="item bgColor">
+    <div class="sub-title">
+      生活环境*
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="item clearfix">
+    <div class="pull-left">厨房排风设施</div>
+    <div class="pull-right">
+      {{? it.residentKitchenExhaust === 1}}
+        无
+      {{?? it.residentKitchenExhaust === 2}}
+        油烟机
+      {{?? it.residentKitchenExhaust === 3}}
+        换气扇
+      {{?? it.residentKitchenExhaust === 4}}
+        烟囱
+      {{?}}
+    </div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">燃料类型</div>
+    <div class="pull-right">
+      {{? it.residentFuelType === 1}}
+      无
+      {{?? it.residentFuelType === 2}}
+      液化气
+      {{?? it.residentFuelType === 3}}
+      煤
+      {{?? it.residentFuelType === 4}}
+      天然气
+      {{?? it.residentFuelType === 5}}
+      沼气
+      {{?? it.residentFuelType === 6}}
+      柴火
+      {{?? it.residentFuelType === 7}}
+      其他
+      {{?}}
+    </div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">饮水</div>
+    <div class="pull-right">
+      {{? it.residentWaterType === 1}}
+      无
+      {{?? it.residentWaterType === 2}}
+      自来水
+      {{?? it.residentWaterType === 3}}
+      经净化过滤的水
+      {{?? it.residentWaterType === 4}}
+      井水
+      {{?? it.residentWaterType === 5}}
+      河湖水
+      {{?? it.residentWaterType === 6}}
+      塘水
+      {{?? it.residentWaterType === 7}}
+      其他
+      {{?}}
+    </div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">厕所</div>
+    <div class="pull-right">
+      {{? it.residentToiletType === 1}}
+      无
+      {{?? it.residentToiletType === 2}}
+      卫生厕所
+      {{?? it.residentToiletType === 3}}
+      一格或二粪池式
+      {{?? it.residentToiletType === 4}}
+      马桶
+      {{?? it.residentToiletType === 5}}
+      露天粪坑
+      {{?? it.residentToiletType === 6}}
+      简易棚厕
+      {{?}}
+    </div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">禽畜栏</div>
+    <div class="pull-right">
+      {{? it.residentBeastColumn === 1}}
+      无
+      {{?? it.residentBeastColumn === 2}}
+      单设
+      {{?? it.residentBeastColumn === 3}}
+      室内
+      {{?? it.residentBeastColumn === 4}}
+      室外
+      {{?}}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,125 @@
+img{
+    vertical-align: top;
+}
+.box{
+    display:flex;
+}
+.box .flex{
+    flex:1;
+}
+#classify{
+    position:fixed;
+    width:100%;
+    background:#fff;
+}
+#classify .wrapper{
+    text-align:center;
+}
+#classify .wrapper:first-child{
+    height:.88rem;
+    line-height:.88rem;
+    overflow:hidden;
+    background:#00a0e9;
+    color:#fff;
+    padding:0 1rem;
+}
+#classify .wrapper:first-child ul{
+    width:5.3rem;
+    margin:0 auto;
+}
+#classify .wrapper:last-child{
+    height:1rem;
+    overflow:hidden;
+    line-height:1rem;
+    border-bottom:1px solid #e5e5e5;
+}
+#classify .first-cate li{
+    padding:0 .2rem;
+}
+#classify .wrapper:last-child *{
+    font-size:.30rem;
+}
+#classify .wrapper:last-child li{
+    padding:0 .2rem;
+}
+#classify .active{
+    color:#00a0e9;
+}
+
+div.goodslist{
+    padding-top:1.88rem;
+}
+#goodslist{
+    background:#f4f4f4;
+}
+#goodslist li{
+    width:50%;
+    margin-bottom:.2rem;
+}
+#goodslist li:nth-child(2n) a{
+    margin-left:.05rem;
+}
+#goodslist li:nth-child(2n+1) a{
+    margin-right:.05rem;
+}
+#goodslist li > a{
+    display: block;
+    background:#fff;
+}
+#goodslist li .dis-table{
+    display:table;
+}
+#goodslist li .mainImg{
+    width:100%;
+    height:3.6rem;
+    overflow:hidden;
+    display:table-cell;
+    vertical-align: middle;
+    background:#e5e5e5;
+}
+#goodslist li .mainImg img{
+    width:100%;
+    height:3.6rem;
+}
+#goodslist li > a > p{
+    font-size:.3rem;
+    color:#1b1b1b;
+    padding:.2rem .15rem ;
+    height:1rem;
+    margin:0;
+}
+#goodslist li > a .price{
+    padding: 0 .15rem;
+    font-size:.38rem;
+    color:#f7591b;
+}
+#goodslist li >a .price span{
+    font-size:.24rem;
+}
+.article-category{
+    overflow: hidden;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+}
+.article-category::-webkit-scrollbar {
+    display: none
+    /* 隐藏滚动条，但依旧具备可以滚动的功能 */
+}
+.article-category .article-category-item{
+    white-space: nowrap;
+    display: inline-block;
+    padding-left: 0.1rem;
+    padding-right: 0.1rem;
+    color: #505050;
+    text-decoration: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,.3);
+}
+#nav_first .article-category .article-category-item{
+    color:#c2ecff;
+    font-size:.32rem;
+}
+#nav_first .article-category .article-category-item.active{
+    font-size:.34rem;
+    color:#fff;
+}

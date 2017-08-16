@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+  <link rel="stylesheet" href="../../static/css/reset.css"/>
+  <link rel="stylesheet" href="../../static/css/flex.css">
+  <link rel="stylesheet" href="./css/layout_inhabitant.css"/>
+  <link rel="stylesheet" href="./css/article_detail.css"/>
+  <script type="text/javascript" src="../../static/assets/adaptive/myadaptive.js"></script>
+  <script>
+    window['adaptive'].desinWidth = 750;// 设计图宽度
+    window['adaptive'].baseFont = 30;// 没有缩放时的字体大小
+    window['adaptive'].maxWidth = 750;// 页面最大宽度 默认540
+    window['adaptive'].init();// 调用初始化方法
+  </script>
+  <title>文章详情</title>
+</head>
+<body>
+
+</body>
+<script type="text/x-dot-template" id="js-article-detail">
+  <article>
+
+    <div class="cnt flex">
+      <h1 class="article_title cell">{{= it.article_title}}</h1>
+      {{? window.screen.width < 750 && Util.userId }}
+        {{? it.isFavorite == 0 }}
+        <button data-flag=true id="js-collection" class="collect ">收藏</button>
+        {{??}}
+        <button data-flag=false id="js-collection" class="collect">取消收藏</button>
+        {{?}}
+      {{?}}
+    </div>
+
+    <div class="author"><span>{{= it.article_author}}</span><span>{{= it.create_dateStr}}</span></div>
+    <div class="article_content">
+      <div>
+        <p>{{= it.article_content}}</p>
+      </div>
+    </div>
+  </article>
+</script>
+<script src="../../static/assets/jquery/jquery-1.9.1.min.js"></script>
+<script src="../../static/assets/tap/tap.min.js"></script>
+<script src="../../static/assets/doT-master/doT.min.js"></script>
+<script src="../../static/js/Util.js"></script>
+<script>
+  var params = Util.param(location.href);
+  console.log(params);
+  var article_id = params["article_id"];
+  var user_id = Util.userId;
+  if (!article_id) {
+    Util.alert("article_id错误");
+    console.log("article_id:" + article_id);
+  } else {
+    article_id = parseInt(article_id)
+  }
+  var paramData = {article_id: article_id};
+  if(user_id) 
+    paramData['user_id'] = user_id
+  Util.fetch({
+    url: Util.host + "/hca/web/inhabitant/getarticledetail",
+    data: JSON.stringify(paramData),
+    demoUrl: "../../static/rss/getarticledetail.json",
+    success: function (data) {
+      data = data || {};
+      if (data.ret_code === 1) {
+        var template = doT.template($("#js-article-detail").html());
+        var tempData = data.ret_data || {};
+        tempData.source = params["source"];
+        var htmlStr = template($.extend(tempData, {getPicUrl: Util.getPicUrl}));
+        $(document.body).append(htmlStr);
+      } else {
+        Util.alert(data.ret_msg || "查询信息错误！");
+      }
+    },
+    error: function () {
+      Util.alert("网络错误");
+    }
+  })
+  $(document.body).on("tap", "#js-collection", function (e) {
+    var $this = $(this);
+    if ($this.data("flag")) {
+      // 收藏
+      Util.load("收藏...");
+      Util.fetch({
+        url: Util.host + "/hca/web/inhabitant/submitarticlefavorite",
+        data: JSON.stringify({
+          "article_id": article_id,
+          "user_id": parseInt(Util.userId),
+          "src_type":"Inhabitant APP",
+          "pf_type":  Util.pf_type,
+          "auth_str":  Util.getCommunicationAuth()
+        }),
+        demoUrl: "../../static/rss/submitarticlefavorite.json",
+        success: function (data) {
+          Util.hideLoad();
+          data = data || {};
+          if (data.ret_code === 1) {
+            $this.data("flag", false);
+            $this.html("取消收藏");
+            Util.alert("收藏成功");
+          } else {
+            Util.alert(data.ret_msg || "文章收藏错误！");
+          }
+        },
+        error: function () {
+          Util.hideLoad();
+          Util.alert("网络错误！");
+        }
+      })
+    } else {
+      // 取消收藏
+      Util.load("取消收藏...");
+      Util.fetch({
+        url: Util.host + "/hca/web/inhabitant/canclearticlefavorite",
+        data: JSON.stringify({
+          "article_id": article_id,
+          "user_id": parseInt(Util.userId),
+          "src_type":"Inhabitant APP",
+          "pf_type":  Util.pf_type,
+          "auth_str":  Util.getCommunicationAuth()
+        }),
+        demoUrl: "../../static/rss/canclearticlefavorite.json",
+        success: function (data) {
+          Util.hideLoad();
+          data = data || {};
+          if (data.ret_code === 1) {
+            $this.data("flag", true);
+            $this.html("收藏");
+            Util.alert("取消收藏成功");
+          } else {
+            Util.alert(data.ret_msg || "取消收藏错误！");
+          }
+        },
+        error: function(){
+          Util.hideLoad();
+          Util.alert("网络错误！");
+        }
+      })
+    }
+    e.stopPropagation();
+    e.preventDefault();
+  })
+</script>
+</html>

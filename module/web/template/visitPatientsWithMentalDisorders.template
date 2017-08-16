@@ -1,0 +1,240 @@
+<div class="container">
+  <table class="tb tb-auto tb-border">
+    <thead>
+      <th colspan="6" class="bgColor text-left">
+        严重精神障碍患者随访服务记录表
+      </th>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="text-right bgColor label w200">姓名</td>
+        <td class="text-left" colspan="2">{{= it.residentName}}</td>
+        <td class="text-right bgColor label w200">档案编号</td>
+        <td class="text-left">{{= it.residentNo}}</td>
+      </tr>
+      <tr>
+        <td class="text-right bgColor label">随访日期</td>
+        <td class="text-left" colspan="2">{{= it.Util.formatDate(it.createDate)}}</td>
+        <td class="text-right bgColor label">本次随访形式</td>
+        <td class="text-left">
+          {{? it.mentvStyle == 1}}
+          门诊
+          {{?? it.mentvStyle == 2}}
+          家庭
+          {{?? it.mentvStyle == 3}}
+          电话
+          {{?}}
+        </td>
+      </tr>
+      {{? it.mentvLostReasonName}}
+      <tr>
+        <td class="text-right bgColor label">若失访，原因</td>
+        <td class="text-left" colspan="4">{{= it.mentvLostReasonName}}</td>
+      </tr>
+      {{?}} {{? it.mentvDeathDate && it.mentvDeathReason}}
+      <tr>
+        <td class="text-center bgColor label" rowspan="2">如死亡，日期和原因</td>
+        <td class="text-right bgColor label w200">死亡日期</td>
+        <td class="text-left" colspan="3">{{= it.Util.formatDate(it.mentvDeathDate)}}</td>
+      </tr>
+      <tr>
+        <td class="text-right bgColor label w200">死亡原因</td>
+        <td class="text-left" colspan="3">
+          {{? it.mentvDeathReason == 1}} 
+            {{? it.mentvBodyDeath == 1}}
+            传染病和寄生虫病
+            {{?? it.mentvBodyDeath == 2}}
+            肿瘤
+            {{?? it.mentvBodyDeath == 3}}
+            心脏病
+            {{?? it.mentvBodyDeath == 4}}
+            呼吸系统疾病
+            {{?? it.mentvBodyDeath == 5}}
+            消化系统疾病
+            {{?? it.mentvBodyDeath == 6}}
+            脑血管病
+            {{?? it.mentvBodyDeath == 7}}
+            其他疾病
+            {{?? it.mentvBodyDeath == 8}}
+            不详
+            {{?}}
+          {{?? it.mentvDeathReason == 2}} 
+          自杀
+           {{?? it.mentvDeathReason == 3}} 
+          他杀
+           {{?? it.mentvDeathReason == 4}} 
+          意外
+          {{?? it.mentvDeathReason == 5}} 
+          精神疾病相关并发症
+          {{?? it.mentvDeathReason == 6}} 
+          其他
+          {{?}}
+        </td>
+      </tr>
+      {{?}}
+      <tr>
+        <td class="text-right bgColor label w200">危险性</td>
+        <td class="text-left" colspan="2">
+          {{? it.mentvDanger == 1}} 0级 {{?? it.mentvDanger == 2}} 1级 {{?? it.mentvDanger == 3}} 2级 {{?? it.mentvDanger == 4}} 3级 {{?? it.mentvDanger == 5}} 4级 {{?? it.mentvDanger == 6}} 5级 {{?}}
+        </td>
+        <td class="text-right bgColor label w200">目前症状</td>
+        <td class="text-left">{{= it.bodySymptomListStr}}</td>
+      </tr>
+      <tr>
+        <td class="text-right bgColor label">自知力</td>
+        <td class="text-left" colspan="2">{{= it.mentvInsightName}}</td>
+        <td class="text-right bgColor label">睡眠情况</td>
+        <td class="text-left">{{= it.mentvSleepConditionName}}</td>
+      </tr>
+      <tr>
+        <td class="text-right bgColor label">饮食情况</td>
+        <td class="text-left" colspan="4">{{= it.mentvDietSituationName}}</td>
+      </tr>
+      <tr>
+        <td class="text-center bgColor label" rowspan="5">社会功能情况</td>
+        <td class="text-right bgColor label">个人生活料理</td>
+        <td class="text-left" colspan="3">{{= it.mentvPersonalLifestyleName}}</td>
+      </tr>
+      <tr>
+        <td class="text-right bgColor label">家务劳动</td>
+        <td class="text-left" colspan="3">{{= it.mentvHouseworkName}}</td>
+      </tr>
+      <tr>
+        <td class="text-right bgColor label">生产劳动及工作</td>
+        <td class="text-left" colspan="3">
+          {{? it.mentvProductWork == 1}}
+          良好
+          {{?? it.mentvProductWork == 2}}
+          一般
+          {{?? it.mentvProductWork == 3}}
+          较差
+          {{?? it.mentvProductWork == 4}}
+          此项不合适
+          {{?}}
+        </td>
+      </tr>
+      <tr>
+        <td class="text-right bgColor label">学习能力</td>
+        <td class="text-left" colspan="3">{{= it.mentvLearnName}}</td>
+      </tr>
+      <tr>
+        <td class="text-right bgColor label">社会人际交往</td>
+        <td class="text-left" colspan="3">{{= it.mentvSocialCommunName}}</td>
+      </tr>
+      <tr>
+        <td class="text-right bgColor label w200">危险行为</td>
+        <td class="text-left" colspan="2">
+          {{? it.dangerousAct.dangaFlag == 1}} 
+            {{? it.dangerousAct.dangaMildTrouble > 0}} 
+            轻度滋事{{= it.dangerousAct.dangaMildTrouble}}次&nbsp; 
+            {{?}} 
+            {{? it.dangerousAct.dangaAccident > 0}} 
+            肇事{{= it.dangerousAct.dangaAccident}}次&nbsp; 
+            {{?}} 
+            {{? it.dangerousAct.dangaZhaohuo > 0}} 
+            肇祸{{= it.dangerousAct.dangaZhaohuo}}次&nbsp; 
+            {{?}} 
+            {{? it.dangerousAct.dangaAttemptedSuicide > 0}} 
+            自杀未遂{{= it.dangerousAct.dangaAttemptedSuicide}}次&nbsp; 
+            {{?}} {{? it.dangerousAct.dangaSelfInjury > 0}} 
+            自伤{{= it.dangerousAct.dangaSelfInjury}}次&nbsp; 
+            {{?}} 
+            {{? it.dangerousAct.dangaOtherHazards > 0}} 
+            其他危害行为{{= it.dangerousAct.dangaOtherHazards}}次 
+            {{?}} 
+          {{??}} 
+          无 
+          {{?}}
+        </td>
+        <td class="text-right bgColor label w200">随访期间关锁情况</td>
+        <td class="text-left">{{= it.mentvLockName}}</td>
+      </tr>
+      <tr>
+        <td class="text-right bgColor label w200">随访期间住院情况</td>
+        <td class="text-left" colspan="2">
+          {{= it.mentvHospitalizationName}} {{? it.mentvHospitalization == 3}}
+          <br> 末次出院时间：{{= it.Util.formatDate(it.mentvHospitalizationLeave)}} {{?}}
+        </td>
+        <td class="text-right bgColor label w200">实验室检查</td>
+        <td class="text-left">
+          {{? it.mentvLabExam == 1}}
+          {{= it.mentvLabDescribe}}
+          {{??}}
+          无
+          {{?}}
+        </td>
+      </tr>
+      <tr>
+        <td class="text-right bgColor label w200">服药依从性</td>
+        <td class="text-left" colspan="2">{{= it.mentvMedicationCompName}}</td>
+        <td class="text-right bgColor label w200">药物不良反应</td>
+        <td class="text-left">
+          {{? it.mentvDrugReaction == 1}}
+          {{= it.mentvDrugDescribe}}
+          {{??}}
+          无
+          {{?}}
+        </td>
+      </tr>
+      <tr>
+        <td class="text-right bgColor label w200">治疗效果</td>
+        <td class="text-left" colspan="2">{{= it.mentvTreatmentEffectName}}</td>
+        <td class="text-right bgColor label w200">是否转诊</td>
+        <td class="text-left">
+          {{? it.mentvReferralFlag == 1}}
+          转诊原因：{{= it.mentvReferralReason}}<br/>
+          转诊至机构及科室：{{= it.mentvReferralHospital}}
+          {{??}}
+          无
+          {{?}}
+        </td>
+      </tr>
+      {{? it.useMedicationList && it.useMedicationList.length > 0}} {{~ it.useMedicationList :value:index}}
+      <tr>
+        {{? index == 0}}
+        <td class="text-center bgColor label" rowspan="{{= it.useMedicationList.length}}">用药情况</td>
+        {{?}}
+        <td class="text-right bgColor label w115">药物名称{{= index+1}}</td>
+        <td>{{= value.medDrugName}}</td>
+        {{? index == 0}}
+        <td class="text-center bgColor label" rowspan="{{= it.useMedicationList.length}}">用法</td>
+        {{?}}
+        <!--     <td class="text-right bgColor label">剂量</td> -->
+        <td class="text-left">{{= value.medUsage}}{{= value.medDrupRate}},每次剂量{{= value.medConsumption}}mg</td>
+      </tr>
+      {{~}} {{??}}
+      <tr>
+        <td class="text-right bgColor label w200">用药情况</td>
+        <td class="text-left" colspan="4">无</td>
+      </tr>
+      {{?}}
+      <!-- <tr>
+      <td class="text-center bgColor label" rowspan="3">用药情况</td>
+      <td class="text-right bgColor label w200">药物1</td>
+      <td class="text-left">***</td>
+      <td class="text-right bgColor label w200" rowspan="3">用法和用量</td>
+      <td class="text-left">2次/日,每次剂量200mg</td>
+    </tr>
+    <tr>
+      <td class="text-right bgColor label w200">药物1</td>
+      <td class="text-left">***</td>
+      <td class="text-left">2次/日,每次剂量200mg</td>
+    </tr>
+    <tr>
+      <td class="text-right bgColor label w200">药物1</td>
+      <td class="text-left">***</td>
+      <td class="text-left">2次/日,每次剂量200mg</td>
+    </tr>-->
+      <tr>
+        <td class="text-right bgColor label w200">康复措施</td>
+        <td class="text-left" colspan="2">{{= it.mentvCommonFieldName}}</td>
+        <td class="text-right bgColor label w200">本次随访分类</td>
+        <td class="text-left">{{= it.mentvClassicName}}</td>
+      </tr>
+      <tr>
+        <td class="text-right bgColor label w200">下次随访日期</td>
+        <td class="text-left" colspan="4">{{= it.Util.formatDate(it.nextVisitDate)}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,182 @@
+<div class="container">
+  <div class="item clearfix">
+    <div class="pull-left">姓名</div>
+    <div class="pull-right">{{= it.residentName}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">档案编号</div>
+    <div class="pull-right">{{= it.residentNo}}</div>
+  </div>
+  <!--</div>-->
+
+  <!--<div class="container">-->
+  <!--<ul class="item bgColor list-inline clearfix">-->
+  <!--<li class="primary-color js-tab-btn" data-target="js-one-month">3岁</li>-->
+  <!--<li class="secondary-color js-tab-btn" data-target="js-third-month">4岁</li>-->
+  <!--<li class="tertiary-color">5岁</li>-->
+  <!--<li class="tertiary-color">6岁</li>-->
+  <!--</ul>-->
+  <!--</div>-->
+
+  <!--<div class="js-tab-content" id="js-one-month">-->
+  <!--<div class="container">-->
+  <div class="item clearfix">
+    <div class="pull-left">随访日期</div>
+    <div class="pull-right">{{= it.Util.formatDate(it.createDate)}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">体重/kg</div>
+    <div class="pull-right">{{= it.visitWeight}}/kg/{{= it.visitWeightLevelName}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">身长/cm</div>
+    <div class="pull-right">{{= it.visitHeight}}/cm/{{= it.visitHeightLevelName}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">体重/身高</div>
+    <div class="pull-right">{{= (it.visitWeight/it.visitHeight).toFixed(2)}}/{{= it.visitBmiLevelName || "" }}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">体格发育评价</div>
+    <div class="pull-right">{{= it.visitDevelopmentEvaluationName}}</div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="item clearfix bgColor">
+    <div class="sub-title">
+      体格检查
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  {{? it.visitAge != 3}}
+  <div class="item clearfix">
+    <div class="pull-left">视力</div>
+    <div class="pull-right">左眼：{{= it.visitVisionLeft}}/右眼：{{= it.visitVisionRight}}</div>
+  </div>
+  {{?}}
+  {{? it.visitAge == 3}}
+  <div class="item clearfix">
+    <div class="pull-left">听力</div>
+    <div class="pull-right">{{= it.visitListenName}}</div>
+  </div>
+  {{?}}
+
+  <div class="item clearfix">
+    <div class="pull-left">牙数(颗)/龋齿数</div>
+    <div class="pull-right">{{= it.visitTooth}}/{{= it.visitDentalCaries}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">胸部</div>
+    <div class="pull-right">{{= it.visitChestName}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">腹部</div>
+    <div class="pull-right">{{= it.visitAbdomenName}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">血红蛋白值*</div>
+    <div class="pull-right">{{= it.visitHemoglobin}}<span class="unit">g/L</span></div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">其他</div>
+    <div class="pull-right">{{= it.visitBodyOther}}</div>
+  </div>
+
+  <div class="item clearfix fill">
+    <div class="pull-left">两次随访间患病情况</div>
+    <div class="pull-right">
+      {{? it.visitPeriodIll == 1}}
+        {{= it.visitPeriodIllName}}
+      {{??}}
+        无
+      {{?}}
+    </div>
+  </div>
+  <!--<div class="container flex horizental bgWhite">-->
+  <!--<div class="item flex align-center border-right w230">-->
+  <!--<div>两次随访间患病情况</div>-->
+  <!--</div>-->
+  <!--<div class="container border-bottom flex align-center vertical justify-center">-->
+  <!--<div class="item clearfix fill">-->
+  <!--<div class="pull-left">&nbsp;</div>-->
+  <!--<div class="pull-right">无</div>-->
+  <!--</div>-->
+  <!--<div class="item clearfix cram">-->
+  <!--<div class="pull-left">肺炎</div>-->
+  <!--<div class="pull-right">2次</div>-->
+  <!--</div>-->
+  <!--<div class="item clearfix">-->
+  <!--<div class="pull-left">腹泻</div>-->
+  <!--<div class="pull-right">2次</div>-->
+  <!--</div>-->
+  <!--<div class="item clearfix">-->
+  <!--<div class="pull-left">外伤</div>-->
+  <!--<div class="pull-right">2次</div>-->
+  <!--</div>-->
+  <!--<div class="item clearfix">-->
+  <!--<div class="pull-left">其他</div>-->
+  <!--<div class="pull-right">&nbsp;</div>-->
+  <!--</div>-->
+  <!--</div>-->
+  <!--</div>-->
+  {{? it.visitReferralFlag == 1}}
+  <div class="container flex horizental bgWhite">
+    <div class="item flex align-center border-right w230">
+      <div>转诊建议</div>
+    </div>
+    <div class="container border-bottom">
+      <div class="item clearfix ">
+        <div class="pull-left">原因</div>
+        <div class="pull-right">{{= it.visitReferralReason}}</div>
+      </div>
+      <div class="item clearfix ">
+        <div class="pull-left">机构及科室</div>
+        <div class="pull-right">{{= it.visitReferralHospital}}</div>
+      </div>
+    </div>
+  </div>
+  {{??}}
+  <div class="item clearfix">
+    <div class="pull-left">转诊建议</div>
+    <div class="pull-right">无</div>
+  </div>
+  {{?}}
+
+  <div class="item clearfix">
+    <div class="pull-left">指导</div>
+    <div class="pull-right">{{= it.healthGuideText}}</div>
+  </div>
+  <!--<div class="container flex horizental">
+    <div class="item flex align-center w230">
+      <div>指导</div>
+    </div>
+    <div class="container border-bottom">
+      <div class="item clearfix">
+        <ul class="pull-right list">
+          <li class="text-right">1科学喂养</li>
+          <li class="text-right">2生长发育</li>
+          <li class="text-right">3疾病预防</li>
+          <li class="text-right">4预防意外伤害</li>
+          <li class="text-right">5口腔保健</li>
+          <li class="text-right">6其他</li>
+        </ul>
+      </div>
+    </div>
+  </div>-->
+  {{? it.visitAge != 6}}
+  <div class="item clearfix">
+    <div class="pull-left">下次随访日期</div>
+    <div class="pull-right">{{= it.Util.formatDate(it.nextVisitDate)}}</div>
+  </div>
+  {{?}}
+
+  <!--<div class="item clearfix">
+    <div class="pull-left">随访医生签名</div>
+    <div class="pull-right">{{= it.visitDoctor}}</div>
+  </div>-->
+</div>
+<!--</div>-->

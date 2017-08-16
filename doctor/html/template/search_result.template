@@ -1,0 +1,147 @@
+<div class="title">查询结果</div>
+<!--<form action="/web/doctor/evaluate/create" method="post">-->
+<table class="table table-bordered">
+    <tr>
+        <td>姓名：</td>
+        <td>{{=it.user.realName}}</td>
+    </tr>
+    <tr>
+        <td>性别：</td>
+        <td>{{=it.resident.decodeSex}}</td>
+    </tr>
+    <tr>
+        <td>年龄：</td>
+        <td>{{=it.resident.decodeAge}}岁</td>
+    </tr>
+    <tr>
+        <td>民族：</td>
+        <td>{{=it.resident.residentNation}}</td>
+    </tr>
+    <tr>
+        <td>本人/监护人电话：</td>
+        <td>{{=it.user.mobile}}</td>
+    </tr>
+    <tr>
+        <td>联系人：</td>
+        <td>{{=it.resident.residentContactsName}}</td>
+    </tr>
+    <tr>
+        <td>联系人电话：</td>
+        <td>{{=it.resident.residentContactsMobile}}</td>
+    </tr>
+    <tr>
+        <td>身份证号码：</td>
+        <td>{{=it.user.personId}}</td>
+    </tr>
+    <tr>
+        <td>健康档案编号：</td>
+        <td>{{=it.resident.residentNo}} <a href="#/healthDoucment/{{=it.user.id}}" class="show_doc">查看其健康档案</a></td>
+        <!--<td>{{=it.resident.residentNo}} <a href="#/healthDoucment/{{=it.user.id}}" target="_blank" class="show_doc">查看其健康档案</a></td>-->
+    </tr>
+    <tr>
+        <td>检查结果：</td>
+        <td>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>项目名称</th>
+                    <th>异常数据</th>
+                    <th>正常参考范围</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{? it.healthExamination}}
+                <tr>
+                    <td>收缩压</td>
+                    <td>152mmHg ↑</td>
+                    <td>140--90mmHg</td>
+                </tr>
+                <tr>
+                    <td>总胆固醇</td>
+                    <td>1.82mmol/L ↓</td>
+                    <td>2.8--5.69mmol/L</td>
+                </tr>
+                {{??}}
+                <tr>
+                    <td colspan="3">该居民暂无体检数据</td>
+                </tr>
+                {{?}}
+                </tbody>
+            </table>
+            <div class="assement">
+                <a href="questionnaire/riskOfColorectalCancer.html?IDcard={{=it.user.personId}}" target="_blank" class="btn btn-main">大肠癌健康问卷</a>
+                <a href="questionnaire/breastCancer.html?IDcard={{=it.user.personId}}" target="_blank" class="btn btn-main">乳腺癌健康问卷</a>
+                <a href="questionnaire/coronaryHeartDisease.html?IDcard={{=it.user.personId}}" target="_blank" class="btn btn-main">冠心病健康问卷</a>
+                <a href="questionnaire/diabetes.html?IDcard={{=it.user.personId}}" target="_blank" class="btn btn-main">糖尿病健康问卷</a>
+                <a href="questionnaire/lungCancer.html?IDcard={{=it.user.personId}}" target="_blank" class="btn btn-main">肺癌健康问卷</a>
+                <a href="questionnaire/cardiovascular.html?IDcard={{=it.user.personId}}" target="_blank" class="btn btn-main">心血管病健康问卷</a>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>疾病风险评分：</td>
+        <td>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>疾病评分</th>
+                    <th>评分时间</th>
+                    <th>健康建议</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{? it.evaColorectalCancers}}
+                {{~ it.evaColorectalCancers :eveObj:index}}
+                <tr>
+                    <td>大肠癌得分:{{=eveObj.score.toFixed(0)}}</td>
+                    <td>{{=it.Util.formatTime(eveObj.createDate)}}</td>
+                    <td>&nbsp;</td>
+                    <!--<td rowspan="2" class="media-middle">
+                        <button class="btn btn-lg btn-default" data-toggle="modal" data-target="#asses_disaes">疾病风险评估</button>
+                    </td>-->
+                </tr>
+                {{~}}
+                {{?}}
+                {{? it.evaCoronaryHeartDiseases}}
+                {{~ it.evaCoronaryHeartDiseases :obj:index}}
+                <tr>
+                    <td>冠心病得分:{{=obj.score.toFixed(0)}}</td>
+                    <td>{{=it.Util.formatTime(obj.createDate)}}</td>
+                    <td>&nbsp;</td>
+                </tr>
+                {{~}}
+                {{?}}
+                {{? it.evaMammaryCancers}}
+                {{~ it.evaMammaryCancers :obj:index}}
+                <tr>
+                    <td>乳腺癌得分:{{=obj.score.toFixed(0)}}</td>
+                    <td>{{=it.Util.formatTime(obj.createDate)}}</td>
+                    <td>&nbsp;</td>
+                </tr>
+                {{~}}
+                {{?}}
+                {{? it.evaDiabeteses}}
+                {{~ it.evaDiabeteses :obj:index}}
+                <tr>
+                    <td>糖尿病得分:{{=obj.score.toFixed(0)}}</td>
+                    <td>{{=it.Util.formatTime(obj.createDate)}}</td>
+                    <td>&nbsp;</td>
+                </tr>
+                {{~}}
+                {{?}}
+
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td>健康建议：</td>
+        <td><textarea name="" class="form-control" placeholder="医生建议" id="text_suggection">多吃蔬菜，多喝水，少玩手机，多运动</textarea></td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <button class="btn btn-main" id="save_suggection">保存</button>
+        </td>
+    </tr>
+</table>
+<!--</form>-->

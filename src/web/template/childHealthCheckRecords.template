@@ -1,0 +1,179 @@
+<div class="container">
+  <table class="tb tb-auto tb-border">
+    <tbody>
+      <tr>
+        <td colspan="4" class="text-left bgColor">{{? it.onemMonth == 1}}满{{??}}{{=it.onemMonth}}{{?}}月龄儿童健康检查记录表</td>
+      </tr>
+      <tr>
+        <td class="label text-right bgColor w200">姓名</td>
+        <td class="text-left w630">{{= it.residentName}}</td>
+        <td class="label text-right bgColor w200">档案编号</td>
+        <td class="text-left">{{= it.residentNo}}</td>
+      </tr>
+      <tr>
+        <td class="label text-right bgColor">随访日期</td>
+        <td class="text-left">{{= it.Util.formatDate(it.createDate)}}</td>
+        <td class="label text-right bgColor">体重/kg</td>
+        <td class="text-left">{{= it.onemWeight}}/kg/{{= it.weightLevelStr}}</td>
+      </tr>
+      {{? it.onemMonth == 1 || it.onemMonth == 3 || it.onemMonth == 6 || it.onemMonth == 8}}
+      <tr>
+        <td class="label text-right bgColor">身长 /cm</td>
+        <td class="text-left">{{= it.onemHeight}}/cm/{{= it.heightLevelStr}}</td>
+        <td class="label text-right bgColor">头围/cm</td>
+        <td class="text-left">{{= it.onemHeadLength}}</td>
+      </tr>
+      {{??}}
+      <tr>
+        <td class="label text-right bgColor">身长 /cm</td>
+        <td colspan="3" class="text-left">{{= it.onemHeight}}/cm/{{= it.heightLevelStr}}</td>
+      </tr>
+      {{?}}
+    </tbody>
+  </table>
+  <table class="tb tb-auto tb-border border-top-none">
+    <tbody>
+      <tr>
+        <td class="label text-center bgColor w200">体格检查</td>
+        <td class="sub-tb">
+          <table class="tb tb-auto tb-border border-top-none">
+            <tbody>
+              <tr>
+                <td class="label text-right bgColor w200">面色</td>
+                <td class="text-left" colspan="2">{{= it.onemComplexionStr}}</td>
+              </tr>
+              <tr>
+                <td class="label text-right bgColor w200">皮肤</td>
+                <td class="text-left" colspan="2">{{= it.onemSkinStr}}</td>
+              </tr>
+              {{? it.onemMonth != 30}}
+              <tr>
+                <td class="label text-right bgColor w200">前囟</td>
+                <td class="text-left" colspan="2">{{= it.bregExceStr}}</td>
+              </tr>
+              {{?}} {{? it.onemMonth == 1 || it.onemMonth == 3 || it.onemMonth == 6}}
+              <tr>
+                <td class="label text-right bgColor w200">颈部包块</td>
+                <td class="text-left" colspan="2">{{= it.neckMassStr}}</td>
+              </tr>
+              {{?}}
+              <tr>
+                <td class="label text-right bgColor w200">眼睛</td>
+                <td class="text-left" colspan="2">{{= it.eyeStr}}</td>
+              </tr>
+              <tr>
+                {{? it.onemMonth == 1 || it.onemMonth == 3 || it.onemMonth == 6 || it.onemMonth == 8}}
+                <td class="label text-right bgColor w200">耳</td>
+                {{??}}
+                <td class="label text-right bgColor w200">耳外观</td>
+                {{?}}
+                <td class="text-left" colspan="2">{{= it.earStr}}</td>
+              </tr>
+              {{? it.onemMonth == 6 || it.onemMonth == 12 || it.onemMonth == 24}}
+              <tr>
+                <td class="label text-right bgColor w200">听力</td>
+                <td class="text-left" colspan="2">{{= it.listenStr}}</td>
+              </tr>
+              {{?}} {{? it.onemMonth == 12 || it.onemMonth == 18 || it.onemMonth == 24 || it.onemMonth == 30}}
+              <tr>
+                <td class="label text-right bgColor w200">出牙/龋齿数（颗）</td>
+                <td class="text-left" colspan="2">{{= it.onemTeeth}}/{{= it.onemCaries}}</td>
+              </tr>
+              {{?}} {{? it.onemMonth == 1 || it.onemMonth == 3 || it.onemMonth == 6 || it.onemMonth == 8}}
+              <tr>
+                <td class="label text-right bgColor w200">口腔</td>
+                <td class="text-left" colspan="2">
+                  {{? it.onemMonth == 6 || it.onemMonth == 8}} 出牙数（颗）&nbsp;{{= it.onemTeeth}} {{??}} {{= it.mouthStr}} {{?}}
+                </td>
+              </tr>
+              {{?}}
+              <tr>
+                <td class="label text-right bgColor w200">胸部</td>
+                <td class="text-left" colspan="2">{{= it.chestStr}}</td>
+              </tr>
+              <tr>
+                <td class="label text-right bgColor w200">腹部</td>
+                <td class="text-left" colspan="2">{{= it.abdomenStr}}</td>
+              </tr>
+              {{? it.onemMonth == 1 || it.onemMonth == 3}}
+              <tr>
+                <td class="label text-right bgColor w200">脐部</td>
+                <td class="text-left" colspan="2">{{= it.umbStr}}</td>
+              </tr>
+              {{?}}
+              <tr>
+                <td class="label text-right bgColor w200">四肢</td>
+                <td class="text-left" colspan="2">{{= it.limbStr}}</td>
+              </tr>
+              {{? it.onemMonth == 18 || it.onemMonth == 24 || it.onemMonth == 30}}
+              <tr>
+                <td class="label text-right bgColor w200">步态</td>
+                <td class="text-left" colspan="2">{{= it.gaitStr}}</td>
+              </tr>
+              {{?}} {{? it.onemMonth == 3 || it.onemMonth == 6 || it.onemMonth == 8}}
+              <tr>
+                <td class="label text-right bgColor w200">可疑佝偻病症状</td>
+                <td class="text-left" colspan="2">{{= it.ricketSymStr}}</td>
+              </tr>
+              {{?}} {{? it.onemMonth != 1 && it.onemMonth != 30}}
+              <tr>
+                <td class="label text-right bgColor w200">可疑佝偻病体征</td>
+                <td class="text-left" colspan="2">{{= it.ricketSignStr}}</td>
+              </tr>
+              {{?}} {{? it.onemMonth == 1 || it.onemMonth == 3 || it.onemMonth == 6 || it.onemMonth == 8}}
+              <tr>
+                <td class="label text-right bgColor w200">肛门/外生殖器</td>
+                <td class="text-left" colspan="2">{{= it.anusStr}}</td>
+              </tr>
+              {{?}} {{? it.onemMonth != 1 && it.onemMonth != 3 && it.onemMonth != 12 && it.onemMonth != 24}}
+              <tr>
+                <td class="label text-right bgColor w200">血红蛋白值</td>
+                <td class="text-left" colspan="2">{{= it.onemHemoglobin}}g/L</td>
+              </tr>
+              {{?}}
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="tb tb-auto tb-border border-top-none">
+    <tbody>
+      {{? it.onemMonth == 30 }}
+      <tr>
+        <td class="label text-right bgColor w200">户外活动</td>
+        <td class="text-left w630">{{= it.onemOutdoorActivities}}h/d</td>
+        <td class="label text-right bgColor w200">两次随访间
+          <br/>患病情况</td>
+        <td class="text-left">{{= it.periodIllStr}}</td>
+      </tr>
+      {{??}}
+      <tr>
+        <td class="label text-right bgColor w200">户外活动</td>
+        <td class="text-left w630">{{= it.onemOutdoorActivities}}h/d</td>
+        <td class="label text-right bgColor w200">服用维生素 D</td>
+        <td class="text-left">{{= it.onemVitamind}}IU/日</td>
+      </tr>
+      <tr>
+        <td class="label text-right bgColor">运动发育评估</td>
+        <td class="text-left">{{= it.motorDevStr}}</td>
+        <td class="label text-right bgColor w200">两次随访间
+          <br/>患病情况</td>
+        <td class="text-left">{{= it.periodIllStr}}</td>
+      </tr>
+      {{?}}
+      <tr>
+        <td class="label text-right bgColor">转诊建议</td>
+        <td class="text-left">{{= it.referralStr}}</td>
+        <td class="label text-right bgColor">指导</td>
+        <td class="text-left">{{= it.healthGuideStr}}</td>
+      </tr>
+      <tr>
+        <td class="label text-right bgColor">下次随访日期</td>
+        <td class="text-left" colspan="3">{{= it.Util.formatDate(it.nextVisitDate)}}</td>
+        <!-- <td class="label text-right bgColor">&lt;!&ndash;随访医生签名&ndash;&gt;</td>
+            <td class="text-left">&lt;!&ndash;{{= it.onemVisitDoctor}}&ndash;&gt;</td>-->
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,23 @@
+form{
+    padding-top:.3rem;
+}
+table tr>td:first-child{
+    text-align:right;
+}
+table td{
+    vertical-align: top;
+    padding:.2rem;
+}
+button{
+    width:2.65rem;
+    margin-right:.3rem;
+}
+.fill,input.form-control,select.form-control,textarea.form-control{
+    width:10rem;
+}
+
+.ke-icon-myUpload {
+    background-position: 0px -496px;
+    width: 16px;
+    height: 16px;
+}

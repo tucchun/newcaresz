@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+  <title>简介</title>
+  <link rel="stylesheet" href="../../static/css/reset.css"/>
+  <link rel="stylesheet" href="./css/companyProfile.css">
+  <script type="text/javascript" src="../../static/assets/adaptive/adaptive-version2.js"></script>
+  <script>
+    window['adaptive'].desinWidth = 750;// 设计图宽度
+    window['adaptive'].baseFont = 30;// 没有缩放时的字体大小
+    window['adaptive'].maxWidth = 750;// 页面最大宽度 默认540
+    window['adaptive'].init();// 调用初始化方法
+  </script>
+</head>
+<body>
+
+<div class="info cnt" id="js-cnt">
+ <!-- <div class="item">
+
+    <h2>
+      <i class="icon-cirle"></i>
+      北京市朝阳区管庄第二社区卫生服务中心
+    </h2>
+    <p class="article">
+      健康云助手APP隶属于云南新康医疗管理集团有限公司，是一个以城市社区为基础，投资基层非盈利医疗机构，建设居民健康管理平台的连锁机构。公司成立于2012年3月15日，是集医疗服务、健康服务、社区公共卫生为一体的大型医疗连锁企业，下属医疗分支机构主要分布于昆明市四个主城区。
+    </p>
+    <div class="article-imgs">
+      <img src="./img/demo.png" alt="">
+    </div>
+  </div>-->
+
+</div>
+<script src="../../static/assets/jquery/jquery-1.9.1.min.js"></script>
+<script src="../../static/assets/doT-master/doT.min.js"></script>
+<script src="../../static/js/Util.js"></script>
+<script  type="text/x-dot-template" id="js-article-detail">
+  {{~ it :value:index}}
+  <div class="item">
+    <h2>
+      <i class="icon-cirle"></i><span class="comm-name">{{= value.name}}</span>
+
+    </h2>
+    <h3 class="sub-title ml28">电话：{{= value.phone}}</h3>
+    <h3 class="sub-title ml28">地址：{{= value.addr}}</h3>
+    <p class="article">
+      {{= value.intro}}
+    </p>
+    <div class="article-imgs">
+      {{~ value.pic_url_list :pic_value:pic_index}}
+      <img src="{{= pic_value}}" alt="">
+      {{~}}
+    </div>
+  </div>
+  {{~}}
+
+</script>
+<script>
+  var params = Util.param(location.href);
+
+  Util.fetch({
+    url: Util.host + "/hca/api/business/inhabitant/getcompanyinfo",
+    data: JSON.stringify({
+      "src_type":"Inhabitant APP",             //请求源的类型，如"HECadre APP"、"Inhabitant APP"等
+      "pf_type": Util.pf_type,                        //请求源的终端平台类型，如"Android"、"iOS"、"Web"等
+      // "user_id": Util.userId,                  //用户ID，u64
+      // "auth_str": Util.getCommunicationAuth()  //通信认证密文串
+    }),
+    demoUrl: "../../static/rss/getcompanyinfo.json",
+    success: function(data){
+      data = data || {};
+      if(data.ret_code === 1){
+        var template = doT.template($("#js-article-detail").html());
+        var tempData = data.ret_data.site_info_list || {};
+        var htmlStr = template($.extend(tempData, {getPicUrl: Util.getPicUrl}));
+        $("#js-cnt").html(htmlStr);
+      }else{
+        Util.alert(data.ret_msg || "查询信息错误！");
+      }
+    },
+    error: function(){
+      Util.alert("网络错误!");
+    }
+  })
+</script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>医生端-乳腺癌健康问卷</title>
+    <link rel="stylesheet" href="../../dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../dist/css/app.min.css" />
+</head>
+<body>
+    <form id="rxa_risk">
+        <div id="content" class="wrap-questionnaire">
+            <div class="container sub-title">
+                乳腺癌健康问卷调查
+            </div>
+            <div class="container sub-title">
+                请根据近一年的体验和感觉，回答以下问题。
+            </div>
+            <div class="container border">
+                <div class="item">
+                    <table class="table table-bordered align-center">
+                        <tbody>
+                        <tr>
+                            <td class="bgColor">性别</td>
+                            <td id="gender">男</td>
+                            <td class="bgColor">年龄</td>
+                            <td id="age">29</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="item">
+                    <dl>
+                        <dt>1.您的月经初潮年龄？</dt>
+                        <dd>
+                            <label>
+                                <input type="radio" name="menstruationAge" value="1">
+                                <span>小于12岁</span>
+                            </label>
+                        </dd>
+                        <dd>
+                            <label>
+                                <input type="radio" name="menstruationAge" value="2">
+                                <span>12至13岁</span>
+                            </label>
+                        </dd>
+                        <dd>
+                            <label>
+                                <input type="radio" name="menstruationAge" value="3">
+                                <span>大于等于14岁</span>
+                            </label>
+                        </dd>
+                    </dl>
+                </div>
+
+                <div class="item">
+                    <dl>
+                        <dt>2.您曾经做过几次乳腺活检？</dt>
+                        <dd>
+                            <label>
+                                <input type="radio" name="breastBiopsy" value="1">
+                                <span>0次</span>
+                            </label>
+                        </dd>
+                        <dd>
+                            <label>
+                                <input type="radio" name="breastBiopsy" value="2">
+                                <span>1次</span>
+                            </label>
+                        </dd>
+                        <dd>
+                            <label>
+                                <input type="radio" name="breastBiopsy" value="3">
+                                <span>大于等于2次</span>
+                            </label>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="item">
+                    <dl>
+                        <dt>3.您的初产年龄？</dt>
+                        <dd>
+                            <label>
+                                <input type="radio" name="firstPregnancy" value="1">
+                                <span>小于20岁</span>
+                            </label>
+                        </dd>
+                        <dd>
+                            <label>
+                                <input type="radio" name="firstPregnancy" value="2">
+                                <span>20至24岁</span>
+                            </label>
+                        </dd>
+                        <dd>
+                            <label>
+                                <input type="radio" name="firstPregnancy" value="3">
+                                <span>25至29岁</span>
+                            </label>
+                        </dd>
+                        <dd>
+                            <label>
+                                <input type="radio" name="firstPregnancy" value="4">
+                                <span>大于等于30岁</span>
+                            </label>
+                        </dd>
+                        <dd>
+                            <label>
+                                <input type="radio" name="firstPregnancy" value="5">
+                                <span>未婚育</span>
+                            </label>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="item">
+                    <dl>
+                        <dt>4.您的一级家属中患乳腺癌的人数？（一级家属：母亲、姐妹、女儿）</dt>
+                        <dd>
+                            <label>
+                                <input type="radio" name="cancerCount" value="1">
+                                <span>0人</span>
+                            </label>
+                        </dd>
+                        <dd>
+                            <label>
+                                <input type="radio" name="cancerCount" value="1">
+                                <span>1人</span>
+                            </label>
+                        </dd>
+                        <dd>
+                            <label>
+                                <input type="radio" name="cancerCount" value="2">
+                                <input type="hidden" name="type" value="MAMMARY_CANCER">
+                                <span>大于等于2人</span>
+                            </label>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+            <div class="container submit">
+                <button type="submit" class="btn btn-main">提&nbsp;交</button>
+            </div>
+        </div>
+    </form>
+</body>
+<script type="text/javascript" src="../../js/lib/require.js" data-main="../../js/rxa_risk"></script>
+</html>

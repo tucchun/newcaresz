@@ -1,0 +1,126 @@
+body {
+  background-color: #f4f4f4;
+}
+
+.mainInfo,
+.normalInfo {
+  background-color: #fff;
+  /*padding:0 .2rem;*/
+  margin-bottom: .2rem;
+}
+
+.mainInfo {
+  /*padding: .2rem;*/
+  border-radius: 0 0 .1rem .1rem;
+  border-bottom: .01rem solid #e5e5e5;
+}
+
+.mainInfo .mainImg {
+  text-align: center;
+  position: relative;
+  overflow: auto;
+  width: 100%!important;
+}
+
+.mainInfo .mainImg li {
+  float: left;
+  width: 100%;
+}
+
+.mainInfo .mainImg img {
+  height: 4rem;
+}
+
+.mainInfo .pinfo {
+  font-size: .36rem;
+  color: #ebebeb;
+}
+
+.mainInfo .pinfo span:first-child {
+  font-size: .34rem;
+  color: #1b1b1b;
+  margin-right: .15rem;
+}
+
+.mainInfo .pinfo span:last-child {
+  font-size: .28rem;
+  color: #666;
+}
+
+.mainInfo .price>p span {
+  color: #ff0505;
+}
+
+.mainInfo .price>p span:first-child {
+  font-size: .3rem;
+}
+
+.mainInfo .price>p span:last-child {
+  font-size: .48rem;
+}
+
+.mainInfo .price>p {
+  color: #ff7777;
+  font-size: .28rem;
+  line-height: 1.7;
+}
+
+.normalInfo {
+  border-top: .01rem solid #e5e5e5;
+  border-bottom: .01rem solid #e5e5e5;
+  border-radius: .1rem;
+}
+
+.normalInfo li {
+  font-size: .30rem;
+  color: #333333;
+  padding: .25rem 0;
+}
+
+.introduction {
+  border-top: .01rem solid #e5e5e5;
+  border-radius: .1rem;
+}
+
+.introduction .title {
+  height: 0.9rem;
+  line-height: 0.9rem;
+  font-size: .3rem;
+  background-color: #fff;
+  padding: 0 .2rem;
+  border-radius: .1rem .1rem 0 0;
+}
+
+.introduction .introductionContent {
+  background-color: #fff;
+  padding: .2rem;
+  color: #666;
+  font-size: .28rem;
+  padding-top: 0;
+}
+
+.introduction .introductionContent img {
+  max-width: 100%;
+}
+
+.goods-img-cnt {
+  /* display: table-cell; */
+  vertical-align: middle;
+  height: 6.2rem;
+  /* width: 100%; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #ededed;
+  margin-bottom: .2rem;
+}
+
+.goods-img-cnt>div {}
+
+.pd20 {
+  padding: 0 .2rem;
+}
+
+.price {
+  padding-bottom: .2rem;
+}

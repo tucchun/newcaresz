@@ -1,0 +1,90 @@
+/**布局以及公共类**/
+html,
+body,
+ul,
+li,
+fieldset,
+legend,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+ul,
+li {
+  list-style: none;
+}
+html,
+body {
+  background: #f3f7fd;
+  width: 100%;
+  height: 100%;
+}
+body {
+  min-width: 900px;
+}
+body #content {
+  padding-top: 69px;
+  height: 100%;
+  overflow: auto;
+}
+body .content {
+  width: 1200px;
+  position: relative;
+  margin: 0 auto;
+}
+body .body_content {
+  padding-top: 30px;
+}
+body header {
+  padding: 13px 0;
+  border-bottom: 1px solid #e5e5e5;
+  background: #f7f7f7;
+  position: fixed;
+  width: 100%;
+  z-index: 9;
+  top: 0;
+}
+body header .pull-left img {
+  margin-right: 30px;
+}
+body header .pull-right a {
+  color: #333;
+  padding: 0 10px;
+  border-right: 1px solid #e5e5e5;
+}
+body header .pull-right a:last-child {
+  border: none;
+  padding-right: 0;
+}
+body header .pull-right .avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 21px;
+}
+body textarea {
+  resize: none;
+}
+.prelative {
+  position: relative;
+}
+.pabsolute {
+  position: absolute;
+}
+.icon {
+  display: inline-block;
+}
+.align-center {
+  text-align: center;
+}
+.align-center * {
+  text-align: center;
+}
+.media-middle {
+  vertical-align: middle !important;
+}

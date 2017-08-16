@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>乳腺癌调查问卷</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <script src="../static/assets/adaptive-master/js/adaptive-version2.js"></script>
+  <script>
+		// 设计图宽度
+		window['adaptive'].desinWidth = 1920;
+		// body 字体大小 会将body字体大小设置为 baseFont / 100 + 'rem'
+		window['adaptive'].baseFont = 30;
+		window['adaptive'].maxWidth = 1920;
+		window['adaptive'].init();
+  </script>
+  <link rel="stylesheet" href="../static/css/questionnaire.css">
+</head>
+<body>
+<div class="container sub-title">
+  请根据近一年的体验和感觉，回答以下问题。
+</div>
+<div class="container border">
+  <div class="item">
+    <dl>
+      <dt>1.您的月经初潮年龄？</dt>
+      <dd>
+        <input type="radio">
+        <span>小于12岁</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>12至13岁</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>大于等于14岁</span>
+      </dd>
+    </dl>
+  </div>
+
+  <div class="item">
+    <dl>
+      <dt>2.您曾经做过几次乳腺活检？</dt>
+      <dd>
+        <input type="radio">
+        <span>0次</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>1次</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>大于等于2次</span>
+      </dd>
+    </dl>
+  </div>
+
+  <div class="item">
+    <dl>
+      <dt>3.您的初产年龄？</dt>
+      <dd>
+        <input type="radio">
+        <span>小于20岁</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>20至24岁</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>25至29岁</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>大于等于30岁</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>未婚育</span>
+      </dd>
+    </dl>
+  </div>
+
+  <div class="item">
+    <dl>
+      <dt>4.您的一级家属中患乳腺癌的人数？（一级家属：母亲、姐妹、女儿）</dt>
+      <dd>
+        <input type="radio">
+        <span>0人</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>1人</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>大于等于2人</span>
+      </dd>
+    </dl>
+  </div>
+
+</div>
+
+<div class="container submit">
+  <button type="button" class="btn">提&nbsp;交</button>
+</div>
+</body>
+</html>

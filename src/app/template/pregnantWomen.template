@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="item clearfix">
+    <div class="pull-left">姓名</div>
+    <div class="pull-right">{{= it.residentName}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">档案编号</div>
+    <div class="pull-right">{{= it.residentNo}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">结题</div>
+    <div class="pull-right">{{= it.knotDescribe}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">发生时间</div>
+    <div class="pull-right">{{= it.Util.formatDate(it.knotDate)}}</div>
+  </div>
+  <div class="item clearfix">
+    <div >医学凭证</div>
+    <div class="images clearfix" id="js-images-cnt">
+      {{~ it.knotUrls :value:index}}
+        <div>
+          <img class="js-img" src="{{= it.Util.getPicUrl(value)}}" alt="">
+        </div>
+      {{~}}
+    </div>
+  </div>
+
+
+</div>
+
+<script>
+var dom_imgArr = $('.js-img');
+dom_imgArr.each(function() {
+  var width = this.width;
+  var height = this.height;
+  if (width > height) {
+    this.style.width = "auto";
+    this.style.height = "100%";
+  } else {
+    this.style.width = "100%";
+    this.style.height = "auto";
+  }
+});
+if (window.jsObj.showGalleryImages) {
+  var img_src_arr = [];
+
+  dom_imgArr.each(function() {
+    img_src_arr.push(this.getAttribute('src'));
+  });
+
+  dom_imgArr.on('click', function() {
+    window.jsObj.showGalleryImages(img_src_arr);
+  });
+} else {
+  var dom_imagesCnt = document.getElementById("js-images-cnt");
+  var viewer = new Viewer(dom_imagesCnt, {});
+}
+</script>

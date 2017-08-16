@@ -1,0 +1,81 @@
+.healthDocument {
+  min-height: 100%;
+}
+.healthDocument .border {
+  height: 80%;
+  position: absolute;
+  left: 2px;
+  bottom: 0;
+  border-right: 4px solid #d7e1e3;
+}
+.healthDocument table {
+  width: 100%;
+}
+.healthDocument table h3.title {
+  font-size: 16px;
+  width: 300px;
+  height: 50px;
+  line-height: 50px;
+  color: #fff;
+  background: #1c97ff;
+  border-radius: 5px;
+  text-align: center;
+  margin: 0 0 0 -4px;
+}
+.healthDocument table td:first-child {
+  text-align: right;
+  border-right: 4px solid #d7e1e3;
+  position: relative;
+  padding-right: 28px;
+}
+.healthDocument table tr:first-child > td:first-child {
+  border-right: none;
+}
+.healthDocument table td > div {
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 5px;
+  width: 320px;
+  margin: 10px 20px;
+  padding: 10px;
+  position: relative;
+}
+.healthDocument table .icon-point {
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  background: url("../img/icon/bluePoint.png") no-repeat 0 0 transparent;
+  position: absolute;
+  right: -12px;
+}
+.healthDocument table .docname {
+  padding: 5px 20px;
+  padding-right: 0;
+  padding-left: 25px;
+  background: #79afff;
+  color: #fff;
+  border-radius: 20px;
+  vertical-align: middle;
+  position: relative;
+  margin-top: 10px;
+}
+.healthDocument table .docname span {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+  background: #fff;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
+.healthDocument table .icon_right {
+  display: inline-block;
+  width: 6px;
+  height: 9px;
+  background: url(../img/icon/right.png) no-repeat 0 0 transparent;
+  position: absolute;
+  left: -5px;
+  z-index: 9;
+  top: 44%;
+}

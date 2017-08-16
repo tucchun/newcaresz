@@ -1,0 +1,58 @@
+/**医生输入身份证，搜索结果**/
+.form_search {
+  padding: 20px 0;
+}
+.form_search input.form-control {
+  width: 395px;
+  height: 45px;
+  display: inline-block;
+  margin-right: 12px;
+}
+.form_search button.btn {
+  width: 100px;
+  height: 45px;
+}
+.wrap_result {
+  background: #fff;
+}
+.wrap_result .title {
+  background: #f7f7f7;
+  font-size: 16px;
+  padding: 15px;
+  border: 1px solid #e5e5e5;
+  border-bottom: none;
+}
+.wrap_result .show_doc {
+  margin-left: 60px;
+}
+.wrap_result > table > tbody > tr > td:first-child {
+  text-align: right;
+  width: 15%;
+}
+.wrap_result > table > tbody > tr:last-child td {
+  text-align: center;
+}
+.wrap_result > table > tbody > tr:last-child td button.btn {
+  width: 300px;
+  text-align: center;
+  height: 50px;
+  margin-top: 30px;
+}
+.wrap_result > table thead {
+  background: #f7f7f7;
+}
+.wrap_result > table thead th {
+  border-bottom: none;
+}
+.wrap_result > table table {
+  width: 680px;
+}
+.wrap_result > table table * {
+  text-align: center;
+}
+.wrap_result > table table:last-child {
+  width: 600px;
+}
+.wrap_result .assement {
+  padding-bottom: 15px;
+}

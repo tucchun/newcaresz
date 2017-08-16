@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>肺癌调查问卷</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="../../dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../../dist/css/app.min.css" />
+</head>
+<body>
+<form id="rxa_risk">
+  <div id="content" class="wrap-questionnaire">
+    <div class="container sub-title">
+      肺癌健康调查问卷
+    </div>
+    <div class="container sub-title">
+      请根据近一年的体验和感觉，回答以下问题。
+    </div>
+    <div class="container border">
+      <div class="item">
+        <table class="table table-bordered align-center">
+          <tbody>
+          <tr>
+            <td class="bgColor">性别</td>
+            <td id="gender">男</td>
+            <td class="bgColor">年龄</td>
+            <td id="age">29</td>
+          </tr>
+          <tr>
+            <td class="bgColor">吸烟史(年)</td>
+            <td><input type="text" name="smokeYear"></td>
+            <td class="bgColor">每天吸烟(支)</td>
+            <td><input type="text" name="cigaretteCount"></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="item">
+        <dl>
+          <dt>有无以下职业性粉尘接触史？</dt>
+          <dd>
+            <label>
+              <input type="radio" name="dustHistory" value="1">
+              <span>无</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="dustHistory" value="2">
+              <span>石棉</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="dustHistory" value="3">
+              <span>硅粉尘</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="dustHistory" value="4">
+              <span>煤烟或焦油</span>
+            </label>
+          </dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl>
+          <dt>是否在有空气污染的大城市生活？</dt>
+          <dd>
+            <label>
+              <input type="radio" name="airPollution" value="1">
+              <span>是</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="airPollution" value="2">
+              <span>否</span>
+            </label>
+          </dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl>
+          <dt>父母及兄弟姐妹有无肺癌患者？</dt>
+          <dd>
+            <label>
+              <input type="radio" name="lungFamily" value="1">
+              <span>有</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="lungFamily" value="2">
+              <span>无</span>
+            </label>
+          </dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl>
+          <dt>有无以下既往病史？</dt>
+          <dd>
+            <label>
+              <input type="radio" name="diabeteHistory" value="1">
+              <span>肺结核史</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="diabeteHistory" value="2">
+              <span>慢性支气管炎史</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="diabeteHistory" value="3">
+              <span>肺炎病史</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="diabeteHistory" value="4">
+              <span>无</span>
+            </label>
+          </dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl>
+          <dt>每天蔬菜水果摄入是否小于400g？</dt>
+          <dd>
+            <label>
+              <input type="radio" name="fruit" value="1">
+              <span>是</span>
+            </label>
+          </dd>
+          <dd>
+            <label>
+              <input type="radio" name="fruit" value="2">
+              <span>否</span>
+            </label>
+          </dd>
+        </dl>
+      </div>
+    </div>
+    <div class="container submit">
+      <input type="hidden" name="type" value="LUNG_CANCER">
+      <button type="submit" class="btn btn-main">提&nbsp;交</button>
+    </div>
+  </div>
+</form>
+</body>
+<script type="text/javascript" src="../../js/lib/require.js" data-main="../../js/rxa_risk"></script>
+</html>

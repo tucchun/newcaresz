@@ -1,0 +1,99 @@
+<div class="container">
+  <table class="tb tb-auto tb-border">
+    <tbody>
+      <tr>
+        <td colspan="4" class="text-left bgColor">第{{= it.atenRecordTime}}次产前随访服务记录表</td>
+      </tr>
+      <tr>
+        <td class="label text-right bgColor w200">姓名</td>
+        <td class="text-left w630">{{= it.residentName}}</td>
+        <td class="label text-right bgColor w200">档案编号</td>
+        <td class="text-left">{{= it.residentNo}}</td>
+      </tr>
+      <tr>
+        <td class="label text-right bgColor">随访日期</td>
+        <td class="text-left">{{= it.Util.formatDate(it.createDate)}}</td>
+        <td class="label text-right bgColor">孕周 (周)</td>
+        <td class="text-left">{{= it.atenGestationalWeeks}}</td>
+      </tr>
+      <tr>
+        <td class="label text-right bgColor">主诉</td>
+        <td class="text-left">{{= it.atenChiefComplaint}}</td>
+        <td class="label text-right bgColor">体重(kg)</td>
+        <td class="text-left">{{= it.atenWeight}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="tb tb-auto tb-border border-top-none">
+    <tbody>
+      <tr>
+        <td class="label text-center bgColor w200" rowspan="5">产科检查</td>
+        <td class="label text-right bgColor w200">宫底高度(cm)</td>
+        <td class="text-left" colspan="2">{{= it.atenBaseHeight}}</td>
+      </tr>
+      <tr>
+        <td class="label text-right bgColor w200">腹围(cm)</td>
+        <td class="text-left" colspan="2">{{= it.atenAbdominalCircumference}}</td>
+      </tr>
+      <tr>
+        <td class="label text-right bgColor w200">胎位</td>
+        <td class="text-left" colspan="2">{{= it.atenBabyPosition}}</td>
+      </tr>
+      <tr>
+        <td class="label text-right bgColor w200">胎心率(次 /分钟)</td>
+        <td class="text-left" colspan="2">{{= it.atenHeartRate}}</td>
+      </tr>
+      <tr>
+        <td class="label text-right bgColor w200">浮肿</td>
+        <td class="text-left" colspan="2">{{= it.atenEdema}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="tb tb-auto tb-border border-top-none">
+    <tbody>
+      <tr>
+        <td class="label text-right bgColor w200">血压( mmHg)</td>
+        <td class="text-left">{{= it.atenBloodPressureLow}}/{{= it.atenBloodPressureHeigh}}</td>
+        <td class="label text-right bgColor w200">血红蛋白(g/L)</td>
+        <td class="text-left">{{= it.atenHemoglobin}}</td>
+      </tr>
+      <tr>
+        <td class="label text-right bgColor">尿蛋白</td>
+        <td class="text-left">{{= it.atenUrineProtein}}</td>
+        <td class="label text-right bgColor">其他辅助检查*</td>
+        <td class="text-left">{{= it.atenAuxiliaryExamination}}</td>
+      </tr>
+      <tr>
+        <td class="label text-right bgColor">诊断</td>
+        <td class="text-left">{{= it.atenDiagnosisExec}}</td>
+        <td class="label text-right bgColor">分类</td>
+        <td class="text-left">{{= it.atenClassificationText}}</td>
+      </tr>
+      <tr>
+        <td class="label text-right bgColor">指导</td>
+        <td class="text-left">{{= it.healthGuideText}}</td>
+        <td class="label text-right bgColor">转诊</td>
+        <td class="text-left">{{= it.atenReferralText}}</td>
+      </tr>
+      {{? it.atenRecordTime == 5}}
+      <tr>
+        <td class="label text-right bgColor">计划分娩地点</td>
+        <td class="text-left">
+          {{? it.atenDeliveryAddress == 1}} 省级医院 {{?? it.atenDeliveryAddress == 2}} 市级医院 {{?? it.atenDeliveryAddress == 3}} 县级医院 {{?}}
+        </td>
+        <td class="label text-right bgColor">骨盆外测量（28周后）</td>
+        <td class="text-left">
+          髂棘间距{{= it.atenIliacSpace}}cm,髂嵴间径{{= it.atenIliacDiameter}}cm, 骶耻间径{{= it.atenSacralDiameter}}cm,出口横径{{= it.atenOutletDiameter}}cm
+        </td>
+      </tr>
+      {{?}}
+      <tr>
+        <td class="label text-right bgColor">下次随访日期</td>
+        <td class="text-left" colspan="3">{{= it.Util.formatDate(it.nextVisitDate)}}</td>
+      </tr>
+      <!--    <tr>
+      <td class="label text-right bgColor">随访医生签名</td>
+      <td class="text-left" colspan="3">{{= it.visitDoctor}}</td>
+    </tr>-->
+    </tbody>
+  </table>

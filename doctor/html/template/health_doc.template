@@ -1,0 +1,24 @@
+<div class="border col-sm-5"></div>
+<table cellspacing="0" cellpadding="0">
+<tr>
+    <td class="col-sm-5"></td>
+    <td><h3 class="title">{{=it.realName}}的健康档案</h3></td>
+</tr>
+{{~ it :obj:index}}
+<tr>
+    <td>
+        <span>{{=it.Util.formatTime(obj.create_time)}}</span><i class="icon icon-point"></i>
+    </td>
+    <td>
+        <div>
+            <!--<a href="">xxxxxxxxxxx</a>-->
+            <i class="icon_right"></i>
+            <div class="docname"><span></span><a href="../../module/web/detail.html?doc_id={{=obj.doc_id}}&user_id_doc={{=it.user_id_doc}}&doc_type={{=obj.doc_type_id}}&isShowNext=false&src_type=DOCTOR" target="_blank">{{= obj.doc_type_name}}</a><a class="btn btn-main">打印表单</a></div>
+        </div>
+    </td>
+</tr>
+{{~}}
+</table>
+<script type="text/javascript">
+
+</script>

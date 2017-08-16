@@ -1,0 +1,356 @@
+/**V1.0 doctor only css file **/.healthDocument {
+  min-height: 100%;
+}
+.healthDocument .border {
+  height: 80%;
+  position: absolute;
+  left: 2px;
+  bottom: 0;
+  border-right: 4px solid #d7e1e3;
+}
+.healthDocument table {
+  width: 100%;
+}
+.healthDocument table h3.title {
+  font-size: 16px;
+  width: 300px;
+  height: 50px;
+  line-height: 50px;
+  color: #fff;
+  background: #1c97ff;
+  border-radius: 5px;
+  text-align: center;
+  margin: 0 0 0 -4px;
+}
+.healthDocument table td:first-child {
+  text-align: right;
+  border-right: 4px solid #d7e1e3;
+  position: relative;
+  padding-right: 28px;
+}
+.healthDocument table tr:first-child > td:first-child {
+  border-right: none;
+}
+.healthDocument table td > div {
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 5px;
+  width: 320px;
+  margin: 10px 20px;
+  padding: 10px;
+  position: relative;
+}
+.healthDocument table .icon-point {
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  background: url("../img/icon/bluePoint.png") no-repeat 0 0 transparent;
+  position: absolute;
+  right: -12px;
+}
+.healthDocument table .docname {
+  padding: 5px 20px;
+  padding-right: 0;
+  padding-left: 25px;
+  background: #79afff;
+  color: #fff;
+  border-radius: 20px;
+  vertical-align: middle;
+  position: relative;
+  margin-top: 10px;
+}
+.healthDocument table .docname span {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+  background: #fff;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
+.healthDocument table .icon_right {
+  display: inline-block;
+  width: 6px;
+  height: 9px;
+  background: url(../img/icon/right.png) no-repeat 0 0 transparent;
+  position: absolute;
+  left: -5px;
+  z-index: 9;
+  top: 44%;
+}
+
+/**所有的图标icon**/
+.icon_pwd {
+  background: url(../img/icon/icon_pwd.png) no-repeat 0 0 transparent;
+}
+.icon_usr {
+  background: url(../img/icon/icon_user.png) no-repeat 0 0 transparent;
+}
+
+/**布局以及公共类**/
+html,
+body,
+ul,
+li,
+fieldset,
+legend,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+ul,
+li {
+  list-style: none;
+}
+html,
+body {
+  background: #f3f7fd;
+  width: 100%;
+  height: 100%;
+}
+body {
+  min-width: 900px;
+}
+body #content {
+  padding-top: 69px;
+  height: 100%;
+  overflow: auto;
+}
+body .content {
+  width: 1200px;
+  position: relative;
+  margin: 0 auto;
+}
+body .body_content {
+  padding-top: 30px;
+}
+body header {
+  padding: 13px 0;
+  border-bottom: 1px solid #e5e5e5;
+  background: #f7f7f7;
+  position: fixed;
+  width: 100%;
+  z-index: 9;
+  top: 0;
+}
+body header .pull-left img {
+  margin-right: 30px;
+}
+body header .pull-right a {
+  color: #333;
+  padding: 0 10px;
+  border-right: 1px solid #e5e5e5;
+}
+body header .pull-right a:last-child {
+  border: none;
+  padding-right: 0;
+}
+body header .pull-right .avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 21px;
+}
+body textarea {
+  resize: none;
+}
+.prelative {
+  position: relative;
+}
+.pabsolute {
+  position: absolute;
+}
+.icon {
+  display: inline-block;
+}
+.align-center {
+  text-align: center;
+}
+.align-center * {
+  text-align: center;
+}
+.media-middle {
+  vertical-align: middle !important;
+}
+
+body.login {
+  background: #bce4ee;
+}
+body.login .content {
+  background: url(../img/pic/bg_login.png) no-repeat 0 0 transparent;
+  position: absolute;
+  min-height: 400px;
+  top: 50%;
+  left: 50%;
+  margin-left: -600px;
+  margin-top: -280px;
+}
+body.login .content form {
+  width: 300px;
+  height: 250px;
+  right: 160px;
+  bottom: 10px;
+  border: 1px solid #e5e5e5;
+  background-color: #fff;
+  box-shadow: 0 0 0 15px rgba(255, 255, 255, 0.5);
+}
+body.login .content form table {
+  width: 100%;
+  margin: 30px 0 22px 0;
+}
+body.login .content form td {
+  padding: 0 36px;
+}
+body.login .content form input[type=text],
+body.login .content form input[type=password],
+body.login .content form button {
+  height: 48px;
+  margin-bottom: 10px;
+}
+body.login .content form input[type=checkbox] {
+  margin: 0 12px 1px 0;
+  vertical-align: middle;
+}
+body.login .content form label {
+  font-weight: normal;
+}
+body.login .content form input {
+  text-indent: 24px;
+}
+body.login .content form button {
+  margin-top: 20px;
+}
+body.login .content form .icon {
+  width: 28px;
+  height: 28px;
+  position: absolute;
+  left: 40px;
+  top: 10px;
+}
+body.login .login_wrap {
+  height: 400px;
+  width: 100%;
+}
+
+/**问卷调查样式**/
+.wrap-questionnaire {
+  background: #fff;
+}
+.wrap-questionnaire .container {
+  padding: 0;
+}
+.wrap-questionnaire label {
+  font-weight: normal;
+}
+.wrap-questionnaire .sub-title {
+  padding: 20px 0;
+}
+.wrap-questionnaire .container {
+  margin: 0 auto;
+}
+.wrap-questionnaire .item {
+  padding: 20px;
+}
+.wrap-questionnaire .item dt {
+  font-size: 15px;
+  color: #333333;
+  font-weight: 600;
+}
+.wrap-questionnaire .item dd,
+.wrap-questionnaire .item dt {
+  margin-bottom: 15px;
+  line-height: 1;
+}
+.wrap-questionnaire .item input[type=checkbox],
+.wrap-questionnaire .item input[type=radio] {
+  margin: -1px 4px 0 0;
+  vertical-align: middle;
+}
+.wrap-questionnaire .item .tip {
+  color: #00a0e9;
+}
+.wrap-questionnaire .item:nth-child(2n-1) {
+  background-color: #f7f8fc;
+}
+.wrap-questionnaire .border {
+  border: 1px solid #e5e5e5;
+}
+.wrap-questionnaire .submit {
+  padding: 40px 0;
+  text-align: center;
+}
+.wrap-questionnaire .submit button[type=button] {
+  padding: 16px 225px;
+  font-size: 18px;
+}
+.wrap-questionnaire .table {
+  background-color: #fff;
+}
+.wrap-questionnaire .bgColor {
+  background-color: #f7f7f7;
+}
+
+/**医生输入身份证，搜索结果**/
+.form_search {
+  padding: 20px 0;
+}
+.form_search input.form-control {
+  width: 395px;
+  height: 45px;
+  display: inline-block;
+  margin-right: 12px;
+}
+.form_search button.btn {
+  width: 100px;
+  height: 45px;
+}
+.wrap_result {
+  background: #fff;
+}
+.wrap_result .title {
+  background: #f7f7f7;
+  font-size: 16px;
+  padding: 15px;
+  border: 1px solid #e5e5e5;
+  border-bottom: none;
+}
+.wrap_result .show_doc {
+  margin-left: 60px;
+}
+.wrap_result > table > tbody > tr > td:first-child {
+  text-align: right;
+  width: 15%;
+}
+.wrap_result > table > tbody > tr:last-child td {
+  text-align: center;
+}
+.wrap_result > table > tbody > tr:last-child td button.btn {
+  width: 300px;
+  text-align: center;
+  height: 50px;
+  margin-top: 30px;
+}
+.wrap_result > table thead {
+  background: #f7f7f7;
+}
+.wrap_result > table thead th {
+  border-bottom: none;
+}
+.wrap_result > table table {
+  width: 680px;
+}
+.wrap_result > table table * {
+  text-align: center;
+}
+.wrap_result > table table:last-child {
+  width: 600px;
+}
+.wrap_result .assement {
+  padding-bottom: 15px;
+}

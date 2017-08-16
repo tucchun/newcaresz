@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>老年人生活自理能力评估表</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <script type="text/javascript" src="../../static/assets/adaptive/adaptive.js"></script>
+  <script>
+		// 设计图宽度
+		window['adaptive'].desinWidth = 1920;
+		// body 字体大小 会将body字体大小设置为 baseFont / 100 + 'rem'
+		window['adaptive'].baseFont = 30;
+		window['adaptive'].maxWidth = 1920;
+		window['adaptive'].init();
+  </script>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+<form id="js-elderlyLivingAbility-form">
+  <div class="container sub-title">
+    请根据近一年的体验和感觉，回答以下问题。
+  </div>
+  <div class="container border">
+    <div class="item">
+      <dl>
+        <dt>01 进餐:使用餐具将饭菜送入口、咀嚼、吞咽等活动</dt>
+        <dd>
+          <label>
+            <input type="radio" name="self_meal" value="0" required>
+            <span>独立完成</span>
+          </label>
+        </dd>
+        <dd>
+          <label>
+            <input type="radio" name="self_meal" value="3">
+            <span>需要协助，如切碎、搅拌食物等</span>
+          </label>
+        </dd>
+        <dd>
+          <label>
+            <input type="radio" name="self_meal" value="5">
+            <span>完全需要帮助</span>
+          </label>
+        </dd>
+      </dl>
+    </div>
+
+    <div class="item">
+      <dl>
+        <dt>02 梳洗：梳头、洗脸、刷牙、剃须洗澡等活动.</dt>
+        <dd>
+          <label>
+            <input type="radio" name="self_freshen" value="0" required>
+            <span>独立完成</span>
+          </label>
+        </dd>
+        <dd>
+          <label>
+            <input type="radio" name="self_freshen" value="1">
+            <span>能独立地洗头、梳头、洗脸、刷牙、剃须等；洗澡需要协助</span>
+          </label>
+        </dd>
+        <dd>
+          <label>
+            <input type="radio" name="self_freshen" value="3">
+            <span>在协助下和适当的时间内，能完成部分梳洗活动</span>
+          </label>
+        </dd>
+        <dd>
+          <label>
+            <input type="radio" name="self_freshen" value="7">
+            <span>完全需要帮助</span>
+          </label>
+        </dd>
+      </dl>
+    </div>
+
+    <div class="item">
+      <dl>
+        <dt>03 穿衣：穿衣裤、袜子、鞋子等活动.</dt>
+        <dd>
+          <label>
+            <input type="radio" name="self_dressing" value="0" required>
+            <span>独立完成</span>
+          </label>
+        </dd>
+        <dd>
+          <label>
+            <input type="radio" name="self_dressing" value="3">
+            <span>需要协助，在适当的时间内完成部分穿衣</span>
+          </label>
+        </dd>
+        <dd>
+          <label>
+            <input type="radio" name="self_dressing" value="5">
+            <span>完全需要帮助</span>
+          </label>
+        </dd>
+      </dl>
+    </div>
+
+    <div class="item">
+      <dl>
+        <dt>04 如厕：小便、大便等活动及自控.</dt>
+        <dd>
+          <label>
+            <input type="radio" name="self_toilet" value="0" required>
+            <span>不需协助，可自控</span>
+          </label>
+        </dd>
+        <dd>
+          <label>
+            <input type="radio" name="self_toilet" value="1">
+            <span>偶尔失禁，但基本上能如厕或使用便具</span>
+          </label>
+        </dd>
+        <dd>
+          <label>
+            <input type="radio" name="self_toilet" value="5">
+            <span>经常失禁，在很多提示和协助下尚能如厕或使用便具</span>
+          </label>
+        </dd>
+        <dd>
+          <label>
+            <input type="radio" name="self_toilet" value="10" >
+            <span>完全需要帮助</span>
+          </label>
+        </dd>
+      </dl>
+    </div>
+
+    <div class="item">
+      <dl>
+        <dt>05 活动：站立、室内行走、上下楼梯、户外活动</dt>
+        <dd>
+          <label>
+            <input type="radio" name="self_activity" value="0" required>
+            <span>独立完成所有活动</span>
+          </label>
+        </dd>
+        <dd>
+          <label>
+            <input type="radio" name="self_activity" value="1">
+            <span>借助较小的外力或辅助装置能完成站立、行走、上下楼梯等</span>
+          </label>
+        </dd>
+        <dd>
+          <label>
+            <input type="radio" name="self_activity" value="5">
+            <span>借助较大的外力才能完成站立、行走，不能上下楼梯</span>
+          </label>
+        </dd>
+        <dd>
+          <label>
+            <input type="radio" name="self_activity" value="10">
+            <span>卧床不起，活动完全需要帮助</span>
+          </label>
+        </dd>
+      </dl>
+    </div>
+
+  </div>
+
+  <div class="container submit">
+    <button type="button" id="js-elderlyLivingAbility-submit" class="btn">提&nbsp;交</button>
+  </div>
+</form>
+<script src="../../static/assets/jquery/jquery-1.9.1.min.js"></script>
+<script src="../../static/js/Util.js"></script>
+<script src="../../static/js/jquery.validate.js"></script>
+<script src="../../static/js/messages_zh.js"></script>
+<script>
+  var params = Util.param(location.href);
+  var $form = $("#js-elderlyLivingAbility-form");
+
+  var validate = $form.validate({
+    showErrors:function(errorMap,errorList) {
+      if(errorList.length > 0){
+        var error = errorList[0];
+        var $el = $(error.element);
+        $el.focus();
+        alert("请选择：" + $el.parents("dl").find("dt").html());
+      }
+
+    }
+  });
+
+  $("#js-elderlyLivingAbility-submit").on("touchend", function(e){
+
+
+      if(validate.form()){
+          var paramArr = $("#js-elderlyLivingAbility-form").serializeArray();
+          var paramObj = {};
+          for(var i = 0; i < paramArr.length; i++){
+              paramObj[paramArr[i]["name"]] = paramArr[i]["value"];
+          }
+//      common.load();
+          paramObj["user_id_doc"] = params["user_id_doc"];
+          paramObj["activity_id"] = params["activity_id"];
+          paramObj["src_type"] = "HECadre APP", //请求源的类型，如"HECadre APP"、"Inhabitant APP"等
+          paramObj["pf_type"] = Util.pf_type; //请求源的终端平台类型，如"Android"、"iOS"、"Web"等
+          paramObj["user_id"] = Util.userId; //用户ID，u64
+          paramObj["auth_str"] = Util.getCommunicationAuth(); //通信认证密文串
+
+          Util.fetch({
+              url: Util.host + '/hca/web/hecadre/oldselfcare',
+              data: JSON.stringify(paramObj),
+              success: function(data){
+//              common.hideLoad();
+                  data = data || {};
+                  if(data.ret_code === 1){
+                      Util.result();
+                  }else{
+                      alert(data.ret_msg || "查询信息错误！");
+                  }
+              },
+              error: function(err){
+                Util.alert("网络错误！");
+                console.log(err)
+              }
+          })
+      }
+
+
+  })
+</script>
+</body>
+</html>

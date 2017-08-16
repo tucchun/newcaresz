@@ -1,0 +1,327 @@
+.tb-title{
+    float: left;
+}
+
+.tb-operate{
+    float: right;
+}
+
+.tb-title-txt {
+    margin: 0;
+    line-height: 68px;
+}
+
+.tb-operate {
+    float: right;
+    line-height: 68px;
+}
+.roleManager .tb-wrap{
+    padding:0 20px;
+}
+#modal_roleManager .form-tb .form-group > .power{
+    padding:0;
+}
+#modal_roleManager legend{
+    margin:0;
+    font-size:14px;
+    border:none;
+}
+#modal_roleManager .power label{
+    font-weight:normal;
+    margin:0 10px;
+}
+#modal_roleManager .power input[type=checkbox]{
+    vertical-align:middle;
+    margin-top:-1px;
+    margin-right:5px;
+}
+#modal_roleManager .power fieldset{
+    padding:13px 10px;
+    border-bottom:1px solid #e5e5e5;
+}
+#modal_roleManager .power .title{
+    padding:20px 10px;
+    border-bottom:1px solid #e5e5e5;
+}
+#modal_roleManager .operation{
+    text-align:center;
+    margin:30px 0 10px 0;
+}
+.hospital table tbody tr td:last-child a{margin:0 5px;}
+.xzqy .tb-wrap,
+.healthEducationEquipment .tb-wrap,
+.duties .tb-wrap,
+.professionalTitleManage .tb-wrap,
+.departmentManager .tb-wrap,
+.hospital .tb-wrap,
+.newhospital .tb-wrap,
+.serviceArea .tb-wrap,
+.household .tb-wrap,
+.newHousehold .tb-wrap,
+.communityUser .tb-wrap,
+.personnel .tb-wrap,
+.newPersonnel .tb-wrap,
+.expenditure .tb-wrap,
+.healthEducationField .tb-wrap,
+.comunityActivities .tb-wrap,
+.clinicList .tb-wrap,
+.clinicDetail .tb-wrap,
+.lectureList .tb-wrap,
+.classify .tb-wrap,.communityClinicList .tb-wrap{
+    padding:0 20px;
+}
+.xzqy .table-bordered>thead>tr>th,
+.duties .table-bordered>thead>tr>th,
+.professionalTitleManage .table-bordered>thead>tr>th,
+.departmentManager .table-bordered>thead>tr>th,
+.hospital .table-bordered>thead>tr>th,
+.serviceArea .table-bordered>thead>tr>th,
+.communityClinicList .table-bordered>thead>tr>th{
+    border-bottom:none;
+}
+#modal_duties .radiochose{
+    text-align: center;
+}
+#modal_duties .radiochose label{
+    padding:0;
+}
+.newhospital select.form-control,.newHousehold select.form-control{
+    width:140px;
+    display:inline;
+}
+.newhospital .table-row,.newhospital input[type=text],.newHousehold .table-row{
+    margin:5px 0;
+}
+.newhospital .table tr td,.newHousehold .table tr td{
+    vertical-align: middle;
+}
+.newhospital .table tr td:nth-child(odd),
+.newHousehold fieldset .table tr td:nth-child(odd){
+    text-align:right;
+}
+.newhospital .inllness table{
+    border:1px solid #e5e5e5;
+}
+.newhospital .inllness td{
+    text-align: center;
+}
+.newhospital .inllness .form-control{
+    display:inline;
+}
+.newhospital .inllness input[type=text]{
+    width:80px;
+    margin:0 10px;
+}
+.newhospital .imglist span{
+    display:inline-block;
+}
+#modal_serviceArea .modal-body{
+    padding:10px;
+}
+#modal_serviceArea .filter{
+    height:34px;
+    line-height:34px;
+    margin-bottom:10px;
+}
+#modal_serviceArea .filter select{
+    width:80px;
+    display:inline-block;
+}
+#modal_serviceArea select.multiple{
+    width:246px;
+    height:300px;
+}
+#modal_serviceArea .move-icon{
+    margin:135px 10px 0 10px;
+}
+#modal_serviceArea .move-icon button{
+    display:block;
+    margin:10px 0;
+}
+#modal_serviceArea .opt{
+    text-align:center;
+}
+/*鏂板闂ㄧ墝鍙�*/
+.newHousehold .modal-body,#modal_communityUser .modal-body,.modal-wrap .modal-body{
+    padding:20px 13px;
+}
+.newHousehold .modal-body ul{
+    padding:0;
+}
+.newHousehold .modal-body li{
+    list-style: none;
+    margin:5px 10px;
+}
+.newHousehold .modal-body li input[type=text]{
+    width:90px;
+    margin-right:5px;
+}
+.newHousehold .table .col-sm-5 .form-control{
+    width:100%;
+}
+#modal_communityUser .modal-dialog{
+    margin-top:50px;
+}
+.expenditure #modal_expenditure .modal-body{
+    padding-bottom:10px;
+}
+.expenditure #modal_expenditure textarea.form-control{
+    height:120px;
+}
+.clinicDetail .table-wrap{
+    border-left:1px solid #ccc;
+    border-right:1px solid #ccc;
+}
+.table-ill .col-sm-10,.table-imgs .col-sm-10{
+    border:1px solid #e5e5e5;
+    padding-top:8px;
+    padding-bottom:8px;
+}
+.table-ill .col-sm-10 span,.table-imgs .col-sm-10 img{
+    margin:0 10px;
+}
+.mr10{
+    margin-left:10px;
+}
+input[type=file]{
+    display:inline;
+}
+.newDep div.form-inline{
+    margin:8px 0;
+}
+.healthRecord{
+    padding-top:50px;
+}
+.healthRecord table{
+    width:100%;
+}
+.healthRecord table tr>td:first-child{
+    text-align:right;
+    border-right:4px solid #d7e1e3;
+    padding-right:25px;
+    position: relative;
+}
+.healthRecord table tr:first-child > td{
+    border:none;
+}
+.healthRecord h3.title{
+    font-size:16px;
+    width:300px;
+    height:50px;
+    line-height:50px;
+    color:#fff;
+    background:#1c97ff;
+    border-radius:5px;
+    text-align: center;
+    margin:0;
+}
+.healthRecord p{
+    margin:0;
+}
+.healthRecord td>div{
+    border:1px solid #e5e5e5;
+    border-radius:5px;
+    width:320px;
+    margin:10px 20px;
+    padding:10px;
+    position:relative;
+    display:inline-block;
+}
+.healthRecord table tr:last-child > td{
+    padding-bottom:50px;
+}
+.healthRecord table .docname{
+    padding:5px 20px;
+    padding-right:0;
+    padding-left:25px;
+    background:#79afff;
+    color:#fff;
+    border-radius:20px;
+    vertical-align: middle;
+    position: relative;
+    margin-top: 10px;
+}
+.healthRecord .docname>span{
+    display: inline-block;
+    width:10px;
+    height:10px;
+    border-radius:10px;
+    background:#fff;
+    position:absolute;
+    left:10px;
+    top:10px;
+}
+.healthRecord table .icon_right{
+    display: inline-block;
+    width: 6px;
+    height: 9px;
+    background: url(../sprite/right.png) no-repeat 0 0 transparent;
+    position: absolute;
+    left: -5px;
+    z-index: 9;
+    top: 44%;
+}
+.healthRecord .icon-point{
+    display: inline-block;
+    height:20px;
+    width:20px;
+    background:url("../sprite/bluePoint.png") no-repeat 0 0 transparent;
+    position: absolute;
+    right:-12px;
+}
+.tasklist .input-group{
+    padding:0;
+}
+.communityClinicList table>thead{
+    background: #f7f7f7;
+}
+.communityClinicList table td{
+    vertical-align: middle;
+    text-align: center;
+}
+.center{
+    text-align:center;
+}
+.center *{
+    text-align:center;
+}
+.inhoseActivity td{
+    vertical-align: middle !important;
+}
+.inhoseActivity th{
+    text-align:center;
+}
+table.inhoseActivity td.col-sm-1{
+    text-align:left;
+}
+table.add_data tr:first-child>td:first-child{
+    text-align:left;
+    border-right:none;
+}
+table.add_data tr:last-child>td:first-child{
+    border-right:none;
+}
+.imglist >div{padding-right:14px;}
+#addCoverageRate .wrap-table tr > td:nth-child(1),#addLifeStyle .wrap-table tr > td:nth-child(1){width:300px;}
+#addLifeStyle .wrap-table tr > td:nth-child(1).left,#newLecture .wrap-table tr > td:nth-child(1).left,
+#modifyHealthActivities .wrap-table tr > td:nth-child(1).left
+{text-align:left;}
+.expenditure .input-group[class*=col-] {padding:0;}
+#modal_healthEducationField div.operation{padding-bottom:15px;}
+#modal_hos .modal-content{width:770px;}
+#modal_hos .modal-body{padding:15px;}
+#modal_hos .modal-body div.clearfix{padding-bottom:15px;}
+#modal_hos table th{border-bottom:none;}
+#modal_hos .modal-dialog .table td:nth-child(odd){text-align: center;}
+.xzqy .opt select{width:120px;}
+#clinicDetail .table-wrap{border:none;}
+#clinicDetail .tb-wrap{padding-bottom:15px;}
+#healthKnowlegeDetail .tb-wrap{padding:0;}
+#healthKnowlegeDetail .table-wrap{border:none;}
+#healthKnowlegeDetail .wrap{border:none;}
+#healthKnowlegeDetail .tb-head{border:1px solid #e5e5e5;border-bottom:none;}
+#operationalData .show-next,#operationData_city .show-next{text-align:right;padding-bottom:15px;}
+#newClassify div.form-inline,#classifyMess div.form-inline,#updateClassify div.form-inline{margin-bottom:15px;}
+#newClassify div.form-inline:last-child,#classifyMess div.form-inline:last-child,#updateClassify div.form-inline:last-child{margin-bottom:0;}
+#editDepartment .icon-up,#editDepartment .icon-down{display:none;}
+#newDepartment .icon-up,#newDepartment .icon-down{display:none;}

@@ -1,0 +1,177 @@
+{
+  "ret_code": 1,
+  "ret_data": {
+    "residentName": "test_户主_6487",
+    "residentNo": "42010601001000445",
+    "bodySymptomList": [
+      {
+        "sympId": 2711,
+        "docType": 240,
+        "docId": 25,
+        "userId": 1712,
+        "symName": "sym_expectoration",
+        "symType": 1,
+        "symDescribe": ""
+      },
+      {
+        "sympId": 2713,
+        "docType": 240,
+        "docId": 25,
+        "userId": 1712,
+        "symName": "sym_night_sweats",
+        "symType": 1,
+        "symDescribe": ""
+      },
+      {
+        "sympId": 2715,
+        "docType": 240,
+        "docId": 25,
+        "userId": 1712,
+        "symName": "sym_blood_sputum",
+        "symType": 1,
+        "symDescribe": ""
+      },
+      {
+        "sympId": 2717,
+        "docType": 240,
+        "docId": 25,
+        "userId": 1712,
+        "symName": "sym_chest_pain",
+        "symType": 1,
+        "symDescribe": ""
+      },
+      {
+        "sympId": 2719,
+        "docType": 240,
+        "docId": 25,
+        "userId": 1712,
+        "symName": "sym_nausea_anorexia",
+        "symType": 1,
+        "symDescribe": ""
+      },
+      {
+        "sympId": 2721,
+        "docType": 240,
+        "docId": 25,
+        "userId": 1712,
+        "symName": "sym_headache_insomnia",
+        "symType": 1,
+        "symDescribe": ""
+      },
+      {
+        "sympId": 2723,
+        "docType": 240,
+        "docId": 25,
+        "userId": 1712,
+        "symName": "sym_blurred_vision",
+        "symType": 1,
+        "symDescribe": ""
+      },
+      {
+        "sympId": 2725,
+        "docType": 240,
+        "docId": 25,
+        "userId": 1712,
+        "symName": "sym_skin_itch",
+        "symType": 1,
+        "symDescribe": ""
+      },
+      {
+        "sympId": 2727,
+        "docType": 240,
+        "docId": 25,
+        "userId": 1712,
+        "symName": "sym_tinnitus_vertigo",
+        "symType": 1,
+        "symDescribe": ""
+      },
+      {
+        "sympId": 2729,
+        "docType": 240,
+        "docId": 25,
+        "userId": 1712,
+        "symName": "",
+        "symType": 0,
+        "symDescribe": "方法给"
+      }
+    ],
+    "phthId": 25,
+    "actId": "",
+    "userId": 1712,
+    "phthVisitMonth": "第5月",
+    "phthVisitDate": 0,
+    "phthDiseaseSymptom": 2,
+    "phthSupervisor": 1,
+    "phthVisitStyle": 1,
+    "phthCurrentSmoke": 12,
+    "phthTargerSmoke": 0,
+    "phthCurrentDrink": 15,
+    "phthTargerDrink": 0,
+    "phthChemotherapy": "凤飞飞",
+    "phthDrugUsag": 1,
+    "phthDrugType": 0,
+    "phthCompoundPreparation": 1,
+    "phthBulkLoading": 1,
+    "phthPlateCombination": 1,
+    "phthInjection": 1,
+    "phthDrugMiss": 5,
+    "phthDrugReaction": 1,
+    "phthDrugDescribe": "很好",
+    "phthDrugNeopathy": 1,
+    "phthNeopathyDescribe": "刚刚",
+    "phthReferralReason": "111",
+    "phthReferralHospital": "外科",
+    "phthReferralVisit": "反反复复",
+    "phthOpinion": "凤飞飞",
+    "nextVisitDate": 1502294400000,
+    "phthVisitDoctor": "",
+    "phthStopDate": 1,
+    "phthStopReason": 1,
+    "phthShouldVisit": 2,
+    "phthActualVisit": 1,
+    "phthShouldDrug": 11,
+    "phthActualDrug": 3,
+    "phthDrugRate": 3.0,
+    "phthAssessDoctor": "",
+    "createBy": 1354,
+    "createDate": 1499674386410,
+    "updateBy": "",
+    "updateDate": "",
+    "datetabSet": [
+      {
+        "docId": 19,
+        "docType": 240,
+        "docRecordTimes": 0,
+        "docCreateDate": 1499669523095
+      },
+      {
+        "docId": 21,
+        "docType": 240,
+        "docRecordTimes": 0,
+        "docCreateDate": 1499671680241
+      },
+      {
+        "docId": 23,
+        "docType": 240,
+        "docRecordTimes": 0,
+        "docCreateDate": 1499674067549
+      },
+      {
+        "docId": 25,
+        "docType": 240,
+        "docRecordTimes": 0,
+        "docCreateDate": 1499674386410
+      }
+    ],
+    "imageDataUrl": "",
+    "imageUrlList": "",
+    "bodySymptomStr": "咳痰、 低热盗汗、 咯血或血痰、 胸痛消瘦、 恶心纳差、 头痛失眠、 视力模糊、 皮肤瘙痒、 眼花耳鸣、 ",
+    "phthVisitStyleStr": "门诊",
+    "phthDrugUsagStr": "每日",
+    "phthSupervisorStr": "医生",
+    "phthDrugReactionStr": "很好",
+    "phthDrugFormulaStr": "固定剂量复合制剂、 散装药、 板式组合药、 注射剂",
+    "phthDrugNeopathyStr": "刚刚",
+    "phthStopReasonStr": ""
+  }
+}

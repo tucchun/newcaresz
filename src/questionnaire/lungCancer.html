@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>肺癌调查问卷</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <script src="../static/assets/adaptive-master/js/adaptive-version2.js"></script>
+  <script>
+		// 设计图宽度
+		window['adaptive'].desinWidth = 1920;
+		// body 字体大小 会将body字体大小设置为 baseFont / 100 + 'rem'
+		window['adaptive'].baseFont = 30;
+		window['adaptive'].maxWidth = 1920;
+		window['adaptive'].init();
+  </script>
+  <link rel="stylesheet" href="../static/css/questionnaire.css">
+</head>
+<body>
+<div class="container mt">
+  <table class="tb tb-auto tb-border">
+    <tbody>
+      <tr>
+        <td class="bgColor">吸烟史(年)</td>
+        <td><input type="text"></td>
+        <td class="bgColor">每天吸烟(支)</td>
+        <td><input type="text"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="container border mt">
+
+  <div class="item">
+    <dl>
+      <dt>有无以下职业性粉尘接触史？</dt>
+      <dd>
+        <label>
+          <input type="radio">
+          <span>无</span>
+        </label>
+      </dd>
+      <dd>
+        <label>
+          <input type="radio">
+          <span>石棉</span>
+        </label>
+      </dd>
+      <dd>
+        <label>
+          <input type="radio">
+          <span>硅粉尘</span>
+        </label>
+      </dd>
+      <dd>
+        <label>
+          <input type="radio">
+          <span>煤烟或焦油</span>
+        </label>
+      </dd>
+    </dl>
+  </div>
+
+  <div class="item">
+    <dl>
+      <dt>是否在有空气污染的大城市生活？</dt>
+      <dd>
+        <label>
+          <input type="radio">
+          <span>是</span>
+        </label>
+      </dd>
+      <dd>
+        <label>
+          <input type="radio">
+          <span>否</span>
+        </label>
+      </dd>
+    </dl>
+  </div>
+
+  <div class="item">
+    <dl>
+      <dt>父母及兄弟姐妹有无肺癌患者？</dt>
+      <dd>
+        <label>
+          <input type="radio">
+          <span>有</span>
+        </label>
+      </dd>
+      <dd>
+        <label>
+          <input type="radio">
+          <span>无</span>
+        </label>
+      </dd>
+    </dl>
+  </div>
+
+  <div class="item">
+    <dl>
+      <dt>有无以下既往病史？</dt>
+      <dd>
+        <label>
+          <input type="radio">
+          <span>肺结核史</span>
+        </label>
+      </dd>
+      <dd>
+        <label>
+          <input type="radio">
+          <span>慢性支气管炎史</span>
+        </label>
+      </dd>
+      <dd>
+        <label>
+          <input type="radio">
+          <span>肺炎病史</span>
+        </label>
+      </dd>
+      <dd>
+        <label>
+          <input type="radio">
+          <span>无</span>
+        </label>
+      </dd>
+    </dl>
+  </div>
+
+  <div class="item">
+    <dl>
+      <dt>每天蔬菜水果摄入是否小于400g？</dt>
+      <dd>
+        <label>
+          <input type="radio">
+          <span>是</span>
+        </label>
+      </dd>
+      <dd>
+        <label>
+          <input type="radio">
+          <span>否</span>
+        </label>
+      </dd>
+    </dl>
+  </div>
+
+
+</div>
+
+<div class="container submit">
+  <button type="button" class="btn">提&nbsp;交</button>
+</div>
+</body>
+</html>

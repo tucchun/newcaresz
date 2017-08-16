@@ -1,0 +1,80 @@
+<div class="container">
+  <div class="item clearfix">
+    <div class="pull-left">姓名</div>
+    <div class="pull-right">{{= it.residentName}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">档案编号</div>
+    <div class="pull-right">{{= it.residentNo}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">国籍</div>
+    <div class="pull-right">{{= it.pregCountry}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">身份民（护照）号</div>
+    <div class="pull-right">{{= it.residentCard}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">工作单位</div>
+    <div class="pull-right">{{= it.pregWorkUnit}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">户籍类型</div>
+    <div class="pull-right">
+      {{? it.pregHouseholdType == 1}} 农籍 {{??}} 非农籍 {{?}}
+    </div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">居住地址</div>
+    <div class="pull-right">
+      {{? it.pregLivingEnvironment == 1}} 坝区 {{?? it.pregLivingEnvironment == 2}} 半山区 {{?? it.pregLivingEnvironment == 3}} 山区 {{?? it.pregLivingEnvironment == 4}} 其他地区 {{?}}
+    </div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">民族</div>
+    <div class="pull-right">{{= it.residentNation}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">居住地到最近到乡级以上卫生机构</div>
+    <div class="pull-right">{{= it.pregVillageDistance}}&nbsp;公里</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">文化程度</div>
+    <div class="pull-right">{{= it.pregCulturalLevelStr}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">职业</div>
+    <div class="pull-right">{{= it.pregCareerStr}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">产地休养地</div>
+    <div class="pull-right">
+      {{= it.pregCultureProvince}}省{{= it.pregCultureCity}}市{{= it.pregCultureArea}}县{{= it.pregCultureVillage}}镇{{= it.pregCultureTown}}街道
+    </div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">丈夫姓名</div>
+    <div class="pull-right">{{= it.pregHusbandName}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">年龄</div>
+    <div class="pull-right">{{= it.pregHusbandAge}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">联系电话</div>
+    <div class="pull-right">{{= it.pregHusbandMobile}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">文化程度</div>
+    <div class="pull-right">{{= it.pregHusbandCulturalLevelStr}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">职业</div>
+    <div class="pull-right">{{= it.pregHusbandCareerOther}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">工作单位</div>
+    <div class="pull-right">{{= it.pregHusbandWorkUnit}}</div>
+  </div>
+</div>

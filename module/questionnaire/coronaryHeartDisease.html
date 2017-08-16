@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>冠心病评分</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <script src="../static/assets/adaptive-master/js/adaptive-version2.js"></script>
+  <script>
+		// 设计图宽度
+		window['adaptive'].desinWidth = 1920;
+		// body 字体大小 会将body字体大小设置为 baseFont / 100 + 'rem'
+		window['adaptive'].baseFont = 30;
+		window['adaptive'].maxWidth = 1920;
+		window['adaptive'].init();
+  </script>
+  <link rel="stylesheet" href="../static/css/questionnaire.css">
+</head>
+<body>
+<div class="container sub-title">
+  请根据近一年的体验和感觉，回答以下问题。
+</div>
+<div class="container border">
+  <div class="item">
+    <dl>
+      <dt>1.冠心病遗传？</dt>
+      <dd>
+        <input type="radio">
+        <span>三代血缘亲属没有60岁以前患冠心病</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>需三代血缘亲属有1人在60岁以后患冠心病</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>三代血缘亲属有1人在60岁以前患冠心病</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>三代血缘亲属有2人在60岁以后患冠心病</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>三代血缘亲属有2人在60岁以前患冠心病</span>
+      </dd>
+    </dl>
+  </div>
+
+  <div class="item">
+    <dl>
+      <dt>2.糖尿病</dt>
+      <dd>
+        <input type="radio">
+        <span>血糖一直正常</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>血糖略高(唐尿病前期)或略低(血糖过少)</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>40岁后开始患糖尿病,需严格饮食或胰岛素控制</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>30岁以前患糖尿病,需严格饮食或胰岛素控制</span>
+      </dd>
+    </dl>
+  </div>
+
+  <div class="item">
+    <dl>
+      <dt>3.家族病史</dt>
+      <dd>
+        <input type="radio">
+        <span>亲属无严重高血压、糖尿病、高胆固醇血症</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>亲属有1人有严重高血压、糖尿病、高胆固醇血症</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>亲属有2人有严重高血压、糖尿病、高胆固醇血症</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>亲属有3人有严重高血压、糖尿病、高胆固醇血症</span>
+      </dd>
+    </dl>
+  </div>
+
+  <div class="item">
+    <dl>
+      <dt>4.吸烟</dt>
+      <dd>
+        <input type="radio">
+        <span>从不吸烟或戒烟5年以上</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>已戒烟2~4年</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>戒烟1年左右</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>每天吸烟10~20支</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>每天吸烟20~40支</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>每天吸烟40支以上</span>
+      </dd>
+    </dl>
+  </div>
+
+  <div class="item">
+    <dl>
+      <dt>5.运动</dt>
+      <dd>
+        <input type="radio">
+        <span>每星期激烈运动4~5次</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>每星期适度运动4~5次</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>只在周末运动</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>难得运动</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>极少或不运动</span>
+      </dd>
+    </dl>
+  </div>
+
+  <div class="item">
+    <dl>
+      <dt>6.饮酒</dt>
+      <dd>
+        <input type="radio">
+        <span>从不饮酒或只在交际时饮酒</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>每周约饮5次，每次1小杯左右</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>每天3杯以上（啤酒为360ml以上）</span>
+      </dd>
+    </dl>
+  </div>
+
+  <div class="item">
+    <dl>
+      <dt>7.吸入的空气质量</dt>
+      <dd>
+        <input type="radio">
+        <span>家中和工作处无烟、废气或工业污染</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>同吸烟者在无污染处生活或工作</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>同吸烟者在有污染处生活或工作</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>同吸烟者一起生活或工作</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>同吸烟者一起并在污染处生活或工作</span>
+      </dd>
+    </dl>
+  </div>
+
+  <div class="item">
+    <dl>
+      <dt>8.紧张状态</dt>
+      <dd>
+        <input type="radio">
+        <span>在家中和工作时感到轻松</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>家中有一些紧张感，在工作中没有</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>工作中有一些紧张感，在家中没有</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>家中和工作中都有一些紧张感</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>家中或工作中产常有紧张感</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>家中和工作中常有紧张感</span>
+      </dd>
+    </dl>
+  </div>
+
+  <div class="item">
+    <dl>
+      <dt>9.体重</dt>
+      <dd>
+        <input type="radio">
+        <span>一贯符合或接近标准体重</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>超过标准体重10%</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>超过标准体重20%</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>超过标准体重30%</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>自30岁以来一直超过标准体重20%</span>
+      </dd>
+    </dl>
+  </div>
+
+  <div class="item">
+    <dl>
+      <dt>10.血压</dt>
+      <dd>
+        <input type="radio">
+        <span>120/75mmHg以下</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>110~140/75~85mmHg</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>140~150/86~90mmHg</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>151~175/91~100mmHg</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>176~190/101~110mmHg</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>176~190/101~110mmHg</span>
+      </dd>
+    </dl>
+  </div>
+
+  <div class="item">
+    <dl>
+      <dt>11.高密度脂蛋白与胆固醇的比值</dt>
+      <dd>
+        <input type="radio">
+        <span>61%以上</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>45%~60%</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>35%~44%</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>29%~34%</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>23%~38%</span>
+      </dd>
+      <dd>
+        <input type="radio">
+        <span>22%以下</span>
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<div class="container submit">
+  <button type="button" class="btn">提&nbsp;交</button>
+</div>
+</body>
+</html>

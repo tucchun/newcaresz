@@ -1,0 +1,64 @@
+{
+    "ret_code": 1,
+    "ret_data": {
+        "OneCateList": [
+            {
+                "code": "1",
+                "name": "中西药品",
+                "parentid": "0"
+            },
+            {
+                "code": "138",
+                "name": "隐形眼镜",
+                "parentid": "0"
+            },
+            {
+                "code": "141",
+                "name": "保健食品",
+                "parentid": "0"
+            }
+        ],
+        "twoCateList": [
+            {
+                "code": "2",
+                "name": "感冒咳嗽",
+                "parentid": "1"
+            },
+            {
+                "code": "3",
+                "name": "止痛镇痛",
+                "parentid": "1"
+            },
+            {
+                "code": "5",
+                "name": "眼科用药",
+                "parentid": "1"
+            },
+            {
+                "code": "6",
+                "name": "口腔用药",
+                "parentid": "1"
+            },
+            {
+                "code": "139",
+                "name": "隐形眼镜护理液",
+                "parentid": "138"
+            },
+            {
+                "code": "142",
+                "name": "滋阴",
+                "parentid": "141"
+            },
+            {
+                "code": "149",
+                "name": "补阳",
+                "parentid": "141"
+            },
+            {
+                "code": "150",
+                "name": "其他",
+                "parentid": "141"
+            }
+        ]
+    }
+}
