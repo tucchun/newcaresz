@@ -8,6 +8,7 @@ module.exports = Merge(CommonConfig, {
   devtool: 'cheap-module-source-map',
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin()
   ],
   devServer: {
     port: 9000,
@@ -19,5 +20,9 @@ module.exports = Merge(CommonConfig, {
 
     contentBase: path.join(__dirname, './'),
     hot: true
-  }
+  },
+  output: {
+    filename: '[name].[hash].js',
+    path: path.join(__dirname, './dist/src')
+  },
 });

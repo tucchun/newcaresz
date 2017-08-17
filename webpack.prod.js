@@ -23,6 +23,11 @@ module.exports = Merge(CommonConfig, {
         screw_ie8: true
       },
       comments: false
-    })
-  ]
+    }),
+    new webpack.HashedModuleIdsPlugin()
+  ],
+  output: {
+    filename: '[name].[chunkhash].js',
+    path: path.join(__dirname, './dist/src')
+  },
 });

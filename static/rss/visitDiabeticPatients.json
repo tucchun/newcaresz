@@ -177,7 +177,7 @@
     "diabDrugReactionDescribe": "",
     "diabHypoglyReaction": 1,
     "diabVisitClassification": 1,
-    "diabReferralReason": "1111",
+    "diabReferralReason": "",
     "diabReferralHospital": "呢个",
     "nextVisitDate": 1509465600000,
     "diabVisitDoctor": "",

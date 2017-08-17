@@ -37,20 +37,16 @@ module.exports = {
     new HtmlWebpackPlugin({
       // title: 'cache',
       template: path.join(__dirname, './src/app/details.ejs'),
-      chunks: ['app', 'vendor']
+      chunks: ['app', 'vendor', 'runtime']
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
+      minChunks: Infinity
       // filename: 'vendor.[chunkhash].js'
     }),
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'runtime',
+      name: 'runtime'
       // filename: 'runtime.[chunkhash].js'
     })
-  ],
-  output: {
-    filename: '[name].[chunkhash].js',
-    path: path.join(__dirname, './dist/src')
-    
-  },
+  ]
 };

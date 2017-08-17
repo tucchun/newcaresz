@@ -57,7 +57,7 @@ define([
       "doc_id": 1,
       "isShowNext": "false",
       "user_id_doc": 2026,
-      "doc_type": 430
+      "doc_type": 220
     };
   }
 
