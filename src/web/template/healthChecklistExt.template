@@ -65,7 +65,7 @@
     </tr>
     <tr>
       <td colspan="2" class="label text-right bgColor">体质指数（BMI ）</td>
-      <td class="text-left">{{= it.examBmi}}Kg/m2</td>
+      <td class="text-left">{{=  (Number(it.examBmi) || 0).toFixed(2) }}Kg/m2</td>
     </tr>
     <tr>
       <td colspan="2" class="label text-right bgColor">老年人健康状态自我评估*</td>

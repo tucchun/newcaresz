@@ -9,7 +9,7 @@
   </div>
   <div class="item clearfix">
     <div class="pull-left">体检日期</div>
-    <div class="pull-right">{{= it.Util.formatDate(it.createDate)}}</div>
+    <div class="pull-right">{{= it.Util.formatDate(it.examDate)}}</div>
   </div>
   <!--  <div class="item clearfix">
     <div class="pull-left">责任医生</div>
@@ -85,7 +85,7 @@
       </div>
       <div class="item clearfix">
         <div class="pull-left">体质指数(BMI)</div>
-        <div class="pull-right">{{= it.examBmi}}<span class="unit">Kg/m2</span></div>
+        <div class="pull-right">{{= (Number(it.examBmi) || 0).toFixed(2)}}<span class="unit">Kg/m2</span></div>
       </div>
       <div class="item clearfix" data-norequired="examHealthStatusDes" data-belong="examOlderman" data-norequireditem=true>
         <div class="pull-left">老年人健康状态自我评估*</div>
@@ -240,15 +240,14 @@
           <div class="pull-left">饮酒情况</div>
           <div class="pull-right">从不</div>
         </div>
-        {{?}} 
-        {{? it.careerDisease.careerFlag === 1}}
+        {{?}} {{? it.careerDisease.careerFlag === 1}}
         <div class="container flex horizental">
           <div class="flex vertical justify-center align-center border-right bgWhite w230">
             <div>职业病危害因素接触史</div>
           </div>
           <div class="container">
             <div class="item clearfix">
-              <div class="pull-left">职业名称</div>
+              <div class="pull-left">工种</div>
               <div class="pull-right">{{= it.careerDisease.careerName}}</div>
             </div>
             <div class="item clearfix">
@@ -301,6 +300,7 @@
             </div>
           </div>
         </div>
+        {{? it.examCorrectVisionLeft || it.examCorrectVisionRight}}
         <div class="container flex horizental">
           <div class="flex vertical justify-center align-center border-right border-bottom bgWhite w230">
             <div>视力</div>
@@ -312,10 +312,16 @@
             </div>
             <div class="item clearfix">
               <div class="pull-left">矫正视力</div>
-              <div class="pull-right">左眼：{{= it.examCorrectVisionLeft}}/右眼：{{= it.examCorrectVisionRight}}</div>
+              <div class="pull-right">左眼：{{= it.examCorrectVisionLeft || ' '}}/右眼：{{= it.examCorrectVisionRight || ' '}}</div>
             </div>
           </div>
         </div>
+        {{??}}
+        <div class="item clearfix">
+          <div class="pull-left">视力</div>
+          <div class="pull-right">左眼：{{= it.examVisionLeft}}/右眼：{{= it.examVisionRight}}</div>
+        </div>
+        {{?}}
         <div class="item clearfix">
           <div class="pull-left">听力</div>
           <div class="pull-right">{{= it.examHearingDes}}</div>
@@ -883,10 +889,12 @@
     <div class="pull-left">健康指导</div>
     <div class="pull-right">{{= it.healthGuideDes}}</div>
   </div>
+  {{? it.riskFactorDes}}
   <div class="item clearfix">
     <div class="pull-left">危险因素控制</div>
     <div class="pull-right">{{= it.riskFactorDes}}</div>
   </div>
+  {{?}}
   <div class="container">
     <div class="container flex horizental" data-PexaminationExtend-1>
       <div class="item flex align-center justify-center border-right w100">

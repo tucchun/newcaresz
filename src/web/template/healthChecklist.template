@@ -14,7 +14,7 @@
       </tr>
       <tr>
         <td class="label text-right bgColor">体检日期</td>
-        <td class="text-left" colspan="3">{{= it.Util.formatDate(it.createDate)}}</td>
+        <td class="text-left" colspan="3">{{= it.Util.formatDate(it.examDate)}}</td>
         <!--      <td class="label text-right bgColor">责任医生</td>
       <td class="text-left">{{= it.examDoctor}}</td>-->
       </tr>
@@ -65,14 +65,14 @@
       </tr>
       <tr>
         <td colspan="2" class="label text-right bgColor">体质指数（BMI ）</td>
-        <td class="text-left">{{= it.examBmi}}Kg/m2</td>
+        <td class="text-left">{{= (Number(it.examBmi) || 0).toFixed(2)}}Kg/m2</td>
       </tr>
       <tr data-examHealthStatusDes>
-        <td colspan="2" class="label text-right bgColor"  data-norequired="examHealthStatusDes" data-belong="examOlderHealth">老年人健康状态自我评估*</td>
+        <td colspan="2" class="label text-right bgColor" data-norequired="examHealthStatusDes" data-belong="examOlderHealth">老年人健康状态自我评估*</td>
         <td class="text-left">{{= it.examHealthStatusDes}}</td>
       </tr>
       <tr data-examSelfCareDes>
-        <td colspan="2" class="label text-right bgColor"  data-norequired="examSelfCareDes" data-belong="examOlderHealth">老年人生活自理能力自我评估*</td>
+        <td colspan="2" class="label text-right bgColor" data-norequired="examSelfCareDes" data-belong="examOlderHealth">老年人生活自理能力自我评估*</td>
         <td class="text-left">{{= it.examSelfCareDes}}</td>
       </tr>
       <tr data-elderCognitiveDes>
@@ -180,7 +180,7 @@
         <td rowspan="{{= it.careerDisease.protectMeasures.length + 1}} " class="label text-center bgColor">
           职业病危害因素接触史
         </td>
-        <td class="text-left" colspan="4">工种：{{= it.careerDisease.careerName}}，从业{{= it.careerDisease.careerTime}}年</td>
+        <td class="text-left" colspan="4">工种：{{= it.careerDisease.careerName}}，从业时间{{= it.careerDisease.careerTime}}年</td>
       </tr>
       {{~ it.careerDisease.protectMeasures :value:index}}
       <tr>
@@ -206,7 +206,7 @@
       <!--<td class="text-left">防护措施：无</td>-->
       <!--</tr>-->
       <!--<tr>-->
-      <tr>
+      <tr data-organ>
         <td class="label text-center bgColor" rowspan="7">
           脏器功能
         </td>
@@ -230,19 +230,19 @@
           {{= it.pharynxDes}}
         </td>
       </tr>
-      <tr>
-        <td rowspan="2" class="text-center label bgColor">
+      <tr data-vision>
+        <td rowspan="2" class="text-center label bgColor" data-norequired="vision" data-belong="organ">
           视力
         </td>
-        <td class="text-right label bgColor"></td>
-        <td class="text-left">
+        <!--         <td class="text-right label bgColor"></td> -->
+        <td class="text-left" colspan="2">
           左眼：{{= it.examVisionLeft}}/右眼：{{= it.examVisionRight}}
         </td>
       </tr>
-      <tr>
+      <tr data-vision>
         <td class="text-right label bgColor">矫正视力</td>
         <td class="text-left">
-          左眼：{{= it.examCorrectVisionLeft}}/右眼：{{= it.examCorrectVisionRight}}
+          {{? it.examCorrectVisionLeft || it.examCorrectVisionRight}} 左眼：{{= it.examCorrectVisionLeft || ' '}}/右眼：{{= it.examCorrectVisionRight || ' '}} {{?}}
         </td>
       </tr>
       <tr>
@@ -251,7 +251,7 @@
           {{= it.examHearingDes}}
         </td>
       </tr>
-      <tr>
+      <tr data-organ>
         <td colspan="2" class="text-right label bgColor">运动功能</td>
         <td class="text-left">
           {{= it.examExerciseAbilityDes}}
@@ -425,7 +425,7 @@
         <td class="text-left">{{= it.examAuxiliaryBloodWhitecell || ''}}</td>
       </tr>
       <tr>
-        <td class="text-right label bgColor">血小板(×10^9/L)</td>
+        <td class="text-right label bgColor">血小板(*10^9/L)</td>
         <td class="text-left">{{= it.examAuxiliaryBloodPlatelet || ''}}</td>
       </tr>
       <tr data-examAuxiliary>
@@ -605,7 +605,7 @@
         <td class="text-left ">{{= it.tcmConstitution && it.tcmConstitution.tcmSpecialDes}}</td>
       </tr>
       <tr data-problem data-belongproblem>
-        <td class="text-center label bgColor " rowspan="7 " data-norequired="problem " data-belong="belongproblem ">现存主要健康问题 * </td>
+        <td class="text-center label bgColor " rowspan="7 " data-norequired="problem " data-belong="belongproblem ">现存主要健康问题 </td>
         <td colspan="2 " class="text-right bgColor label ">脑血管疾病</td>
         <td class="text-left ">{{= it.cerebroDiseaseDes}}</td>
       </tr>
@@ -721,10 +721,12 @@
         <td class="text-center label bgColor ">健康指导</td>
         <td class="text-left " colspan="3 ">{{= it.healthGuideDes}}</td>
       </tr>
-      <tr>
+      {{? it.riskFactorDes}}
+       <tr>
         <td class="text-center label bgColor ">危险因素控制</td>
         <td class="text-left " colspan="3 ">{{= it.riskFactorDes}}</td>
       </tr>
+      {{?}}  
       <tr data-belongexaminationExtendinternalPastHistory data-examinationExtendinternalPastHistory>
         <td class="text-center label bgColor " rowspan="9 " data-belong="belongexaminationExtendinternalPastHistory " data-norequired="examinationExtendinternalPastHistory ">内科常规检查</td>
         <td class="text-right label bgColor " colspan="2 " >内科既往史</td>

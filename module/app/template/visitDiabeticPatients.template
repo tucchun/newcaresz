@@ -61,7 +61,7 @@
       </div>
       <div class="item clearfix">
         <div class="pull-left">体质指数</div>
-        <div class="pull-right">{{=it.diabCurrentBodyspi}}/{{=it.diabTargetBodyspi}}</div>
+        <div class="pull-right">{{=  (Number(it.diabCurrentBodyspi/it.diabTargetBodyspi) || 0).toFixed(2)}}</div>
       </div>
       <div class="item clearfix">
         <div class="pull-left">足背动脉搏</div>

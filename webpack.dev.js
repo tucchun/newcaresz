@@ -12,17 +12,18 @@ module.exports = Merge(CommonConfig, {
   ],
   devServer: {
     port: 9000,
-    host: '192.168.1.51',
+    // host: '192.168.1.51',
     historyApiFallback: true,
     noInfo: false,
     stats: 'minimal',
-    // publicPath: publicPath
-
-    contentBase: path.join(__dirname, './'),
+    publicPath:  '/',
+    // contentBase: path.join(__dirname, './dist'),
     hot: true
   },
   output: {
     filename: '[name].[hash].js',
-    path: path.join(__dirname, './dist/src')
+    chunkFilename: '[name].[hash].js',
+    publicPath: '../',
+    path: path.join(__dirname, './dist')
   },
 });

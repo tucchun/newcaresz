@@ -54,13 +54,13 @@
   <div class="item clearfix">
     <div class="pull-left">子宫</div>
     <div class="pull-right">
-      {{= it.gynaecology && it.gynaecology.gynaPalaceDes}}
+      {{? it.gynaecology && it.gynaecology.gynaPalace == 1}} {{= it.gynaecology.gynaPalaceExce}} {{??}} 未见异常 {{?}}
     </div>
   </div>
   <div class="item clearfix">
     <div class="pull-left">宫颈</div>
     <div class="pull-right">
-       {{= it.gynaecology && it.gynaecology.gynaCervicalDes}}
+      {{= it.gynaecology && it.gynaecology.gynaCervicalDes}}
     </div>
   </div>
   <div class="item clearfix">
@@ -75,16 +75,16 @@
       {{? it.interWound == 1}} {{= it.interWoundExce}} {{??}} {{= it.interWoundName}} {{?}}
     </div>
   </div>
-   <div class="item clearfix">
+  <div class="item clearfix">
     <div class="pull-left">外阴</div>
     <div class="pull-right">
-      {{= it.gynaecology &&  it.gynaecology.gynaVulvadDes}}
+      {{= it.gynaecology && it.gynaecology.gynaVulvadDes}}
     </div>
   </div>
   <div class="item clearfix">
     <div class="pull-left">阴道</div>
     <div class="pull-right">
-      {{= it.gynaecology &&  it.gynaecology.gynaVaginaDes}}
+      {{= it.gynaecology && it.gynaecology.gynaVaginaDes}}
     </div>
   </div>
   <div class="item clearfix">

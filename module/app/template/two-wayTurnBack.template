@@ -87,31 +87,3 @@
     </div>
   </div>
 </div>
-<script>
-var dom_imgArr = $('.js-img');
-dom_imgArr.each(function() {
-  var width = this.width;
-  var height = this.height;
-  if (width > height) {
-    this.style.width = "auto";
-    this.style.height = "100%";
-  } else {
-    this.style.width = "100%";
-    this.style.height = "auto";
-  }
-});
-if (window.jsObj.showGalleryImages) {
-  var img_src_arr = [];
-
-  dom_imgArr.each(function() {
-    img_src_arr.push(this.getAttribute('src'));
-  });
-
-  dom_imgArr.on('click', function() {
-    window.jsObj.showGalleryImages(img_src_arr);
-  });
-} else {
-  var dom_imagesCnt = document.getElementById("js-images-cnt");
-  var viewer = new Viewer(dom_imagesCnt, {});
-}
-</script>

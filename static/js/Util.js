@@ -190,7 +190,7 @@
       console.log(item);
     }
     Util.host = (function() {
-      if (window.jsObj.getHost) { // 健教专干
+      if (window.jsObj.getHost) { // 健康管理师
         return window.jsObj.getHost();
       }
       if (src_type == 'DOCTOR') { // PC端
@@ -306,6 +306,9 @@
       }
       if (pc_host) {
         return pc_host + '/hca/api/business/getfile/' + encodeURI(Base64.encode(str));
+      }
+      if(Util.demo){
+        return './image/boy.png';
       }
       return ''; //./image/boy.png
     };

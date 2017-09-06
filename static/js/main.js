@@ -1,8 +1,9 @@
 var main = document.querySelector("#js-main");
 var ctx = main.getAttribute("data-ctx") || '../';
 var entrance = main.getAttribute("data-entrance");
+var ver = main.getAttribute("data-ver");
 require.config({
-    urlArgs: 'v=1.03',
+    urlArgs: 'ver=' + ver,
     baseUrl: ctx,
     waitSeconds: 0,
     shim: {

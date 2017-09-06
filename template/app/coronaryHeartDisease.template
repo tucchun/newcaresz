@@ -185,7 +185,7 @@
           </div>
           <div class="item clearfix">
             <div class="pull-left">BMI</div>
-            <div class="pull-right">{{= it.coronBmi}}</div>
+            <div class="pull-right">{{= (Number(it.coronBmi) || 0).toFixed(2)}}</div>
           </div>
           <div class="item clearfix">
             <div class="pull-left">心律</div>

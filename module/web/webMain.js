@@ -57,7 +57,7 @@ define([
       "doc_id": 1,
       "isShowNext": "false",
       "user_id_doc": 2026,
-      "doc_type": 220
+      "doc_type": 40
     };
   }
 
@@ -86,8 +86,8 @@ define([
             name: $insulin.find(".js-useMedicationList-medDrugName").html(),
             value: $insulin.find(".js-useMedicationList-medConsumption").html(),
           };
-          $insulin.find(".js-useMedicationList-medDrugName").html($useMedicationList.last().find(".js-useMedicationList-medDrugName").html())
-          $insulin.find(".js-useMedicationList-medConsumption").html($useMedicationList.last().find(".js-useMedicationList-medConsumption").html())
+          $insulin.find(".js-useMedicationList-medDrugName").html($useMedicationList.last().find(".js-useMedicationList-medDrugName").html());
+          $insulin.find(".js-useMedicationList-medConsumption").html($useMedicationList.last().find(".js-useMedicationList-medConsumption").html());
           $useMedicationList.last().find(".js-useMedicationList-medDrugName").prev().remove().end().html(temp.name).prop("colspan", 2);
           $useMedicationList.last().find(".js-useMedicationList-medConsumption").html(temp.value);
 
@@ -106,6 +106,38 @@ define([
             index--;
           }
 
+        }
+        // 预览图片
+        if (paramObj['doc_type'] == 450 || paramObj['doc_type'] == 460 || paramObj['doc_type'] == 40 || paramObj['doc_type'] == 50 || paramObj['doc_type'] == 60 || paramObj['doc_type'] == 70) {
+          var dom_imgArr = $html.find('.js-img');
+          dom_imgArr.each(function() {
+            var width = this.width;
+            var height = this.height;
+            if (width > height) {
+              this.style.width = "auto";
+              this.style.height = "100%";
+            } else {
+              this.style.width = "100%";
+              this.style.height = "auto";
+            }
+          });
+          if (window.jsObj.showGalleryImages) {
+            var img_src_arr = [];
+
+            dom_imgArr.each(function() {
+              img_src_arr.push(this.getAttribute('src'));
+            });
+
+            dom_imgArr.on('click', function() {
+              var index = dom_imgArr.index(this);
+              console.log("图片索引：" + index);
+              // window.jsObj.showGalleryImages(img_src_arr);
+              window.jsObj.showGalleryImagesWithIndex(img_src_arr, index);
+            });
+          } else {
+            var dom_imagesCnt = $html.find("#js-images-cnt").get(0);
+            new Viewer(dom_imagesCnt, {});
+          }
         }
         $container.append($html);
       },
@@ -147,9 +179,9 @@ define([
   function modifyCol($norequiredList) {
     $norequiredList.each(function(index) {
       var value = $.trim($(this).children(":last").html());
-     
+
       if (!value || value == 0) {
-        
+
         if ($(this).children("[data-norequired]").size() > 0) {
           // 该行有跨列 不能直接删除； 把最后一个td删掉，再不最后一个td的前一个td内容置空并跨行加1；
           $(this).children(":last").remove();
@@ -164,7 +196,7 @@ define([
           $(this).attr(pattern, pattern);
           //console.log( $norequiredList)
         }
-      } 
+      }
     });
   }
 
@@ -177,7 +209,7 @@ define([
     if (!$enableList.eq(0).children(":last").html()) {
       if ($enableList.size() >= 2) {
         $enableList.eq(0).children(":last").remove();
-        $enableList.eq(0).append($enableList.eq(1).html())
+        $enableList.eq(0).append($enableList.eq(1).html());
         $enableList.eq(1).hide();
         $enableList.eq(1).attr(pattern, pattern);
         $enableList = $norequiredList.filter(":not([" + pattern + "])");
@@ -249,6 +281,10 @@ define([
   }
   //    common.load();
   deferred.done(function() {
+    var src_type = "HECadre APP";
+    if (paramObj['src_type'] == 'DOCTOR') {
+      src_type = 'Web Admin';
+    }
     Util.fetch({
       url: Util.host + '/hca/web/inhabitant/getdoc',
       demoUrl: "../../static/rss/" + common.settings[paramObj.doc_type] + ".json",
@@ -262,7 +298,7 @@ define([
         "doc_id": paramObj['doc_id'],
         "user_id_doc": paramObj['user_id_doc'],
         "doc_type": paramObj['doc_type'],
-        "src_type": "HECadre", //请求源的类型，如"HECadre APP"、"Inhabitant APP"等
+        "src_type": src_type, //请求源的类型，如"HECadre APP"、"Inhabitant APP"等
         "pf_type": Util.pf_type, //请求源的终端平台类型，如"Android"、"iOS"、"Web"等
         "user_id": Util.userId || paramObj['user_id'], //用户ID，u64
         "auth_str": Util.getCommunicationAuth() || paramObj['authStr'] //通信认证密文串

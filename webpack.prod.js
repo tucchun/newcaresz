@@ -1,6 +1,7 @@
 const Merge = require('webpack-merge');
 const CommonConfig = require('./webpack.common.js');
 const webpack = require('webpack');
+const path = require('path');
 
 module.exports = Merge(CommonConfig, {
   plugins: [
@@ -27,7 +28,11 @@ module.exports = Merge(CommonConfig, {
     new webpack.HashedModuleIdsPlugin()
   ],
   output: {
+    // filename: '[name].[chunkhash].js',
+    // path: path.join(__dirname, './dist')
     filename: '[name].[chunkhash].js',
-    path: path.join(__dirname, './dist/src')
+    chunkFilename: '[name].[chunkhash].js',
+    publicPath: '../',
+    path: path.join(__dirname, './dist')
   },
 });

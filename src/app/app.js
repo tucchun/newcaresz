@@ -1,14 +1,10 @@
 import $ from 'jquery';
 import doT from 'dot';
 import _ from 'lodash';
-import Viewer from 'viewerjs';
 import Util from '../../assets/js/Util.js';
 import '../../assets/css/normalize.css';
-import '../../node_modules/viewerjs/dist/viewer.min.css';
 import '../../assets/css/flex.css';
 import './css/style.css';
-
-
 
 
 var $container = $('#container');
@@ -60,7 +56,7 @@ if (Util.demo) {
   paramObj = {
     'doc_id': 1,
     'user_id_doc': 2026,
-    'doc_type': 180
+    'doc_type': 50
   };
 }
 
@@ -169,9 +165,17 @@ common.render = function(templateUrl, data, tab) {
             window.jsObj.showGalleryImages(img_src_arr);
           });
         } else {
-          var dom_imagesCnt = $html.find("#js-images-cnt").get(0);
-          new Viewer(dom_imagesCnt, {});
+          Promise.all([
+            import ('viewerjs'),
+            import ('../../node_modules/viewerjs/dist/viewer.min.css')
+          ]).then(function(result) {
+            var Viewer = result[0];
+            var dom_imagesCnt = $html.find("#js-images-cnt").get(0);
+            new Viewer(dom_imagesCnt, {});
+          });
+
         }
+
       }
 
       $container.append($html);
@@ -201,7 +205,7 @@ Util.fetch({
     //            common.hideLoad();
     data = data || {};
     if (data.ret_code === 1) {
-      var template = '../../template/app/' + common.settings[paramObj.doc_type] + '.template';
+      var template = '../../src/app/template/' + common.settings[paramObj.doc_type] + '.template';
       var templateData = data.ret_data;
       /*          if (templateData.imageUrlList && templateData.imageUrlList.length > 0) {
                   template = './template/videoMaterial.template';

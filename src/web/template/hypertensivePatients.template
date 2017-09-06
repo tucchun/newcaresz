@@ -60,7 +60,7 @@
           体质指数(kg/m2)
         </td>
         <td class="text-left" colspan="3">
-          {{=it.hyperCurrentConstitution}}/{{=it.hyperTargerConstition}}
+          {{= (Number(it.hyperCurrentConstitution/it.hyperTargerConstition) || 0).toFixed(2) }}
         </td>
       </tr>
       <tr>

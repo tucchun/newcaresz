@@ -80,7 +80,7 @@
   </div>
   <div class="item clearfix">
     <div class="pull-left">其他辅助检查</div>
-    <div class="pull-right">{{= it.atenAuxiliaryExamination}}</div>
+    <div class="pull-right">{{= it.atenAuxiliaryExamination || '无'}}</div>
   </div>
   <div class="item clearfix">
     <div class="pull-left">诊断</div>
@@ -117,7 +117,7 @@
   {{? it.atenRecordTime == 5}}
   <div class="item clearfix">
     <div class="pull-left">计划分娩地点</div>
-    <div class="pull-right">{{? it.atenDeliveryAddress == 1}} 省级医院 {{?? it.atenDeliveryAddress == 2}} 市级医院 {{?? it.atenDeliveryAddress == 3}} 县级医院 {{?}}</div>
+    <div class="pull-right">{{? it.atenDeliveryAddress == 1}} 省级医院 {{?? it.atenDeliveryAddress == 2}} 市级医院 {{?? it.atenDeliveryAddress == 3}} 县级医院 {{?? it.atenDeliveryAddress == 4}}乡级医院{{?}}</div>
   </div>
   <div class="item clearfix">
     <div class="pull-left">骨盆外测量（28周后）</div>

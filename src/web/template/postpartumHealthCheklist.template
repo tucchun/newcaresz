@@ -60,7 +60,11 @@
         <tr>
             <td class="label text-right bgColor">子宫</td>
             <td class="text-left" colspan="3">
-                {{= it.gynaecology && it.gynaecology.gynaPalaceDes}}
+                {{? it.gynaecology && it.gynaecology.gynaPalace == 1}}
+                {{= it.gynaecology.gynaPalaceExce}}
+                {{??}}
+                未见异常
+                {{?}}
             </td>
         </tr>
         <tr>

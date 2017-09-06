@@ -13,6 +13,14 @@
 
 <body id="container">
 </body>
-<script src="../../static/assets/require/require.js" id="js-main" data-entrance="module/web/webMain" data-ctx="../../"></script>
-<script type="text/javascript" src="../../static/js/main-1.0.5.js"></script>
+<script src="../../static/assets/require/require.js" id="js-main" data-ver="1.0.5.3" data-entrance="module/web/webMain" data-ctx="../../"></script>
+<!-- <script type="text/javascript" src="../../static/js/main-1.0.5.1.js"></script> -->
+<script type="text/javascript">
+var node = document.createElement('script');
+node.type = 'text/javascript';
+node.charset = 'utf-8';
+node.async = true;
+node.src = "../../static/js/main.js?ver=" + document.getElementById("js-main").getAttribute("data-ver");
+document.body.appendChild(node);
+</script>
 </html>

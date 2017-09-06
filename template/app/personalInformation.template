@@ -96,21 +96,22 @@
   <div class="item clearfix">
     <div class="pull-left">文化程度</div>
     <div class="pull-right">
-      {{? it.residentCulturalLevel === 1}}
-      文盲及半文盲
-      {{?? it.residentCulturalLevel === 2}}
-      小学
-      {{?? it.residentCulturalLevel === 3}}
-      初中
-      {{?? it.residentCulturalLevel === 4}}
-      高中/技校/中专
-      {{?? it.residentCulturalLevel === 5}}
-      大学专科及以上
-      {{?? it.residentCulturalLevel === 6}}
-      不详
-      {{??}}
-      &nbsp;
-      {{? }}
+    {{= it.residentCulturalLevelStr || ''}}
+     <!--  {{? it.residentCulturalLevel === 1}}
+     文盲及半文盲
+     {{?? it.residentCulturalLevel === 2}}
+     小学
+     {{?? it.residentCulturalLevel === 3}}
+     初中
+     {{?? it.residentCulturalLevel === 4}}
+     高中/技校/中专
+     {{?? it.residentCulturalLevel === 5 || it.residentCulturalLevel === 6}}
+     大学专科及以上
+     {{?? it.residentCulturalLevel === 7}}
+     不详
+     {{??}}
+     &nbsp;
+     {{? }} -->
     </div>
   </div>
   <div class="item clearfix">

@@ -117,7 +117,8 @@
     <tr>
       <td class="label text-right bgColor">文化程度</td>
       <td class="text-left">
-        <%
+        <%= residentCulturalLevelStr%>
+        <!-- <%
           if(residentCulturalLevel === 1){
         %>
         文盲及半文盲
@@ -134,16 +135,16 @@
         %>
         高中/技校/中专
         <%
-          }else if(residentCulturalLevel === 5){
+          }else if(residentCulturalLevel === 5 || residentCulturalLevel === 6){
         %>
         大学专科及以上
         <%
-          }else if(residentCulturalLevel === 6){
+          }else if(residentCulturalLevel === 7){
         %>
         不详
         <%
           }
-        %>
+        %> -->
       </td>
       <td class="label text-right bgColor">职业</td>
       <td class="text-left">

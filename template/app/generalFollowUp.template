@@ -17,7 +17,7 @@
   </div>
   <div class="item clearfix">
     <div class="pull-left">体质指数（BMI）（Kg/m²）</div>
-    <div class="pull-right">{{= it.residentBmi}}</div>
+    <div class="pull-right">{{= (Number(it.residentBmi) || 0).toFixed(2)}}</div>
   </div>
   <div class="item clearfix">
     <div class="pull-left">体温（°C）</div>

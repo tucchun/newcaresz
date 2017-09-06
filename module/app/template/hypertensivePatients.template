@@ -60,7 +60,7 @@
       </div>
       <div class="item clearfix">
         <div class="pull-left">体质指数</div>
-        <div class="pull-right">{{=it.hyperCurrentConstitution}}/{{=it.hyperTargerConstition}}</div>
+        <div class="pull-right">{{=   (Number(it.hyperCurrentConstitution/it.hyperTargerConstition) || 0).toFixed(2)}}</div>
       </div>
       <div class="item clearfix">
         <div class="pull-left">心率(次/分钟)</div>

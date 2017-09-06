@@ -53,7 +53,7 @@ define([
     paramObj = {
       "doc_id": 1,
       "user_id_doc": 2026,
-      "doc_type": 220
+      "doc_type": 40
     };
   }
 
@@ -97,6 +97,38 @@ define([
             // }
             norequired($(this), $html);
           });
+        }
+        // 预览图片
+        if (paramObj['doc_type'] == 450 || paramObj['doc_type'] == 460 || paramObj['doc_type'] == 40 || paramObj['doc_type'] == 50 || paramObj['doc_type'] == 60 || paramObj['doc_type'] == 70) {
+          var dom_imgArr = $html.find('.js-img');
+          dom_imgArr.each(function() {
+            var width = this.width;
+            var height = this.height;
+            if (width > height) {
+              this.style.width = "auto";
+              this.style.height = "100%";
+            } else {
+              this.style.width = "100%";
+              this.style.height = "auto";
+            }
+          });
+          if (window.jsObj.showGalleryImages) {
+            var img_src_arr = [];
+
+            dom_imgArr.each(function() {
+              img_src_arr.push(this.getAttribute('src'));
+            });
+
+            dom_imgArr.on('click', function() {
+              var index = dom_imgArr.index(this);
+              console.log("图片索引：" + index);
+              // window.jsObj.showGalleryImages(img_src_arr);
+              window.jsObj.showGalleryImagesWithIndex(img_src_arr, index);
+            });
+          } else {
+            var dom_imagesCnt = $html.find("#js-images-cnt").get(0);
+            new Viewer(dom_imagesCnt, {});
+          }
         }
         $container.append($html);
         // $container.append(html);
@@ -201,7 +233,7 @@ define([
         "doc_id": paramObj['doc_id'],
         "user_id_doc": paramObj['user_id_doc'],
         "doc_type": paramObj['doc_type'],
-        "src_type": "HECadre", //请求源的类型，如"HECadre APP"、"Inhabitant APP"等
+        "src_type": "Inhabitant APP", //请求源的类型，如"HECadre APP"、"Inhabitant APP"等
         "pf_type": Util.pf_type, //请求源的终端平台类型，如"Android"、"iOS"、"Web"等
         "user_id": Util.userId || paramObj['user_id'], //用户ID，u64
         "auth_str": Util.getCommunicationAuth() || paramObj['authStr'] //通信认证密文串

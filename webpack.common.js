@@ -1,13 +1,11 @@
 const path = require('path');
 const webpack = require('webpack');
-// const WebpackManifestHash = require('webpack-manifest-plugin');
-// const ChunkManifestPlugin = require('chunk-manifest-webpack-plugin');
-// const WebpackChunkHash = require('webpack-chunk-hash');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 module.exports = {
   entry: {
-    app: './src/app/app.js',
+    'app/app': './src/app/app.js',
+    'web/app': './src/web/app.js',
     vendor: ['jquery', 'dot', 'lodash']
   },
 
@@ -21,7 +19,8 @@ module.exports = {
         test: /\.css$/,
         use: [
           'style-loader',
-          'css-loader'
+          'css-loader',
+          'postcss-loader'
         ]
       },
       {
@@ -30,14 +29,18 @@ module.exports = {
       }
     ]
   },
-
   plugins: [
-    // new ForkCheckerPlugin(),
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
-      // title: 'cache',
+      filename: 'app/app.html',
       template: path.join(__dirname, './src/app/details.ejs'),
-      chunks: ['app', 'vendor', 'runtime']
+      chunks: ['app/app', 'vendor', 'runtime']
+    }),
+    new HtmlWebpackPlugin({
+      // title: 'cache',
+      filename: 'web/app.html',
+      template: path.join(__dirname, './src/web/details.ejs'),
+      chunks: ['web/app', 'vendor', 'runtime']
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',

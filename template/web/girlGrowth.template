@@ -1,0 +1,11 @@
+<div class="container">
+  <table class="tb tb-auto tb-border">
+    <tbody>
+    <tr>
+      <td class="text-center" colspan="4">
+        <img src="./image/girl.png" alt="" class="fill">
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

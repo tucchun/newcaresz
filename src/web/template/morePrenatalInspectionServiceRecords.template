@@ -61,7 +61,7 @@
         <td class="label text-right bgColor">尿蛋白</td>
         <td class="text-left">{{= it.atenUrineProtein}}</td>
         <td class="label text-right bgColor">其他辅助检查*</td>
-        <td class="text-left">{{= it.atenAuxiliaryExamination}}</td>
+        <td class="text-left">{{= it.atenAuxiliaryExamination || '无'}}</td>
       </tr>
       <tr>
         <td class="label text-right bgColor">诊断</td>
@@ -79,7 +79,7 @@
       <tr>
         <td class="label text-right bgColor">计划分娩地点</td>
         <td class="text-left">
-          {{? it.atenDeliveryAddress == 1}} 省级医院 {{?? it.atenDeliveryAddress == 2}} 市级医院 {{?? it.atenDeliveryAddress == 3}} 县级医院 {{?}}
+          {{? it.atenDeliveryAddress == 1}} 省级医院 {{?? it.atenDeliveryAddress == 2}} 市级医院 {{?? it.atenDeliveryAddress == 3}} 县级医院 {{?? it.atenDeliveryAddress == 4}}乡级医院{{?}}
         </td>
         <td class="label text-right bgColor">骨盆外测量（28周后）</td>
         <td class="text-left">

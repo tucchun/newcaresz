@@ -1,0 +1,68 @@
+<div class="container">
+  <table class="tb tb-auto tb-border">
+    <thead>
+      <tr>
+        <th colspan="4" class="bgColor text-left">
+          居民健康档案
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="label text-right bgColor w200">档案编号</td>
+        <td class="text-left w630">{{= it.residentNo}}</td>
+        <td class="label text-right bgColor w200">姓名</td>
+        <td class="text-left w630">{{= it.resdientName}}</td>
+      </tr>
+      <tr>
+        <td class="label text-right bgColor w200">现住址</td>
+        <td class="text-left w630">{{= it.residentAddress}}</td>
+        <td class="label text-right bgColor w200">户籍地址</td>
+        <td class="text-left w630">{{= it.residentHouseholdAddr}}</td>
+
+      </tr>
+      <tr>
+        <td class="label text-right bgColor w200">联系电话</td>
+        <td class="text-left w630">{{= it.residentMobile}}</td>
+        <td class="label text-right bgColor">乡镇（街道）名称</td>
+        <td class="text-left">
+          {{= it.streetName}}
+        </td>
+      </tr>
+      <tr>
+        <td class="label text-right bgColor">村（居）委会名称</td>
+        <td class="text-left" colspan="3">
+          {{= it.villageName}}
+        </td>
+      </tr>
+      <tr>
+        <td class="label text-right bgColor w200">建档单位</td>
+        <td class="text-left w630">{{= it.docUnit}}</td>
+        <td class="label text-right bgColor w200">建档人</td>
+        <td class="text-left w630">{{= it.docCreateBy}}</td>
+      </tr>
+      <tr>
+        <td class="label text-right bgColor w200">责任医生</td>
+        <td class="text-left w630">{{= it.docDoctor}}</td>
+        <td class="label text-right bgColor w200">建档日期</td>
+        <td class="text-left w630">{{= it.Util.formatDate(it.docCreateDate)}}</td>
+      </tr>
+      {{? !it.isShowNext }}
+        <tr>
+          <td colspan="4" class="text-center"><input type="button" id="js-residentHealthCover-next" value="下一步"></td>
+        </tr>
+      {{?}}
+    </tbody>
+  </table>
+</div>
+<script>
+  require([
+    'jquery',
+    "js/Util"
+  ], function($, Util){
+    $("#js-residentHealthCover-next").on("touchend", function(e){
+      console.log("居民健康档案onNext");
+      Util.onNext();
+    });
+  });
+</script>
