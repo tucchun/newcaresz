@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 module.exports = {
   entry: {
     'app/app': './src/app/app.js',
@@ -16,6 +15,15 @@ module.exports = {
 
   module: {
     rules: [{
+        test: /\.js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['es2017', 'env']
+          }
+        }
+      }, {
         test: /\.css$/,
         use: [
           'style-loader',
@@ -30,7 +38,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin(['dist']),
+    
     new HtmlWebpackPlugin({
       filename: 'app/app.html',
       template: path.join(__dirname, './src/app/details.ejs'),

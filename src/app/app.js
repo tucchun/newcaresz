@@ -7,9 +7,13 @@ import '../../assets/css/flex.css';
 import './css/style.css';
 
 
-var $container = $('#container');
+let common = {};
+let $container = $('#container');
+let uri = location.href;
+let paramObj = Util.param(uri);
+let pattern = 'noused';
+// console.log(paramObj);
 // 表单字典
-var common = {};
 common.settings = {
   10: 'residentHealthCover', //健康档案封面
   20: 'personalInformation', //个人基本信息
@@ -49,30 +53,28 @@ common.settings = {
   500: 'healthAdvice' //健康建议
 };
 
-var uri = location.href;
-var paramObj = Util.param(uri);
-console.log(paramObj);
+
 if (Util.demo) {
   paramObj = {
     'doc_id': 1,
     'user_id_doc': 2026,
-    'doc_type': 50
+    'doc_type': 500
   };
 }
 
-var pattern = 'noused';
+
 
 function norequired($this, $html) {
-  // var flag = $this.data('norequired');
-  var $list = $this.children();
-  var $temp = {};
+  // let flag = $this.data('norequired');
+  let $list = $this.children();
+  let $temp = {};
   if ($this.data('norequireditem')) {
     if (!$.trim($this.children().eq(1).html())) {
       $this.attr(pattern, pattern);
       // $temp.hide();
       $this.remove();
     }
-    var $parent_level2 = $html.find('[data-' + $this.data('belong') + ']');
+    let $parent_level2 = $html.find('[data-' + $this.data('belong') + ']');
     if ($parent_level2.children(':last').children().size() === 0) {
       $parent_level2.remove();
     }
@@ -88,13 +90,13 @@ function norequired($this, $html) {
   }
 
 
-  $parent_level2 = $html.find('[data-' + $this.data('belong') + ']');
+  let $parent_level2 = $html.find('[data-' + $this.data('belong') + ']');
   if ($list.filter(':not([' + pattern + '])').size() <= 0) {
     $parent_level2.attr(pattern, pattern);
     $parent_level2.remove();
   }
 
-  var $parent_level1 = $html.find('[data-' + $parent_level2.data('belong') + ']');
+  let $parent_level1 = $html.find('[data-' + $parent_level2.data('belong') + ']');
   if ($parent_level1.children(':last').children().size() === 0) {
     $parent_level1.remove();
   }
@@ -109,28 +111,28 @@ common.render = function(templateUrl, data, tab) {
     dataType: 'text',
     success: function(response) {
       $.extend(data, { Util: Util, _: _ });
-      //var template = doT.template(response);
-      /*     for(var item in data){
+      //let template = doT.template(response);
+      /*     for(let item in data){
        if(!data[item]){
        data[item] = '无';
        }
        }*/
-      var template = {};
+      let template = {};
       if (paramObj['doc_type'] == 180) {
         template = _.template(response);
       } else {
         template = doT.template(response);
       }
-      var html = template(data);
-      if (tab) {
-        html = $(html).filter('.js-tab-content');
-        html.attr('id', 'js-' + data.createDate);
-      }
-      var $html = $(html);
+      let html = template(data);
+      // if (tab) {
+      //   html = $(html).filter('.js-tab-content');
+      //   html.attr('id', 'js-' + data.createDate);
+      // }
+      let $html = $(html);
 
       if (paramObj['doc_type'] == 220) {
-        var $useMedicationList = $html.find('.js-useMedicationList');
-        var $insulin = $useMedicationList.find('[data-flag]');
+        let $useMedicationList = $html.find('.js-useMedicationList');
+        let $insulin = $useMedicationList.find('[data-flag]');
         $useMedicationList.append($insulin);
       }
 
@@ -142,10 +144,10 @@ common.render = function(templateUrl, data, tab) {
       }
 
       if (paramObj['doc_type'] == 450 || paramObj['doc_type'] == 460 || paramObj['doc_type'] == 40 || paramObj['doc_type'] == 50 || paramObj['doc_type'] == 60 || paramObj['doc_type'] == 70) {
-        var dom_imgArr = $html.find('.js-img');
+        let dom_imgArr = $html.find('.js-img');
         dom_imgArr.each(function() {
-          var width = this.width;
-          var height = this.height;
+          let width = this.width;
+          let height = this.height;
           if (width > height) {
             this.style.width = "auto";
             this.style.height = "100%";
@@ -155,27 +157,49 @@ common.render = function(templateUrl, data, tab) {
           }
         });
         if (window.jsObj.showGalleryImages) {
-          var img_src_arr = [];
+          let img_src_arr = [];
 
           dom_imgArr.each(function() {
             img_src_arr.push(this.getAttribute('src'));
           });
 
           dom_imgArr.on('click', function() {
-            window.jsObj.showGalleryImages(img_src_arr);
+            var index = dom_imgArr.index(this);
+            console.log("图片索引：" + index);
+            // window.jsObj.showGalleryImages(img_src_arr);
+            window.jsObj.showGalleryImagesWithIndex(img_src_arr, index);
+
           });
         } else {
-          Promise.all([
-            import ('viewerjs'),
-            import ('../../node_modules/viewerjs/dist/viewer.min.css')
-          ]).then(function(result) {
-            var Viewer = result[0];
-            var dom_imagesCnt = $html.find("#js-images-cnt").get(0);
+          // Promise.all([
+          //   import ('viewerjs'),
+          //   import ('../../node_modules/viewerjs/dist/viewer.min.css')
+          // ]).then(function(result) {
+          //   let Viewer = result[0];
+          // let dom_imagesCnt = $html.find("#js-images-cnt").get(0);
+          // new Viewer(dom_imagesCnt, {});
+          // });
+          require.ensure([], function(require) {
+            require('../../node_modules/viewerjs/dist/viewer.min.css');
+            var Viewer = require('viewerjs');
+            let dom_imagesCnt = $html.find("#js-images-cnt").get(0);
             new Viewer(dom_imagesCnt, {});
           });
-
         }
 
+      }
+
+      if (paramObj['doc_type'] == 190 || paramObj['doc_type'] == 200) {
+        var $tabCnts = $html.find(".js-tab-content"),
+          $tabs = $html.find(".js-tab-btn");
+
+        $tabs.on("touchend", function(e) {
+          $tabs.removeClass("primary-color").addClass("secondary-color");
+          $(this).removeClass("secondary-color").addClass("primary-color");
+          var target = $(this).data("target");
+          $tabCnts.addClass("hide");
+          $html.find("#" + target).removeClass("hide");
+        });
       }
 
       $container.append($html);
@@ -185,82 +209,87 @@ common.render = function(templateUrl, data, tab) {
       Util.alert('网络错误!');
     }
   });
-}
+};
 
 
-
-Util.fetch({
-  url: Util.host + '/hca/web/inhabitant/getdoc',
-  demoUrl: '../../assets/rss/' + common.settings[paramObj.doc_type] + '.json',
-  data: JSON.stringify({
-    'doc_id': paramObj['doc_id'],
-    'user_id_doc': paramObj['user_id_doc'],
-    'doc_type': paramObj['doc_type'],
-    'src_type': 'HECadre', //请求源的类型，如'HECadre APP'、'Inhabitant APP'等
-    'pf_type': Util.pf_type, //请求源的终端平台类型，如'Android'、'iOS'、'Web'等
-    'user_id': Util.userId || paramObj['user_id'], //用户ID，u64
-    'auth_str': Util.getCommunicationAuth() || paramObj['authStr'] //通信认证密文串
-  }),
-  success: function(data) {
-    //            common.hideLoad();
-    data = data || {};
-    if (data.ret_code === 1) {
-      var template = '../../src/app/template/' + common.settings[paramObj.doc_type] + '.template';
-      var templateData = data.ret_data;
-      /*          if (templateData.imageUrlList && templateData.imageUrlList.length > 0) {
-                  template = './template/videoMaterial.template';
-                }*/
-      if (paramObj['doc_type'] == 139) {
-        switch (templateData.onemMonth) {
-          case 1:
-            templateData.onemMonth = 1;
-            break;
-          case 2:
-            templateData.onemMonth = 3;
-            break;
-          case 3:
-            templateData.onemMonth = 6;
-            break;
-          case 4:
-            templateData.onemMonth = 8;
-            break;
-          case 5:
-            templateData.onemMonth = 12;
-            break;
-          case 6:
-            templateData.onemMonth = 18;
-            break;
-          case 7:
-            templateData.onemMonth = 24;
-            break;
-          case 8:
-            templateData.onemMonth = 30;
-            break;
+// 男童生长发育检测图 || 女童生长发育监测图
+if (paramObj["doc_type"] == 170 || paramObj["doc_type"] == 160) {
+  let template = "../../src/web/template/" + common.settings[paramObj.doc_type] + ".template";
+  common.render(template, {});
+} else {
+  Util.fetch({
+    url: Util.host + '/hca/web/inhabitant/getdoc',
+    demoUrl: '../../assets/rss/' + common.settings[paramObj.doc_type] + '.json',
+    data: JSON.stringify({
+      'doc_id': paramObj['doc_id'],
+      'user_id_doc': paramObj['user_id_doc'],
+      'doc_type': paramObj['doc_type'],
+      'src_type': 'HECadre', //请求源的类型，如'HECadre APP'、'Inhabitant APP'等
+      'pf_type': Util.pf_type, //请求源的终端平台类型，如'Android'、'iOS'、'Web'等
+      'user_id': Util.userId || paramObj['user_id'], //用户ID，u64
+      'auth_str': Util.getCommunicationAuth() || paramObj['authStr'] //通信认证密文串
+    }),
+    success: function(data) {
+      //            common.hideLoad();
+      data = data || {};
+      if (data.ret_code === 1) {
+        let template = '../../src/app/template/' + common.settings[paramObj.doc_type] + '.template';
+        let templateData = data.ret_data;
+        /*          if (templateData.imageUrlList && templateData.imageUrlList.length > 0) {
+                    template = './template/videoMaterial.template';
+                  }*/
+        if (paramObj['doc_type'] == 139) {
+          switch (templateData.onemMonth) {
+            case 1:
+              templateData.onemMonth = 1;
+              break;
+            case 2:
+              templateData.onemMonth = 3;
+              break;
+            case 3:
+              templateData.onemMonth = 6;
+              break;
+            case 4:
+              templateData.onemMonth = 8;
+              break;
+            case 5:
+              templateData.onemMonth = 12;
+              break;
+            case 6:
+              templateData.onemMonth = 18;
+              break;
+            case 7:
+              templateData.onemMonth = 24;
+              break;
+            case 8:
+              templateData.onemMonth = 30;
+              break;
+          }
         }
-      }
-      if (paramObj['doc_type'] == 140) {
-        switch (templateData.visitAge) {
-          case 1:
-            templateData.visitAge = 3;
-            break;
-          case 2:
-            templateData.visitAge = 4;
-            break;
-          case 3:
-            templateData.visitAge = 5;
-            break;
-          case 4:
-            templateData.visitAge = 6;
-            break;
+        if (paramObj['doc_type'] == 140) {
+          switch (templateData.visitAge) {
+            case 1:
+              templateData.visitAge = 3;
+              break;
+            case 2:
+              templateData.visitAge = 4;
+              break;
+            case 3:
+              templateData.visitAge = 5;
+              break;
+            case 4:
+              templateData.visitAge = 6;
+              break;
+          }
         }
+        common.render(template, templateData);
+      } else {
+        Util.alert(data.ret_msg || '查询信息错误！');
       }
-      common.render(template, templateData);
-    } else {
-      Util.alert(data.ret_msg || '查询信息错误！');
+    },
+    error: function(err) {
+      Util.alert('网络错误！');
+      console.log(err);
     }
-  },
-  error: function(err) {
-    Util.alert('网络错误！');
-    console.log(err);
-  }
-});
+  });
+}

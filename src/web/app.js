@@ -7,7 +7,13 @@ import '../../assets/css/flex.css';
 import './css/style.css';
 
 
-var common = {};
+let common = {};
+let container = $("#container");
+let pattern = "noused";
+let uri = location.href;
+let paramObj = Util.param(uri);
+let isShowNext;
+
 // 表单字典
 common.settings = {
   10: "residentHealthCover", //健康档案封面
@@ -47,11 +53,7 @@ common.settings = {
   460: "archives", //添加历史&院外档案
   500: "healthAdvice" //健康建议
 };
-var container = $("#container");
-var pattern = "noused";
-//  var uri = location.href;
-var uri = location.href;
-var paramObj = Util.param(uri);
+
 
 // console.log(paramObj);
 
@@ -60,120 +62,18 @@ if (Util.demo) {
     "doc_id": 1,
     "isShowNext": "false",
     "user_id_doc": 2026,
-    "doc_type": 40
+    "doc_type": 500
   };
 }
 
-
-common.render = function(templateUrl, data) {
-  return Util.fetch({
-    type: "get",
-    url: templateUrl,
-    dataType: "text",
-    success: function(response) {
-      $.extend(data, { Util: Util, _: _ });
-      var template = {};
-      if (paramObj["doc_type"] == 20 || paramObj["doc_type"] == 180) {
-        template = _.template(response);
-      } else {
-        template = doT.template(response);
-      }
-      // var htmlStr = template(data)
-      var $html = $(template(data));
-
-      if (paramObj["doc_type"] == 220) {
-        // 2型糖尿病患者随访服务记录表， 把胰岛素挑到最后一排
-        var $useMedicationList = $html.find(".js-useMedicationList");
-        var $insulin = $useMedicationList.filter("[data-flag]");
-        var temp = {
-          name: $insulin.find(".js-useMedicationList-medDrugName").html(),
-          value: $insulin.find(".js-useMedicationList-medConsumption").html(),
-        };
-        $insulin.find(".js-useMedicationList-medDrugName").html($useMedicationList.last().find(".js-useMedicationList-medDrugName").html());
-        $insulin.find(".js-useMedicationList-medConsumption").html($useMedicationList.last().find(".js-useMedicationList-medConsumption").html());
-        $useMedicationList.last().find(".js-useMedicationList-medDrugName").prev().remove().end().html(temp.name).prop("colspan", 2);
-        $useMedicationList.last().find(".js-useMedicationList-medConsumption").html(temp.value);
-
-      }
-
-      if (paramObj["doc_type"] == 30) {
-
-        var $list = $html.find("td[data-norequired]");
-        var index = $list.size() - 1;
-        var $temp = {};
-        while (index >= 0) {
-          $temp = $list.eq(index)
-          if (!$temp.parent().attr(pattern)) {
-            norequired($temp, $html);
-          }
-          index--;
-        }
-
-      }
-      // 预览图片
-      if (paramObj['doc_type'] == 450 || paramObj['doc_type'] == 460 || paramObj['doc_type'] == 40 || paramObj['doc_type'] == 50 || paramObj['doc_type'] == 60 || paramObj['doc_type'] == 70) {
-        var dom_imgArr = $html.find('.js-img');
-        dom_imgArr.each(function() {
-          var width = this.width;
-          var height = this.height;
-          if (width > height) {
-            this.style.width = "auto";
-            this.style.height = "100%";
-          } else {
-            this.style.width = "100%";
-            this.style.height = "auto";
-          }
-        });
-        if (window.jsObj.showGalleryImages) {
-          var img_src_arr = [];
-
-          dom_imgArr.each(function() {
-            img_src_arr.push(this.getAttribute('src'));
-          });
-
-          dom_imgArr.on('click', function() {
-            window.jsObj.showGalleryImages(img_src_arr);
-          });
-        } else {
-          Promise.all([
-            import ('viewerjs'),
-            import ('../../node_modules/viewerjs/dist/viewer.min.css')
-          ]).then(function(result) {
-            var Viewer = result[0];
-            var dom_imagesCnt = $html.find("#js-images-cnt").get(0);
-            new Viewer(dom_imagesCnt, {});
-          });
-
-        }
-
-
-      }
-      container.append($html);
-    },
-    error: function(err, errorType, msg) {
-      // console.log("获取页面失败；" + msg);
-      Util.alert("网络错误!");
-    }
-  });
-}
-
-function norequired($norequired, $html) {
-  var $this = $norequired;
-  var flag = $this.data("norequired");
-  var $norequiredList = getModifyCollection(flag, $html);
-  modifyCol($norequiredList);
-  doArrange($norequiredList, $html);
-
-
-}
 // 获得要被处理的数据
 function getModifyCollection(flag, $html) {
-  var $norequiredList = $html.find("tr[data-" + flag + "]");
-  var $norequiredListFirst = $norequiredList.first();
-  var firstIndex = $norequiredListFirst.index();
-  var lastIndex = $norequiredList.last().index();
-  var index = firstIndex;
-  var temp = $norequiredListFirst;
+  let $norequiredList = $html.find("tr[data-" + flag + "]");
+  let $norequiredListFirst = $norequiredList.first();
+  let firstIndex = $norequiredListFirst.index();
+  let lastIndex = $norequiredList.last().index();
+  let index = firstIndex;
+  let temp = $norequiredListFirst;
   while (index < lastIndex) {
     temp = temp.next();
     index++;
@@ -184,17 +84,19 @@ function getModifyCollection(flag, $html) {
   return $norequiredList;
 }
 
+
+
 // 处理行
 function modifyCol($norequiredList) {
   $norequiredList.each(function(index) {
-    var value = $.trim($(this).children(":last").html());
+    let value = $.trim($(this).children(":last").html());
 
     if (!value || value == 0) {
 
       if ($(this).children("[data-norequired]").size() > 0) {
         // 该行有跨列 不能直接删除； 把最后一个td删掉，再不最后一个td的前一个td内容置空并跨行加1；
         $(this).children(":last").remove();
-        var $last = $(this).children(":last");
+        let $last = $(this).children(":last");
         $last.html("");
         $last.prop("colspan", parseInt($last.prop("colspan") || 0) + 1);
         // $(this).attr("enable", "enable");
@@ -213,7 +115,7 @@ function modifyCol($norequiredList) {
 
 // 整理数据
 function doArrange($norequiredList, $html) {
-  var $enableList = $norequiredList.filter(":not([" + pattern + "])");
+  let $enableList = $norequiredList.filter(":not([" + pattern + "])");
   // 如果分类值为空，把下一个值往上移；
   if (!$enableList.eq(0).children(":last").html()) {
     if ($enableList.size() >= 2) {
@@ -226,17 +128,17 @@ function doArrange($norequiredList, $html) {
   }
   // 重新计算跨行
   // 如果跨行数为1 并且 第一个行值为空 则把分类名置空 跨行加1
-  var rowspan = $enableList.size();
-  var $firstNorequired = $enableList.eq(0);
+  let rowspan = $enableList.size();
+  let $firstNorequired = $enableList.eq(0);
   $firstNorequired.children("[data-norequired]").prop("rowspan", rowspan);
 
-  var flag = $firstNorequired.children("[data-norequired]").data("belong");
-  var $list = getModifyCollection(flag, $html);
+  let flag = $firstNorequired.children("[data-norequired]").data("belong");
+  let $list = getModifyCollection(flag, $html);
   // 如果只有1个可用元素，并且值为空
   if (rowspan == 1 && !$.trim($firstNorequired.children(":last").html())) {
     // 如果还有数据 则把后面的数据往上移； 反之，隐藏该行；
-    var $next = $firstNorequired.next();
-    var lastIndex = $list.last().index();
+    let $next = $firstNorequired.next();
+    let lastIndex = $list.last().index();
     while (lastIndex >= $next.index()) {
       if (!$next.is("[" + pattern + "]")) {
         $firstNorequired.children("[data-norequired]").next().remove();
@@ -258,7 +160,7 @@ function doArrange($norequiredList, $html) {
 
 
   $enableList = $list.filter(":not([" + pattern + "])");
-  var enableSize = $enableList.size();
+  let enableSize = $enableList.size();
   $list.eq(0).children(":first").prop("rowspan", enableSize || 1);
   if (enableSize == 1 && !$.trim($enableList.eq(0).children(":last").html())) {
     $enableList.eq(0).hide();
@@ -267,19 +169,131 @@ function doArrange($norequiredList, $html) {
 }
 
 
+function norequired($norequired, $html) {
+  let $this = $norequired;
+  let flag = $this.data("norequired");
+  let $norequiredList = getModifyCollection(flag, $html);
+  modifyCol($norequiredList);
+  doArrange($norequiredList, $html);
+}
+
+common.render = function(templateUrl, data) {
+  return Util.fetch({
+    type: "get",
+    url: templateUrl,
+    dataType: "text",
+    success: function(response) {
+      $.extend(data, { Util: Util, _: _ });
+      let template = {};
+      if (paramObj["doc_type"] == 20 || paramObj["doc_type"] == 180) {
+        template = _.template(response);
+      } else {
+        template = doT.template(response);
+      }
+      // let htmlStr = template(data)
+      let $html = $(template(data));
+
+      if (paramObj["doc_type"] == 220) {
+        // 2型糖尿病患者随访服务记录表， 把胰岛素挑到最后一排
+        let $useMedicationList = $html.find(".js-useMedicationList");
+        let $insulin = $useMedicationList.filter("[data-flag]");
+        let temp = {
+          name: $insulin.find(".js-useMedicationList-medDrugName").html(),
+          value: $insulin.find(".js-useMedicationList-medConsumption").html(),
+        };
+        $insulin.find(".js-useMedicationList-medDrugName").html($useMedicationList.last().find(".js-useMedicationList-medDrugName").html());
+        $insulin.find(".js-useMedicationList-medConsumption").html($useMedicationList.last().find(".js-useMedicationList-medConsumption").html());
+        $useMedicationList.last().find(".js-useMedicationList-medDrugName").prev().remove().end().html(temp.name).prop("colspan", 2);
+        $useMedicationList.last().find(".js-useMedicationList-medConsumption").html(temp.value);
+
+      }
+
+      if (paramObj["doc_type"] == 30) {
+
+        let $list = $html.find("td[data-norequired]");
+        let index = $list.size() - 1;
+        let $temp = {};
+        while (index >= 0) {
+          $temp = $list.eq(index)
+          if (!$temp.parent().attr(pattern)) {
+            norequired($temp, $html);
+          }
+          index--;
+        }
+
+      }
+      // 预览图片
+      if (paramObj['doc_type'] == 450 || paramObj['doc_type'] == 460 || paramObj['doc_type'] == 40 || paramObj['doc_type'] == 50 || paramObj['doc_type'] == 60 || paramObj['doc_type'] == 70) {
+        let dom_imgArr = $html.find('.js-img');
+        dom_imgArr.each(function() {
+          let width = this.width;
+          let height = this.height;
+          if (width > height) {
+            this.style.width = "auto";
+            this.style.height = "100%";
+          } else {
+            this.style.width = "100%";
+            this.style.height = "auto";
+          }
+        });
+        if (window.jsObj.showGalleryImages) {
+          let img_src_arr = [];
+
+          dom_imgArr.each(function() {
+            img_src_arr.push(this.getAttribute('src'));
+          });
+
+          dom_imgArr.on('click', function() {
+            var index = dom_imgArr.index(this);
+            console.log("图片索引：" + index);
+            // window.jsObj.showGalleryImages(img_src_arr);
+            window.jsObj.showGalleryImagesWithIndex(img_src_arr, index);
+          });
+        } else {
+          // Promise.all([
+          //   import ('viewerjs'),
+          //   import ('../../node_modules/viewerjs/dist/viewer.min.css')
+          // ]).then(function(result) {
+          // let Viewer = result[0];
+          // let dom_imagesCnt = $html.find("#js-images-cnt").get(0);
+          // new Viewer(dom_imagesCnt, {});
+          // });
+          require.ensure([], function(require) {
+            require('../../node_modules/viewerjs/dist/viewer.min.css');
+            var Viewer = require('viewerjs');
+            let dom_imagesCnt = $html.find("#js-images-cnt").get(0);
+            new Viewer(dom_imagesCnt, {});
+          });
+        }
 
 
-var isShowNext;
+      }
+      container.append($html);
+    },
+    error: function(err, errorType, msg) {
+      // console.log("获取页面失败；" + msg);
+      Util.alert("网络错误!");
+    }
+  });
+}
+
+
+
+
+
+
+
+
 if (paramObj.isShowNext) {
   isShowNext = paramObj.isShowNext;
 }
 
 // 男童生长发育检测图 || 女童生长发育监测图
 if (paramObj["doc_type"] == 170 || paramObj["doc_type"] == 160) {
-  var template = "./template/" + common.settings[paramObj.doc_type] + ".template";
+  let template = "../../src/web/template/" + common.settings[paramObj.doc_type] + ".template";
   common.render(template, {});
 } else {
-  var src_type = "HECadre APP";
+  let src_type = "HECadre APP";
   if (paramObj['src_type'] == 'DOCTOR') {
     src_type = 'Web Admin';
   }
@@ -299,8 +313,8 @@ if (paramObj["doc_type"] == 170 || paramObj["doc_type"] == 160) {
       //            common.hideLoad();
       data = data || {};
       if (data.ret_code === 1) {
-        var template = '../../src/web/template/' + common.settings[paramObj.doc_type] + ".template";
-        var templateData = data.ret_data;
+        let template = '../../src/web/template/' + common.settings[paramObj.doc_type] + ".template";
+        let templateData = data.ret_data;
         if (isShowNext) {
           templateData['isShowNext'] = isShowNext;
         }

@@ -40,7 +40,7 @@
   var Util = {};
 
 
-  Util.demo = true;
+  Util.demo = false;
 
   // 线上 测试环境 demo数据改为false
   if (location.href.indexOf('admin.newcaresz.com') > 0 || location.href.indexOf('192.168.1.232') > 0) {

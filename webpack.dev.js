@@ -1,12 +1,13 @@
 const Merge = require('webpack-merge');
 const CommonConfig = require('./webpack.common.js');
 const webpack = require('webpack');
-
+// const CleanWebpackPlugin = require('clean-webpack-plugin');
 const path = require('path');
 
 module.exports = Merge(CommonConfig, {
   devtool: 'cheap-module-source-map',
   plugins: [
+    new CleanWebpackPlugin(['dev']),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin()
   ],
@@ -16,7 +17,7 @@ module.exports = Merge(CommonConfig, {
     historyApiFallback: true,
     noInfo: false,
     stats: 'minimal',
-    publicPath:  '/',
+    publicPath: '/',
     // contentBase: path.join(__dirname, './dist'),
     hot: true
   },
@@ -24,6 +25,6 @@ module.exports = Merge(CommonConfig, {
     filename: '[name].[hash].js',
     chunkFilename: '[name].[hash].js',
     publicPath: '../',
-    path: path.join(__dirname, './dist')
-  },
+    path: path.join(__dirname, './dev')
+  }
 });

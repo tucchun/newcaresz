@@ -1,14 +1,12 @@
 const Merge = require('webpack-merge');
 const CommonConfig = require('./webpack.common.js');
 const webpack = require('webpack');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const path = require('path');
 
 module.exports = Merge(CommonConfig, {
   plugins: [
-    new webpack.LoaderOptionsPlugin({
-      minimize: true,
-      debug: false
-    }),
+    new CleanWebpackPlugin(['dist']),
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('production')
@@ -17,19 +15,18 @@ module.exports = Merge(CommonConfig, {
     new webpack.optimize.UglifyJsPlugin({
       beautify: false,
       mangle: {
-        screw_ie8: true,
+        screw_ie8: false,
         keep_fnames: true
       },
       compress: {
-        screw_ie8: true
+        screw_ie8: false
       },
       comments: false
     }),
     new webpack.HashedModuleIdsPlugin()
   ],
   output: {
-    // filename: '[name].[chunkhash].js',
-    // path: path.join(__dirname, './dist')
+
     filename: '[name].[chunkhash].js',
     chunkFilename: '[name].[chunkhash].js',
     publicPath: '../',
