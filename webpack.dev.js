@@ -6,6 +6,16 @@ const path = require('path');
 
 module.exports = Merge(CommonConfig, {
   devtool: 'cheap-module-source-map',
+  /*module: {
+    rules: [ {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader'
+        ]
+      }
+    ]
+  },*/
   plugins: [
     new CleanWebpackPlugin(['dev']),
     new webpack.HotModuleReplacementPlugin(),

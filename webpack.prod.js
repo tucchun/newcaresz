@@ -5,6 +5,14 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const path = require('path');
 
 module.exports = Merge(CommonConfig, {
+  module: {
+    rules: [{
+      test: /\.css$/,
+      use: [
+        'postcss-loader'
+      ]
+    }]
+  },
   plugins: [
     new CleanWebpackPlugin(['dist']),
     new webpack.DefinePlugin({
