@@ -34,7 +34,6 @@ module.exports = Merge(CommonConfig, {
     new webpack.HashedModuleIdsPlugin()
   ],
   output: {
-
     filename: '[name].[chunkhash].js',
     chunkFilename: '[name].[chunkhash].js',
     publicPath: '../',

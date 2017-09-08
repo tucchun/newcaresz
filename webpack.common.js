@@ -5,7 +5,7 @@ module.exports = {
   entry: {
     'app/app': './src/app/app.js',
     'web/app': './src/web/app.js',
-    vendor: ['jquery', 'dot', 'lodash']
+    vendor: ['jquery', 'dot', 'lodash', 'node-forge', 'viewerjs', './assets/css/normalize.css', './node_modules/viewerjs/dist/viewer.min.css']
   },
 
   // resolve: {

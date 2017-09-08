@@ -1,8 +1,10 @@
 import $ from 'jquery';
 import doT from 'dot';
 import _ from 'lodash';
+import Viewer from 'viewerjs';
 import Util from '../../assets/js/Util.js';
 import '../../assets/css/normalize.css';
+import '../../node_modules/viewerjs/dist/viewer.min.css';
 import '../../assets/css/flex.css';
 import './css/style.css';
 
@@ -214,7 +216,7 @@ common.render = function(templateUrl, data) {
         let index = $list.size() - 1;
         let $temp = {};
         while (index >= 0) {
-          $temp = $list.eq(index)
+          $temp = $list.eq(index);
           if (!$temp.parent().attr(pattern)) {
             norequired($temp, $html);
           }
@@ -258,12 +260,12 @@ common.render = function(templateUrl, data) {
           // let dom_imagesCnt = $html.find("#js-images-cnt").get(0);
           // new Viewer(dom_imagesCnt, {});
           // });
-          require.ensure([], function(require) {
-            require('../../node_modules/viewerjs/dist/viewer.min.css');
-            var Viewer = require('viewerjs');
-            let dom_imagesCnt = $html.find("#js-images-cnt").get(0);
-            new Viewer(dom_imagesCnt, {});
-          });
+          // require.ensure([], function(require) {
+          //   require('../../node_modules/viewerjs/dist/viewer.min.css');
+          // var Viewer = require('viewerjs');
+          let dom_imagesCnt = $html.find("#js-images-cnt").get(0);
+          new Viewer(dom_imagesCnt, {});
+          // });
         }
 
 

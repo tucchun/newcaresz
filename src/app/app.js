@@ -1,8 +1,10 @@
 import $ from 'jquery';
 import doT from 'dot';
 import _ from 'lodash';
+import Viewer from 'viewerjs';
 import Util from '../../assets/js/Util.js';
 import '../../assets/css/normalize.css';
+import '../../node_modules/viewerjs/dist/viewer.min.css';
 import '../../assets/css/flex.css';
 import './css/style.css';
 
@@ -58,7 +60,7 @@ if (Util.demo) {
   paramObj = {
     'doc_id': 1,
     'user_id_doc': 2026,
-    'doc_type': 500
+    'doc_type': 10
   };
 }
 
@@ -111,12 +113,6 @@ common.render = function(templateUrl, data, tab) {
     dataType: 'text',
     success: function(response) {
       $.extend(data, { Util: Util, _: _ });
-      //let template = doT.template(response);
-      /*     for(let item in data){
-       if(!data[item]){
-       data[item] = '无';
-       }
-       }*/
       let template = {};
       if (paramObj['doc_type'] == 180) {
         template = _.template(response);
@@ -124,10 +120,6 @@ common.render = function(templateUrl, data, tab) {
         template = doT.template(response);
       }
       let html = template(data);
-      // if (tab) {
-      //   html = $(html).filter('.js-tab-content');
-      //   html.attr('id', 'js-' + data.createDate);
-      // }
       let $html = $(html);
 
       if (paramObj['doc_type'] == 220) {
@@ -179,12 +171,12 @@ common.render = function(templateUrl, data, tab) {
           // let dom_imagesCnt = $html.find("#js-images-cnt").get(0);
           // new Viewer(dom_imagesCnt, {});
           // });
-          require.ensure([], function(require) {
-            require('../../node_modules/viewerjs/dist/viewer.min.css');
-            var Viewer = require('viewerjs');
-            let dom_imagesCnt = $html.find("#js-images-cnt").get(0);
-            new Viewer(dom_imagesCnt, {});
-          });
+          // require.ensure([], function(require) {
+          //   require('../../node_modules/viewerjs/dist/viewer.min.css');
+          //   var Viewer = require('viewerjs');
+          let dom_imagesCnt = $html.find("#js-images-cnt").get(0);
+          new Viewer(dom_imagesCnt, {});
+          // });
         }
 
       }
@@ -224,7 +216,7 @@ if (paramObj["doc_type"] == 170 || paramObj["doc_type"] == 160) {
       'doc_id': paramObj['doc_id'],
       'user_id_doc': paramObj['user_id_doc'],
       'doc_type': paramObj['doc_type'],
-      'src_type': 'HECadre', //请求源的类型，如'HECadre APP'、'Inhabitant APP'等
+      'src_type': 'Inhabitant APP', //请求源的类型，如'HECadre APP'、'Inhabitant APP'等
       'pf_type': Util.pf_type, //请求源的终端平台类型，如'Android'、'iOS'、'Web'等
       'user_id': Util.userId || paramObj['user_id'], //用户ID，u64
       'auth_str': Util.getCommunicationAuth() || paramObj['authStr'] //通信认证密文串
