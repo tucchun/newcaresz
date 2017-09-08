@@ -5,7 +5,17 @@ module.exports = {
   entry: {
     'app/app': './src/app/app.js',
     'web/app': './src/web/app.js',
-    vendor: ['jquery', 'dot', 'lodash', 'node-forge', 'viewerjs', './assets/css/normalize.css', './node_modules/viewerjs/dist/viewer.min.css']
+    vendor: [
+      'jquery',
+      'dot',
+      'lodash',
+      'node-forge',
+      'viewerjs',
+      './assets/css/normalize.css',
+      './node_modules/viewerjs/dist/viewer.min.css',
+      './assets/lib/jquery.mloading-master/jquery.mloading',
+      './assets/lib/jquery.mloading-master/jquery.mloading.css'
+    ]
   },
 
   // resolve: {
@@ -38,7 +48,7 @@ module.exports = {
     ]
   },
   plugins: [
-    
+
     new HtmlWebpackPlugin({
       filename: 'app/app.html',
       template: path.join(__dirname, './src/app/details.ejs'),

@@ -1,6 +1,8 @@
 import $ from 'jquery';
 import forge from 'node-forge';
 import doT from 'dot';
+import mloading from '../lib/jquery.mloading-master/jquery.mloading';
+import '../lib/jquery.mloading-master/jquery.mloading.css';
 
 // 2次封装log
 if (!window.console) {
@@ -347,7 +349,7 @@ Util.fetch = function(settings) {
   console.log("===============请求接口开始===============\n");
   console.log("请求接口：" + opts.url + "\n");
   console.log("参数：" + opts.data + "\n");
-
+  $(document.body).mLoading({mask: false});//显示loading组件
   if (Util.demo) {
     // 用本地数据
     deferred = $.Deferred();
@@ -372,9 +374,11 @@ Util.fetch = function(settings) {
   deferred.done(function(data) {
     console.log("响应数据：" + JSON.stringify(data) + "\n");
     console.log("===============请求接口结束===============\n");
+    $(document.body).mLoading("hide");//隐藏loading组件
   }).done(settings.success).fail(function(XMLHttpRequest, textStatus, errorThrown) {
     console.log("响应失败：" + textStatus + ", " + errorThrown + "\n");
     console.log("===============请求接口结束===============\n");
+    $(document.body).mLoading("hide");//隐藏loading组件
   }).fail(settings.error);
 
   return deferred;
