@@ -5,7 +5,9 @@ module.exports = {
   entry: {
     'app/app': './src/app/app.js',
     'web/app': './src/web/app.js',
-    vendor: [
+    'vendor': [
+      'react',
+      'react-dom',
       'jquery',
       'dot',
       'lodash',
@@ -28,10 +30,7 @@ module.exports = {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
         use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['es2017', 'env']
-          }
+          loader: 'babel-loader'
         }
       }, {
         test: /\.css$/,

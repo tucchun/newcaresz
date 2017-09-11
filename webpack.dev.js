@@ -2,9 +2,13 @@ const Merge = require('webpack-merge');
 const CommonConfig = require('./webpack.common.js');
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 module.exports = Merge(CommonConfig, {
+  entry: {
+    'articlelist/index': './src/inhabitant/articlelist/index.js',
+  },
   devtool: 'cheap-module-source-map',
   /*module: {
     rules: [ {
@@ -19,7 +23,13 @@ module.exports = Merge(CommonConfig, {
   plugins: [
     new CleanWebpackPlugin(['dev']),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin()
+    new webpack.NamedModulesPlugin(),
+    new HtmlWebpackPlugin({
+      title: '文章列表',
+      filename: 'articlelist/index.html',
+      template: path.join(__dirname, './src/inhabitant/article_list.ejs'),
+      chunks: ['articlelist/index', 'vendor', 'runtime']
+    }),
   ],
   devServer: {
     port: 9000,

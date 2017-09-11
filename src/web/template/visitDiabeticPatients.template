@@ -60,7 +60,7 @@
           体质指数(kg/m2)
         </td>
         <td class="text-left" colspan="3">
-          {{= (Number(it.diabCurrentBodyspi/it.diabTargetBodyspi) || 0).toFixed(2)}}
+            {{= (it.diabCurrentBodyspi || 0).toFixed(2) }}/{{= (it.diabTargetBodyspi || 0).toFixed(2)}}
         </td>
       </tr>
       <tr>
@@ -261,7 +261,7 @@
         <td class="text-right label bgColor" colspan="2">机构及科别</td>
         <td class="text-left" colspan="3">{{=it.diabReferralHospital}}</td>
       </tr>
-      {{??}} 
+      {{??}}
       <tr>
         <td class="text-center label bgColor">转诊</td>
         <td class="text-left" colspan="5">无</td>

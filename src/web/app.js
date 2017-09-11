@@ -64,7 +64,7 @@ if (Util.demo) {
     "doc_id": 1,
     "isShowNext": "false",
     "user_id_doc": 2026,
-    "doc_type": 500
+    "doc_type": 10
   };
 }
 
@@ -270,6 +270,13 @@ common.render = function(templateUrl, data) {
 
 
       }
+      if(paramObj['doc_type'] == 10){
+        $html.find("#js-residentHealthCover-next").on("touchend", function(e){
+          console.log("居民健康档案onNext");
+          Util.onNext();
+        });
+      }
+
       container.append($html);
     },
     error: function(err, errorType, msg) {

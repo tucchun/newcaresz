@@ -190,7 +190,7 @@ $(window).scroll(function(e) {
 Util.fetch({
   url: Util.host + "/hca/web/hecadre/getarticlecategory",
   data: JSON.stringify({}),
-  demoUrl: "../../static/rss/getarticlecategory.json",
+  demoUrl: "../../assets/rss/getarticlecategory.json",
   success: function(data) {
     data = data || {};
     if (data.ret_code === 1) {
@@ -246,7 +246,7 @@ function getData(params) {
   Util.fetch({
     url: Util.host + "/hca/web/inhabitant/getarticlelist",
     data: JSON.stringify(params),
-    demoUrl: "../../static/rss/getarticlelist.json",
+    demoUrl: "../../assets/rss/getarticlelist.json",
     success: function(data) {
       data = data || {};
       if (data.ret_code === 1) {

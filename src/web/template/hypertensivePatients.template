@@ -60,7 +60,7 @@
           体质指数(kg/m2)
         </td>
         <td class="text-left" colspan="3">
-          {{= (Number(it.hyperCurrentConstitution/it.hyperTargerConstition) || 0).toFixed(2) }}
+          {{= (it.hyperCurrentConstitution || 0).toFixed(2) }}/{{= (it.hyperTargerConstition || 0).toFixed(2)}}
         </td>
       </tr>
       <tr>
@@ -243,7 +243,7 @@
                     2次/日,每次剂量200mg
                 </td>
             </tr>-->
-      {{? it.hyperReferralReason }} 
+      {{? it.hyperReferralReason }}
       <tr>
         <td class="text-center bgColor label" rowspan="2">
           转诊
@@ -271,10 +271,10 @@
         <td class="text-left" colspan="4">
           无
         </td>
-       
+
       </tr>
       {{?}}
-           
+
 
       <tr>
         <td class="text-right bgColor label">

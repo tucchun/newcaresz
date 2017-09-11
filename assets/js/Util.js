@@ -1,18 +1,18 @@
 import $ from 'jquery';
 import forge from 'node-forge';
 import doT from 'dot';
-import mloading from '../lib/jquery.mloading-master/jquery.mloading';
+import '../lib/jquery.mloading-master/jquery.mloading';
 import '../lib/jquery.mloading-master/jquery.mloading.css';
 
 // 2次封装log
 if (!window.console) {
   window.console = {};
 }
-if (typeof window.console.log != 'function') {
-  window.console.log = function(msg) {};
+if (typeof window.console.log !== 'function') {
+  window.console.log = function() {};
 }
 
-console.log = (function(log) {
+window.console.log = (function(log) {
   return function() {
     //Array.prototype.slice.call(arguments).forEach(function(item, index) {});
     log.apply(console, arguments);
@@ -39,7 +39,7 @@ if (process.env.NODE_ENV === 'production') {
 
 
 // 线上 测试环境 demo数据改为false
-if (location.href.indexOf('admin.newcaresz.com') > 0 || location.href.indexOf('192.168.1.232') > 0 || location.href.indexOf('test.newcaresz.com') > 0) {
+if (location.href.indexOf('newcaresz.com') > 0 || location.href.indexOf('192.168.1.232') > 0) {
   Util.demo = false;
 }
 
