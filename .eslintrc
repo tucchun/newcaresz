@@ -1,22 +1,25 @@
 {
-  "env":
-  {
+  "env": {
     "browser": true,
-    "commonjs": true,
     "es6": true,
-    "node": true
+    "node": true,
+    "commonjs": true
   },
   "extends": "eslint:recommended",
-  "parserOptions":
-  {
-    "ecmaFeatures":
-    {
-      "experimentalObjectRestSpread": true,
-      "jsx": true
-    },
-    "sourceType": "module"
+  "parserOptions": {
+      "ecmaFeatures": {
+          "experimentalObjectRestSpread": true,
+          "jsx": true,
+          "arrowFunctions": true,
+          "classes": true,
+          "modules": true,
+          "defaultParams": true
+      },
+      "sourceType": "module"
   },
+  "parser": "babel-eslint",
   "plugins": [
+    "html",
     "react"
   ],
   "rules":

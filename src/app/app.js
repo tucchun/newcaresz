@@ -60,7 +60,7 @@ if (Util.demo) {
   paramObj = {
     'doc_id': 1,
     'user_id_doc': 2026,
-    'doc_type': 220
+    'doc_type': 500
   };
 }
 
@@ -197,8 +197,8 @@ common.render = function(templateUrl, data, tab) {
       $container.append($html);
     },
     error: function(err, errorType, msg) {
-      console.log('网络错误；' + msg);
-      Util.alert('网络错误!');
+      console.log('当前网络不可用，请检查你的网络设置' + msg);
+      Util.alert('当前网络不可用，请检查你的网络设置');
     }
   });
 };
@@ -280,7 +280,7 @@ if (paramObj["doc_type"] == 170 || paramObj["doc_type"] == 160) {
       }
     },
     error: function(err) {
-      Util.alert('网络错误！');
+      Util.alert('当前网络不可用，请检查你的网络设置');
       console.log(err);
     }
   });
