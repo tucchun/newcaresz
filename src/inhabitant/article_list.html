@@ -10,10 +10,10 @@
   <link rel="stylesheet" href="./css/article_list_inhabitant.css" />
   <script type="text/javascript" src="../../static/assets/adaptive/myadaptive.js"></script>
   <script>
-  window['adaptive'].desinWidth = 750; // 设计图宽度
-  window['adaptive'].baseFont = 30; // 没有缩放时的字体大小
-  window['adaptive'].maxWidth = 750; // 页面最大宽度 默认540
-  window['adaptive'].init(); // 调用初始化方法
+    window['adaptive'].desinWidth = 750; // 设计图宽度
+    window['adaptive'].baseFont = 30; // 没有缩放时的字体大小
+    window['adaptive'].maxWidth = 750; // 页面最大宽度 默认540
+    window['adaptive'].init(); // 调用初始化方法
   </script>
   <title>文章列表</title>
 </head>
@@ -53,235 +53,237 @@
   {{~}}
 </script>
 <script type="text/javascript">
-var hashArr = location.hash.substr(1).split("/");
-var category = hashArr[0];
-var category_position = hashArr[1];
-var $category = $("#js-category");
+  var hashArr = location.hash.substr(1).split("/");
+  var category = hashArr[0];
+  var category_position = hashArr[1];
+  var $category = $("#js-category");
 
-var abort = false;
+  var abort = false;
 
-var params = {
-  "begin": 0,
-  "count": 10
-  // "user_id": parseInt(Util.userId)
-};
+  var params = {
+    "begin": 0,
+    "count": 10
+    // "user_id": parseInt(Util.userId)
+  };
 
-function init() {
-  if (window.screen.width > 750) {
-    $("#js-article-list").addClass("article-list-inner");
-  } else {
-    $("#js-article-list").removeClass("article-list-inner");
+  function init() {
+    if (window.screen.width > 750) {
+      $("#js-article-list").addClass("article-list-inner");
+    } else {
+      $("#js-article-list").removeClass("article-list-inner");
+    }
   }
-}
-init();
-// 数据缓存
-var cache = {};
+  init();
+  // 数据缓存
+  var cache = {};
 
-var $list = $("#js-article-list");
-var $loading_tip = $("#js-loading-tip");
-var tid;
-window.addEventListener('resize', function() {
-  clearTimeout(tid);
-  tid = setTimeout(init, 300);
-}, false);
-// 浏览器缓存中读取时也需要重新设置rem基准值
-window.addEventListener('pageshow', function(e) {
-  if (e.persisted) {
+  var $list = $("#js-article-list");
+  var $loading_tip = $("#js-loading-tip");
+  var tid;
+  window.addEventListener('resize', function() {
     clearTimeout(tid);
     tid = setTimeout(init, 300);
-  }
-}, false);
+  }, false);
+  // 浏览器缓存中读取时也需要重新设置rem基准值
+  window.addEventListener('pageshow', function(e) {
+    if (e.persisted) {
+      clearTimeout(tid);
+      tid = setTimeout(init, 300);
+    }
+  }, false);
 
 
-$list.on("tap", ".js-article_item", function(e) {
-  abort = true; // 点击详情，可能会中断查询下一页数据的异步请求；加个字段标识；
-  var $this = $(e.target);
-  var $currentTarget = $(e.currentTarget);
-  var url = $currentTarget.data("url");
-  location.href = url;
-  e.stopPropagation();
-  e.preventDefault();
-})
+  $list.on("tap", ".js-article_item", function(e) {
+    abort = true; // 点击详情，可能会中断查询下一页数据的异步请求；加个字段标识；
+    var $this = $(e.target);
+    var $currentTarget = $(e.currentTarget);
+    var url = $currentTarget.data("url");
+    location.href = url;
+    e.stopPropagation();
+    e.preventDefault();
+  })
 
-$("#js-category").on("tap", ".article-category-item", function(e) {
+  $("#js-category").on("tap", ".article-category-item", function(e) {
 
-  // 记录当前标签内容的位子
-  var flag = $category.find(" >div.active").data("flag");
-  cache[flag].scrollTop = $(window).scrollTop();
-
-  var $this = $(this);
-  if ($this.is(".active")) return false;
-  $this.addClass('active').siblings().removeClass('active');
-  flag = $this.data("flag");
-  var left = $category.scrollLeft();
-  location.hash = flag + "/" + left;
-  params["article_category"] = flag;
-
-  $(window).scrollTop(0);
-  if (cache[flag]) {
-    render(cache[flag].data, cache[flag].scrollTop);
-  } else {
-    cache[flag] = {
-      params: {
-        "begin": 0,
-        "count": 10,
-        // "user_id": parseInt(Util.userId),
-        "article_category": flag
-      },
-      data: {
-        "articleList": []
-      },
-      scrollTop: 0
-    };
-    Util.load("加载数据...");
-
-    getData(cache[flag].params).done(function(data) {
-      cache[flag].data = data;
-      render(data, cache[flag].scrollTop);
-      Util.hideLoad();
-    }).fail(function() {
-      $list.html("");
-      Util.hideLoad();
-    });
-  }
-
-  e.stopPropagation();
-  e.preventDefault();
-});
-
-
-var scroll_state = 0;
-$(window).scroll(function(e) {
-
-  if (scroll_state == 1) return false;
-
-  var viewH = $(window).height(),
-    contentH = $("html").height(),
-    scrollTop = $(window).scrollTop();
-  if (viewH + scrollTop >= contentH) {
-
-    scroll_state = 1;
-
+    // 记录当前标签内容的位子
     var flag = $category.find(" >div.active").data("flag");
-    cache[flag].params.begin += 1;
-    $loading_tip.show();
-    getData(cache[flag].params).done(function(data) {
+    cache[flag].scrollTop = $(window).scrollTop();
 
-      scroll_state = 0;
-      var arrTemp = cache[flag].data["articleList"];
-      arrTemp = arrTemp || [];
-      arrTemp = arrTemp.concat(data["articleList"]);
-      cache[flag].data["articleList"] = arrTemp;
-      cache[flag].scrollTop = scrollTop;
-      render(data, scrollTop, true);
-      $loading_tip.hide();
-    }).fail(function() {
+    var $this = $(this);
+    if ($this.is(".active")) return false;
+    $this.addClass('active').siblings().removeClass('active');
+    flag = $this.data("flag");
+    var left = $category.scrollLeft();
+    location.hash = flag + "/" + left;
+    params["article_category"] = flag;
 
-      scroll_state = 0;
-
-      cache[flag].params.begin -= 1;
-      $loading_tip.hide();
-    });
-  }
-});
-
-
-// 获取分类
-Util.fetch({
-  url: Util.host + "/hca/web/hecadre/getarticlecategory",
-  data: JSON.stringify({}),
-  demoUrl: "../../assets/rss/getarticlecategory.json",
-  success: function(data) {
-    data = data || {};
-    if (data.ret_code === 1) {
-      var template = doT.template($("#js-article-category").html());
-      var htmlStr = template(data.ret_data);
-      $category.html(htmlStr);
-      // 筛选分类
-      var $category_list = $category.find("[data-flag]");
-      $category_list.removeClass("active");
-      var $currentCategory = $category_list.filter("[data-flag=" + category + "]");
-      if ($currentCategory.size() > 0) {
-        $currentCategory.addClass("active");
-        $category.scrollLeft(category_position);
-      } else {
-        category = "";
-        $category_list.eq(0).addClass("active");
-      }
-      cache[category] = {
+    $(window).scrollTop(0);
+    if (cache[flag]) {
+      render(cache[flag].data, cache[flag].scrollTop);
+    } else {
+      cache[flag] = {
         params: {
           "begin": 0,
           "count": 10,
-          "user_id": parseInt(Util.userId),
-          "article_category": category
+          // "user_id": parseInt(Util.userId),
+          "article_category": flag
         },
-        scrollTop: 0,
         data: {
           "articleList": []
-        }
+        },
+        scrollTop: 0
       };
+      Util.load("加载数据...");
 
-    } else {
-      Util.alert(data.ret_msg || "查询信息错误！");
+      getData(cache[flag].params).done(function(data) {
+        cache[flag].data = data;
+        render(data, cache[flag].scrollTop);
+        Util.hideLoad();
+      }).fail(function() {
+        $list.html("");
+        Util.hideLoad();
+      });
     }
-  },
-  error: function(err) {
-    Util.alert("网络错误!");
-    console.log(err)
-  }
-}).done(function() {
-  Util.load("加载数据...");
-  getData(cache[category].params).done(function(data) {
-    cache[category].data = data;
-    render(data, cache[category].scrollTop);
-    Util.hideLoad();
-  }).fail(function() {
-    Util.hideLoad();
+
+    e.stopPropagation();
+    e.preventDefault();
   });
-});
 
 
-function getData(params) {
-  var deffered = $.Deferred();
+  var scroll_state = 0;
+  $(window).scroll(function(e) {
+
+    if (scroll_state == 1) return false;
+
+    var viewH = $(window).height(),
+      contentH = $("html").height(),
+      scrollTop = $(window).scrollTop();
+    if (viewH + scrollTop >= contentH) {
+
+      scroll_state = 1;
+
+      var flag = $category.find(" >div.active").data("flag");
+      cache[flag].params.begin += 1;
+      $loading_tip.show();
+      getData(cache[flag].params).done(function(data) {
+
+        scroll_state = 0;
+        var arrTemp = cache[flag].data["articleList"];
+        arrTemp = arrTemp || [];
+        arrTemp = arrTemp.concat(data["articleList"]);
+        cache[flag].data["articleList"] = arrTemp;
+        cache[flag].scrollTop = scrollTop;
+        render(data, scrollTop, true);
+        $loading_tip.hide();
+      }).fail(function() {
+
+        scroll_state = 0;
+
+        cache[flag].params.begin -= 1;
+        $loading_tip.hide();
+      });
+    }
+  });
+
+
+  // 获取分类
   Util.fetch({
-    url: Util.host + "/hca/web/inhabitant/getarticlelist",
-    data: JSON.stringify(params),
-    demoUrl: "../../assets/rss/getarticlelist.json",
+    url: Util.host + "/hca/web/hecadre/getarticlecategory",
+    data: JSON.stringify({}),
+    demoUrl: "../../assets/rss/getarticlecategory.json",
     success: function(data) {
       data = data || {};
       if (data.ret_code === 1) {
-        if (data.ret_data['articleList'] && data.ret_data['articleList'].length > 0) {
-          deffered.resolve($.extend(data.ret_data, {
-            host: Util.host
-          }));
+        var template = doT.template($("#js-article-category").html());
+        var htmlStr = template(data.ret_data);
+        $category.html(htmlStr);
+        // 筛选分类
+        var $category_list = $category.find("[data-flag]");
+        $category_list.removeClass("active");
+        var $currentCategory = $category_list.filter("[data-flag=" + category + "]");
+        if ($currentCategory.size() > 0) {
+          $currentCategory.addClass("active");
+          $category.scrollLeft(category_position);
         } else {
-          deffered.reject();
+          category = "";
+          $category_list.eq(0).addClass("active");
         }
+        cache[category] = {
+          params: {
+            "begin": 0,
+            "count": 10,
+            "user_id": parseInt(Util.userId),
+            "article_category": category
+          },
+          scrollTop: 0,
+          data: {
+            "articleList": []
+          }
+        };
+
       } else {
         Util.alert(data.ret_msg || "查询信息错误！");
-        deffered.reject(data.ret_msg || "查询信息错误！");
       }
     },
     error: function(err) {
-      if (abort) { return false; }
       Util.alert("网络错误!");
-      deffered.reject("网络错误!");
+      console.log(err)
     }
-  })
-  return deffered.promise();
-}
+  }).done(function() {
+    Util.load("加载数据...");
+    getData(cache[category].params).done(function(data) {
+      cache[category].data = data;
+      render(data, cache[category].scrollTop);
+      Util.hideLoad();
+    }).fail(function() {
+      Util.hideLoad();
+    });
+  });
 
-function render(data, scrollTop, isAppend) {
-  var template = doT.template($("#js-template-article-list").html());
-  var htmlStr = template(data);
-  if (isAppend) {
-    $list.append(htmlStr);
-  } else {
-    $list.html(htmlStr);
+
+  function getData(params) {
+    var deffered = $.Deferred();
+    Util.fetch({
+      url: Util.host + "/hca/web/inhabitant/getarticlelist",
+      data: JSON.stringify(params),
+      demoUrl: "../../assets/rss/getarticlelist.json",
+      success: function(data) {
+        data = data || {};
+        if (data.ret_code === 1) {
+          if (data.ret_data['articleList'] && data.ret_data['articleList'].length > 0) {
+            deffered.resolve($.extend(data.ret_data, {
+              host: Util.host
+            }));
+          } else {
+            deffered.reject();
+          }
+        } else {
+          Util.alert(data.ret_msg || "查询信息错误！");
+          deffered.reject(data.ret_msg || "查询信息错误！");
+        }
+      },
+      error: function(err) {
+        if (abort) {
+          return false;
+        }
+        Util.alert("网络错误!");
+        deffered.reject("网络错误!");
+      }
+    })
+    return deffered.promise();
   }
 
-  $(window).scrollTop(scrollTop || 0);
-}
+  function render(data, scrollTop, isAppend) {
+    var template = doT.template($("#js-template-article-list").html());
+    var htmlStr = template(data);
+    if (isAppend) {
+      $list.append(htmlStr);
+    } else {
+      $list.html(htmlStr);
+    }
+
+    $(window).scrollTop(scrollTop || 0);
+  }
 </script>
 
 </html>
