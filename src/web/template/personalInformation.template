@@ -214,41 +214,7 @@
       </td>
       <td class="label text-right bgColor">医疗费用支付方式</td>
       <td class="text-left">
-        <%
-        if(residentMedicalPay === 1){
-        %>
-        城镇职工基本医疗保险
-        <%
-        }else if(residentMedicalPay === 2){
-        %>
-        城镇居民基本医疗保险
-        <%
-        }else if(residentMedicalPay === 3){
-        %>
-        新型农村合作医疗
-        <%
-        }else if(residentMedicalPay === 4){
-        %>
-        贫困救助
-        <%
-        }else if(residentMedicalPay === 5){
-        %>
-        商业医疗保险
-        <%
-        }else if(residentMedicalPay === 6){
-        %>
-        全公费
-        <%
-        }else if(residentMedicalPay === 7){
-        %>
-        全自费
-        <%
-        }else if(residentMedicalPay === 8){
-        %>
-        <%= residentMedicalPayText%>
-        <%
-        }
-        %>
+        <%= residentMedicalPayDes%>
       </td>
     </tr>
     <tr>

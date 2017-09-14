@@ -159,25 +159,7 @@
   <div class="item clearfix">
     <div class="pull-left">医疗费用支付方式</div>
     <div class="pull-right">
-      {{? it.residentMedicalPay === 1}}
-      城镇职工基本医疗保险
-      {{?? it.residentMedicalPay === 2}}
-      城镇居民基本医疗保险
-      {{?? it.residentMedicalPay === 3}}
-      新型农村合作医疗
-      {{?? it.residentMedicalPay === 4}}
-      贫困救助
-      {{?? it.residentMedicalPay === 5}}
-      商业医疗保险
-      {{?? it.residentMedicalPay === 6}}
-      全公费
-      {{?? it.residentMedicalPay === 7}}
-      全自费
-      {{?? it.residentMedicalPay === 8}}
-      {{= it.residentMedicalPayText}}
-      {{??}}
-      &nbsp;
-      {{?}}
+      {{= it.residentMedicalPayDes}}
     </div>
   </div>
   <div class="item clearfix">

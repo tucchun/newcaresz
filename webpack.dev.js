@@ -7,7 +7,7 @@ const path = require('path');
 
 module.exports = Merge(CommonConfig, {
   entry: {
-    'articlelist/index': './src/inhabitant/articlelist/index.js',
+    'articlelist/index': './src/page/articlelist/index.js',
   },
   devtool: 'cheap-module-source-map',
   /*module: {
@@ -27,7 +27,7 @@ module.exports = Merge(CommonConfig, {
     new HtmlWebpackPlugin({
       title: '文章列表',
       filename: 'articlelist/index.html',
-      template: path.join(__dirname, './src/inhabitant/article_list.ejs'),
+      template: path.join(__dirname, './src/page/articlelist/article_list.ejs'),
       chunks: ['articlelist/index', 'vendor', 'runtime']
     }),
   ],
