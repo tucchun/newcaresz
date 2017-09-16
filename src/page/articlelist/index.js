@@ -3,9 +3,6 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import Util from '../../../assets/js/Util';
 
-
-
-
 const articleData = [
   {
     article_id: '12123',
@@ -32,19 +29,64 @@ const articleData = [
 ];
 
 const categoriesData = [
-  {"lookup_code": '123123', "lookup_value": "菜单一"},
-  {"lookup_code": '1212', "lookup_value": "菜单二"}
+  {
+    "lookup_code": '123123',
+    "lookup_value": "菜单一"
+  }, {
+    "lookup_code": '1212',
+    "lookup_value": "菜单二"
+  }
 ];
 
-fetch("../../assets/rss/getarticlelist.json").then(response => {
-  var data = response.json();
-  console.log(data);
-  return data;
-}, function(){
-  console.log(...arguments);
-});
+class Index extends React.Component {
+  constructor(props) {
+    super(props);
+    fetch("../../assets/rss/getarticlelist.json").then(response => {
+      return response.json();
+    }).then(data => {
+
+      console.log(data);
+    }).catch(err => {
+      console.log(err)
+    });
+    console.log("constructor");
+  }
+
+  render() {
+    console.log("render");
+    return (<Articles ArticlesData={articleData} CategoriesData={categoriesData}/>);
+  }
+
+  componentWillMount() {
+    console.log("componentWillMount");
+  }
+
+  componentDidMount() {
+    console.log("componentDidMount");
+  }
+
+  componentWillReceiveProps() {
+    console.log("componentWillReceiveProps");
+  }
+
+  shouldComponentUpdate() {
+    console.log("shouldComponentUpdate");
+  }
+
+  componentWillUpdate() {
+    console.log("componentWillUpdate");
+  }
+
+  componentDidUpdate() {
+    console.log("componentDidUpdate");
+  }
+
+  componentWillUnmount() {
+    console.log("componentWillUnmount");
+  }
+}
 
 
 
-
-ReactDom.render(<div><Articles ArticlesData={articleData} CategoriesData={categoriesData}/></div>, document.getElementById('root'));
+ReactDom.render(
+  <Index/>, document.getElementById('root'));
