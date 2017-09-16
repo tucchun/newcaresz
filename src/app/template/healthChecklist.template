@@ -829,7 +829,13 @@
         </div>
         <div class="item clearfix">
           <div class="pull-left">用药时间</div>
-          <div class="pull-right">{{= it.Util.formatDate(it.examDrugDate)}}</div>
+          <div class="pull-right">
+          {{? it.examDrupUnit}}
+            {{= it.examDrugDate}}{{= it.examDrupUnit}}</td>
+          {{??}}
+            {{= it.Util.formatDate(it.examDrugDate)}}
+          {{?}}
+          </div>
         </div>
         <div class="item clearfix">
           <div class="pull-left">服药依从性</div>

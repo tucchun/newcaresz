@@ -64,7 +64,7 @@ if (Util.demo) {
     "doc_id": 1,
     "isShowNext": "",
     "user_id_doc": 2026,
-    "doc_type": 500
+    "doc_type": 30
   };
 }
 

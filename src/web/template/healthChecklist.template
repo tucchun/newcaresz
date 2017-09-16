@@ -691,7 +691,13 @@
       </tr>
       <tr>
         <td class="text-right bgColor label " colspan="2 ">用药时间</td>
-        <td class="text-left ">{{= it.Util.formatDate(it.examDrugDate)}}</td>
+        <td class="text-left ">
+        {{? it.examDrupUnit}}
+          {{= it.examDrugDate}}{{= it.examDrupUnit}}</td>
+        {{??}}
+          {{= it.Util.formatDate(it.examDrugDate)}}
+        {{?}}
+
       </tr>
       <tr data-examDrug data-belongExamDrug>
         <td class="text-right bgColor label " colspan="2 ">服药依从性</td>
@@ -726,7 +732,7 @@
         <td class="text-center label bgColor ">危险因素控制</td>
         <td class="text-left " colspan="3 ">{{= it.riskFactorDes}}</td>
       </tr>
-      {{?}}  
+      {{?}}
       <tr data-belongexaminationExtendinternalPastHistory data-examinationExtendinternalPastHistory>
         <td class="text-center label bgColor " rowspan="9 " data-belong="belongexaminationExtendinternalPastHistory " data-norequired="examinationExtendinternalPastHistory ">内科常规检查</td>
         <td class="text-right label bgColor " colspan="2 " >内科既往史</td>
