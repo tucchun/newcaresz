@@ -263,9 +263,7 @@
         }
       },
       error: function(err) {
-        if (abort) {
-          return false;
-        }
+        if (abort) { return false; }
         Util.alert("网络错误!");
         deffered.reject("网络错误!");
       }

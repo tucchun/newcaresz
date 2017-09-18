@@ -130,14 +130,16 @@
           {{=it.hyperComplianceBehaviorStr}}
         </td>
       </tr>
-      <tr>
-        <td class="text-right bgColor label" colspan="2">
-          辅助检查*
-        </td>
-        <td class="text-left" colspan="3">
-          {{= it.hyperSupplementExam}}
-        </td>
-      </tr>
+      {{? it.hyperSupplementExam}}
+        <tr>
+          <td class="text-right bgColor label" colspan="2">
+            辅助检查*
+          </td>
+          <td class="text-left" colspan="3">
+            {{= it.hyperSupplementExam}}
+          </td>
+        </tr>
+      {{?}}
       <tr>
         <td class="text-right bgColor label" colspan="2">
           服药依从性*

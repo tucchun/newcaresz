@@ -64,7 +64,7 @@ if (Util.demo) {
     "doc_id": 1,
     "isShowNext": "",
     "user_id_doc": 2026,
-    "doc_type": 30
+    "doc_type": 210
   };
 }
 
@@ -308,7 +308,7 @@ if (paramObj["doc_type"] == 170 || paramObj["doc_type"] == 160) {
   }
   Util.fetch({
     url: Util.host + '/hca/web/inhabitant/getdoc',
-    demoUrl: "../../static/rss/" + common.settings[paramObj.doc_type] + ".json",
+    demoUrl: "../../assets/rss/" + common.settings[paramObj.doc_type] + ".json",
     data: JSON.stringify({
       "doc_id": paramObj['doc_id'],
       "user_id_doc": paramObj['user_id_doc'],
