@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>孕产妇结题</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <script src="../../../static/assets/adaptive/adaptive-version2.js"></script>
+  <script>
+    // 设计图宽度
+    window['adaptive'].desinWidth = 750;
+    // body 字体大小 会将body字体大小设置为 baseFont / 100 + 'rem'
+    window['adaptive'].baseFont = 28;
+    window['adaptive'].maxWidth = 750;
+    window['adaptive'].init();
+  </script>
+  <link rel="stylesheet" href="../../../static/assets/viewerjs/viewer.min.css">
+  <link rel="stylesheet" href="../css/dist.css">
+
+</head>
+<body class="bgColor">
+<div class="container">
+  <div class="item clearfix">
+    <div class="pull-left">姓名</div>
+    <div class="pull-right">小娜娜</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">档案编号</div>
+    <div class="pull-right">85529654325</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">结题</div>
+    <div class="pull-right">哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈 哈哈哈哈哈哈哈哈哈哈</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">发生时间</div>
+    <div class="pull-right">2017-10-03</div>
+  </div>
+  <div class="item clearfix">
+    <div >医学凭证</div>
+    <div class="images clearfix" id="js-images-cnt">
+      <div>
+        <img class="js-img" src="../image/boy.png" alt="">
+      </div>
+      <div>
+        <img class="js-img" src="../image/boy.png" alt="">
+      </div>
+      <div>
+        <img class="js-img" src="../image/boy.png" alt="">
+      </div>
+      <div>
+        <img class="js-img" src="../image/boy.png" alt="">
+      </div>
+      <div>
+        <img class="js-img" src="../image/boy.png" alt="">
+      </div>
+    </div>
+  </div>
+
+
+</div>
+<script src="../../../static/assets/viewerjs/viewer.min.js"></script>
+<script>
+  var dom_imgArr = document.querySelectorAll(".js-img");
+  dom_imgArr.forEach(function(item, index){
+    var width = item.width;
+    var height = item.height;
+    if(width > height){
+      item.style.width = "auto";
+      item.style.height = "100%";
+    }else{
+      item.style.width = "100%";
+      item.style.height = "auto";
+    }
+  });
+
+  var dom_imagesCnt = document.getElementById("js-images-cnt");
+  var viewer = new Viewer(dom_imagesCnt, {});
+</script>
+
+
+</body>
+
+</html>

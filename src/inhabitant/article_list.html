@@ -226,7 +226,7 @@
       }
     },
     error: function(err) {
-      Util.alert("网络错误!");
+      Util.alert("当前网络不可用，请检查你的网络设置！");
       console.log(err)
     }
   }).done(function() {
@@ -264,8 +264,8 @@
       },
       error: function(err) {
         if (abort) { return false; }
-        Util.alert("网络错误!");
-        deffered.reject("网络错误!");
+        Util.alert("当前网络不可用，请检查你的网络设置！");
+        deffered.reject("当前网络不可用，请检查你的网络设置！");
       }
     })
     return deffered.promise();

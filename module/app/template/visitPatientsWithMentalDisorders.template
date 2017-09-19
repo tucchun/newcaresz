@@ -1,0 +1,347 @@
+<div class="container">
+  <div class="item clearfix">
+    <div class="pull-left">姓名</div>
+    <div class="pull-right">{{= it.residentName}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">档案编号</div>
+    <div class="pull-right">{{= it.residentNo}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">随访日期</div>
+    <div class="pull-right">{{= it.Util.formatDate(it.createDate)}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">本次随访形式</div>
+    <div class="pull-right">
+      {{? it.mentvStyle == 1}}
+      门诊
+      {{?? it.mentvStyle == 2}}
+      家庭
+      {{?? it.mentvStyle == 3}}
+      电话
+      {{?}}
+    </div>
+  </div>
+  {{? it.mentvLostReasonName}}
+  <div class="item clearfix">
+    <div class="pull-left">若失败，原因</div>
+    <div class="pull-right">{{= it.mentvLostReasonName}}</div>
+  </div>
+  {{?}}
+
+
+  {{? it.mentvDeathDate && it.mentvDeathReason}}
+  <div class="container flex horizental">
+    <div class="item flex align-center border-right w230">
+      <div>如死亡，日期和原因</div>
+    </div>
+    <div class="container border-bottom">
+      <div class="item clearfix">
+        <div class="pull-left">死亡日期</div>
+        <div class="pull-right">{{= it.Util.formatDate(it.mentvDeathDate)}}</div>
+      </div>
+      <div class="item clearfix">
+        <div class="pull-left">死亡原因</div>
+        <div class="pull-right">
+         {{? it.mentvDeathReason == 1}} 
+            {{? it.mentvBodyDeath == 1}}
+            传染病和寄生虫病
+            {{?? it.mentvBodyDeath == 2}}
+            肿瘤
+            {{?? it.mentvBodyDeath == 3}}
+            心脏病
+            {{?? it.mentvBodyDeath == 4}}
+            呼吸系统疾病
+            {{?? it.mentvBodyDeath == 5}}
+            消化系统疾病
+            {{?? it.mentvBodyDeath == 6}}
+            脑血管病
+            {{?? it.mentvBodyDeath == 7}}
+            其他疾病
+            {{?? it.mentvBodyDeath == 8}}
+            不详
+            {{?}}
+          {{?? it.mentvDeathReason == 2}} 
+          自杀
+           {{?? it.mentvDeathReason == 3}} 
+          他杀
+           {{?? it.mentvDeathReason == 4}} 
+          意外
+          {{?? it.mentvDeathReason == 5}} 
+          精神疾病相关并发症
+          {{?? it.mentvDeathReason == 6}} 
+          其他
+          {{?}}
+        </div>
+      </div>
+    </div>
+  </div>
+  {{?}}
+
+  <div class="item clearfix">
+    <div class="pull-left">危险性</div>
+    <div class="pull-right">
+      {{? it.mentvDanger == 1}} 0级 {{?? it.mentvDanger == 2}} 1级 {{?? it.mentvDanger == 3}} 2级 {{?? it.mentvDanger == 4}} 3级 {{?? it.mentvDanger == 5}} 4级 {{?? it.mentvDanger == 6}} 5级 {{?}}
+    </div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">目前症状</div>
+    <div class="pull-right">{{= it.bodySymptomListStr}}</div>
+  </div>
+  <!--<div class="container flex horizental">-->
+    <!--<div class="item flex align-center w230">-->
+      <!--<div>目前症状</div>-->
+    <!--</div>-->
+    <!--<div class="container border-bottom">-->
+      <!--<div class="item clearfix">-->
+        <!--<ul class="pull-right list">-->
+          <!--<li class="text-right">1.幻觉</li>-->
+          <!--<li class="text-right">2.交流困难</li>-->
+          <!--<li class="text-right">3.猜疑</li>-->
+          <!--<li class="text-right">4.喜怒无常</li>-->
+        <!--</ul>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+  <div class="item clearfix">
+    <div class="pull-left">自知力</div>
+    <div class="pull-right">{{= it.mentvInsightName}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">睡眠情况</div>
+    <div class="pull-right">{{= it.mentvSleepConditionName}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">饮食情况</div>
+    <div class="pull-right">{{= it.mentvDietSituationName}}</div>
+  </div>
+  <div class="container flex horizental">
+    <div class="item flex align-center border-right w230">
+      <div>社会功能情况</div>
+    </div>
+    <div class="container border-bottom">
+      <div class="item clearfix">
+        <div class="pull-left">个人生活料理</div>
+        <div class="pull-right">{{= it.mentvPersonalLifestyleName}}</div>
+      </div>
+      <div class="item clearfix">
+        <div class="pull-left">家务劳动</div>
+        <div class="pull-right">{{= it.mentvHouseworkName}}</div>
+      </div>
+      <div class="item clearfix">
+        <div class="pull-left">生产劳动及工作</div>
+        <div class="pull-right">
+          {{? it.mentvProductWork == 1}}
+          良好
+          {{?? it.mentvProductWork == 2}}
+          一般
+          {{?? it.mentvProductWork == 3}}
+          较差
+          {{?? it.mentvProductWork == 4}}
+          此项不合适
+          {{?}}
+        </div>
+      </div>
+      <div class="item clearfix">
+        <div class="pull-left">学习能力</div>
+        <div class="pull-right">{{= it.mentvLearnName}}</div>
+      </div>
+      <div class="item clearfix">
+        <div class="pull-left">社会人际交往</div>
+        <div class="pull-right">{{= it.mentvSocialCommunName}}</div>
+      </div>
+    </div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">危险行为</div>
+    <div class="pull-right">
+       {{? it.dangerousAct.dangaFlag == 1}} 
+        {{? it.dangerousAct.dangaMildTrouble > 0}} 
+        轻度滋事{{= it.dangerousAct.dangaMildTrouble}}次&nbsp; 
+        {{?}} 
+        {{? it.dangerousAct.dangaAccident > 0}} 
+        肇事{{= it.dangerousAct.dangaAccident}}次&nbsp; 
+        {{?}} 
+        {{? it.dangerousAct.dangaZhaohuo > 0}} 
+        肇祸{{= it.dangerousAct.dangaZhaohuo}}次&nbsp; 
+        {{?}} 
+        {{? it.dangerousAct.dangaAttemptedSuicide > 0}} 
+        自杀未遂{{= it.dangerousAct.dangaAttemptedSuicide}}次&nbsp; 
+        {{?}} {{? it.dangerousAct.dangaSelfInjury > 0}} 
+        自伤{{= it.dangerousAct.dangaSelfInjury}}次&nbsp; 
+        {{?}} 
+        {{? it.dangerousAct.dangaOtherHazards > 0}} 
+        其他危害行为{{= it.dangerousAct.dangaOtherHazards}}次 
+        {{?}} 
+      {{??}} 
+      无 
+      {{?}}
+    </div>
+  </div>
+  <!--<div class="container flex horizental">-->
+    <!--<div class="item flex align-center w230">-->
+      <!--<div>危险行为</div>-->
+    <!--</div>-->
+    <!--<div class="container border-bottom">-->
+      <!--<div class="item clearfix">-->
+        <!--<ul class="pull-right list">-->
+          <!--<li class="text-right">轻度滋事2次</li>-->
+          <!--<li class="text-right">肇事3次</li>-->
+        <!--</ul>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+  <div class="item clearfix">
+    <div class="pull-left">随访期间关锁情况</div>
+    <div class="pull-right">{{= it.mentvLockName}}</div>
+  </div>
+  <div class="container flex horizental">
+    <div class="item flex align-center border-right w230">
+      <div>随访期间住院情况</div>
+    </div>
+    <div class="container border-bottom bgWhite ">
+      <div class="item clearfix">
+        <div class="pull-left"></div>
+        <div class="pull-right">{{= it.mentvHospitalizationName}}</div>
+      </div>
+      {{? it.mentvHospitalization == 3}}
+        <div class="item clearfix">
+          <div class="pull-left">末次出院时间</div>
+          <div class="pull-right">{{= it.Util.formatDate(it.mentvHospitalizationLeave)}}</div>
+        </div>
+      {{?}}
+    </div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">实验室检查</div>
+    <div class="pull-right">
+      {{? it.mentvLabExam == 1}}
+      {{= it.mentvLabDescribe}}
+      {{??}}
+      无
+      {{?}}
+    </div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">服药依从性</div>
+    <div class="pull-right">{{= it.mentvMedicationCompName}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">药物不良反应</div>
+    <div class="pull-right">
+      {{? it.mentvDrugReaction == 1}}
+      {{= it.mentvDrugDescribe}}
+      {{??}}
+      无
+      {{?}}
+    </div>
+  </div>
+  <!--<div class="container flex horizental">-->
+    <!--<div class="item flex align-center border-right w230">-->
+      <!--<div>药物不良反应</div>-->
+    <!--</div>-->
+    <!--<div class="container border-bottom">-->
+      <!--<div class="item clearfix">-->
+        <!--<div class="pull-left">鹤顶红</div>-->
+        <!--<div class="pull-right">涨肚</div>-->
+      <!--</div>-->
+      <!--<div class="item clearfix">-->
+        <!--<div class="pull-left">鹤顶红</div>-->
+        <!--<div class="pull-right">涨肚</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+  <div class="item clearfix">
+    <div class="pull-left">治疗效果</div>
+    <div class="pull-right">{{= it.mentvTreatmentEffectName}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">是否转诊</div>
+    <div class="pull-right">
+    {{? it.mentvReferralFlag == 1}}
+    转诊原因：{{= it.mentvReferralReason}}<br/>
+    转诊至机构及科室：{{= it.mentvReferralHospital}}
+    {{??}}
+    无
+    {{?}}
+    </div>
+  </div>
+
+  {{? it.useMedicationList && it.useMedicationList.length > 0}}
+  <div class="container flex horizental">
+    <div class="item flex align-center border-right w230">
+      <div>用药情况</div>
+    </div>
+    <div class="container border-bottom">
+      {{~ it.useMedicationList :value:index}}
+      <div class="item clearfix">
+        <div class="pull-left">药物名称{{= index+1}}</div>
+        <div class="pull-right">{{= value.medDrugName}}</div>
+      </div>
+      <div class="item clearfix">
+        <div class="pull-left">剂量</div>
+        <div class="pull-right">{{= value.medUsage}}{{= value.medDrupRate}},每次剂量{{= value.medConsumption}}mg</div>
+      </div>
+      {{~}}
+    </div>
+  </div>
+  {{??}}
+  <div class="item clearfix">
+    <div class="pull-left">用药情况</div>
+    <div class="pull-right">无</div>
+  </div>
+  {{?}}
+
+  <!--<div class="container flex horizental">
+    <div class="item flex align-center border-right w230">
+      <div>用药情况</div>
+    </div>
+    <div class="container border-bottom">
+      <div class="item clearfix">
+        <div class="pull-left">药物1</div>
+        <div class="pull-right">用法:每日(月)3<span class="unit">次</span>/每次剂量10<span class="unit">mg</span></div>
+      </div>
+      <div class="item clearfix">
+        <div class="pull-left">药物2</div>
+        <div class="pull-right">用法:每日(月)3<span class="unit">次</span>/每次剂量10<span class="unit">mg</span></div>
+      </div>
+      <div class="item clearfix">
+        <div class="pull-left">药物3</div>
+        <div class="pull-right">用法:每日(月)3<span class="unit">次</span>/每次剂量10<span class="unit">mg</span></div>
+      </div>
+    </div>
+  </div>-->
+  <div class="item clearfix">
+    <div class="pull-left">康复措施</div>
+    <div class="pull-right">{{= it.mentvCommonFieldName}}</div>
+  </div>
+  <!--<div class="container flex horizental">-->
+    <!--<div class="item flex align-center w230">-->
+      <!--<div>康复措施</div>-->
+    <!--</div>-->
+    <!--<div class="container border-bottom">-->
+      <!--<div class="item clearfix">-->
+        <!--<ul class="pull-right list">-->
+          <!--<li class="text-right">1.生活劳动能力</li>-->
+          <!--<li class="text-right">2.职业训练</li>-->
+          <!--<li class="text-right">3.学习能力</li>-->
+          <!--<li class="text-right">4.社会交往</li>-->
+        <!--</ul>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+  <div class="item clearfix">
+    <div class="pull-left">本次随访分类</div>
+    <div class="pull-right">{{= it.mentvClassicName}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">下次随访日期</div>
+    <div class="pull-right">{{= it.Util.formatDate(it.nextVisitDate)}}</div>
+  </div>
+  <!--<div class="item clearfix">
+    <div class="pull-left">随访医生签名</div>
+    <div class="pull-right">{{= it.mentvSignDoctor}}</div>
+  </div>-->
+
+</div>

@@ -64,7 +64,7 @@ if (Util.demo) {
     "doc_id": 1,
     "isShowNext": "",
     "user_id_doc": 2026,
-    "doc_type": 210
+    "doc_type": 30
   };
 }
 
@@ -281,7 +281,7 @@ common.render = function(templateUrl, data) {
     },
     error: function(err, errorType, msg) {
       // console.log("获取页面失败；" + msg);
-      Util.alert("当前网络不可用，请检查你的网络设置");
+      Util.alert("当前网络不可用，请检查你的网络设置！");
     }
   });
 }
@@ -381,7 +381,7 @@ if (paramObj["doc_type"] == 170 || paramObj["doc_type"] == 160) {
       }
     },
     error: function(err) {
-      Util.alert("当前网络不可用，请检查你的网络设置");
+      Util.alert("当前网络不可用，请检查你的网络设置！");
       // console.log(err);
     }
   });

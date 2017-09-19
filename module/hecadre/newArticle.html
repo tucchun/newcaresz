@@ -231,7 +231,7 @@
           error: function (err, errorType, errorMsg) {
             console.log(err + "、" + errorType + "、" + errorMsg);
             Util.hideLoad();
-            Util.alert("网络错误");
+            Util.alert("当前网络不可用，请检查你的网络设置！");
 
           }
         })
@@ -261,7 +261,7 @@
       },
       error: function (err, errType, errThrow) {
         console.log("err:" + err + "; errType:" + errType + "; errThrow:" + errThrow);
-        Util.alert("网络错误");
+        Util.alert("当前网络不可用，请检查你的网络设置！");
         Util.hideLoad();
       }
     });

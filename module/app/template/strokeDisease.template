@@ -1,0 +1,190 @@
+<div class="container">
+  <div class="item clearfix">
+    <div class="pull-left">档案编号</div>
+    <div class="pull-right">{{=it.residentNo}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">姓名</div>
+    <div class="pull-right">{{=it.residentName}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">性别</div>
+    <div class="pull-right">{{=it.residentSexDes}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">年龄</div>
+    <div class="pull-right">{{=it.residentAge}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">本次随访日期</div>
+    <div class="pull-right">{{=it.Util.formatDate(it.createDate)}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">随访方式</div>
+    <div class="pull-right">{{=it.recordVisitStyleStr}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">随访地点</div>
+    <div class="pull-right">{{=it.recordVisitAddress}}</div>
+  </div>
+</div>
+<div class="container">
+  <div class="item bgColor">
+    <div class="sub-title">
+      随访内容
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="container flex horizental">
+    <div class="item flex align-center border-right w230">
+      <div>意识状态</div>
+    </div>
+    <div class="container border-bottom">
+      <div class="item clearfix">
+        <div class="pull-left">烦躁</div>
+        <div class="pull-right">{{=it.recordIrritabilityStr}}</div>
+      </div>
+      <div class="item clearfix">
+        <div class="pull-left">嗜睡</div>
+        <div class="pull-right">{{=it.recordSleepinessStr}}</div>
+      </div>
+      <div class="item clearfix">
+        <div class="pull-left">昏迷</div>
+        <div class="pull-right">{{=it.recordComaStr}}</div>
+      </div>
+      <div class="item clearfix">
+        <div class="pull-left">清醒</div>
+        <div class="pull-right">{{=it.recordSoberStr}}</div>
+      </div>
+    </div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">精神症状</div>
+    <div class="pull-right">{{=it.recordPsychiatricSymptomsStr}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">面瘫</div>
+    <div class="pull-right">{{=it.recordFacialParalysisStr}}</div>
+  </div>
+  <div class="container flex horizental">
+    <div class="item flex align-center border-right w230">
+      <div>肢体障碍情况</div>
+    </div>
+    <div class="container border-bottom">
+      <div class="item clearfix">
+        <div class="pull-left">左上肢</div>
+        <div class="pull-right">{{=it.recordLeftupperlimbStr}}</div>
+      </div>
+      <div class="item clearfix">
+        <div class="pull-left">右上肢</div>
+        <div class="pull-right">{{=it.recodeRightupperlimbStr}}</div>
+      </div>
+      <div class="item clearfix">
+        <div class="pull-left">左下肢</div>
+        <div class="pull-right">{{=it.recordLeftlowerlimbStr}}</div>
+      </div>
+      <div class="item clearfix">
+        <div class="pull-left">右下肢</div>
+        <div class="pull-right">{{=it.recodeRightlowerlimbStr}}</div>
+      </div>
+    </div>
+  </div>
+  <div class="container flex horizental">
+    <div class="item flex align-center border-right w230">
+      <div>语言功能</div>
+    </div>
+    <div class="container border-bottom">
+      <div class="item clearfix">
+        <div class="pull-left">正常</div>
+        <div class="pull-right">{{=it.recodeLanguageNormalStr}}</div>
+      </div>
+      <div class="item clearfix">
+        <div class="pull-left">不全失语</div>
+        <div class="pull-right">{{=it.recodeLanguageIncompleteStr}}</div>
+      </div>
+      <div class="item clearfix">
+        <div class="pull-left">完全失语</div>
+        <div class="pull-right">{{=it.recodeLanguageAphasiaStr}}</div>
+      </div>
+    </div>
+  </div>
+  <div class="container flex horizental">
+    <div class="item flex align-center border-right w230">
+      <div>病理反射</div>
+    </div>
+    <div class="container border-bottom">
+      <div class="item clearfix">
+        <div class="pull-left">左</div>
+        <div class="pull-right">{{=it.recodePathologicalreflexLeftStr}}</div>
+      </div>
+      <div class="item clearfix">
+        <div class="pull-left">右</div>
+        <div class="pull-right">{{=it.recodePathologicalreflexRightStr}}</div>
+      </div>
+    </div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">再次出血性卒中</div>
+    <div class="pull-right">{{=it.recodeAgianStr}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">家庭护理情况</div>
+    <div class="pull-right">{{=it.recodeFamilyNursingStr}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">专业康复锻炼</div>
+    <div class="pull-right">{{=it.recodeRehabilitationExerciseStr}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">恢复情况</div>
+    <div class="pull-right">{{=it.recodeRecoverySituationStr}}</div>
+  </div>
+  <div class="container flex horizental">
+    <div class="item flex align-center border-right w230">
+      <div>危险因素指导</div>
+    </div>
+    <div class="container border-bottom">
+      <div class="item clearfix">
+        <div class="pull-left">体重(kg)</div>
+        <div class="pull-right">{{=it.recodeWeight}}</div>
+      </div>
+      <div class="item clearfix">
+        <div class="pull-left">戒酒</div>
+        <div class="pull-right">{{=it.recodeNoDrinkStr}}</div>
+      </div>
+      <div class="item clearfix">
+        <div class="pull-left">戒烟</div>
+        <div class="pull-right">{{=it.recodeNoSmokingStr}}</div>
+      </div>
+      <div class="item clearfix">
+        <div class="pull-left">运动频率</div>
+        <div class="pull-right">{{=it.recodeSportFrequency}}次/周,{{=it.recodeSportTime}}分钟/次</div>
+      </div>
+      <div class="item clearfix">
+        <div class="pull-left">合理饮食</div>
+        <div class="pull-right">{{=it.recodeReasonableDietStr}}</div>
+      </div>
+      <div class="item clearfix">
+        <div class="pull-left">监测血压</div>
+        <div class="pull-right">{{=it.recodeBloodPressurStr}}</div>
+      </div>
+      <div class="item clearfix">
+        <div class="pull-left">监测血糖</div>
+        <div class="pull-right">{{=it.recodeBloodGlucoseStr}}</div>
+      </div>
+      <div class="item clearfix">
+        <div class="pull-left">监测脂肪</div>
+        <div class="pull-right">{{=it.recodeMonitoringFatStr}}</div>
+      </div>
+    </div>
+  </div>
+  <!--<div class="item clearfix">
+      <div class="pull-left">随访医师签名</div>
+      <div class="pull-right">{{=it.recodePhysicianSignature}}</div>
+  </div>-->
+  <div class="item clearfix">
+    <div class="pull-left">下次随访时间</div>
+    <div class="pull-right">{{= it.Util.formatDate(it.nextVisitDate)}}</div>
+  </div>
+</div>

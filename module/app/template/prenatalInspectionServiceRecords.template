@@ -1,0 +1,545 @@
+<div class="container">
+  <div class="item clearfix">
+    <div class="pull-left">姓名</div>
+    <div class="pull-right">{{= it.residentName}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">档案编号</div>
+    <div class="pull-right">{{= it.residentNo}}</div>
+  </div>
+  <!--  <div class="container">
+   <div class="container flex horizental">
+     <div class="item flex align-center border-right w230">
+       <div>孕前情况</div>
+     </div>
+     <div class="container border-bottom">
+       <div class="item clearfix">
+         <div class="pull-left">身高(cm)</div>
+         <div class="pull-right">{{= it.anteHight}}</div>
+       </div>
+       <div class="item clearfix">
+         <div class="pull-left">体重(kg)</div>
+         <div class="pull-right">{{= it.anteWeight}}</div>
+       </div>
+       <div class="item clearfix">
+         <div class="pull-left">体质指数</div>
+         <div class="pull-right">{{= it.bodyMassIndex}}</div>
+       </div>
+     </div>
+   </div>
+   <div class="item clearfix">
+     <div class="pull-left">现病史</div>
+     <div class="pull-right">{{= it.anteIllnessHistory}}</div>
+   </div>
+   <div class="container flex horizental">
+     <div class="item flex align-center border-right w230">
+       <div>月经史</div>
+     </div>
+     <div class="container border-bottom">
+       <div class="item clearfix">
+         <div class="pull-left">初潮年龄(岁)</div>
+         <div class="pull-right">{{= it.anteMenarcheAge}}</div>
+       </div>
+       <div class="item clearfix">
+         <div class="pull-left">周期(天)</div>
+         <div class="pull-right">{{= it.anteMenstrualCycle1}}/{{= it.anteMenstrualCycle2}}</div>
+       </div>
+     </div>
+   </div>
+   <div class="item clearfix">
+     <div class="pull-left">末次分娩时间</div>
+     <div class="pull-right">{{= it.Util.formatDate(it.anteChildbirthDate)}}</div>
+   </div> -->
+  <div class="item clearfix">
+    <div class="pull-left">填表日期</div>
+    <div class="pull-right">{{= it.Util.formatDate(it.createDate)}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">填表孕周</div>
+    <div class="pull-right">{{= it.gestationalWeeksRecord}}<span class="unit">周</span></div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">孕妇年龄</div>
+    <div class="pull-right">{{= it.residentAge}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">丈夫姓名</div>
+    <div class="pull-right">{{= it.anteHusbandName}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">丈夫年龄</div>
+    <div class="pull-right">{{= it.anteHusbandAge}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">丈夫电话</div>
+    <div class="pull-right">{{= it.anteHusbandMobile}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">孕次</div>
+    <div class="pull-right">{{= it.antePregnancyTime}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">产次</div>
+    <div class="pull-right">
+      阴道分娩{{= it.anteDelivery}}次，胎头吸引{{= it.anteTtycTimes}}、产钳{{= it.anteCqTimes}}、臀位{{= it.anteTwTimes}}、剖宫产{{= it.anteCesarean}}次
+    </div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">末次月经</div>
+    <div class="pull-right">
+      {{? it.anteLastUnknow == 1}} 不详 {{??}} {{= it.Util.formatDate(it.anteMenstruationLast)}} {{?}}
+    </div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">预产期</div>
+    <div class="pull-right">{{= it.Util.formatDate(it.anteExpectedDate)}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">末次分娩时间</div>
+    <div class="pull-right">{{= it.Util.formatDate(it.anteChildbirthDate)}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">既往史</div>
+    <div class="pull-right">{{= it.familyDiseaseStr}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">家族史</div>
+    <div class="pull-right">{{= it.geneticDiseaseDes}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">个人史</div>
+    <div class="pull-right">{{= it.exposureHistoryStr}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">妇科手术史</div>
+    <div class="pull-right">{{= it.anteGynaecologyOperationText}}</div>
+  </div>
+  <div class="container">
+    <div class="container flex horizental">
+      <div class="item flex align-center border-right w230">
+        <div>病史咨询</div>
+      </div>
+      <div class="container border-bottom">
+        <div class="item clearfix">
+          <div class="pull-left">现病史</div>
+          <div class="pull-right">{{= it.anteIllnessHistory}}</div>
+        </div>
+        <div class="item clearfix">
+          <div class="pull-left">月经史</div>
+          <div class="pull-right">初潮年龄(岁)：{{= it.anteMenarcheAge}}；周期(天)：{{= it.anteMenstrualCycle1}}/{{= it.anteMenstrualCycle2}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="item clearfix">
+      <div class="pull-left">输血史</div>
+      <div class="pull-right">
+        {{? it.anteTransfusionHistory == 1}}{{= it.Util.formatDate(it.anteTransfusionDate)}} {{??}} 无 {{?}}
+      </div>
+    </div>
+    <div class="item clearfix">
+      <div class="pull-left">药物过敏史</div>
+      <div class="pull-right">
+        {{? it.anteDrugAllergy == 1}} {{= it.anteDrugAllergyDes}} {{??}} 无 {{?}}
+      </div>
+    </div>
+    <div class="item clearfix">
+      <div class="pull-left">避孕史</div>
+      <div class="pull-right">
+        {{= it.contraceptiveHistoryDes}}
+        <!-- {{? it.anteContraceptiveHistory == 1}} 外用避孕药 {{?? it.anteContraceptiveHistory == 2}} 体外射精 {{?? it.anteContraceptiveHistory == 3}} 安全期 {{?? it.anteContraceptiveHistory == 4}} 安全套 {{?? it.anteContraceptiveHistory == 5}} 避孕药 {{?? it.anteContraceptiveHistory == 6}} {{= it.anteContraceptiveOther}} {{?}} -->
+      </div>
+    </div>
+    <!--     <div class="item clearfix">
+  <div class="pull-left">孕产史</div>
+  <div class="pull-right">{{= it.pregancyHistoryText}}</div>
+</div> -->
+    <div class="container flex horizental">
+      <div class="item flex align-center border-right w230">
+        <div>孕产史</div>
+      </div>
+      <div class="container border-bottom">
+        <div class="item clearfix">
+          <div class="pull-left">流产</div>
+          <div class="pull-right">
+            流产{{= it.pregancyHistory.pregAbortion}}次， 末次流产（人流、药流、自然流）时间{{= it.Util.formatDate(it.pregancyHistory.pregAbortionDate)}}
+          </div>
+        </div>
+        <div class="item clearfix">
+          <div class="pull-left">死胎（次）</div>
+          <div class="pull-right">{{= it.pregancyHistory.pregStillbirth}}</div>
+        </div>
+        <div class="item clearfix">
+          <div class="pull-left">死产（次）</div>
+          <div class="pull-right">{{= it.pregancyHistory.pregStillbirth1}}</div>
+        </div>
+        <div class="item clearfix">
+          <div class="pull-left">新生儿死亡</div>
+          <div class="pull-right">
+            {{? it.pregancyHistory.pregNeonatalDeath == 1}} 死亡时间：{{= it.Util.formatDate(it.pregancyHistory.pregNeonatalDeathDate)}}， 死亡原因：{{= it.pregancyHistory.pregNeonatalDeathReason}} {{??}} 无 {{?}}
+          </div>
+        </div>
+        <div class="item clearfix">
+          <div class="pull-left">出生缺陷儿</div>
+          <div class="pull-right">
+            {{? it.pregancyHistory.pregBirthDefects == 1}} {{= it.pregancyHistory.pregBirthDefectsName}} {{??}} 无 {{?}}
+          </div>
+        </div>
+        <div class="item clearfix">
+          <div class="pull-left">早产（次）</div>
+          <div class="pull-right">{{= it.pregancyHistory.pregPrematureDelivery}}</div>
+        </div>
+        <div class="item clearfix">
+          <div class="pull-left">现存活子女情况</div>
+          <div class="pull-right">
+            {{= it.pregancyHistory.pregNowMan}}男 {{= it.pregancyHistory.pregNowWoman}}女
+          </div>
+        </div>
+        <div class="item clearfix">
+          <div class="pull-left">既往妊娠
+            <br/>合并症及并发症</div>
+          <div class="pull-right">
+            {{= it.pregancyHistory.pregHistoryDisease}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="item clearfix">
+      <div class="pull-left">身高</div>
+      <div class="pull-right">{{= it.anteHight}}<span class="unit">cm</span></div>
+    </div>
+    <div class="item clearfix">
+      <div class="pull-left">体重</div>
+      <div class="pull-right">{{= it.anteWeight}}<span class="unit">Kg</span></div>
+    </div>
+    <div class="item clearfix">
+      <div class="pull-left">体质指数</div>
+      <div class="pull-right">{{= (Number(it.bodyMassIndex) || 0).toFixed(2)}}<span class="unit">kg/m²</span></div>
+    </div>
+    <div class="item clearfix">
+      <div class="pull-left">血压</div>
+      <div class="pull-right">{{= it.bloodPressureLow}}/{{= it.bloodPressureHigh}}<span class="unit">mmHg</span></div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="item bgColor">
+      <div class="sub-title">
+        体格检查
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="item clearfix">
+      <div class="pull-left">心脏</div>
+      <div class="pull-right">心率{{= it.anteHeartRate}}次/分，{{= it.anteHeartText}}</div>
+    </div>
+    <div class="item clearfix">
+      <div class="pull-left">肺脏</div>
+      <div class="pull-right">呼吸{{= it.anteLungsBreathing}}次/分，{{= it.anteLungsText}}</div>
+    </div>
+    <div class="item clearfix">
+      <div class="pull-left">肝脏</div>
+      <div class="pull-right">{{= it.anteLiverText}}</div>
+    </div>
+    <div class="item clearfix">
+      <div class="pull-left">脾脏</div>
+      <div class="pull-right">{{= it.anteSpleenText}}</div>
+    </div>
+    <div class="item clearfix">
+      <div class="pull-left">乳房</div>
+      <div class="pull-right">{{= it.anteBreastText}}</div>
+    </div>
+    <div class="item clearfix">
+      <div class="pull-left">其他检查</div>
+      <div class="pull-right">{{= it.anteBodyText}}</div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="item bgColor">
+      <div class="sub-title">
+        妇科检查
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="item clearfix">
+      <div class="pull-left">外阴</div>
+      <div class="pull-right">{{= it.gynaecology.gynaVulvadDes}}</div>
+    </div>
+    <div class="item clearfix">
+      <div class="pull-left">阴道</div>
+      <div class="pull-right">{{= it.gynaecology.gynaVaginaDes}}</div>
+    </div>
+    <div class="item clearfix">
+      <div class="pull-left">子宫</div>
+      <div class="pull-right">{{= it.gynaecology.gynaCervicalDes}}</div>
+    </div>
+    <div class="item clearfix">
+      <div class="pull-left">宫颈</div>
+      <div class="pull-right">{{= it.gynaecology.gynaPalaceDes}}</div>
+    </div>
+    <div class="item clearfix">
+      <div class="pull-left">附件</div>
+      <div class="pull-right">{{= it.gynaecology.gynaEnclosureDes}}</div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="item bgColor">
+      <div class="sub-title">
+        实验室检查项目
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="item clearfix">
+      <div class="pull-left">HIV抗体首次检测时间</div>
+      <div class="pull-right">{{= it.Util.formatDate(it.anteHivDate)}}</div>
+    </div>
+    <div class="item clearfix">
+      <div class="pull-left">梅毒血清学检测时间</div>
+      <div class="pull-right">{{= it.Util.formatDate(it.anteSyphilisDate)}}</div>
+    </div>
+    <div class="item clearfix">
+      <div class="pull-left">乙肝病源学检测时间</div>
+      <div class="pull-right">{{= it.Util.formatDate(it.anteHepatitisbDate)}}</div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="item bgColor">
+      <div class="sub-title">
+        辅助检查
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="container flex horizental">
+      <div class="item flex align-center border-right w230">
+        <div>血常规</div>
+      </div>
+      <div class="container border-bottom">
+        <div class="item clearfix">
+          <div class="pull-left">血红蛋白值</div>
+          <div class="pull-right">{{= it.instrumentCheck.bloodHgb}}<span class="unit">g/L</span></div>
+        </div>
+        <div class="item clearfix">
+          <div class="pull-left">血小板计数值</div>
+          <div class="pull-right">{{= it.instrumentCheck.bloodPlt}}<span class="unit">*10^9/L</span></div>
+        </div>
+        <div class="item clearfix">
+          <div class="pull-left">白细胞计数值</div>
+          <div class="pull-right">{{= it.instrumentCheck.bloodWbc}}<span class="unit">*10^9/L</span></div>
+        </div>
+        <div class="item clearfix">
+          <div class="pull-left">其他</div>
+          <div class="pull-right">{{= it.instrumentCheck.bloodOther}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="container flex horizental">
+      <div class="item flex align-center border-right w230">
+        <div>尿常规</div>
+      </div>
+      <div class="container border-bottom">
+        <div class="item clearfix">
+          <div class="pull-left">尿蛋白</div>
+          <div class="pull-right">{{= it.instrumentCheck.urinePro}}</div>
+        </div>
+        <div class="item clearfix">
+          <div class="pull-left">尿糖</div>
+          <div class="pull-right">{{= it.instrumentCheck.urineGlu}}</div>
+        </div>
+        <div class="item clearfix">
+          <div class="pull-left">尿酮体</div>
+          <div class="pull-right">{{= it.instrumentCheck.urineKet}}</div>
+        </div>
+        <div class="item clearfix">
+          <div class="pull-left">尿潜血</div>
+          <div class="pull-right">{{= it.instrumentCheck.urineBld}}</div>
+        </div>
+        <div class="item clearfix">
+          <div class="pull-left">其他</div>
+          <div class="pull-right">{{= it.instrumentCheck.urineOther}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="container flex horizental">
+      <div class="item flex align-center border-right w230">
+        <div>血型</div>
+      </div>
+      <div class="container border-bottom">
+        <div class="item clearfix">
+          <div class="pull-left">ABO</div>
+          <div class="pull-right">
+          {{? it.instrumentCheck.bloodType == 1}}
+          A型
+          {{?? it.instrumentCheck.bloodType == 2}}
+          B型
+          {{?? it.instrumentCheck.bloodType == 3}}
+          AB型
+          {{?? it.instrumentCheck.bloodType == 4}}
+          O型
+          {{?? it.instrumentCheck.bloodType == 5}}
+          不详
+          {{?}}
+          </div>
+        </div>
+        <div class="item clearfix">
+          <div class="pull-left">Rh*</div>
+          <div class="pull-right">
+          {{? it.instrumentCheck.bloodRh == 1}}
+          RH阳性
+          {{?? it.instrumentCheck.bloodRh == 2}}
+          RH阴性
+          {{?? it.instrumentCheck.bloodRh == 3}}
+          不详
+          {{?}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="item clearfix">
+      <div class="pull-left">血糖*</div>
+      <div class="pull-right">{{= it.instrumentCheck.bloodGlucose1}}<span class="unit">mmol/L</span></div>
+    </div>
+    <div class="container flex horizental">
+      <div class="item flex align-center border-right w230">
+        <div>肝功能</div>
+      </div>
+      <div class="container border-bottom">
+        <div class="item clearfix">
+          <div class="pull-left">血清谷丙转氨酶</div>
+          <div class="pull-right">{{= it.instrumentCheck.liverXqgbzam}}<span class="unit">U/L</span></div>
+        </div>
+        <div class="item clearfix">
+          <div class="pull-left">血清谷草转氨酶</div>
+          <div class="pull-right">{{= it.instrumentCheck.liverXqgczam}}<span class="unit">U/L</span></div>
+        </div>
+        <div class="item clearfix">
+          <div class="pull-left">白蛋白</div>
+          <div class="pull-right">{{= it.instrumentCheck.liverBdb}}<span class="unit">g/L</span></div>
+        </div>
+        <div class="item clearfix">
+          <div class="pull-left">总胆红素</div>
+          <div class="pull-right">{{= it.instrumentCheck.liverZdhs}}<span class="unit">μmol/L</span></div>
+        </div>
+        <div class="item clearfix">
+          <div class="pull-left">结合胆红素</div>
+          <div class="pull-right">{{= it.instrumentCheck.liverJhdhs}}<span class="unit">μmol/L</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="container flex horizental">
+      <div class="item flex align-center border-right w230">
+        <div>肾功能</div>
+      </div>
+      <div class="container border-bottom">
+        <div class="item clearfix">
+          <div class="pull-left">血清肌酐</div>
+          <div class="pull-right">{{= it.instrumentCheck.kidneyXqjs}}<span class="unit">μmol/L</span></div>
+        </div>
+        <div class="item clearfix">
+          <div class="pull-left">血尿素氮</div>
+          <div class="pull-right">{{= it.instrumentCheck.kidneyXnsd}}<span class="unit">μmol/L</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="container flex horizental">
+      <div class="item flex align-center border-right w230">
+        <div>阴道分泌物*</div>
+      </div>
+      <div class="container border-bottom">
+        <div class="item clearfix">
+          <div class="pull-left">&nbsp;</div>
+          <div class="pull-right">{{= it.instrumentCheck.vaginalSecretionText}}</div>
+        </div>
+        <div class="item clearfix">
+          <div class="pull-left">阴道清洁度</div>
+          <div class="pull-right">{{= it.instrumentCheck.vaginalCleanlinessLevelText}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="container flex horizental">
+      <div class="item flex align-center border-right w230">
+        <div>乙型肝炎五项</div>
+      </div>
+      <div class="container border-bottom">
+        <div class="item clearfix">
+          <div class="pull-left">乙型肝炎表面抗原</div>
+          <div class="pull-right">{{= it.instrumentCheck.surfaceAntigen}}</div>
+        </div>
+        <div class="item clearfix">
+          <div class="pull-left">乙型肝炎表面抗体</div>
+          <div class="pull-right">{{= it.instrumentCheck.surfaceAntibody}}</div>
+        </div>
+        <div class="item clearfix">
+          <div class="pull-left">乙型肝炎e抗原</div>
+          <div class="pull-right">{{= it.instrumentCheck.eAntigen}}</div>
+        </div>
+        <div class="item clearfix">
+          <div class="pull-left">乙型肝炎e抗体</div>
+          <div class="pull-right">{{= it.instrumentCheck.eAntibody}}</div>
+        </div>
+        <div class="item clearfix">
+          <div class="pull-left">乙型肝炎核心抗体</div>
+          <div class="pull-right">{{= it.instrumentCheck.coreAntibody}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="item clearfix">
+      <div class="pull-left">梅毒血清学试验*</div>
+      <div class="pull-right">{{= it.instrumentCheck.syphilisText}}</div>
+    </div>
+    <div class="item clearfix">
+      <div class="pull-left">HIV抗体检测*</div>
+      <div class="pull-right">{{= it.instrumentCheck.hivText}}</div>
+    </div>
+    <div class="item clearfix">
+      <div class="pull-left">B超*</div>
+      <div class="pull-right">{{= it.instrumentCheck.bUltrasonography}}</div>
+    </div>
+    <div class="container flex horizental">
+      <div class="item flex align-center border-right w230">
+        <div>总体评估</div>
+      </div>
+      <div class="container border-bottom">
+        <div class="item clearfix">
+          <div class="pull-left"></div>
+          <div class="pull-right">
+          {{? it.anteAssessmentFlag == 1}}
+          {{= it.anteAssessmentExce}}
+          {{??}}
+          未见异常
+          {{?}}
+          </div>
+        </div>
+        <div class="item clearfix">
+          <div class="pull-left">诊断</div>
+          <div class="pull-right">
+            {{? it.anteDiagnosisExec}} 
+            {{= it.anteDiagnosisExec}} 
+            {{??}} 无 
+            {{?}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="item clearfix">
+      <div class="pull-left">高危因素判断</div>
+      <div class="pull-right">{{? it.anteRiskFactor == 1}} 高危代码：{{= it.anteRiskNum}}，高危评分：{{= it.anteRiskScore}}。 {{??}} 无 {{?}}</div>
+    </div>
+    <div class="item clearfix">
+      <div class="pull-left">保健指导</div>
+      <div class="pull-right">{{= it.healthGuideText}}</div>
+    </div>
+    <div class="item clearfix">
+      <div class="pull-left">转诊</div>
+      <div class="pull-right">{{= it.anteReferralText}}</div>
+    </div>
+    <div class="item clearfix">
+      <div class="pull-left">下次随访日期</div>
+      <div class="pull-right">{{= it.Util.formatDate(it.nextVisitDate)}}</div>
+    </div>
+    <!--<div class="item clearfix">
+    <div class="pull-left">随访医生签名</div>
+    <div class="pull-right">{{= it.anteVisitDoctor}}</div>
+  </div>-->
+  </div>

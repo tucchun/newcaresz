@@ -104,7 +104,7 @@ function getList(params) {
     },
     error: function(err, errorType, errThrow) {
       console.log(err, errorType, errThrow);
-      Util.alert("网络错误!");
+      Util.alert("当前网络不可用，请检查你的网络设置！");
     }
   })
 }

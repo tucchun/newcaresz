@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>详情</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <script src="../../static/assets/adaptive/adaptive-version2.js"></script>
+  <script>
+  // 设计图宽度
+  window['adaptive'].desinWidth = 750;
+  // body 字体大小 会将body字体大小设置为 baseFont / 100 + 'rem'
+  window['adaptive'].baseFont = 28;
+  window['adaptive'].maxWidth = 750;
+  window['adaptive'].init();
+  </script>
+  <link rel="stylesheet" href="../../static/assets/viewerjs/viewer.min.css">
+  <link rel="stylesheet" href="./css/dist.css">
+</head>
+
+<body id="container" class="bgColor">
+</body>
+<script src="../../static/assets/require/require.js" data-ver="1.0.5.3" id="js-main" data-entrance="module/app/appMain" data-ctx="../../"></script>
+<!-- <script type="text/javascript" src="../../static/js/main-1.0.5.1.js"></script> -->
+<script type="text/javascript">
+var node = document.createElement('script');
+node.type = 'text/javascript';
+node.charset = 'utf-8';
+node.async = true;
+node.src = "../../static/js/main.js?ver=" + document.getElementById("js-main").getAttribute("data-ver");
+document.body.appendChild(node);
+</script>
+
+</html>

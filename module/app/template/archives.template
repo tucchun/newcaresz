@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="item clearfix">
+    <div class="pull-left">姓名</div>
+    <div class="pull-right">{{= it.residentName}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">档案编号</div>
+    <div class="pull-right">{{= it.residentNo}}</div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">档案类型</div>
+    <div class="pull-right">
+      {{? it.busType == 1}} 体检 {{?? it.busType == 2}} 门诊 {{?? it.busType == 3}} 住院 {{?}}
+    </div>
+  </div>
+  <div class="item clearfix">
+    <div class="pull-left">发生时间</div>
+    <div class="pull-right">{{= it.Util.formatDate(it.fileDate)}}</div>
+  </div>
+  <div class="item clearfix">
+    <div>影像图片</div>
+    <div class="images clearfix" id="js-images-cnt">
+      {{~ it.fileUrls :value:index}}
+      <div class="images-item">
+        <img class="js-img" src="{{= it.Util.getPicUrl(value)}}" alt="">
+      </div>
+      {{~}}
+    </div>
+  </div>
+</div>

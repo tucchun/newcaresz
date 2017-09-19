@@ -1,0 +1,146 @@
+<div class="container">
+    <div class="item clearfix">
+        <div class="pull-left">姓名</div>
+        <div class="pull-right">{{=it.residentName}}</div>
+    </div>
+    <div class="item clearfix">
+        <div class="pull-left">档案编号</div>
+        <div class="pull-right">{{=it.residentNo}}</div>
+    </div>
+    <div class="item clearfix">
+        <div class="pull-left">随访时间</div>
+        <div class="pull-right">{{=it.Util.formatDate(it.createDate)}}</div>
+    </div>
+    <div class="item clearfix">
+        <div class="pull-left">随访方式</div>
+        <div class="pull-right">{{=it.phthVisitStyleStr}}</div>
+    </div>
+    <div class="item clearfix">
+        <div class="pull-left">患者类型</div>
+        <div class="pull-right">{{=it.phthPatientTypeStr}}</div>
+    </div>
+    <div class="item clearfix">
+        <div class="pull-left">痰菌情况</div>
+        <div class="pull-right">{{=it.phthSputmStr}}</div>
+    </div>
+    <div class="item clearfix">
+        <div class="pull-left">耐药情况</div>
+        <div class="pull-right">{{=it.phthDrugResistanceStr}}</div>
+    </div>
+
+    <div class="item clearfix">
+        <div class="pull-left">症状及体征</div>
+        <div class="pull-right">{{=it.bodySymptomStr}}</div>
+    </div>
+    <div class="container flex horizental">
+        <div class="item flex align-center border-right w230">
+            <div>用药</div>
+        </div>
+        <div class="container border-bottom">
+            <div class="item clearfix">
+                <div class="pull-left">化疗方案</div>
+                <div class="pull-right">{{=it.phthChemotherapy}}</div>
+            </div>
+            <div class="item clearfix">
+                <div class="pull-left">用法</div>
+                <div class="pull-right">{{=it.phthDrugUsagStr}}</div>
+            </div>
+            <div class="item clearfix">
+                <div class="pull-left">药品剂型</div>
+                <div class="pull-right">{{=it.phthDrugFormulaStr}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="item clearfix">
+        <div class="pull-left">督导人员选择</div>
+        <div class="pull-right">{{=it.phthSupervisorStr}}</div>
+    </div>
+    <div class="container flex horizental">
+        <div class="item flex align-center border-right w230">
+            <div>家庭居住环境评估</div>
+            <div></div>
+        </div>
+        <div class="container border-bottom">
+            <div class="item clearfix">
+                <div class="pull-left">单独的居室</div>
+                <div class="pull-right">{{=it.phthSingleRoomStr}}</div>
+            </div>
+            <div class="item clearfix">
+                <div class="pull-left">通风情况</div>
+                <div class="pull-right">{{=it.phthAirRoomStr}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="container flex horizental">
+        <div class="item flex align-center border-right w230">
+            <div>生活方式评估</div>
+        </div>
+        <div class="container border-bottom">
+            <div class="item clearfix">
+                <div class="pull-left">吸烟</div>
+                <div class="pull-right">{{=it.phthCurrentSmoke}}/{{=it.phthTargetSmoke}}<span>&nbsp;支/天</span></div>
+            </div>
+            <div class="item clearfix">
+                <div class="pull-left">饮酒</div>
+                <div class="pull-right">{{=it.phthCurrentDrink}}/{{=it.phthTargetDrink}}<span>&nbsp;两/天</span></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="item bgColor">
+        <div class="sub-title">
+            健康教育及培训
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="item clearfix">
+        <div class="pull-left">取药地点、时间</div>
+        <div class="pull-right">{{=it.phthTrainAddress}}、{{=it.Util.formatDate(it.phthTraindrugTime)}}</div>
+    </div>
+    <div class="item clearfix">
+        <div class="pull-left">服药记录卡的填写</div>
+        <div class="pull-right">{{=it.phthRecordWriteStr}}</div>
+    </div>
+    <div class="item clearfix">
+        <div class="pull-left">服药方法及品存放</div>
+        <div class="pull-right">{{=it.phthDrugDepositStr}}</div>
+    </div>
+    <div class="item clearfix">
+        <div class="pull-left">肺结核治疗疗程</div>
+        <div class="pull-right">{{=it.phthTreatStr}}</div>
+    </div>
+    <div class="item clearfix">
+        <div class="pull-left">不规律服药危害</div>
+        <div class="pull-right">{{=it.phthIrregularHarmStr}}</div>
+    </div>
+    <div class="item clearfix">
+        <div class="pull-left">服药后不良反应及处理</div>
+        <div class="pull-right">{{=it.phthDrugReactionStr}}</div>
+    </div>
+    <div class="item clearfix">
+        <div class="pull-left">治疗期间复诊查痰</div>
+        <div class="pull-right">{{=it.phthCheckSputumStr}}</div>
+    </div>
+    <div class="item clearfix">
+        <div class="pull-left">外出期间如何坚持服药</div>
+        <div class="pull-right">{{=it.phthTakeMedicineStr}}</div>
+    </div>
+    <div class="item clearfix">
+        <div class="pull-left">生活习惯及注意事项</div>
+        <div class="pull-right">{{=it.phthHabitsStr}}</div>
+    </div>
+    <div class="item clearfix">
+        <div class="pull-left">密切接触者检查</div>
+        <div class="pull-right">{{=it.phthContactStr}}</div>
+    </div>
+    <div class="item clearfix">
+        <div class="pull-left">下次随访时间</div>
+        <div class="pull-right">{{=it.Util.formatDate(it.nextVisitDate)}}</div>
+    </div>
+   <!-- <div class="item clearfix">
+        <div class="pull-left">评估医生签名</div>
+        <div class="pull-right">{{=it.phthVisitDoctor}}</div>
+    </div>-->
+</div>
