@@ -14,7 +14,7 @@ class Article extends React.Component {
     const url = "./article_detail.html?article_id=" + ArticleData.article_id + "&source=" + source;
 
     return (
-      <li className={"box js-article_item js-" + props.article_category} data-url={url}>
+      <li onClick={this.doTouch} className={"box js-article-item js-" + props.article_category} data-url={url}>
         <div className="flex article-list-category">
           <p className="title">{ArticleData.article_title}</p>
           <div className="author">
@@ -25,6 +25,11 @@ class Article extends React.Component {
         <div className="article-img"><img data-src={ArticleData.article_img_url} className="lazyload" alt="新康医疗"/></div>
       </li>
     );
+  }
+
+  doTouch(Proxy, Event){
+    let url = this.dataset("url");
+    location.href = url;
   }
 }
 
