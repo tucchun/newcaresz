@@ -37,12 +37,10 @@ if (process.env.NODE_ENV === 'production') {
   Util.demo = true;
 }
 
-
 // 线上 测试环境 demo数据改为false
 if (location.href.indexOf('newcaresz.com') > 0 || location.href.indexOf('192.168.1.232') > 0) {
   Util.demo = false;
 }
-
 
 Util.param = function(uri) {
   uri = uri || "";
@@ -60,7 +58,6 @@ Util.param = function(uri) {
 // PC端地址
 var pc_host = Util.param(location.href)['from_host'];
 var src_type = Util.param(location.href)['src_type'];
-
 
 try {
   if (!window.jsObj) {
@@ -157,6 +154,13 @@ try {
     return alert(msg);
   };
 
+  Util.logout = function(code) {
+    if (window.jsObj.logout) {
+      return window.jsObj.logout(code);
+    }
+    return console.log("logout");
+  }
+
   /**
    * 上传照片
    * @param params: {
@@ -177,7 +181,6 @@ try {
     return window[params["success"]](""); //./image/boy.png
 
   };
-
 
   Util.getPicUrl = function(str) {
     console.log("getPicUrl:" + str);
@@ -222,14 +225,13 @@ try {
   };
   Util.userId = Util.getLoginUserId();
 
-
 } catch (e) {
   console.log(e.message);
 }
 
-
 Util.formatDate = function(dateStr) {
-  if (!dateStr) return "";
+  if (!dateStr)
+    return "";
   var date = new Date(dateStr);
   var arr = [];
   arr.push(date.getFullYear());
@@ -237,7 +239,6 @@ Util.formatDate = function(dateStr) {
   arr.push(date.getDate());
   return arr.join("-");
 };
-
 
 Util.cvt = function(num) {
   var ch = "";
@@ -324,14 +325,17 @@ Util.param = function(uri) {
 //解析
 Util.render = function(tempObj, targetObj, data, way) {
   var tmpText = doT.template(tempObj.text());
-  way ? targetObj.append(tmpText(data)) : targetObj.html(tmpText(data));
+  way
+    ? targetObj.append(tmpText(data))
+    : targetObj.html(tmpText(data));
 };
 
 //获取链接上的参数
 Util.getUrlParam = function(name) {
   var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
   var r = window.location.search.substr(1).match(reg);
-  if (r != null) return unescape(r[2]);
+  if (r != null)
+    return unescape(r[2]);
   return null;
 };
 // ajax请求2次封装
@@ -342,14 +346,14 @@ Util.fetch = function(settings) {
   });
   var deferred = {};
   if (opts.url.indexOf("?") > 0) {
-    opts.url += ('&ver=' + +new Date());
+    opts.url += ('&ver=' + + new Date());
   } else {
-    opts.url += ('?ver=' + +new Date());
+    opts.url += ('?ver=' + + new Date());
   }
   console.log("===============请求接口开始===============\n");
   console.log("请求接口：" + opts.url + "\n");
   console.log("参数：" + opts.data + "\n");
-  $(document.body).mLoading({mask: false});//显示loading组件
+  $(document.body).mLoading({mask: false}); //显示loading组件
   if (Util.demo) {
     // 用本地数据
     deferred = $.Deferred();
@@ -374,15 +378,18 @@ Util.fetch = function(settings) {
   deferred.done(function(data) {
     console.log("响应数据：" + JSON.stringify(data) + "\n");
     console.log("===============请求接口结束===============\n");
-    $(document.body).mLoading("hide");//隐藏loading组件
+    $(document.body).mLoading("hide"); //隐藏loading组件
+    if (data && data.ret_code === 2001) {
+      Util.logout(data.ret_code);
+      return false;
+    }
   }).done(settings.success).fail(function(XMLHttpRequest, textStatus, errorThrown) {
     console.log("响应失败：" + textStatus + ", " + errorThrown + "\n");
     console.log("===============请求接口结束===============\n");
-    $(document.body).mLoading("hide");//隐藏loading组件
+    $(document.body).mLoading("hide"); //隐藏loading组件
   }).fail(settings.error);
 
   return deferred;
 };
-
 
 export default Util;
