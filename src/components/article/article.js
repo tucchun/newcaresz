@@ -1,41 +1,39 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Categories from './categories';
-import Article from './article';
-import '../../../static/css/reset.css';
-import './layout_inhabitant.css';
-import './article_list_inhabitant.css';
 
-class Articles extends React.Component {
+class Article extends React.Component {
   constructor(props) {
     super(props);
   }
-
   render() {
-    const {ArticlesData, CategoriesData} = this.props;
+    const {ArticleData} = this.props;
+    var props = this.props;
+    const source = window.screen.width > 750
+      ? 'hecadre'
+      : 'article_list';
+    const url = "./article_detail.html?article_id=" + ArticleData.article_id + "&source=" + source;
+
     return (
-      <div>
-        <Categories CategoriesData={CategoriesData} test={111}/>
-        <div className="article_list">
-          <ul id="js-article-list" className="">
-            {ArticlesData.map((article, i) => <Article key={i} ArticleData={article} test={i}/>)}
-          </ul>
-          <div className="tip hide" id="js-loading-tip">加载中。。。</div>
+      <li className={"box js-article_item js-" + props.article_category} data-url={url}>
+        <div className="flex article-list-category">
+          <p className="title">{ArticleData.article_title}</p>
+          <div className="author">
+            <span className="article_author">{ArticleData.article_author}</span>
+            <span>{ArticleData.create_dateStr}</span>
+          </div>
         </div>
-      </div>
+        <div className="article-img"><img data-src={ArticleData.article_img_url} className="lazyload" alt="新康医疗"/></div>
+      </li>
     );
   }
 }
 
-Articles.propTypes = {
-  ArticlesData: PropTypes.array,
-  CategoriesData: PropTypes.array
+Article.propTypes = {
+  ArticleData: PropTypes.object
 };
 
-Articles.defaultProps = {
-  ArticlesData: [],
-  CategoriesData: []
+Article.defaultProps = {
+  ArticleData: {}
 };
 
-
-export default Articles;
+export default Article;
