@@ -60,7 +60,7 @@ if (Util.demo) {
   paramObj = {
     'doc_id': 1,
     'user_id_doc': 2026,
-    'doc_type': 210
+    'doc_type': 90
   };
 }
 
