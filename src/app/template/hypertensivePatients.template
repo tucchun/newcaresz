@@ -107,16 +107,18 @@
       </div>
     </div>
   </div>
+  {{? it.hyperSupplementExam}}
   <div class="item clearfix">
     <div class="pull-left">辅助检查*</div>
     <div class="pull-right">{{= it.hyperSupplementExam}}</div>
   </div>
+  {{?}}
   <div class="item clearfix">
     <div class="pull-left">服药依从性</div>
     <div class="pull-right">{{=it.hyperMedicationComplianceStr}}</div>
   </div>
   <div class="item clearfix">
-    <div class="pull-left">药物不良反应</div>
+    <div class="pull-left">药物不良反应*</div>
     <div class="pull-right">{{=it.hyperDrugEffectStr}}</div>
   </div>
   <div class="item clearfix">

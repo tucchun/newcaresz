@@ -58,7 +58,7 @@
     article_id = parseInt(article_id)
   }
   var paramData = {article_id: article_id};
-  if(user_id) 
+  if(user_id)
     paramData['user_id'] = user_id
   Util.fetch({
     url: Util.host + "/hca/web/inhabitant/getarticledetail",
@@ -77,7 +77,7 @@
       }
     },
     error: function () {
-      Util.alert("网络错误");
+      Util.alert("当前网络不可用，请检查你的网络设置！");
     }
   })
   $(document.body).on("tap", "#js-collection", function (e) {
@@ -108,7 +108,7 @@
         },
         error: function () {
           Util.hideLoad();
-          Util.alert("网络错误！");
+          Util.alert("当前网络不可用，请检查你的网络设置！");
         }
       })
     } else {
@@ -137,7 +137,7 @@
         },
         error: function(){
           Util.hideLoad();
-          Util.alert("网络错误！");
+          Util.alert("当前网络不可用，请检查你的网络设置！");
         }
       })
     }

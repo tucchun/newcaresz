@@ -48,7 +48,7 @@
    </div>
    <div class="item clearfix">
      <div class="pull-left">末次分娩时间</div>
-     <div class="pull-right">{{= it.Util.formatDate(it.anteChildbirthDate)}}</div>
+     <div class="pull-right">{{= it.Util.formatDate(it.anteChildbirthDate) || '无'}}</div>
    </div> -->
   <div class="item clearfix">
     <div class="pull-left">填表日期</div>
@@ -96,7 +96,7 @@
   </div>
   <div class="item clearfix">
     <div class="pull-left">末次分娩时间</div>
-    <div class="pull-right">{{= it.Util.formatDate(it.anteChildbirthDate)}}</div>
+    <div class="pull-right">{{= it.Util.formatDate(it.anteChildbirthDate) || '无'}}</div>
   </div>
   <div class="item clearfix">
     <div class="pull-left">既往史</div>
@@ -166,11 +166,11 @@
         </div>
         <div class="item clearfix">
           <div class="pull-left">死胎（次）</div>
-          <div class="pull-right">{{= it.pregancyHistory.pregStillbirth}}</div>
+          <div class="pull-right">{{= it.pregancyHistory.pregStillbirth || '无'}}</div>
         </div>
         <div class="item clearfix">
           <div class="pull-left">死产（次）</div>
-          <div class="pull-right">{{= it.pregancyHistory.pregStillbirth1}}</div>
+          <div class="pull-right">{{= it.pregancyHistory.pregStillbirth1 || '无'}}</div>
         </div>
         <div class="item clearfix">
           <div class="pull-left">新生儿死亡</div>
@@ -186,19 +186,19 @@
         </div>
         <div class="item clearfix">
           <div class="pull-left">早产（次）</div>
-          <div class="pull-right">{{= it.pregancyHistory.pregPrematureDelivery}}</div>
+          <div class="pull-right">{{= it.pregancyHistory.pregPrematureDelivery || '无'}}</div>
         </div>
         <div class="item clearfix">
           <div class="pull-left">现存活子女情况</div>
           <div class="pull-right">
-            {{= it.pregancyHistory.pregNowMan}}男 {{= it.pregancyHistory.pregNowWoman}}女
+            {{= it.pregancyHistory.pregNowMan}}男、{{= it.pregancyHistory.pregNowWoman}}女
           </div>
         </div>
         <div class="item clearfix">
           <div class="pull-left">既往妊娠
             <br/>合并症及并发症</div>
           <div class="pull-right">
-            {{= it.pregancyHistory.pregHistoryDisease}}
+            {{= it.pregancyHistory.pregHistoryDisease || '无'}}
           </div>
         </div>
       </div>
@@ -449,11 +449,11 @@
       <div class="container border-bottom">
         <div class="item clearfix">
           <div class="pull-left">&nbsp;</div>
-          <div class="pull-right">{{= it.instrumentCheck.vaginalSecretionText}}</div>
+          <div class="pull-right">{{= it.instrumentCheck.vaginalSecretionText || '无'}}</div>
         </div>
         <div class="item clearfix">
           <div class="pull-left">阴道清洁度</div>
-          <div class="pull-right">{{= it.instrumentCheck.vaginalCleanlinessLevelText}}</div>
+          <div class="pull-right">{{= it.instrumentCheck.vaginalCleanlinessLevelText || '无'}}</div>
         </div>
       </div>
     </div>
@@ -486,15 +486,15 @@
     </div>
     <div class="item clearfix">
       <div class="pull-left">梅毒血清学试验*</div>
-      <div class="pull-right">{{= it.instrumentCheck.syphilisText}}</div>
+      <div class="pull-right">{{= it.instrumentCheck.syphilisText || '无'}}</div>
     </div>
     <div class="item clearfix">
       <div class="pull-left">HIV抗体检测*</div>
-      <div class="pull-right">{{= it.instrumentCheck.hivText}}</div>
+      <div class="pull-right">{{= it.instrumentCheck.hivText || '无'}}</div>
     </div>
     <div class="item clearfix">
       <div class="pull-left">B超*</div>
-      <div class="pull-right">{{= it.instrumentCheck.bUltrasonography}}</div>
+      <div class="pull-right">{{= it.instrumentCheck.bUltrasonography || '无'}}</div>
     </div>
     <div class="container flex horizental">
       <div class="item flex align-center border-right w230">
@@ -514,9 +514,9 @@
         <div class="item clearfix">
           <div class="pull-left">诊断</div>
           <div class="pull-right">
-            {{? it.anteDiagnosisExec}} 
-            {{= it.anteDiagnosisExec}} 
-            {{??}} 无 
+            {{? it.anteDiagnosisExec}}
+            {{= it.anteDiagnosisExec}}
+            {{??}} 无
             {{?}}
           </div>
         </div>
