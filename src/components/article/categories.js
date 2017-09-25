@@ -6,15 +6,25 @@ class Categories extends React.Component {
 
   constructor(props) {
     super(props);
+    this.handleCateoryActive = this.handleCateoryActive.bind(this);
+    this.state = {
+      active: ''
+    };
+  }
+
+  handleCateoryActive(flag) {
+    this.setState({active: flag});
   }
 
   render() {
     const {CategoriesData} = this.props;
+
     return (
       <div className="filter">
         <div id="js-category" className="article-category">
-          <div className="article-category-item active" data-flag="">全部</div>
-          {CategoriesData.map((category, i) => <Category key={i} CategoryData={category} />)}
+          {CategoriesData.map((category, i) => <Category onCategoryTouch={this.handleCateoryActive} active={this.state.active === category.lookup_code
+            ? true
+            : false} key={i + 1} CategoryData={category}/>)}
         </div>
       </div>
     );

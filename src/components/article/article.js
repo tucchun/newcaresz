@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 class Article extends React.Component {
   constructor(props) {
     super(props);
+    this.doTouch = this.doTouch.bind(this);
   }
   render() {
     const {ArticleData} = this.props;
@@ -27,8 +28,8 @@ class Article extends React.Component {
     );
   }
 
-  doTouch(Proxy, Event){
-    let url = this.dataset("url");
+  doTouch(e){
+    let url = e.currentTarget.dataset.url;
     location.href = url;
   }
 }

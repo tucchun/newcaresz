@@ -37,5 +37,4 @@ Articles.defaultProps = {
   CategoriesData: []
 };
 
-
 export default Articles;

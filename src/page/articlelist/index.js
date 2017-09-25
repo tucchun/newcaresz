@@ -30,6 +30,10 @@ class Index extends React.Component {
     });
 
     this.fetchCategoriesData().then(data => {
+      data.splice(0, 0, {
+        lookup_code: '',
+        lookup_value: '全部'
+      });
       this.setState({categoriesData: data});
     }).catch(function(err) {
       Util.alert(err);
