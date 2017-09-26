@@ -21,6 +21,7 @@ common.settings = {
   10: "residentHealthCover", //健康档案封面
   20: "personalInformation", //个人基本信息
   30: "healthChecklist", //健康体检表
+  31: "healthChecklist", //健康体检表
   40: "acceptanceRecordForm", //接诊记录
   50: "consultationRecord", //会诊记录
   60: "two-wayTurnOut", //双向转诊(转出)
@@ -64,7 +65,7 @@ if (Util.demo) {
     "doc_id": 1,
     "isShowNext": "",
     "user_id_doc": 2026,
-    "doc_type": 90
+    "doc_type": 31
   };
 }
 
@@ -210,7 +211,7 @@ common.render = function(templateUrl, data) {
 
       }
 
-      if (paramObj["doc_type"] == 30) {
+      if (paramObj["doc_type"] == 30 || paramObj["doc_type"] == 31) {
 
         let $list = $html.find("td[data-norequired]");
         let index = $list.size() - 1;

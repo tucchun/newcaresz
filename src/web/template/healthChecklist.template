@@ -415,7 +415,7 @@
         </td>
       </tr>
       <tr data-examAuxiliary data-belongExamAuxiliary>
-        <td class="text-center label bgColor" rowspan="34">辅助检查</td>
+        <td class="text-center label bgColor" rowspan="33">辅助检查</td>
         <td class="text-center label bgColor" rowspan="4" data-norequired="examAuxiliary" data-belong="belongExamAuxiliary">血常规 *</td>
         <td class="text-right label bgColor">血红蛋白(g/L)</td>
         <td class="text-left">{{= it.examAuxiliaryBloodHemoglobin || ''}}</td>
