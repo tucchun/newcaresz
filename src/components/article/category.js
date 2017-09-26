@@ -8,7 +8,7 @@ class Category extends React.Component {
   }
 
   doTouch(e){
-    this.props.onCategoryTouch(e.currentTarget.dataset.flag);
+    this.props.onCategoryClick(e.currentTarget.dataset.flag);
   }
 
   render() {

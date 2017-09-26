@@ -7,15 +7,24 @@ import Util from '../../../assets/js/Util';
 class Index extends React.Component {
   constructor(props) {
     super(props);
+    this.handleCategoryClick = this.handleCategoryClick.bind(this);
     this.state = {
       articleData: [],
-      categoriesData: []
+      categoriesData: [],
+      active: ''
     };
+    console.log("constructor");
+  }
+
+  handleCategoryClick(flag){
+    this.setState({
+      active: flag
+    });
   }
 
   render() {
     console.log("render");
-    return (<Articles ArticlesData={this.state.articleData} CategoriesData={this.state.categoriesData}/>);
+    return (<Articles active={this.state.active} onCategoryClick={this.handleCategoryClick} ArticlesData={this.state.articleData} CategoriesData={this.state.categoriesData}/>);
   }
 
   componentWillMount() {

@@ -29,8 +29,8 @@ class Article extends React.Component {
   }
 
   doTouch(e){
-    let url = e.currentTarget.dataset.url;
-    location.href = url;
+    //let url = e.currentTarget.dataset.url;
+    //location.href = url;
   }
 }
 

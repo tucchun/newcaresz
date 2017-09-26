@@ -12,13 +12,13 @@ class Articles extends React.Component {
   }
 
   render() {
-    const {ArticlesData, CategoriesData} = this.props;
+    const {ArticlesData, onArticleClick, CategoriesData, active, onCategoryClick} = this.props;
     return (
       <div>
-        <Categories CategoriesData={CategoriesData} test={111}/>
+        <Categories onCategoryClick={onCategoryClick} active={active} CategoriesData={CategoriesData}/>
         <div className="article_list">
           <ul id="js-article-list" className="">
-            {ArticlesData.map((article, i) => <Article key={i} ArticleData={article} test={i}/>)}
+            {ArticlesData.map((article, i) => <Article onArticleClick={onArticleClick} key={i} ArticleData={article} />)}
           </ul>
           <div className="tip hide" id="js-loading-tip">加载中。。。</div>
         </div>
@@ -28,13 +28,19 @@ class Articles extends React.Component {
 }
 
 Articles.propTypes = {
+  onArticleClick: PropTypes.func,
+  onCategoryClick: PropTypes.func,
   ArticlesData: PropTypes.array,
-  CategoriesData: PropTypes.array
+  CategoriesData: PropTypes.array,
+  active: PropTypes.string
 };
 
 Articles.defaultProps = {
+  onArticleClick: function(){},
+  onCategoryClick: function(){},
   ArticlesData: [],
-  CategoriesData: []
+  CategoriesData: [],
+  active: ''
 };
 
 export default Articles;
