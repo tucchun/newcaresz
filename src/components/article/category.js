@@ -22,11 +22,13 @@ class Category extends React.Component {
 }
 
 Category.propTypes = {
-  CategoryData: PropTypes.object
+  CategoryData: PropTypes.object,
+  onCategoryTouch: PropTypes.func
 };
 
 Category.defaultProps = {
-  CategoryData: {}
+  CategoryData: {},
+  onCategoryTouch: function(){}
 };
 
 export default Category;
