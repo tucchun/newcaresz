@@ -18,7 +18,7 @@ class Articles extends React.Component {
         <Categories onCategoryClick={onCategoryClick} active={active} CategoriesData={CategoriesData}/>
         <div className="article_list">
           <ul id="js-article-list" className="">
-            {ArticlesData.map((article, i) => <Article onArticleClick={onArticleClick} key={i} ArticleData={article} />)}
+            {ArticlesData.map((article, i) => <Article onArticleClick={onArticleClick} key={i} {...article} />)}
           </ul>
           <div className="tip hide" id="js-loading-tip">加载中。。。</div>
         </div>

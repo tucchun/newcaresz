@@ -4,30 +4,33 @@ import PropTypes from 'prop-types';
 class Category extends React.Component {
   constructor(props) {
     super(props);
-    this.doTouch = this.doTouch.bind(this);
+    this.doClick = this.doClick.bind(this);
   }
 
-  doTouch(e){
+  doClick(e){
     this.props.onCategoryClick(e.currentTarget.dataset.flag);
   }
 
   render() {
-    const {CategoryData} = this.props;
+    const {lookup_code, lookup_value} = this.props;
     const active = this.props.active;
     const clazz = "article-category-item " + (active ? 'active' : '');
     return (
-      <div onClick={this.doTouch} className={clazz} href="javascript:void(0);" data-flag={CategoryData.lookup_code}>{CategoryData.lookup_value}</div>
+      <div onClick={this.doClick} className={clazz} href="javascript:void(0);" data-flag={lookup_code}>{lookup_value}</div>
     );
   }
 }
 
 Category.propTypes = {
-  CategoryData: PropTypes.object,
-  onCategoryTouch: PropTypes.func
+  lookup_code: PropTypes.string,
+  lookup_value: PropTypes.string,
+  onCategoryClick: PropTypes.func
 };
 
 Category.defaultProps = {
-  CategoryData: {},
+  active: '',
+  lookup_code: '',
+  lookup_value: '',
   onCategoryTouch: function(){}
 };
 

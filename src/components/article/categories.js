@@ -16,7 +16,7 @@ class Categories extends React.Component {
         <div id="js-category" className="article-category">
           {CategoriesData.map((category, i) => <Category onCategoryClick={onCategoryClick} active={this.props.active === category.lookup_code
             ? true
-            : false} key={i + 1} CategoryData={category}/>)}
+            : false} key={i + 1} {...category}/>)}
         </div>
       </div>
     );
