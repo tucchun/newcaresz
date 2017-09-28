@@ -3,7 +3,6 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import Util from '../../../assets/js/Util';
 
-
 class Index extends React.Component {
   constructor(props) {
     super(props);
@@ -16,19 +15,17 @@ class Index extends React.Component {
     console.log("constructor");
   }
 
-  handleCategoryClick(flag){
-    this.setState({
-      active: flag
-    });
+  handleCategoryClick(flag) {
+    this.setState({active: flag});
+  }
+
+  componentWillMount() {
+    console.log("componentWillMount");
   }
 
   render() {
     console.log("render");
     return (<Articles active={this.state.active} onCategoryClick={this.handleCategoryClick} ArticlesData={this.state.articleData} CategoriesData={this.state.categoriesData}/>);
-  }
-
-  componentWillMount() {
-    console.log("componentWillMount");
   }
 
   componentDidMount() {
