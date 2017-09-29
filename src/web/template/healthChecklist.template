@@ -381,31 +381,31 @@
         <td class="text-center bgColor label" rowspan="5" data-norequired="gynaecology" data-belong="examFundus">妇科 *</td>
         <td class="text-right bgColor label">外阴</td>
         <td class="text-left">
-          {{= it.gynaecology.gynaVulvadDes}}
+          {{= it.gynaecology.gynaVulvadDes || ''}}
         </td>
       </tr>
       <tr>
         <td class="text-right bgColor label">阴道</td>
         <td class="text-left">
-          {{= it.gynaecology.gynaVaginaDes}}
+          {{= it.gynaecology.gynaVaginaDes || ''}}
         </td>
       </tr>
       <tr>
         <td class="text-right bgColor label">宫颈</td>
         <td class="text-left">
-          {{= it.gynaecology.gynaCervicalDes}}
+          {{= it.gynaecology.gynaCervicalDes || ''}}
         </td>
       </tr>
       <tr>
         <td class="text-right bgColor label">宫体</td>
         <td class="text-left">
-          {{= it.gynaecology.gynaPalaceDes}}
+          {{= it.gynaecology.gynaPalaceDes || ''}}
         </td>
       </tr>
       <tr data-gynaecology>
         <td class="text-right bgColor label">附件</td>
         <td class="text-left">
-          {{= it.gynaecology.gynaEnclosureDes}}
+          {{= it.gynaecology.gynaEnclosureDes || ''}}
         </td>
       </tr>
       <tr data-examFundus data-examBodyChecking>
@@ -414,196 +414,199 @@
           {{= it.examBodyChecking}}
         </td>
       </tr>
-      <tr data-examAuxiliary data-belongExamAuxiliary>
-        <td class="text-center label bgColor" rowspan="33">辅助检查</td>
-        <td class="text-center label bgColor" rowspan="4" data-norequired="examAuxiliary" data-belong="belongExamAuxiliary">血常规 *</td>
-        <td class="text-right label bgColor">血红蛋白(g/L)</td>
-        <td class="text-left">{{= it.examAuxiliaryBloodHemoglobin || ''}}</td>
-      </tr>
-      <tr>
-        <td class="text-right label bgColor">白细胞(*10^9/L)</td>
-        <td class="text-left">{{= it.examAuxiliaryBloodWhitecell || ''}}</td>
-      </tr>
-      <tr>
-        <td class="text-right label bgColor">血小板(*10^9/L)</td>
-        <td class="text-left">{{= it.examAuxiliaryBloodPlatelet || ''}}</td>
-      </tr>
-      <tr data-examAuxiliary>
-        <td class="text-right label bgColor">其他</td>
-        <td class="text-left">{{= it.examAuxiliaryBloodOther || ''}}</td>
-      </tr>
-      <tr data-examAuxiliaryUrine>
-        <td class="text-center label bgColor" rowspan="5" data-norequired="examAuxiliaryUrine" data-belong="belongExamAuxiliary">尿常规 *</td>
-        <td class="text-right label bgColor">尿蛋白</td>
-        <td class="text-left">{{= it.examAuxiliaryUrineProtein || ''}}</td>
-      </tr>
-      <tr>
-        <td class="text-right label bgColor">尿糖</td>
-        <td class="text-left">{{= it.examAuxiliaryUrineSugar || ''}}</td>
-      </tr>
-      <tr>
-        <td class="text-right label bgColor">尿酮体</td>
-        <td class="text-left">{{= it.examAuxiliaryUrineKetone || ''}}</td>
-      </tr>
-      <tr>
-        <td class="text-right label bgColor">尿潜血</td>
-        <td class="text-left">{{= it.examAuxiliaryUrineBld || ''}}</td>
-      </tr>
-      <tr data-examAuxiliaryUrine>
-        <td class="text-right label bgColor">其他</td>
-        <td class="text-left">{{= it.examAuxiliaryUrineOther || ''}}</td>
-      </tr>
-      <tr data-examAuxiliaryBloodGlucose>
-        <td class="text-right label bgColor" colspan="2" data-norequired="examAuxiliaryBloodGlucose" data-belong="belongExamAuxiliary">空腹血糖*</td>
-        <td class="text-left">
-          {{? it.examAuxiliaryBloodGlucose1}} {{= it.examAuxiliaryBloodGlucose1}}mmol/L {{?}} {{? it.examAuxiliaryBloodGlucose2}} 或{{= it.examAuxiliaryBloodGlucose2}}mg/dL {{?}}
-        </td>
-      </tr>
-      <tr data-examAuxiliaryCardiogramDes>
-        <td class="text-right label bgColor" colspan="2" data-norequired="examAuxiliaryCardiogramDes" data-belong="belongExamAuxiliary">心电图*</td>
-        <td class="text-left">{{= it.examAuxiliaryCardiogramDes || ''}}</td>
-      </tr>
-      <tr data-examAuxiliaryUrineMicroalbumin>
-        <td class="text-right label bgColor" colspan="2" data-norequired="examAuxiliaryUrineMicroalbumin" data-belong="belongExamAuxiliary">尿微量白蛋白*(mg/dL)</td>
-        <td class="text-left">{{= it.examAuxiliaryUrineMicroalbumin || ''}}</td>
-      </tr>
-      <tr data-examAuxiliaryOccultBlood>
-        <td class="text-right label bgColor" colspan="2" data-norequired="examAuxiliaryOccultBlood" data-belong="belongExamAuxiliary">大便潜血*</td>
-        <td class="text-left">
-          {{? it.examAuxiliaryOccultBlood == 1}} 阴性 {{?? it.examAuxiliaryOccultBlood == 2}} 阳性 {{?}}
-        </td>
-      </tr>
-      <tr data-examAuxiliaryGlycosylatedHemoglobin>
-        <td class="text-right label bgColor" colspan="2" data-norequired="examAuxiliaryGlycosylatedHemoglobin" data-belong="belongExamAuxiliary">糖化血红蛋白*(%)</td>
-        <td class="text-left">{{= it.examAuxiliaryGlycosylatedHemoglobin || ''}}</td>
-      </tr>
-      <tr data-examAuxiliarySurfaceAntigen>
-        <td class="text-right label bgColor" colspan="2" data-norequired="examAuxiliarySurfaceAntigen" data-belong="belongExamAuxiliary">乙型肝炎表面抗原</td>
-        <td class="text-left">
-          {{? it.examAuxiliarySurfaceAntigen == 1}} 阴性 {{?? it.examAuxiliarySurfaceAntigen == 2}} 阳性 {{?}}
-        </td>
-      </tr>
-      <tr data-examAuxiliaryLiver>
-        <td class="text-center label bgColor" rowspan="5" data-norequired="examAuxiliaryLiver" data-belong="belongExamAuxiliary">
-          肝功能*
-        </td>
-        <td class="text-right label bgColor">血清谷丙转氨酶(U/L)</td>
-        <td class="text-left">{{= it.examAuxiliaryLiverSgpt || ''}}</td>
-      </tr>
-      <tr>
-        <td class="text-right label bgColor">血清谷草转氨酶(U/L)</td>
-        <td class="text-left">{{= it.examAuxiliaryLiverSgot || ''}}</td>
-      </tr>
-      <tr>
-        <td class="text-right label bgColor">白蛋白(g/L)</td>
-        <td class="text-left">{{= it.examAuxiliaryLiverAlbumin || ''}}</td>
-      </tr>
-      <tr>
-        <td class="text-right label bgColor">总胆红素(μmol/L)</td>
-        <td class="text-left">{{= it.examAuxiliaryLiverBilirubin || ''}}</td>
-      </tr>
-      <tr data-examAuxiliaryLiver>
-        <td class="text-right label bgColor">结合胆红素(μmol/L)</td>
-        <td class="text-left">{{= it.examAuxiliaryLiverConjugated || ''}}</td>
-      </tr>
-      <tr data-examAuxiliaryKidney>
-        <td class="text-center label bgColor" rowspan="4" data-norequired="examAuxiliaryKidney" data-belong="belongExamAuxiliary">
-          肾功能 *
-        </td>
-        <td class="text-right label bgColor">血清肌酐(μmol/L)</td>
-        <td class="text-left">{{= it.examAuxiliaryKidneyScr || ''}}</td>
-      </tr>
-      <tr>
-        <td class="text-right label bgColor">血尿素氮(mmol/L)</td>
-        <td class="text-left">{{= it.examAuxiliaryKidneyNitrogen || ''}}</td>
-      </tr>
-      <tr>
-        <td class="text-right label bgColor">血钾浓度(mmol/L)</td>
-        <td class="text-left">{{= it.examAuxiliaryKidneyPotassium || ''}}</td>
-      </tr>
-      <tr data-examAuxiliaryKidney>
-        <td class="text-right label bgColor">血钠浓度(mmol/L)</td>
-        <td class="text-left">{{= it.examAuxiliaryKidneySodium || ''}}</td>
-      </tr>
-      <tr data-examAuxiliaryLipid>
-        <td class="text-center label bgColor" rowspan="4" data-norequired="examAuxiliaryLipid" data-belong="belongExamAuxiliary">
-          血 脂*
-        </td>
-        <td class="text-right label bgColor">总胆固醇(mmol/L)</td>
-        <td class="text-left">{{= it.examAuxiliaryLipidCholesterol || ''}}</td>
-      </tr>
-      <tr>
-        <td class="text-right label bgColor">甘油三酯(mmol/L)</td>
-        <td class="text-left">{{= it.examAuxiliaryLipidTriglyceride || ''}}</td>
-      </tr>
-      <tr>
-        <td class="text-right label bgColor">血清低密度脂蛋白胆固醇(mmol/L)</td>
-        <td class="text-left">{{= it.examAuxiliaryLipidLipoprotein || ''}}</td>
-      </tr>
-      <tr data-examAuxiliaryLipid>
-        <td class="text-right label bgColor">血清高密度脂蛋白胆固醇(mmol/L)</td>
-        <td class="text-left">{{= it.examAuxiliaryLipidHigh || ''}}</td>
-      </tr>
-      <tr data-examAuxiliaryChestradiographDes>
-        <td colspan="2" data-norequired="examAuxiliaryChestradiographDes" data-belong="belongExamAuxiliary" class="text-right label bgColor">胸部 X 线片 </td>
-        <td class="text-left">{{= it.examAuxiliaryChestradiographDes || ''}}</td>
-      </tr>
-      <tr data-examAuxiliaryAbdominal>
-        <td class="text-center bgColor label" rowspan="2" data-norequired="examAuxiliaryAbdominal" data-belong="belongExamAuxiliary">B 超</td>
-        <td class="text-right bgColor label">B超</td>
-        <td class="text-left">{{= it.examAuxiliaryAbdominalExceDes || ''}}</td>
-      </tr>
-      <tr data-examAuxiliaryAbdominal>
-        <td class="text-right bgColor label">其他*</td>
-        <td class="text-left">{{= it.examAuxiliaryAbdominalOtherDes || ''}}</td>
-      </tr>
-      <tr data-examAuxiliaryCervicalExce>
-        <td colspan="2" class="text-right label bgColor" data-norequired="examAuxiliaryCervicalExce" data-belong="belongExamAuxiliary">宫颈涂片*</td>
-        <td class="text-left">
-          {{? it.examAuxiliaryCervicalSmear == 1}} {{= it.examAuxiliaryCervicalExce}} {{?? it.examAuxiliaryCervicalSmear == 2}} 正常 {{?}}
-        </td>
-      </tr>
-      <tr data-belongExamAuxiliary data-examAuxiliaryOther>
-        <td colspan="2" class="text-right label bgColor" data-norequired="examAuxiliaryOther" data-belong="belongExamAuxiliary">其 他*</td>
-        <td class="text-left">{{= it.examAuxiliaryOther || ''}}</td>
-      </tr>
-      <tr data-tcmConstitution data-belongTcmConstitution ">
-        <td class="text-center label bgColor " rowspan="9 " data-belong="belongTcmConstitution " data-norequired="tcmConstitution ">中医体质辨识 * </td>
-        <td colspan="2 " class="text-right bgColor label ">平和质</td>
-        <td class="text-left ">{{= it.tcmConstitution && it.tcmConstitution.tcmPeaceDes}}</td>
-      </tr>
-      <tr>
-        <td colspan="2 " class="text-right bgColor label ">气虚质</td>
-        <td class="text-left ">{{= it.tcmConstitution && it.tcmConstitution.tcmDeficiencyDes }}</td>
-      </tr>
-      <tr>
-        <td colspan="2 " class="text-right bgColor label ">阳虚质</td>
-        <td class="text-left ">{{= it.tcmConstitution && it.tcmConstitution.tcmYangDes}}</td>
-      </tr>
-      <tr>
-        <td colspan="2 " class="text-right bgColor label ">阴虚质</td>
-        <td class="text-left ">{{= it.tcmConstitution && it.tcmConstitution.tcmYinDes }}</td>
-      </tr>
-      <tr>
-        <td colspan="2 " class="text-right bgColor label ">痰湿质</td>
-        <td class="text-left ">{{= it.tcmConstitution && it.tcmConstitution.tcmPhlegmDes}}</td>
-      </tr>
-      <tr>
-        <td colspan="2 " class="text-right bgColor label ">湿热质 </td>
-        <td class="text-left ">{{= it.tcmConstitution && it.tcmConstitution.tcmPhlegmDes}}</td>
-      </tr>
-      <tr>
-        <td colspan="2 " class="text-right bgColor label ">血瘀质</td>
-        <td class="text-left ">{{= it.tcmConstitution && it.tcmConstitution.tcmBloodDes}}</td>
-      </tr>
-      <tr>
-        <td colspan="2 " class="text-right bgColor label ">气郁质</td>
-        <td class="text-left ">{{= it.tcmConstitution && it.tcmConstitution.tcmStagnationDes}}</td>
-      </tr>
-      <tr data-tcmConstitution data-belongTcmConstitution>
-        <td colspan="2 " class="text-right bgColor label ">特秉质</td>
-        <td class="text-left ">{{= it.tcmConstitution && it.tcmConstitution.tcmSpecialDes}}</td>
-      </tr>
+      {{? it['__doc_type__'] != 31}}
+        <tr data-examAuxiliary data-belongExamAuxiliary>
+          <td class="text-center label bgColor" rowspan="33">辅助检查</td>
+          <td class="text-center label bgColor" rowspan="4" data-norequired="examAuxiliary" data-belong="belongExamAuxiliary">血常规 *</td>
+          <td class="text-right label bgColor">血红蛋白(g/L)</td>
+          <td class="text-left">{{= it.examAuxiliaryBloodHemoglobin || ''}}</td>
+        </tr>
+        <tr>
+          <td class="text-right label bgColor">白细胞(*10^9/L)</td>
+          <td class="text-left">{{= it.examAuxiliaryBloodWhitecell || ''}}</td>
+        </tr>
+        <tr>
+          <td class="text-right label bgColor">血小板(*10^9/L)</td>
+          <td class="text-left">{{= it.examAuxiliaryBloodPlatelet || ''}}</td>
+        </tr>
+        <tr data-examAuxiliary>
+          <td class="text-right label bgColor">其他</td>
+          <td class="text-left">{{= it.examAuxiliaryBloodOther || ''}}</td>
+        </tr>
+        <tr data-examAuxiliaryUrine>
+          <td class="text-center label bgColor" rowspan="5" data-norequired="examAuxiliaryUrine" data-belong="belongExamAuxiliary">尿常规 *</td>
+          <td class="text-right label bgColor">尿蛋白</td>
+          <td class="text-left">{{= it.examAuxiliaryUrineProtein || ''}}</td>
+        </tr>
+        <tr>
+          <td class="text-right label bgColor">尿糖</td>
+          <td class="text-left">{{= it.examAuxiliaryUrineSugar || ''}}</td>
+        </tr>
+        <tr>
+          <td class="text-right label bgColor">尿酮体</td>
+          <td class="text-left">{{= it.examAuxiliaryUrineKetone || ''}}</td>
+        </tr>
+        <tr>
+          <td class="text-right label bgColor">尿潜血</td>
+          <td class="text-left">{{= it.examAuxiliaryUrineBld || ''}}</td>
+        </tr>
+        <tr data-examAuxiliaryUrine>
+          <td class="text-right label bgColor">其他</td>
+          <td class="text-left">{{= it.examAuxiliaryUrineOther || ''}}</td>
+        </tr>
+        <tr data-examAuxiliaryBloodGlucose>
+          <td class="text-right label bgColor" colspan="2" data-norequired="examAuxiliaryBloodGlucose" data-belong="belongExamAuxiliary">空腹血糖*</td>
+          <td class="text-left">
+            {{? it.examAuxiliaryBloodGlucose1}} {{= it.examAuxiliaryBloodGlucose1}}mmol/L {{?}} {{? it.examAuxiliaryBloodGlucose2}} 或{{= it.examAuxiliaryBloodGlucose2}}mg/dL {{?}}
+          </td>
+        </tr>
+        <tr data-examAuxiliaryCardiogramDes>
+          <td class="text-right label bgColor" colspan="2" data-norequired="examAuxiliaryCardiogramDes" data-belong="belongExamAuxiliary">心电图*</td>
+          <td class="text-left">{{= it.examAuxiliaryCardiogramDes || ''}}</td>
+        </tr>
+        <tr data-examAuxiliaryUrineMicroalbumin>
+          <td class="text-right label bgColor" colspan="2" data-norequired="examAuxiliaryUrineMicroalbumin" data-belong="belongExamAuxiliary">尿微量白蛋白*(mg/dL)</td>
+          <td class="text-left">{{= it.examAuxiliaryUrineMicroalbumin || ''}}</td>
+        </tr>
+        <tr data-examAuxiliaryOccultBlood>
+          <td class="text-right label bgColor" colspan="2" data-norequired="examAuxiliaryOccultBlood" data-belong="belongExamAuxiliary">大便潜血*</td>
+          <td class="text-left">
+            {{? it.examAuxiliaryOccultBlood == 1}} 阴性 {{?? it.examAuxiliaryOccultBlood == 2}} 阳性 {{?}}
+          </td>
+        </tr>
+        <tr data-examAuxiliaryGlycosylatedHemoglobin>
+          <td class="text-right label bgColor" colspan="2" data-norequired="examAuxiliaryGlycosylatedHemoglobin" data-belong="belongExamAuxiliary">糖化血红蛋白*(%)</td>
+          <td class="text-left">{{= it.examAuxiliaryGlycosylatedHemoglobin || ''}}</td>
+        </tr>
+        <tr data-examAuxiliarySurfaceAntigen>
+          <td class="text-right label bgColor" colspan="2" data-norequired="examAuxiliarySurfaceAntigen" data-belong="belongExamAuxiliary">乙型肝炎表面抗原</td>
+          <td class="text-left">
+            {{? it.examAuxiliarySurfaceAntigen == 1}} 阴性 {{?? it.examAuxiliarySurfaceAntigen == 2}} 阳性 {{?}}
+          </td>
+        </tr>
+        <tr data-examAuxiliaryLiver>
+          <td class="text-center label bgColor" rowspan="5" data-norequired="examAuxiliaryLiver" data-belong="belongExamAuxiliary">
+            肝功能*
+          </td>
+          <td class="text-right label bgColor">血清谷丙转氨酶(U/L)</td>
+          <td class="text-left">{{= it.examAuxiliaryLiverSgpt || ''}}</td>
+        </tr>
+        <tr>
+          <td class="text-right label bgColor">血清谷草转氨酶(U/L)</td>
+          <td class="text-left">{{= it.examAuxiliaryLiverSgot || ''}}</td>
+        </tr>
+        <tr>
+          <td class="text-right label bgColor">白蛋白(g/L)</td>
+          <td class="text-left">{{= it.examAuxiliaryLiverAlbumin || ''}}</td>
+        </tr>
+        <tr>
+          <td class="text-right label bgColor">总胆红素(μmol/L)</td>
+          <td class="text-left">{{= it.examAuxiliaryLiverBilirubin || ''}}</td>
+        </tr>
+        <tr data-examAuxiliaryLiver>
+          <td class="text-right label bgColor">结合胆红素(μmol/L)</td>
+          <td class="text-left">{{= it.examAuxiliaryLiverConjugated || ''}}</td>
+        </tr>
+        <tr data-examAuxiliaryKidney>
+          <td class="text-center label bgColor" rowspan="4" data-norequired="examAuxiliaryKidney" data-belong="belongExamAuxiliary">
+            肾功能 *
+          </td>
+          <td class="text-right label bgColor">血清肌酐(μmol/L)</td>
+          <td class="text-left">{{= it.examAuxiliaryKidneyScr || ''}}</td>
+        </tr>
+        <tr>
+          <td class="text-right label bgColor">血尿素氮(mmol/L)</td>
+          <td class="text-left">{{= it.examAuxiliaryKidneyNitrogen || ''}}</td>
+        </tr>
+        <tr>
+          <td class="text-right label bgColor">血钾浓度(mmol/L)</td>
+          <td class="text-left">{{= it.examAuxiliaryKidneyPotassium || ''}}</td>
+        </tr>
+        <tr data-examAuxiliaryKidney>
+          <td class="text-right label bgColor">血钠浓度(mmol/L)</td>
+          <td class="text-left">{{= it.examAuxiliaryKidneySodium || ''}}</td>
+        </tr>
+        <tr data-examAuxiliaryLipid>
+          <td class="text-center label bgColor" rowspan="4" data-norequired="examAuxiliaryLipid" data-belong="belongExamAuxiliary">
+            血 脂*
+          </td>
+          <td class="text-right label bgColor">总胆固醇(mmol/L)</td>
+          <td class="text-left">{{= it.examAuxiliaryLipidCholesterol || ''}}</td>
+        </tr>
+        <tr>
+          <td class="text-right label bgColor">甘油三酯(mmol/L)</td>
+          <td class="text-left">{{= it.examAuxiliaryLipidTriglyceride || ''}}</td>
+        </tr>
+        <tr>
+          <td class="text-right label bgColor">血清低密度脂蛋白胆固醇(mmol/L)</td>
+          <td class="text-left">{{= it.examAuxiliaryLipidLipoprotein || ''}}</td>
+        </tr>
+        <tr data-examAuxiliaryLipid>
+          <td class="text-right label bgColor">血清高密度脂蛋白胆固醇(mmol/L)</td>
+          <td class="text-left">{{= it.examAuxiliaryLipidHigh || ''}}</td>
+        </tr>
+        <tr data-examAuxiliaryChestradiographDes>
+          <td colspan="2" data-norequired="examAuxiliaryChestradiographDes" data-belong="belongExamAuxiliary" class="text-right label bgColor">胸部 X 线片 </td>
+          <td class="text-left">{{= it.examAuxiliaryChestradiographDes || ''}}</td>
+        </tr>
+        <tr data-examAuxiliaryAbdominal>
+          <td class="text-center bgColor label" rowspan="2" data-norequired="examAuxiliaryAbdominal" data-belong="belongExamAuxiliary">B 超</td>
+          <td class="text-right bgColor label">B超</td>
+          <td class="text-left">{{= it.examAuxiliaryAbdominalExceDes || ''}}</td>
+        </tr>
+        <tr data-examAuxiliaryAbdominal>
+          <td class="text-right bgColor label">其他*</td>
+          <td class="text-left">{{= it.examAuxiliaryAbdominalOtherDes || ''}}</td>
+        </tr>
+        <tr data-examAuxiliaryCervicalExce>
+          <td colspan="2" class="text-right label bgColor" data-norequired="examAuxiliaryCervicalExce" data-belong="belongExamAuxiliary">宫颈涂片*</td>
+          <td class="text-left">
+            {{? it.examAuxiliaryCervicalSmear == 1}} {{= it.examAuxiliaryCervicalExce}} {{?? it.examAuxiliaryCervicalSmear == 2}} 正常 {{?}}
+          </td>
+        </tr>
+        <tr data-belongExamAuxiliary data-examAuxiliaryOther>
+          <td colspan="2" class="text-right label bgColor" data-norequired="examAuxiliaryOther" data-belong="belongExamAuxiliary">其 他*</td>
+          <td class="text-left">{{= it.examAuxiliaryOther || ''}}</td>
+        </tr>
+        <tr data-tcmConstitution data-belongTcmConstitution ">
+          <td class="text-center label bgColor " rowspan="9 " data-belong="belongTcmConstitution " data-norequired="tcmConstitution ">中医体质辨识 * </td>
+          <td colspan="2 " class="text-right bgColor label ">平和质</td>
+          <td class="text-left ">{{= it.tcmConstitution && it.tcmConstitution.tcmPeaceDes}}</td>
+        </tr>
+        <tr>
+          <td colspan="2 " class="text-right bgColor label ">气虚质</td>
+          <td class="text-left ">{{= it.tcmConstitution && it.tcmConstitution.tcmDeficiencyDes }}</td>
+        </tr>
+        <tr>
+          <td colspan="2 " class="text-right bgColor label ">阳虚质</td>
+          <td class="text-left ">{{= it.tcmConstitution && it.tcmConstitution.tcmYangDes}}</td>
+        </tr>
+        <tr>
+          <td colspan="2 " class="text-right bgColor label ">阴虚质</td>
+          <td class="text-left ">{{= it.tcmConstitution && it.tcmConstitution.tcmYinDes }}</td>
+        </tr>
+        <tr>
+          <td colspan="2 " class="text-right bgColor label ">痰湿质</td>
+          <td class="text-left ">{{= it.tcmConstitution && it.tcmConstitution.tcmPhlegmDes}}</td>
+        </tr>
+        <tr>
+          <td colspan="2 " class="text-right bgColor label ">湿热质 </td>
+          <td class="text-left ">{{= it.tcmConstitution && it.tcmConstitution.tcmPhlegmDes}}</td>
+        </tr>
+        <tr>
+          <td colspan="2 " class="text-right bgColor label ">血瘀质</td>
+          <td class="text-left ">{{= it.tcmConstitution && it.tcmConstitution.tcmBloodDes}}</td>
+        </tr>
+        <tr>
+          <td colspan="2 " class="text-right bgColor label ">气郁质</td>
+          <td class="text-left ">{{= it.tcmConstitution && it.tcmConstitution.tcmStagnationDes}}</td>
+        </tr>
+        <tr data-tcmConstitution data-belongTcmConstitution>
+          <td colspan="2 " class="text-right bgColor label ">特秉质</td>
+          <td class="text-left ">{{= it.tcmConstitution && it.tcmConstitution.tcmSpecialDes}}</td>
+        </tr>
+      {{?}}
+
       <tr data-problem data-belongproblem>
         <td class="text-center label bgColor " rowspan="7 " data-norequired="problem " data-belong="belongproblem ">现存主要健康问题 </td>
         <td colspan="2 " class="text-right bgColor label ">脑血管疾病</td>
@@ -633,92 +636,162 @@
         <td colspan="2 " class="text-right bgColor label ">其他系统疾病</td>
         <td class="text-left ">{{= it.pdhOtherDiseasesDes}}</td>
       </tr>
-      <tr data-belongExamHospital data-examHospital>
-        <td class="text-center label bgColor " rowspan="10 ">住院治疗情况</td>
-        <td class="text-center label bgColor " rowspan="5 " data-norequired="examHospital " data-belong="belongExamHospital ">住院史*</td>
-        <td class="text-right bgColor label ">入院日期</td>
-        <td class="text-left ">{{= it.Util.formatDate(it.examHospitalIn)}}</td>
-      </tr>
+      {{? it['__doc_type__'] != 31}}
+        <tr data-belongExamHospital data-examHospital>
+          <td class="text-center label bgColor " rowspan="10 ">住院治疗情况</td>
+          <td class="text-center label bgColor " rowspan="5 " data-norequired="examHospital " data-belong="belongExamHospital ">住院史*</td>
+          <td class="text-right bgColor label ">入院日期</td>
+          <td class="text-left ">{{= it.Util.formatDate(it.examHospitalIn)}}</td>
+        </tr>
+        <tr>
+          <td class="text-right bgColor label ">出院日期</td>
+          <td class="text-left ">{{= it.Util.formatDate(it.examHospitalOut)}}</td>
+        </tr>
+        <tr>
+          <td class="text-right bgColor label ">原因</td>
+          <td class="text-left ">{{= it.examHospitalReason}}</td>
+        </tr>
+        <tr>
+          <td class="text-right bgColor label ">医疗机构名称</td>
+          <td class="text-left ">{{= it.examHospitalName}}</td>
+        </tr>
+        <tr data-examHospital>
+          <td class="text-right bgColor label ">病案号</td>
+          <td class="text-left ">{{= it.examHospitalNo}}</td>
+        </tr>
+        <tr data-examBed>
+          <td class="text-center label bgColor " rowspan="5 " data-norequired="examBed " data-belong="belongExamHospital ">家庭病床史</td>
+          <td class="text-right bgColor label ">建床日期</td>
+          <td class="text-left ">{{= it.Util.formatDate(it.examBedIn)}}</td>
+        </tr>
+        <tr>
+          <td class="text-right bgColor label ">撤床日期</td>
+          <td class="text-left ">{{= it.Util.formatDate(it.examBedOut)}}</td>
+        </tr>
+        <tr>
+          <td class="text-right bgColor label ">原因</td>
+          <td class="text-left ">{{= it.examBedReason}}</td>
+        </tr>
+        <tr>
+          <td class="text-right bgColor label ">医疗机构名称</td>
+          <td class="text-left ">{{= it.examBedOrg}}</td>
+        </tr>
+        <tr data-belongExamHospital data-examBed>
+          <td class="text-right bgColor label ">病案号</td>
+          <td class="text-left ">{{= it.examBedNo}}</td>
+        </tr>
+        <tr data-examDrug data-belongExamDrug>
+          <td class="text-center label bgColor " rowspan="5 " data-norequired="examDrug " data-belong="belongexamDrug ">主要用药情况</td>
+          <td class="text-right bgColor label " colspan="2 ">药物名称</td>
+          <td class="text-left ">{{= it.examDrugName}}</td>
+        </tr>
+        <tr>
+          <td class="text-right bgColor label " colspan="2 ">用法</td>
+          <td class="text-left ">{{= it.examDrugUse}}</td>
+        </tr>
+        <tr>
+          <td class="text-right bgColor label " colspan="2 ">用量</td>
+          <td class="text-left ">{{= it.examDrugDosage}}</td>
+        </tr>
+        <tr>
+          <td class="text-right bgColor label " colspan="2 ">用药时间</td>
+          <td class="text-left ">
+          {{? it.examDrupUnit}}
+            {{= it.examDrugDate}}{{= it.examDrupUnit}}</td>
+          {{??}}
+            {{= it.Util.formatDate(it.examDrugDate)}}
+          {{?}}
+        </tr>
+        <tr data-examDrug data-belongExamDrug>
+          <td class="text-right bgColor label " colspan="2 ">服药依从性</td>
+          <td class="text-left ">{{= it.examDrugDependenceDes}}</td>
+        </tr>
+        <tr data-healthNovaccination data-belongHealthNovaccination>
+          <td class="text-center label bgColor " rowspan="3 " data-norequired="healthNovaccination " data-belong="belongHealthNovaccination "  >
+            <div>非免疫规划</div>
+            <div>预防接种史</div>
+          </td>
+          <td class="text-right bgColor label " colspan="2 ">名称</td>
+          <td class="text-left ">{{= it.healthNovaccinationName}}</td>
+        </tr>
+        <tr>
+          <td class="text-right bgColor label " colspan="2 ">接种日期</td>
+          <td class="text-left ">{{= it.Util.formatDate(it.healthNovaccinationDate)}}</td>
+        </tr>
+        <tr data-healthNovaccination data-belongHealthNovaccination>
+          <td class="text-right bgColor label " colspan="2 ">接种机构</td>
+          <td class="text-left ">{{= it.healthNovaccinationOrg}}</td>
+        </tr>
+      {{?}}
+
       <tr>
-        <td class="text-right bgColor label ">出院日期</td>
-        <td class="text-left ">{{= it.Util.formatDate(it.examHospitalOut)}}</td>
-      </tr>
-      <tr>
-        <td class="text-right bgColor label ">原因</td>
-        <td class="text-left ">{{= it.examHospitalReason}}</td>
-      </tr>
-      <tr>
-        <td class="text-right bgColor label ">医疗机构名称</td>
-        <td class="text-left ">{{= it.examHospitalName}}</td>
-      </tr>
-      <tr data-examHospital>
-        <td class="text-right bgColor label ">病案号</td>
-        <td class="text-left ">{{= it.examHospitalNo}}</td>
-      </tr>
-      <tr data-examBed>
-        <td class="text-center label bgColor " rowspan="5 " data-norequired="examBed " data-belong="belongExamHospital ">家庭病床史</td>
-        <td class="text-right bgColor label ">建床日期</td>
-        <td class="text-left ">{{= it.Util.formatDate(it.examBedIn)}}</td>
-      </tr>
-      <tr>
-        <td class="text-right bgColor label ">撤床日期</td>
-        <td class="text-left ">{{= it.Util.formatDate(it.examBedOut)}}</td>
-      </tr>
-      <tr>
-        <td class="text-right bgColor label ">原因</td>
-        <td class="text-left ">{{= it.examBedReason}}</td>
-      </tr>
-      <tr>
-        <td class="text-right bgColor label ">医疗机构名称</td>
-        <td class="text-left ">{{= it.examBedOrg}}</td>
-      </tr>
-      <tr data-belongExamHospital data-examBed>
-        <td class="text-right bgColor label ">病案号</td>
-        <td class="text-left ">{{= it.examBedNo}}</td>
-      </tr>
-      <tr data-examDrug data-belongExamDrug>
-        <td class="text-center label bgColor " rowspan="5 " data-norequired="examDrug " data-belong="belongexamDrug ">主要用药情况</td>
-        <td class="text-right bgColor label " colspan="2 ">药物名称</td>
-        <td class="text-left ">{{= it.examDrugName}}</td>
-      </tr>
-      <tr>
-        <td class="text-right bgColor label " colspan="2 ">用法</td>
+        <td class="text-center label bgColor " rowspan="12">主要用药情况</td>
+        <td class="text-center bgColor label " rowspan="4">{{= it.examDrugName}}1111</td>
+        <td class="text-right bgColor label ">用法</td>
         <td class="text-left ">{{= it.examDrugUse}}</td>
       </tr>
       <tr>
-        <td class="text-right bgColor label " colspan="2 ">用量</td>
+        <td class="text-right bgColor label">用量</td>
         <td class="text-left ">{{= it.examDrugDosage}}</td>
       </tr>
       <tr>
-        <td class="text-right bgColor label " colspan="2 ">用药时间</td>
-        <td class="text-left ">
+      <td class="text-right bgColor label">用药时间</td>
+      <td class="text-left ">
         {{? it.examDrupUnit}}
           {{= it.examDrugDate}}{{= it.examDrupUnit}}</td>
         {{??}}
           {{= it.Util.formatDate(it.examDrugDate)}}
         {{?}}
-
-      </tr>
-      <tr data-examDrug data-belongExamDrug>
-        <td class="text-right bgColor label " colspan="2 ">服药依从性</td>
-        <td class="text-left ">{{= it.examDrugDependenceDes}}</td>
-      </tr>
-      <tr data-healthNovaccination data-belongHealthNovaccination>
-        <td class="text-center label bgColor " rowspan="3 " data-norequired="healthNovaccination " data-belong="belongHealthNovaccination "  >
-          <div>非免疫规划</div>
-          <div>预防接种史</div>
-        </td>
-        <td class="text-right bgColor label " colspan="2 ">名称</td>
-        <td class="text-left ">{{= it.healthNovaccinationName}}</td>
       </tr>
       <tr>
-        <td class="text-right bgColor label " colspan="2 ">接种日期</td>
-        <td class="text-left ">{{= it.Util.formatDate(it.healthNovaccinationDate)}}</td>
+        <td class="text-right bgColor label">服药依从性</td>
+        <td class="text-left ">{{= it.examDrugDosage}}</td>
       </tr>
-      <tr data-healthNovaccination data-belongHealthNovaccination>
-        <td class="text-right bgColor label " colspan="2 ">接种机构</td>
-        <td class="text-left ">{{= it.healthNovaccinationOrg}}</td>
+      <tr>
+        <td class="text-center bgColor label " rowspan="4">{{= it.examDrugName}}1111</td>
+        <td class="text-right bgColor label ">用法</td>
+        <td class="text-left ">{{= it.examDrugUse}}</td>
       </tr>
+      <tr>
+        <td class="text-right bgColor label">用量</td>
+        <td class="text-left ">{{= it.examDrugDosage}}</td>
+      </tr>
+      <tr>
+      <td class="text-right bgColor label">用药时间</td>
+      <td class="text-left ">
+        {{? it.examDrupUnit}}
+          {{= it.examDrugDate}}{{= it.examDrupUnit}}</td>
+        {{??}}
+          {{= it.Util.formatDate(it.examDrugDate)}}
+        {{?}}
+      </tr>
+      <tr>
+        <td class="text-right bgColor label">服药依从性</td>
+        <td class="text-left ">{{= it.examDrugDosage}}</td>
+      </tr>
+      <tr>
+        <td class="text-center bgColor label " rowspan="4">{{= it.examDrugName}}1111</td>
+        <td class="text-right bgColor label ">用法</td>
+        <td class="text-left ">{{= it.examDrugUse}}</td>
+      </tr>
+      <tr>
+        <td class="text-right bgColor label">用量</td>
+        <td class="text-left ">{{= it.examDrugDosage}}</td>
+      </tr>
+      <tr>
+      <td class="text-right bgColor label">用药时间</td>
+      <td class="text-left ">
+        {{? it.examDrupUnit}}
+          {{= it.examDrugDate}}{{= it.examDrupUnit}}</td>
+        {{??}}
+          {{= it.Util.formatDate(it.examDrugDate)}}
+        {{?}}
+      </tr>
+      <tr>
+        <td class="text-right bgColor label">服药依从性</td>
+        <td class="text-left ">{{= it.examDrugDosage}}</td>
+      </tr>
+
       <tr data-belonghealthAssessmentDes data-healthAssessmentDes>
         <td class="text-center label bgColor " data-belong="belonghealthAssessmentDes " data-norequired="healthAssessmentDes ">健康评价</td>
         <td class="text-left " colspan="3 ">{{= it.healthAssessmentDes}}</td>

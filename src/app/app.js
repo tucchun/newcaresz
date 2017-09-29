@@ -8,7 +8,6 @@ import '../../node_modules/viewerjs/dist/viewer.min.css';
 import '../../assets/css/flex.css';
 import './css/style.css';
 
-
 let common = {};
 let $container = $('#container');
 let uri = location.href;
@@ -56,16 +55,13 @@ common.settings = {
   500: 'healthAdvice' //健康建议
 };
 
-
 if (Util.demo) {
   paramObj = {
     'doc_id': 1,
     'user_id_doc': 2026,
-    'doc_type': 31
+    'doc_type': 30
   };
 }
-
-
 
 function norequired($this, $html) {
   // let flag = $this.data('norequired');
@@ -92,7 +88,6 @@ function norequired($this, $html) {
     });
   }
 
-
   let $parent_level2 = $html.find('[data-' + $this.data('belong') + ']');
   if ($list.filter(':not([' + pattern + '])').size() <= 0) {
     $parent_level2.attr(pattern, pattern);
@@ -104,7 +99,6 @@ function norequired($this, $html) {
     $parent_level1.remove();
   }
 
-
 }
 
 common.render = function(templateUrl, data, tab) {
@@ -113,7 +107,10 @@ common.render = function(templateUrl, data, tab) {
     url: templateUrl,
     dataType: 'text',
     success: function(response) {
-      $.extend(data, { Util: Util, _: _ });
+      $.extend(data, {
+        Util: Util,
+        _: _
+      });
       let template = {};
       if (paramObj['doc_type'] == 180) {
         template = _.template(response);
@@ -204,7 +201,6 @@ common.render = function(templateUrl, data, tab) {
   });
 };
 
-
 // 男童生长发育检测图 || 女童生长发育监测图
 if (paramObj["doc_type"] == 170 || paramObj["doc_type"] == 160) {
   let template = "../../src/web/template/" + common.settings[paramObj.doc_type] + ".template";
@@ -214,10 +210,7 @@ if (paramObj["doc_type"] == 170 || paramObj["doc_type"] == 160) {
     url: Util.host + '/hca/web/inhabitant/getdoc',
     demoUrl: '../../assets/rss/' + common.settings[paramObj.doc_type] + '.json',
     data: JSON.stringify({
-      'doc_id': paramObj['doc_id'],
-      'user_id_doc': paramObj['user_id_doc'],
-      'doc_type': paramObj['doc_type'],
-      'src_type': 'Inhabitant APP', //请求源的类型，如'HECadre APP'、'Inhabitant APP'等
+      'doc_id': paramObj['doc_id'], 'user_id_doc': paramObj['user_id_doc'], 'doc_type': paramObj['doc_type'], 'src_type': 'Inhabitant APP', //请求源的类型，如'HECadre APP'、'Inhabitant APP'等
       'pf_type': Util.pf_type, //请求源的终端平台类型，如'Android'、'iOS'、'Web'等
       'user_id': Util.userId || paramObj['user_id'], //用户ID，u64
       'auth_str': Util.getCommunicationAuth() || paramObj['authStr'] //通信认证密文串
@@ -231,6 +224,7 @@ if (paramObj["doc_type"] == 170 || paramObj["doc_type"] == 160) {
         /*          if (templateData.imageUrlList && templateData.imageUrlList.length > 0) {
                     template = './template/videoMaterial.template';
                   }*/
+        templateData['__doc_type__'] = paramObj['doc_type'];
         if (paramObj['doc_type'] == 139) {
           switch (templateData.onemMonth) {
             case 1:

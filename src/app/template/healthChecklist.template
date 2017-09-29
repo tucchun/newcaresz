@@ -443,23 +443,23 @@
           <div class="container border-bottom" data-norequired="gynaecology" data-belong="Pgynaecology">
             <div class="item clearfix">
               <div class="pull-left">外阴</div>
-              <div class="pull-right">{{= it.gynaecology.gynaVulvadDes}}</div>
+              <div class="pull-right">{{= it.gynaecology.gynaVulvadDes || ''}}</div>
             </div>
             <div class="item clearfix">
               <div class="pull-left">阴道</div>
-              <div class="pull-right">{{= it.gynaecology.gynaVaginaDes}}</div>
+              <div class="pull-right">{{= it.gynaecology.gynaVaginaDes || ''}}</div>
             </div>
             <div class="item clearfix">
               <div class="pull-left">宫颈</div>
-              <div class="pull-right">{{= it.gynaecology.gynaCervicalDes}}</div>
+              <div class="pull-right">{{= it.gynaecology.gynaCervicalDes || ''}}</div>
             </div>
             <div class="item clearfix">
               <div class="pull-left">宫体</div>
-              <div class="pull-right">{{= it.gynaecology.gynaPalaceDes}}</div>
+              <div class="pull-right">{{= it.gynaecology.gynaPalaceDes || ''}}</div>
             </div>
             <div class="item clearfix">
               <div class="pull-left">附件</div>
-              <div class="pull-right">{{= it.gynaecology.gynaEnclosureDes}}</div>
+              <div class="pull-right">{{= it.gynaecology.gynaEnclosureDes || ''}}</div>
             </div>
           </div>
         </div>
@@ -470,245 +470,247 @@
       </div>
     </div>
   </div>
-  <div class="container">
-    <div class="container flex horizental" data-Auxiliary>
-      <div class="item flex align-center justify-center border-right w100">
-        <div>辅助检查</div>
-      </div>
-      <div class="container border-bottom bgWhite">
-        <div class="container flex horizental" data-PexamAuxiliaryBlood data-belong="Auxiliary">
-          <div class="flex vertical justify-center align-center border-right border-bottom bgWhite w230">
-            <div>血常规*</div>
-          </div>
-          <div class="container border-bottom" data-norequired="examAuxiliaryBlood" data-belong="PexamAuxiliaryBlood">
-            <div class="item clearfix">
-              <div class="pull-left">血红蛋白（g/L）</div>
-              <div class="pull-right">{{= it.examAuxiliaryBloodHemoglobin || ''}}</div>
-            </div>
-            <div class="item clearfix">
-              <div class="pull-left">白细胞（*10^9/L）</div>
-              <div class="pull-right">{{= it.examAuxiliaryBloodWhitecell || ''}}</div>
-            </div>
-            <div class="item clearfix">
-              <div class="pull-left">血小板（*10^9/L）</div>
-              <div class="pull-right">{{= it.examAuxiliaryBloodPlatelet || ''}}</div>
-            </div>
-            <div class="item clearfix">
-              <div class="pull-left">其他</div>
-              <div class="pull-right">{{= it.examAuxiliaryBloodOther || ''}}</div>
-            </div>
-          </div>
+  {{? it['__doc_type__'] != 31}}
+    <div class="container">
+      <div class="container flex horizental" data-Auxiliary>
+        <div class="item flex align-center justify-center border-right w100">
+          <div>辅助检查</div>
         </div>
-        <div class="container flex horizental" data-PexamAuxiliaryUrine data-belong="Auxiliary">
-          <div class="flex vertical justify-center align-center border-right border-bottom bgWhite w230">
-            <div>尿常规*</div>
-          </div>
-          <div class="container border-bottom" data-norequired="examAuxiliaryUrine" data-belong="PexamAuxiliaryUrine">
-            <div class="item clearfix">
-              <div class="pull-left">尿蛋白</div>
-              <div class="pull-right">{{= it.examAuxiliaryUrineProtein || ''}}</div>
+        <div class="container border-bottom bgWhite">
+          <div class="container flex horizental" data-PexamAuxiliaryBlood data-belong="Auxiliary">
+            <div class="flex vertical justify-center align-center border-right border-bottom bgWhite w230">
+              <div>血常规*</div>
             </div>
-            <div class="item clearfix">
-              <div class="pull-left">尿糖</div>
-              <div class="pull-right">{{= it.examAuxiliaryUrineSugar || ''}}</div>
-            </div>
-            <div class="item clearfix">
-              <div class="pull-left">尿酮体</div>
-              <div class="pull-right">{{= it.examAuxiliaryUrineKetone || ''}}</div>
-            </div>
-            <div class="item clearfix">
-              <div class="pull-left">尿潜血</div>
-              <div class="pull-right">{{= it.examAuxiliaryUrineBld || ''}}</div>
-            </div>
-            <div class="item clearfix">
-              <div class="pull-left">其他</div>
-              <div class="pull-right">{{= it.examAuxiliaryUrineOther || ''}}</div>
+            <div class="container border-bottom" data-norequired="examAuxiliaryBlood" data-belong="PexamAuxiliaryBlood">
+              <div class="item clearfix">
+                <div class="pull-left">血红蛋白（g/L）</div>
+                <div class="pull-right">{{= it.examAuxiliaryBloodHemoglobin || ''}}</div>
+              </div>
+              <div class="item clearfix">
+                <div class="pull-left">白细胞（*10^9/L）</div>
+                <div class="pull-right">{{= it.examAuxiliaryBloodWhitecell || ''}}</div>
+              </div>
+              <div class="item clearfix">
+                <div class="pull-left">血小板（*10^9/L）</div>
+                <div class="pull-right">{{= it.examAuxiliaryBloodPlatelet || ''}}</div>
+              </div>
+              <div class="item clearfix">
+                <div class="pull-left">其他</div>
+                <div class="pull-right">{{= it.examAuxiliaryBloodOther || ''}}</div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="item clearfix" data-norequired="examAuxiliaryBloodGlucose" data-belong="Auxiliary" data-norequireditem=true>
-          <div class="pull-left">空腹血糖*</div>
-          <div class="pull-right"> {{? it.examAuxiliaryBloodGlucose1}} {{= it.examAuxiliaryBloodGlucose1}}mmol/L {{?}} {{? it.examAuxiliaryBloodGlucose2}} 或{{= it.examAuxiliaryBloodGlucose2}}mg/dL {{?}}
-          </div>
-        </div>
-        <div class="item clearfix" data-norequired="examAuxiliaryCardiogramDes" data-belong="Auxiliary" data-norequireditem=true>
-          <div class="pull-left">心电图*</div>
-          <div class="pull-right">{{= it.examAuxiliaryCardiogramDes || ''}}</div>
-        </div>
-        <div class="item clearfix" data-norequired="examAuxiliaryUrineMicroalbumin" data-belong="Auxiliary" data-norequireditem=true>
-          <div class="pull-left">尿微量白蛋白*（mg/dL）</div>
-          <div class="pull-right">{{= it.examAuxiliaryUrineMicroalbumin || ''}}</div>
-        </div>
-        <div class="item clearfix" data-norequired="examAuxiliaryOccultBlood" data-belong="Auxiliary" data-norequireditem=true>
-          <div class="pull-left">大便潜血*</div>
-          <div class="pull-right">
-            {{? it.examAuxiliaryOccultBlood == 1}} 阴性 {{?? it.examAuxiliaryOccultBlood == 2}} 阳性 {{?}}
-          </div>
-        </div>
-        <div class="item clearfix" data-norequired="examAuxiliaryGlycosylatedHemoglobin" data-belong="Auxiliary" data-norequireditem=true>
-          <div class="pull-left">糖化血红蛋白*（%）</div>
-          <div class="pull-right">{{= it.examAuxiliaryGlycosylatedHemoglobin || ''}}</div>
-        </div>
-        <div class="item clearfix" data-norequired="examAuxiliarySurfaceAntigen" data-belong="Auxiliary" data-norequireditem=true>
-          <div class="pull-left">乙型肝炎表面抗原*</div>
-          <div class="pull-right">
-            {{? it.examAuxiliarySurfaceAntigen == 1}} 阴性 {{?? it.examAuxiliarySurfaceAntigen == 2}} 阳性 {{?}}
-          </div>
-        </div>
-        <div class="container flex horizental" data-PexamAuxiliaryLiver data-belong="Auxiliary">
-          <div class="flex vertical justify-center align-center border-right border-bottom bgWhite w230">
-            <div>肝功能*</div>
-          </div>
-          <div class="container border-bottom" data-norequired="examAuxiliaryLiver" data-belong="PexamAuxiliaryLiver">
-            <div class="item clearfix">
-              <div class="pull-left">血清谷丙转氨酶（U/L）</div>
-              <div class="pull-right">{{= it.examAuxiliaryLiverSgpt || ''}}</div>
+          <div class="container flex horizental" data-PexamAuxiliaryUrine data-belong="Auxiliary">
+            <div class="flex vertical justify-center align-center border-right border-bottom bgWhite w230">
+              <div>尿常规*</div>
             </div>
-            <div class="item clearfix">
-              <div class="pull-left">血清谷草转氨酶（U/L）</div>
-              <div class="pull-right">{{= it.examAuxiliaryLiverSgot || ''}}</div>
-            </div>
-            <div class="item clearfix">
-              <div class="pull-left">白蛋白（g/L）</div>
-              <div class="pull-right">{{= it.examAuxiliaryLiverAlbumin || ''}}</div>
-            </div>
-            <div class="item clearfix">
-              <div class="pull-left">总胆红素（μmol/L）</div>
-              <div class="pull-right">{{= it.examAuxiliaryLiverBilirubin || ''}}</div>
-            </div>
-            <div class="item clearfix">
-              <div class="pull-left">结合胆红素（μmol/L）</div>
-              <div class="pull-right">{{= it.examAuxiliaryLiverConjugated || ''}}</div>
+            <div class="container border-bottom" data-norequired="examAuxiliaryUrine" data-belong="PexamAuxiliaryUrine">
+              <div class="item clearfix">
+                <div class="pull-left">尿蛋白</div>
+                <div class="pull-right">{{= it.examAuxiliaryUrineProtein || ''}}</div>
+              </div>
+              <div class="item clearfix">
+                <div class="pull-left">尿糖</div>
+                <div class="pull-right">{{= it.examAuxiliaryUrineSugar || ''}}</div>
+              </div>
+              <div class="item clearfix">
+                <div class="pull-left">尿酮体</div>
+                <div class="pull-right">{{= it.examAuxiliaryUrineKetone || ''}}</div>
+              </div>
+              <div class="item clearfix">
+                <div class="pull-left">尿潜血</div>
+                <div class="pull-right">{{= it.examAuxiliaryUrineBld || ''}}</div>
+              </div>
+              <div class="item clearfix">
+                <div class="pull-left">其他</div>
+                <div class="pull-right">{{= it.examAuxiliaryUrineOther || ''}}</div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="container flex horizental" data-PexamAuxiliaryKidney data-belong="Auxiliary">
-          <div class="flex vertical justify-center align-center border-right border-bottom bgWhite w230">
-            <div>肾功能*</div>
-          </div>
-          <div class="container border-bottom" data-norequired="examAuxiliaryKidney" data-belong="PexamAuxiliaryKidney">
-            <div class="item clearfix">
-              <div class="pull-left">血清肌酐（μmol/L）</div>
-              <div class="pull-right">{{= it.examAuxiliaryKidneyScr || ''}}</div>
-            </div>
-            <div class="item clearfix">
-              <div class="pull-left">血尿素氮（mmol/L）</div>
-              <div class="pull-right">{{= it.examAuxiliaryKidneyNitrogen || ''}}</div>
-            </div>
-            <div class="item clearfix">
-              <div class="pull-left">血钾浓度（mmol/L）</div>
-              <div class="pull-right">{{= it.examAuxiliaryKidneyPotassium || ''}}</div>
-            </div>
-            <div class="item clearfix">
-              <div class="pull-left">血钠浓度（mmol/L）</div>
-              <div class="pull-right">{{= it.examAuxiliaryKidneySodium || ''}}</div>
+          <div class="item clearfix" data-norequired="examAuxiliaryBloodGlucose" data-belong="Auxiliary" data-norequireditem=true>
+            <div class="pull-left">空腹血糖*</div>
+            <div class="pull-right"> {{? it.examAuxiliaryBloodGlucose1}} {{= it.examAuxiliaryBloodGlucose1}}mmol/L {{?}} {{? it.examAuxiliaryBloodGlucose2}} 或{{= it.examAuxiliaryBloodGlucose2}}mg/dL {{?}}
             </div>
           </div>
-        </div>
-        <div class="container flex horizental" data-PexamAuxiliaryLipid data-belong="Auxiliary">
-          <div class="flex vertical justify-center align-center border-right border-bottom bgWhite w230">
-            <div>血脂*</div>
+          <div class="item clearfix" data-norequired="examAuxiliaryCardiogramDes" data-belong="Auxiliary" data-norequireditem=true>
+            <div class="pull-left">心电图*</div>
+            <div class="pull-right">{{= it.examAuxiliaryCardiogramDes || ''}}</div>
           </div>
-          <div class="container border-bottom" data-norequired="examAuxiliaryLipid" data-belong="PexamAuxiliaryLipid">
-            <div class="item clearfix">
-              <div class="pull-left">总胆固醇（mmol/L）</div>
-              <div class="pull-right">{{= it.examAuxiliaryLipidCholesterol || '' }}</div>
-            </div>
-            <div class="item clearfix">
-              <div class="pull-left">甘油三酯（mmol/L）</div>
-              <div class="pull-right">{{= it.examAuxiliaryLipidTriglyceride || ''}}</div>
-            </div>
-            <div class="item clearfix">
-              <div class="pull-left">血清低密度脂蛋白胆固醇（mmol/L）</div>
-              <div class="pull-right">{{= it.examAuxiliaryLipidLipoprotein || ''}}</div>
-            </div>
-            <div class="item clearfix">
-              <div class="pull-left">血清高密度脂蛋白胆固醇（mmol/L）</div>
-              <div class="pull-right">{{= it.examAuxiliaryLipidHigh || ''}}</div>
+          <div class="item clearfix" data-norequired="examAuxiliaryUrineMicroalbumin" data-belong="Auxiliary" data-norequireditem=true>
+            <div class="pull-left">尿微量白蛋白*（mg/dL）</div>
+            <div class="pull-right">{{= it.examAuxiliaryUrineMicroalbumin || ''}}</div>
+          </div>
+          <div class="item clearfix" data-norequired="examAuxiliaryOccultBlood" data-belong="Auxiliary" data-norequireditem=true>
+            <div class="pull-left">大便潜血*</div>
+            <div class="pull-right">
+              {{? it.examAuxiliaryOccultBlood == 1}} 阴性 {{?? it.examAuxiliaryOccultBlood == 2}} 阳性 {{?}}
             </div>
           </div>
-        </div>
-        <div class="item clearfix" data-norequired="examAuxiliaryChestradiographDes" data-belong="Auxiliary" data-norequireditem=true>
-          <div class="pull-left">胸部X线片*</div>
-          <div class="pull-right">{{= it.examAuxiliaryChestradiographDes || ''}}</div>
-        </div>
-        <div class="container flex horizental" data-PexamAuxiliaryAbdominal data-belong="Auxiliary">
-          <div class="flex vertical justify-center align-center border-right border-bottom bgWhite w230">
-            <div>B超</div>
+          <div class="item clearfix" data-norequired="examAuxiliaryGlycosylatedHemoglobin" data-belong="Auxiliary" data-norequireditem=true>
+            <div class="pull-left">糖化血红蛋白*（%）</div>
+            <div class="pull-right">{{= it.examAuxiliaryGlycosylatedHemoglobin || ''}}</div>
           </div>
-          <div class="container border-bottom" data-norequired="examAuxiliaryAbdominal" data-belong="PexamAuxiliaryAbdominal">
-            <div class="item clearfix">
-              <div class="pull-left">B超</div>
-              <div class="pull-right">{{= it.examAuxiliaryAbdominalExceDes || ''}}</div>
+          <div class="item clearfix" data-norequired="examAuxiliarySurfaceAntigen" data-belong="Auxiliary" data-norequireditem=true>
+            <div class="pull-left">乙型肝炎表面抗原*</div>
+            <div class="pull-right">
+              {{? it.examAuxiliarySurfaceAntigen == 1}} 阴性 {{?? it.examAuxiliarySurfaceAntigen == 2}} 阳性 {{?}}
             </div>
-            <div class="item clearfix">
-              <div class="pull-left">其他*</div>
-              <div class="pull-right">{{= it.examAuxiliaryAbdominalOtherDes || ''}}</div>
+          </div>
+          <div class="container flex horizental" data-PexamAuxiliaryLiver data-belong="Auxiliary">
+            <div class="flex vertical justify-center align-center border-right border-bottom bgWhite w230">
+              <div>肝功能*</div>
             </div>
-            <!--<div class="item clearfix">-->
-            <!--<div class="pull-left">其他*</div>-->
-            <!--<div class="pull-right"></div>-->
-            <!--</div>-->
+            <div class="container border-bottom" data-norequired="examAuxiliaryLiver" data-belong="PexamAuxiliaryLiver">
+              <div class="item clearfix">
+                <div class="pull-left">血清谷丙转氨酶（U/L）</div>
+                <div class="pull-right">{{= it.examAuxiliaryLiverSgpt || ''}}</div>
+              </div>
+              <div class="item clearfix">
+                <div class="pull-left">血清谷草转氨酶（U/L）</div>
+                <div class="pull-right">{{= it.examAuxiliaryLiverSgot || ''}}</div>
+              </div>
+              <div class="item clearfix">
+                <div class="pull-left">白蛋白（g/L）</div>
+                <div class="pull-right">{{= it.examAuxiliaryLiverAlbumin || ''}}</div>
+              </div>
+              <div class="item clearfix">
+                <div class="pull-left">总胆红素（μmol/L）</div>
+                <div class="pull-right">{{= it.examAuxiliaryLiverBilirubin || ''}}</div>
+              </div>
+              <div class="item clearfix">
+                <div class="pull-left">结合胆红素（μmol/L）</div>
+                <div class="pull-right">{{= it.examAuxiliaryLiverConjugated || ''}}</div>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="item clearfix" data-norequired="examAuxiliaryCervicalSmear" data-belong="Auxiliary" data-norequireditem=true>
-          <div class="pull-left">宫颈涂片*</div>
-          <div class="pull-right">
-            {{? it.examAuxiliaryCervicalSmear == 1}} {{= it.examAuxiliaryCervicalExce}} {{?? it.examAuxiliaryCervicalSmear == 2}} 正常 {{?}}
+          <div class="container flex horizental" data-PexamAuxiliaryKidney data-belong="Auxiliary">
+            <div class="flex vertical justify-center align-center border-right border-bottom bgWhite w230">
+              <div>肾功能*</div>
+            </div>
+            <div class="container border-bottom" data-norequired="examAuxiliaryKidney" data-belong="PexamAuxiliaryKidney">
+              <div class="item clearfix">
+                <div class="pull-left">血清肌酐（μmol/L）</div>
+                <div class="pull-right">{{= it.examAuxiliaryKidneyScr || ''}}</div>
+              </div>
+              <div class="item clearfix">
+                <div class="pull-left">血尿素氮（mmol/L）</div>
+                <div class="pull-right">{{= it.examAuxiliaryKidneyNitrogen || ''}}</div>
+              </div>
+              <div class="item clearfix">
+                <div class="pull-left">血钾浓度（mmol/L）</div>
+                <div class="pull-right">{{= it.examAuxiliaryKidneyPotassium || ''}}</div>
+              </div>
+              <div class="item clearfix">
+                <div class="pull-left">血钠浓度（mmol/L）</div>
+                <div class="pull-right">{{= it.examAuxiliaryKidneySodium || ''}}</div>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="item clearfix" data-norequired="examAuxiliaryOther" data-belong="Auxiliary" data-norequireditem=true>
-          <div class="pull-left">其 他*</div>
-          <div class="pull-right">{{= it.examAuxiliaryOther || ''}}</div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="container flex horizental" data-PtcmConstitution>
-      <div class="item flex align-center justify-center border-right w100">
-        <div>中医体质辨识*</div>
-      </div>
-      <div class="container border-bottom" data-norequired="tcmConstitution" data-belong="PtcmConstitution">
-        <div class="item clearfix">
-          <div class="pull-left">平和质</div>
-          <div class="pull-right">{{= it.tcmConstitution && it.tcmConstitution.tcmPeaceDes}}</div>
-        </div>
-        <div class="item clearfix">
-          <div class="pull-left">气虚质</div>
-          <div class="pull-right">{{= it.tcmConstitution && it.tcmConstitution.tcmDeficiencyDes}}</div>
-        </div>
-        <div class="item clearfix">
-          <div class="pull-left">阳虚质</div>
-          <div class="pull-right">{{= it.tcmConstitution && it.tcmConstitution.tcmYangDes}}</div>
-        </div>
-        <div class="item clearfix">
-          <div class="pull-left">阴虚质</div>
-          <div class="pull-right">{{= it.tcmConstitution && it.tcmConstitution.tcmYinDes}}</div>
-        </div>
-        <div class="item clearfix">
-          <div class="pull-left">痰湿质</div>
-          <div class="pull-right">{{= it.tcmConstitution && it.tcmConstitution.tcmPhlegmDes}}</div>
-        </div>
-        <div class="item clearfix">
-          <div class="pull-left">湿热质</div>
-          <div class="pull-right">{{= it.tcmConstitution && it.tcmConstitution.tcmDampDes}}</div>
-        </div>
-        <div class="item clearfix">
-          <div class="pull-left">血瘀质</div>
-          <div class="pull-right">{{= it.tcmConstitution && it.tcmConstitution.tcmBloodDes}}</div>
-        </div>
-        <div class="item clearfix">
-          <div class="pull-left">气郁质</div>
-          <div class="pull-right">{{= it.tcmConstitution && it.tcmConstitution.tcmStagnationDes}}</div>
-        </div>
-        <div class="item clearfix">
-          <div class="pull-left">特秉质</div>
-          <div class="pull-right">{{= it.tcmConstitution && it.tcmConstitution.tcmSpecialDes}}</div>
+          <div class="container flex horizental" data-PexamAuxiliaryLipid data-belong="Auxiliary">
+            <div class="flex vertical justify-center align-center border-right border-bottom bgWhite w230">
+              <div>血脂*</div>
+            </div>
+            <div class="container border-bottom" data-norequired="examAuxiliaryLipid" data-belong="PexamAuxiliaryLipid">
+              <div class="item clearfix">
+                <div class="pull-left">总胆固醇（mmol/L）</div>
+                <div class="pull-right">{{= it.examAuxiliaryLipidCholesterol || '' }}</div>
+              </div>
+              <div class="item clearfix">
+                <div class="pull-left">甘油三酯（mmol/L）</div>
+                <div class="pull-right">{{= it.examAuxiliaryLipidTriglyceride || ''}}</div>
+              </div>
+              <div class="item clearfix">
+                <div class="pull-left">血清低密度脂蛋白胆固醇（mmol/L）</div>
+                <div class="pull-right">{{= it.examAuxiliaryLipidLipoprotein || ''}}</div>
+              </div>
+              <div class="item clearfix">
+                <div class="pull-left">血清高密度脂蛋白胆固醇（mmol/L）</div>
+                <div class="pull-right">{{= it.examAuxiliaryLipidHigh || ''}}</div>
+              </div>
+            </div>
+          </div>
+          <div class="item clearfix" data-norequired="examAuxiliaryChestradiographDes" data-belong="Auxiliary" data-norequireditem=true>
+            <div class="pull-left">胸部X线片*</div>
+            <div class="pull-right">{{= it.examAuxiliaryChestradiographDes || ''}}</div>
+          </div>
+          <div class="container flex horizental" data-PexamAuxiliaryAbdominal data-belong="Auxiliary">
+            <div class="flex vertical justify-center align-center border-right border-bottom bgWhite w230">
+              <div>B超</div>
+            </div>
+            <div class="container border-bottom" data-norequired="examAuxiliaryAbdominal" data-belong="PexamAuxiliaryAbdominal">
+              <div class="item clearfix">
+                <div class="pull-left">B超</div>
+                <div class="pull-right">{{= it.examAuxiliaryAbdominalExceDes || ''}}</div>
+              </div>
+              <div class="item clearfix">
+                <div class="pull-left">其他*</div>
+                <div class="pull-right">{{= it.examAuxiliaryAbdominalOtherDes || ''}}</div>
+              </div>
+              <!--<div class="item clearfix">-->
+              <!--<div class="pull-left">其他*</div>-->
+              <!--<div class="pull-right"></div>-->
+              <!--</div>-->
+            </div>
+          </div>
+          <div class="item clearfix" data-norequired="examAuxiliaryCervicalSmear" data-belong="Auxiliary" data-norequireditem=true>
+            <div class="pull-left">宫颈涂片*</div>
+            <div class="pull-right">
+              {{? it.examAuxiliaryCervicalSmear == 1}} {{= it.examAuxiliaryCervicalExce}} {{?? it.examAuxiliaryCervicalSmear == 2}} 正常 {{?}}
+            </div>
+          </div>
+          <div class="item clearfix" data-norequired="examAuxiliaryOther" data-belong="Auxiliary" data-norequireditem=true>
+            <div class="pull-left">其 他*</div>
+            <div class="pull-right">{{= it.examAuxiliaryOther || ''}}</div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+    <div class="container">
+      <div class="container flex horizental" data-PtcmConstitution>
+        <div class="item flex align-center justify-center border-right w100">
+          <div>中医体质辨识*</div>
+        </div>
+        <div class="container border-bottom" data-norequired="tcmConstitution" data-belong="PtcmConstitution">
+          <div class="item clearfix">
+            <div class="pull-left">平和质</div>
+            <div class="pull-right">{{= it.tcmConstitution && it.tcmConstitution.tcmPeaceDes}}</div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">气虚质</div>
+            <div class="pull-right">{{= it.tcmConstitution && it.tcmConstitution.tcmDeficiencyDes}}</div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">阳虚质</div>
+            <div class="pull-right">{{= it.tcmConstitution && it.tcmConstitution.tcmYangDes}}</div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">阴虚质</div>
+            <div class="pull-right">{{= it.tcmConstitution && it.tcmConstitution.tcmYinDes}}</div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">痰湿质</div>
+            <div class="pull-right">{{= it.tcmConstitution && it.tcmConstitution.tcmPhlegmDes}}</div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">湿热质</div>
+            <div class="pull-right">{{= it.tcmConstitution && it.tcmConstitution.tcmDampDes}}</div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">血瘀质</div>
+            <div class="pull-right">{{= it.tcmConstitution && it.tcmConstitution.tcmBloodDes}}</div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">气郁质</div>
+            <div class="pull-right">{{= it.tcmConstitution && it.tcmConstitution.tcmStagnationDes}}</div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">特秉质</div>
+            <div class="pull-right">{{= it.tcmConstitution && it.tcmConstitution.tcmSpecialDes}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {{?}}
   <div class="container">
     <div class="container flex horizental bgWhite" data-Ptcmhelthproblem>
       <div class="item flex align-center justify-center border-right w100">
@@ -746,129 +748,132 @@
       </div>
     </div>
   </div>
-  <div class="container">
-    <div class="container flex horizental" data-examCnt>
-      <div class="item flex align-center justify-center border-right w100">
-        <div>住院治疗情况</div>
-      </div>
-      <div class="container border-bottom">
-        <div class="container flex horizental bgWhite" data-exam data-belong="examCnt">
-          <div class="flex vertical justify-center align-center border-bottom border-right bgWhite w230">
-            <div>住院史</div>
-          </div>
-          <div class="container border-bottom" data-norequired="examHospital" data-belong="exam">
-            <div class="item clearfix">
-              <div class="pull-left">入院日期</div>
-              <div class="pull-right">{{= it.Util.formatDate(it.examHospitalIn)}}</div>
-            </div>
-            <div class="item clearfix">
-              <div class="pull-left">出院日期</div>
-              <div class="pull-right">{{= it.Util.formatDate(it.examHospitalOut)}}</div>
-            </div>
-            <div class="item clearfix">
-              <div class="pull-left">原因</div>
-              <div class="pull-right">{{= it.examHospitalReason}}</div>
-            </div>
-            <div class="item clearfix">
-              <div class="pull-left">医疗机构名称</div>
-              <div class="pull-right">{{= it.examHospitalName}}</div>
-            </div>
-            <div class="item clearfix">
-              <div class="pull-left">病案号</div>
-              <div class="pull-right">{{= it.examHospitalNo}}</div>
-            </div>
-          </div>
+  {{? it['__doc_type__'] != 31}}
+    <div class="container">
+      <div class="container flex horizental" data-examCnt>
+        <div class="item flex align-center justify-center border-right w100">
+          <div>住院治疗情况</div>
         </div>
-        <div class="container flex horizental" data-examBed data-belong="examCnt">
-          <div class="flex vertical justify-center align-center border-right bgWhite w230">
-            <div>家庭病床史</div>
+        <div class="container border-bottom">
+          <div class="container flex horizental bgWhite" data-exam data-belong="examCnt">
+            <div class="flex vertical justify-center align-center border-bottom border-right bgWhite w230">
+              <div>住院史</div>
+            </div>
+            <div class="container border-bottom" data-norequired="examHospital" data-belong="exam">
+              <div class="item clearfix">
+                <div class="pull-left">入院日期</div>
+                <div class="pull-right">{{= it.Util.formatDate(it.examHospitalIn)}}</div>
+              </div>
+              <div class="item clearfix">
+                <div class="pull-left">出院日期</div>
+                <div class="pull-right">{{= it.Util.formatDate(it.examHospitalOut)}}</div>
+              </div>
+              <div class="item clearfix">
+                <div class="pull-left">原因</div>
+                <div class="pull-right">{{= it.examHospitalReason}}</div>
+              </div>
+              <div class="item clearfix">
+                <div class="pull-left">医疗机构名称</div>
+                <div class="pull-right">{{= it.examHospitalName}}</div>
+              </div>
+              <div class="item clearfix">
+                <div class="pull-left">病案号</div>
+                <div class="pull-right">{{= it.examHospitalNo}}</div>
+              </div>
+            </div>
           </div>
-          <div class="container" data-norequired="examBed" data-belong="examBed">
-            <div class="item clearfix">
-              <div class="pull-left">建床日期</div>
-              <div class="pull-right">{{= it.Util.formatDate(it.examBedIn)}}</div>
+          <div class="container flex horizental" data-examBed data-belong="examCnt">
+            <div class="flex vertical justify-center align-center border-right bgWhite w230">
+              <div>家庭病床史</div>
             </div>
-            <div class="item clearfix">
-              <div class="pull-left">撤床日期</div>
-              <div class="pull-right">{{= it.Util.formatDate(it.examBedOut)}}</div>
-            </div>
-            <div class="item clearfix">
-              <div class="pull-left">原因</div>
-              <div class="pull-right">{{= it.examBedReason}}</div>
-            </div>
-            <div class="item clearfix">
-              <div class="pull-left">医疗机构名称</div>
-              <div class="pull-right">{{= it.examBedOrg}}</div>
-            </div>
-            <div class="item clearfix">
-              <div class="pull-left">病案号</div>
-              <div class="pull-right">{{= it.examBedNo}}</div>
+            <div class="container" data-norequired="examBed" data-belong="examBed">
+              <div class="item clearfix">
+                <div class="pull-left">建床日期</div>
+                <div class="pull-right">{{= it.Util.formatDate(it.examBedIn)}}</div>
+              </div>
+              <div class="item clearfix">
+                <div class="pull-left">撤床日期</div>
+                <div class="pull-right">{{= it.Util.formatDate(it.examBedOut)}}</div>
+              </div>
+              <div class="item clearfix">
+                <div class="pull-left">原因</div>
+                <div class="pull-right">{{= it.examBedReason}}</div>
+              </div>
+              <div class="item clearfix">
+                <div class="pull-left">医疗机构名称</div>
+                <div class="pull-right">{{= it.examBedOrg}}</div>
+              </div>
+              <div class="item clearfix">
+                <div class="pull-left">病案号</div>
+                <div class="pull-right">{{= it.examBedNo}}</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="container">
-    <div class="container flex horizental" data-PexamDrug>
-      <div class="item flex align-center justify-center border-right w100">
-        <div>主要用药情况</div>
-      </div>
-      <div class="container border-bottom" data-norequired="examDrug" data-belong="PexamDrug">
-        <div class="item clearfix">
-          <div class="pull-left">药物名称</div>
-          <div class="pull-right">{{= it.examDrugName}}</div>
+    <div class="container">
+      <div class="container flex horizental" data-PexamDrug>
+        <div class="item flex align-center justify-center border-right w100">
+          <div>主要用药情况</div>
         </div>
-        <div class="item clearfix">
-          <div class="pull-left">用法</div>
-          <div class="pull-right">{{= it.examDrugUse}}</div>
-        </div>
-        <div class="item clearfix">
-          <div class="pull-left">用量</div>
-          <div class="pull-right">{{= it.examDrugDosage}}</div>
-        </div>
-        <div class="item clearfix">
-          <div class="pull-left">用药时间</div>
-          <div class="pull-right">
-          {{? it.examDrupUnit}}
-            {{= it.examDrugDate}}{{= it.examDrupUnit}}</td>
-          {{??}}
-            {{= it.Util.formatDate(it.examDrugDate)}}
-          {{?}}
+        <div class="container border-bottom" data-norequired="examDrug" data-belong="PexamDrug">
+          <div class="item clearfix">
+            <div class="pull-left">药物名称</div>
+            <div class="pull-right">{{= it.examDrugName}}</div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">用法</div>
+            <div class="pull-right">{{= it.examDrugUse}}</div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">用量</div>
+            <div class="pull-right">{{= it.examDrugDosage}}</div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">用药时间</div>
+            <div class="pull-right">
+            {{? it.examDrupUnit}}
+              {{= it.examDrugDate}}{{= it.examDrupUnit}}</td>
+            {{??}}
+              {{= it.Util.formatDate(it.examDrugDate)}}
+            {{?}}
+            </div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">服药依从性</div>
+            <div class="pull-right">{{= it.examDrugDependenceDes}}</div>
           </div>
         </div>
-        <div class="item clearfix">
-          <div class="pull-left">服药依从性</div>
-          <div class="pull-right">{{= it.examDrugDependenceDes}}</div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="container flex horizental" data-PhealthNovaccination>
+        <div class="flex align-center justify-center border-right w100 bgWhite border-bottom">
+          <div>非免</div>
+          <div>疫规</div>
+          <div>划预</div>
+          <div>防接</div>
+          <div>种史</div>
+        </div>
+        <div class="container border-bottom bgWhite" data-norequired="healthNovaccination" data-belong="PhealthNovaccination">
+          <div class="item clearfix">
+            <div class="pull-left">名称</div>
+            <div class="pull-right">{{= it.healthNovaccinationName}}</div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">接种日期</div>
+            <div class="pull-right">{{= it.Util.formatDate(it.healthNovaccinationDate)}}</div>
+          </div>
+          <div class="item clearfix">
+            <div class="pull-left">接种机构</div>
+            <div class="pull-right">{{= it.healthNovaccinationOrg}}</div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="container">
-    <div class="container flex horizental" data-PhealthNovaccination>
-      <div class="flex align-center justify-center border-right w100 bgWhite border-bottom">
-        <div>非免</div>
-        <div>疫规</div>
-        <div>划预</div>
-        <div>防接</div>
-        <div>种史</div>
-      </div>
-      <div class="container border-bottom bgWhite" data-norequired="healthNovaccination" data-belong="PhealthNovaccination">
-        <div class="item clearfix">
-          <div class="pull-left">名称</div>
-          <div class="pull-right">{{= it.healthNovaccinationName}}</div>
-        </div>
-        <div class="item clearfix">
-          <div class="pull-left">接种日期</div>
-          <div class="pull-right">{{= it.Util.formatDate(it.healthNovaccinationDate)}}</div>
-        </div>
-        <div class="item clearfix">
-          <div class="pull-left">接种机构</div>
-          <div class="pull-right">{{= it.healthNovaccinationOrg}}</div>
-        </div>
-      </div>
-    </div>
-  </div>
+  {{?}}
+
   <!--<div class="container">-->
   <!--<div class="container flex horizental">-->
   <!--<div class="flex align-center bgWhite justify-center border-right w100 border-bottom">-->

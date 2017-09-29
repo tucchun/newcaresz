@@ -65,7 +65,7 @@ if (Util.demo) {
     "doc_id": 1,
     "isShowNext": "",
     "user_id_doc": 2026,
-    "doc_type": 31
+    "doc_type": 30
   };
 }
 
@@ -332,6 +332,7 @@ if (paramObj["doc_type"] == 170 || paramObj["doc_type"] == 160) {
           template = "./template/videoMaterial.template";
           templateData["getPicUrl"] = Util.getPicUrl;
         }*/
+        templateData['__doc_type__'] = paramObj['doc_type'];
         if (paramObj["doc_type"] == 139) {
           switch (templateData.onemMonth) {
             case 1:
