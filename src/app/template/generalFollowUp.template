@@ -16,24 +16,30 @@
     <div class="pull-right">{{= it.residentWeight}}</div>
   </div>
   <div class="item clearfix">
-    <div class="pull-left">体质指数（BMI）（Kg/m²）</div>
+    <div class="pull-left">体质指数（BMI）</div>
     <div class="pull-right">{{= (Number(it.residentBmi) || 0).toFixed(2)}}</div>
   </div>
   <div class="item clearfix">
     <div class="pull-left">体温（°C）</div>
-    <div class="pull-right">{{= it.residentTemperature}}</div>
+    <div class="pull-right">{{= it.residentTemperature || '未测量'}}</div>
   </div>
   <div class="item clearfix">
     <div class="pull-left">血压（mmHg）</div>
-    <div class="pull-right">{{= it.residentBloodPressureLow}}/{{= it.residentBloodPressureHeight}}</div>
+    <div class="pull-right">
+      {{? it.residentBloodPressureLow || it.residentBloodPressureHeight}}
+      {{= it.residentBloodPressureLow }}/{{= it.residentBloodPressureHeight}}
+      {{??}}
+      未测量
+      {{?}}
+    </div>
   </div>
   <div class="item clearfix">
     <div class="pull-left">脉搏（bpm）</div>
-    <div class="pull-right">{{= it.residentPulse}}</div>
+    <div class="pull-right">{{= it.residentPulse || '未测量'}}</div>
   </div>
   <div class="item clearfix">
     <div class="pull-left">血糖（mmol/L）</div>
-    <div class="pull-right">{{= it.residentBloodSugar}}</div>
+    <div class="pull-right">{{= it.residentBloodSugar || '未测量'}}</div>
   </div>
 
 </div>

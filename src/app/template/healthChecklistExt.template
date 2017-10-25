@@ -89,7 +89,7 @@
       </div>
       <div class="item clearfix">
         <div class="pull-left">体质指数(BMI)</div>
-        <div class="pull-right">{{= (Number(it.examBmi) || 0).toFixed(2)}}<span class="unit">Kg/m2</span></div>
+        <div class="pull-right">{{= (Number(it.examBmi) || 0).toFixed(2)}}</div>
       </div>
       <div class="item clearfix">
         <div class="pull-left">老年人健康状态自我评估*</div>

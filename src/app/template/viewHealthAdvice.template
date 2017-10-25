@@ -1,0 +1,26 @@
+<div class="container wrap" id="js-items">
+        <div class="item clearfix">
+            <p class="pull-left" style="color:#666;">医生</p>
+            <p class="pull-right"><span id="doctor">{{=it.createByName}}</span></p>
+        </div>
+        <div class="item clearfix">
+            <p class="pull-left" style="color:#666;">创建时间</p>
+            <p class="pull-right"><span id="create-date">{{=it.Util.formatDate(it.createDate)}}</span></p>
+        </div>
+        <div class="item">
+            <p class="question">
+                <span>随访记录</span>
+            </p>
+            <p>
+                <span class="result" id="record">{{=it.healthDescription}}</span>
+            </p>
+        </div>
+        <div class="item">
+            <p class="question">
+                <span>健康建议</span>
+            </p>
+            <p>
+                <span class="result" id="advice">{{=it.doctorAdvice}}</span>
+            </p>
+        </div>
+    </div>

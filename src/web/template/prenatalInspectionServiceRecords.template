@@ -190,8 +190,8 @@
         <td class="text-left">{{= it.anteWeight}}<span>Kg</span></td>
       </tr>
       <tr>
-        <td class="label text-right bgColor">体质指数(kg/m²)</td>
-        <td class="text-left">{{= (Number(it.bodyMassIndex) || 0).toFixed(2) }}<span>kg/m²</span></td>
+        <td class="label text-right bgColor">体质指数</td>
+        <td class="text-left">{{= (Number(it.bodyMassIndex) || 0).toFixed(2) }}</td>
         <td class="label text-right bgColor">血压（mmHg）</td>
         <td class="text-left">{{= it.bloodPressureLow}}/{{= it.bloodPressureHigh}}<span>mmHg</span></td>
       </tr>

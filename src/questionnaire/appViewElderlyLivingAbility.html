@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>老年人生活自理能力评估表</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <script type="text/javascript" src="../../static/assets/adaptive/adaptive-version2.js"></script>
+  <script>
+    // 设计图宽度
+    window['adaptive'].desinWidth = 750;
+    // body 字体大小 会将body字体大小设置为 baseFont / 100 + 'rem'
+    window['adaptive'].baseFont = 28;
+    window['adaptive'].maxWidth = 750;
+    window['adaptive'].init();
+  </script>
+  <!-- <link rel="stylesheet" href="./css/style.css"> -->
+  <link rel="stylesheet" href="../app/css/dist.css">
+</head>
+
+<body class="bgColor wrap" style="display:none;" id="body">
+    <div class="container" id="js-items">
+        <div class="item">
+            <p class="question">
+                <span>1、进餐:使用餐具将饭菜送入口、咀嚼、吞咽等活动</span>
+            </p>
+            <p class="text-right">
+                <span class="result"></span>
+            </p>
+        </div>
+        <div class="item">
+            <p class="question">
+                <span>2、梳洗：梳头、洗脸、刷牙、剃须洗澡等活动.</span>
+            </p>
+            <p class="text-right">
+                <span class="result"></span>
+            </p>
+        </div>
+        <div class="item">
+            <p class="question">
+                <span>3、穿衣：穿衣裤、袜子、鞋子等活动.</span>
+            </p>
+            <p class="text-right">
+                <span class="result"></span>
+            </p>
+        </div>
+        <div class="item">
+            <p class="question">
+                <span>4、如厕：小便、大便等活动及自控.</span>
+            </p>
+            <p class="text-right">
+                <span class="result"></span>
+            </p>
+        </div>
+        <div class="item">
+            <p class="question">
+                <span>5、活动：站立、室内行走、上下楼梯、户外活动</span>
+            </p>
+            <p class="text-right">
+                <span class="result"></span>
+            </p>
+        </div>
+    </div>
+    <div class="container">
+      <div class="item bgColor">
+          <span class="sub-title">评估结果</span>
+      </div>
+      <div class="item clearfix">
+        <p><span id="self-result"></span>(得分：<span id="total"></span>分)</p>
+      </div>
+    </div>
+
+  <script src="../../static/assets/jquery/jquery-1.9.1.min.js"></script>
+  <script src="../../static/js/Util.js"></script>
+  <script src="../../static/js/jquery.validate.js"></script>
+  <script src="../../static/js/messages_zh.js"></script>
+  <script>
+
+    window.onload = function () {
+      
+      var params = Util.param(location.href);
+
+      var src_type = "HECadre APP";
+      if (params['src_type'] == 'DOCTOR') {
+        src_type = 'Web Admin';
+      }
+
+      Util.fetch({
+        url: Util.host + '/hca/web/inhabitant/getdoc',
+        demoUrl: "../../assets/rss/viewElderlyLivingAbility.json",
+        data: JSON.stringify({
+          "doc_id": params['doc_id'],
+          "user_id_doc": params['user_id_doc'],
+          "doc_type": 502,
+          "src_type": "Inhabitant APP", //请求源的类型，如"HECadre APP"、"Inhabitant APP"等
+          "pf_type": Util.pf_type, //请求源的终端平台类型，如"Android"、"iOS"、"Web"等
+          "user_id": Util.userId || params['user_id'], //用户ID，u64
+          "auth_str": Util.getCommunicationAuth() || params['authStr'] //通信认证密文串
+        }),
+        success: function(data) {
+          if (data.ret_code === 1) {
+            var items = $("#js-items .item");
+        
+            var retData = data.ret_data;
+            switch (retData.selfMeal){
+              case 0:
+                items.eq(0).find('.result').text('独立完成');
+                break;
+              case 3:
+                items.eq(0).find('.result').text('需要协助，如切碎、搅拌食物等');
+                break;
+              case 5:
+                items.eq(0).find('.result').text('完全需要帮助');
+                break;
+              default:
+                items.eq(0).find('.result').text('独立完成');
+            }
+        
+            switch (retData.selfFreshen){
+              case 0:
+                items.eq(1).find('.result').text('独立完成');
+                break;
+              case 1:
+                items.eq(1).find('.result').text('能独立地洗头、梳头、洗脸、刷牙、剃须等；洗澡需要协助');
+                break;
+              case 3:
+                items.eq(1).find('.result').text('在协助下和适当的时间内，能完成部分梳洗活动');
+                break;
+              case 7:
+                items.eq(1).find('.result').text('完全需要帮助');
+                break;
+              default:
+                items.eq(1).find('.result').text('独立完成');
+            }
+        
+            switch (retData.selfDressing){
+              case 0:
+                items.eq(2).find('.result').text('独立完成');
+                break;
+              case 3:
+                items.eq(2).find('.result').text('需要协助，在适当的时间内完成部分穿衣');
+                break;
+              case 5:
+                items.eq(2).find('.result').text('完全需要帮助');
+                break;
+              default:
+                items.eq(2).find('.result').text('独立完成');
+            }
+        
+            switch (retData.selfToilet){
+              case 0:
+                items.eq(3).find('.result').text('不需协助，可自控');
+                break;
+              case 1:
+                items.eq(3).find('.result').text('偶尔失禁，但基本上能如厕或使用便具');
+                break;
+              case 5:
+                items.eq(3).find('.result').text('经常失禁，在很多提示和协助下尚能如厕或使用便具');
+                break;
+              case 10:
+                items.eq(3).find('.result').text('完全需要帮助');
+                break;
+              default:
+                items.eq(3).find('.result').text('不需协助，可自控');
+            }
+        
+            switch (retData.selfActivity){
+              case 0:
+                items.eq(4).find('.result').text('独立完成所有活动');
+                break;
+              case 1:
+                items.eq(4).find('.result').text('借助较小的外力或辅助装置能完成站立、行走、上下楼梯等');
+                break;
+              case 5:
+                items.eq(4).find('.result').text('借助较大的外力才能完成站立、行走，不能上下楼梯');
+                break;
+              case 10:
+                items.eq(4).find('.result').text('卧床不起，活动完全需要帮助');
+                break;
+              default:
+                items.eq(4).find('.result').text('独立完成所有活动');
+            }
+
+            if(retData.selfTotal>=0&&retData.selfTotal<=3){
+              $('#self-result').text('可自理');
+            }else if(retData.selfTotal>=4&&retData.selfTotal<=8){
+              $('#self-result').text('轻度依赖');
+            }else if(retData.selfTotal>=9&&retData.selfTotal<=18){
+              $('#self-result').text('中度依赖');
+            }else if(retData.selfTotal>=19){
+              $('#self-result').text('不能自理');
+            }else{
+              $('#self-result').text('可自理');
+            }
+
+            $('#total').text(retData.selfTotal);
+
+          } else {
+            Util.alert(data.ret_msg || "查询信息错误！");
+            console.log(data.ret_msg || "查询信息错误！");
+          }
+        },
+        function(err) {
+          Util.alert("当前网络不可用，请检查你的网络设置！");
+          console.log(err);
+        }
+      });
+
+      $('#body').show();
+    }
+
+  </script>
+</body>
+
+</html>

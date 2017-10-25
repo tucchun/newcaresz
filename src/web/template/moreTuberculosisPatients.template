@@ -77,7 +77,7 @@
           药品剂型
         </td>
         <td class="text-left">
-          {{? it.phthCompoundPreparation == 1}} 固定剂量复合制&nbsp; {{?}} {{? it.phthBulkLoading == 1}} 散装药&nbsp; {{?}} {{? it.phthPlateCombination == 1}} 板式组合药&nbsp; {{?}} {{? it.phthInjection == 1}} 注射剂 {{?}}
+          {{? it.phthCompoundPreparation == 1}} 固定剂量复合制剂&nbsp; {{?}} {{? it.phthBulkLoading == 1}} 散装药&nbsp; {{?}} {{? it.phthPlateCombination == 1}} 板式组合药&nbsp; {{?}} {{? it.phthInjection == 1}} 注射剂 {{?}}
         </td>
       </tr>
       <tr>

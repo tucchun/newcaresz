@@ -88,7 +88,7 @@
         <div class="pull-left">药品剂型</div>
         <div class="pull-right">
           {{? it.phthCompoundPreparation == 1}}
-          固定剂量复合制&nbsp;
+          固定剂量复合制剂&nbsp;
           {{?}}
           {{? it.phthBulkLoading == 1}}
           散装药&nbsp;

@@ -66,8 +66,22 @@
         </div>
         <div class="container border-bottom">
           <div class="item">
-            <div class="text-right">左侧:{{= it.examLeftBloodLow}}/{{= it.examLeftBloodHigh}}<span class="unit">mmHg</span></div>
-            <div class="text-right">右侧:{{= it.examRightBloodLow}}/{{= it.examRightBloodHigh}}<span class="unit">mmHg</span></div>
+            <div class="text-right">
+              左侧:
+              {{? it.examLeftBloodLow || it.examLeftBloodHigh}}
+                {{= it.examLeftBloodLow}}/{{= it.examLeftBloodHigh}}mmHg
+              {{??}}
+                未测量
+              {{?}}
+            </div>
+            <div class="text-right">
+              右侧:
+              {{? it.examRightBloodLow || it.examRightBloodHigh}}
+                {{= it.examRightBloodLow}}/{{= it.examRightBloodHigh}}mmHg
+              {{??}}
+                未测量
+              {{?}}
+            </div>
           </div>
         </div>
       </div>
@@ -84,8 +98,8 @@
         <div class="pull-right">{{= it.examWaist}}<span class="unit">cm</span></div>
       </div>
       <div class="item clearfix">
-        <div class="pull-left">体质指数(BMI)</div>
-        <div class="pull-right">{{= (Number(it.examBmi) || 0).toFixed(2)}}<span class="unit">Kg/m2</span></div>
+        <div class="pull-left">体质指数</div>
+        <div class="pull-right">{{= (Number(it.examBmi) || 0).toFixed(2)}}</div>
       </div>
       <div class="item clearfix" data-norequired="examHealthStatusDes" data-belong="examOlderman" data-norequireditem=true>
         <div class="pull-left">老年人健康状态自我评估*</div>
@@ -749,129 +763,284 @@
     </div>
   </div>
   {{? it['__doc_type__'] != 31}}
-    <div class="container">
-      <div class="container flex horizental" data-examCnt>
-        <div class="item flex align-center justify-center border-right w100">
-          <div>住院治疗情况</div>
-        </div>
-        <div class="container border-bottom">
-          <div class="container flex horizental bgWhite" data-exam data-belong="examCnt">
-            <div class="flex vertical justify-center align-center border-bottom border-right bgWhite w230">
-              <div>住院史</div>
+
+          {{? it.hospitalizationHistoryList || it.familyBedList}}
+            {{? it.hospitalizationHistoryList.length > 0 || it.familyBedList.length > 0}}
+            <div class="container">
+              <div class="container flex horizental" data-examcnt>
+                <div class="item flex align-center justify-center border-right w100">
+                  <div>住院治疗情况</div>
+                </div>
+                <div class="container border-bottom">
+
+                    {{~ it.hospitalizationHistoryList :value:index}}
+                      <div class="container flex horizental bgWhite" data-exam data-belong="examcnt">
+                        <div class="flex vertical justify-center align-center border-bottom border-right bgWhite w230">
+                          <div>住院史{{=index+1}}</div>
+                        </div>
+                        <div class="container border-bottom" data-norequired="examHospital" data-belong="exam">
+                          <div class="item clearfix">
+                            <div class="pull-left">入院日期</div>
+                            <div class="pull-right">{{= it.Util.formatDate(value.checkDate)}}</div>
+                          </div>
+                          <div class="item clearfix">
+                            <div class="pull-left">出院日期</div>
+                            <div class="pull-right">{{= it.Util.formatDate(value.leaveDate)}}</div>
+                          </div>
+                          <div class="item clearfix">
+                            <div class="pull-left">原因</div>
+                            <div class="pull-right">{{= value.reason}}</div>
+                          </div>
+                          <div class="item clearfix">
+                            <div class="pull-left">医疗机构名称</div>
+                            <div class="pull-right">{{= value.medicalInstitutionName}}</div>
+                          </div>
+                          <div class="item clearfix">
+                            <div class="pull-left">病案号</div>
+                            <div class="pull-right">{{= value.medicalRecordNo}}</div>
+                          </div>
+                        </div>
+                      </div>
+                    {{~}}
+
+                  {{~ it.familyBedList :value:index}}
+                  <div class="container flex horizental" data-examBed data-belong="examcnt">
+                    <div class="flex vertical justify-center align-center border-right bgWhite w230">
+                      <div>家庭病床史{{=index+1}}</div>
+                    </div>
+                    <div class="container" data-norequired="examBed" data-belong="examBed">
+                      <div class="item clearfix">
+                        <div class="pull-left">建床日期</div>
+                        <div class="pull-right">{{= it.Util.formatDate(value.fbedConstructionDate)}}</div>
+                      </div>
+                      <div class="item clearfix">
+                        <div class="pull-left">撤床日期</div>
+                        <div class="pull-right">{{= it.Util.formatDate(value.fbedFromDate)}}</div>
+                      </div>
+                      <div class="item clearfix">
+                        <div class="pull-left">原因</div>
+                        <div class="pull-right">{{= value.fbedReason}}</div>
+                      </div>
+                      <div class="item clearfix">
+                        <div class="pull-left">医疗机构名称</div>
+                        <div class="pull-right">{{= value.fbedMedicalName}}</div>
+                      </div>
+                      <div class="item clearfix">
+                        <div class="pull-left">病案号</div>
+                        <div class="pull-right">{{= value.fbedNo}}</div>
+                      </div>
+                    </div>
+                  </div>
+                  {{~}}
+                </div>
+              </div>
+          </div>
+          {{?}}
+          {{??}}
+            <div class="container flex horizental bgWhite" data-exam data-belong="examcnt">
+              <div class="flex vertical justify-center align-center border-bottom border-right bgWhite w230">
+                <div>住院史</div>
+              </div>
+              <div class="container border-bottom" data-norequired="examHospital" data-belong="exam">
+                <div class="item clearfix">
+                  <div class="pull-left">入院日期</div>
+                  <div class="pull-right">{{= it.Util.formatDate(it.examHospitalIn)}}</div>
+                </div>
+                <div class="item clearfix">
+                  <div class="pull-left">出院日期</div>
+                  <div class="pull-right">{{= it.Util.formatDate(it.examHospitalOut)}}</div>
+                </div>
+                <div class="item clearfix">
+                  <div class="pull-left">原因</div>
+                  <div class="pull-right">{{= it.examHospitalReason}}</div>
+                </div>
+                <div class="item clearfix">
+                  <div class="pull-left">医疗机构名称</div>
+                  <div class="pull-right">{{= it.examHospitalName}}</div>
+                </div>
+                <div class="item clearfix">
+                  <div class="pull-left">病案号</div>
+                  <div class="pull-right">{{= it.examHospitalNo}}</div>
+                </div>
+              </div>
             </div>
-            <div class="container border-bottom" data-norequired="examHospital" data-belong="exam">
-              <div class="item clearfix">
-                <div class="pull-left">入院日期</div>
-                <div class="pull-right">{{= it.Util.formatDate(it.examHospitalIn)}}</div>
+            <div class="container flex horizental" data-examBed data-belong="examcnt">
+              <div class="flex vertical justify-center align-center border-right bgWhite w230">
+                <div>家庭病床史</div>
               </div>
-              <div class="item clearfix">
-                <div class="pull-left">出院日期</div>
-                <div class="pull-right">{{= it.Util.formatDate(it.examHospitalOut)}}</div>
+              <div class="container" data-norequired="examBed" data-belong="examBed">
+                <div class="item clearfix">
+                  <div class="pull-left">建床日期</div>
+                  <div class="pull-right">{{= it.Util.formatDate(it.examBedIn)}}</div>
+                </div>
+                <div class="item clearfix">
+                  <div class="pull-left">撤床日期</div>
+                  <div class="pull-right">{{= it.Util.formatDate(it.examBedOut)}}</div>
+                </div>
+                <div class="item clearfix">
+                  <div class="pull-left">原因</div>
+                  <div class="pull-right">{{= it.examBedReason}}</div>
+                </div>
+                <div class="item clearfix">
+                  <div class="pull-left">医疗机构名称</div>
+                  <div class="pull-right">{{= it.examBedOrg}}</div>
+                </div>
+                <div class="item clearfix">
+                  <div class="pull-left">病案号</div>
+                  <div class="pull-right">{{= it.examBedNo}}</div>
+                </div>
               </div>
-              <div class="item clearfix">
-                <div class="pull-left">原因</div>
-                <div class="pull-right">{{= it.examHospitalReason}}</div>
-              </div>
-              <div class="item clearfix">
-                <div class="pull-left">医疗机构名称</div>
-                <div class="pull-right">{{= it.examHospitalName}}</div>
-              </div>
-              <div class="item clearfix">
-                <div class="pull-left">病案号</div>
-                <div class="pull-right">{{= it.examHospitalNo}}</div>
-              </div>
+            </div>
             </div>
           </div>
-          <div class="container flex horizental" data-examBed data-belong="examCnt">
-            <div class="flex vertical justify-center align-center border-right bgWhite w230">
-              <div>家庭病床史</div>
-            </div>
-            <div class="container" data-norequired="examBed" data-belong="examBed">
-              <div class="item clearfix">
-                <div class="pull-left">建床日期</div>
-                <div class="pull-right">{{= it.Util.formatDate(it.examBedIn)}}</div>
-              </div>
-              <div class="item clearfix">
-                <div class="pull-left">撤床日期</div>
-                <div class="pull-right">{{= it.Util.formatDate(it.examBedOut)}}</div>
-              </div>
-              <div class="item clearfix">
-                <div class="pull-left">原因</div>
-                <div class="pull-right">{{= it.examBedReason}}</div>
-              </div>
-              <div class="item clearfix">
-                <div class="pull-left">医疗机构名称</div>
-                <div class="pull-right">{{= it.examBedOrg}}</div>
-              </div>
-              <div class="item clearfix">
-                <div class="pull-left">病案号</div>
-                <div class="pull-right">{{= it.examBedNo}}</div>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
-    </div>
+          {{?}}
+
+
+
+
+    {{? it.medicationUses && it.medicationUses.length > 0}}
     <div class="container">
-      <div class="container flex horizental" data-PexamDrug>
+      <div class="container flex horizental" data-PexamDrugcnt>
         <div class="item flex align-center justify-center border-right w100">
           <div>主要用药情况</div>
         </div>
-        <div class="container border-bottom" data-norequired="examDrug" data-belong="PexamDrug">
-          <div class="item clearfix">
-            <div class="pull-left">药物名称</div>
-            <div class="pull-right">{{= it.examDrugName}}</div>
-          </div>
-          <div class="item clearfix">
-            <div class="pull-left">用法</div>
-            <div class="pull-right">{{= it.examDrugUse}}</div>
-          </div>
-          <div class="item clearfix">
-            <div class="pull-left">用量</div>
-            <div class="pull-right">{{= it.examDrugDosage}}</div>
-          </div>
-          <div class="item clearfix">
-            <div class="pull-left">用药时间</div>
-            <div class="pull-right">
-            {{? it.examDrupUnit}}
-              {{= it.examDrugDate}}{{= it.examDrupUnit}}</td>
-            {{??}}
-              {{= it.Util.formatDate(it.examDrugDate)}}
-            {{?}}
+        <div class="container border-bottom" data-PexamDrug data-belong="PexamDrugcnt">
+
+          {{~ it.medicationUses :value:index}}
+          <div class="container flex horizental" data-PexamDrug>
+            <div class="item flex align-center justify-center border-right w100 {{? it.medicationUses.length === (index + 1)}}border-bottom-none{{?}}">
+              <div>{{= value.medDrugName}}</div>
+            </div>
+            <div class="container {{? it.medicationUses.length !== (index + 1)}}border-bottom{{?}}" data-norequired="examDrug" data-belong="PexamDrug">
+              <div class="item clearfix">
+                <div class="pull-left">用法</div>
+                <div class="pull-right">{{= value.medUsage}}</div>
+              </div>
+              <div class="item clearfix">
+                <div class="pull-left">用量</div>
+                <div class="pull-right">{{= value.medConsumption}}</div>
+              </div>
+              <div class="item clearfix">
+                <div class="pull-left">用药时间</div>
+                <div class="pull-right">
+                {{=value.medMedicationTime }}{{= value.medDrupRate}}
+                </div>
+              </div>
+              <div class="item clearfix">
+                <div class="pull-left">服药依从性</div>
+                <div class="pull-right">{{= value.medComplianceDes}}</div>
+              </div>
             </div>
           </div>
-          <div class="item clearfix">
-            <div class="pull-left">服药依从性</div>
-            <div class="pull-right">{{= it.examDrugDependenceDes}}</div>
-          </div>
+          {{~}}
         </div>
       </div>
     </div>
+    {{??}}
+      <div class="container">
+        <div class="container flex horizental" data-PexamDrug>
+          <div class="item flex align-center justify-center border-right w100">
+            <div>主要用药情况</div>
+          </div>
+          <div class="container border-bottom" data-norequired="examDrug" data-belong="PexamDrug">
+            <div class="item clearfix">
+              <div class="pull-left">药物名称</div>
+              <div class="pull-right">{{= it.examDrugName}}</div>
+            </div>
+            <div class="item clearfix">
+              <div class="pull-left">用法</div>
+              <div class="pull-right">{{= it.examDrugUse}}</div>
+            </div>
+            <div class="item clearfix">
+              <div class="pull-left">用量</div>
+              <div class="pull-right">{{= it.examDrugDosage}}</div>
+            </div>
+            <div class="item clearfix">
+              <div class="pull-left">用药时间</div>
+              <div class="pull-right">
+              {{? it.examDrupUnit}}
+                {{= it.examDrugDate}}{{= it.examDrupUnit}}</td>
+              {{??}}
+                {{= it.Util.formatDate(it.examDrugDate)}}
+              {{?}}
+              </div>
+            </div>
+            <div class="item clearfix">
+              <div class="pull-left">服药依从性</div>
+              <div class="pull-right">{{= it.examDrugDependenceDes}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {{?}}
+
+
+
+
+    {{? it.vaccineRecords && it.vaccineRecords.length > 0}}
     <div class="container">
-      <div class="container flex horizental" data-PhealthNovaccination>
-        <div class="flex align-center justify-center border-right w100 bgWhite border-bottom">
-          <div>非免</div>
-          <div>疫规</div>
-          <div>划预</div>
-          <div>防接</div>
-          <div>种史</div>
-        </div>
-        <div class="container border-bottom bgWhite" data-norequired="healthNovaccination" data-belong="PhealthNovaccination">
-          <div class="item clearfix">
-            <div class="pull-left">名称</div>
-            <div class="pull-right">{{= it.healthNovaccinationName}}</div>
+      <div class="container">
+        <div class="container flex horizental" data-PhealthNovaccinationcnt>
+          <div class="flex align-center justify-center border-right w100 bgWhite border-bottom">
+            <div>非免</div>
+            <div>疫规</div>
+            <div>划预</div>
+            <div>防接</div>
+            <div>种史</div>
           </div>
-          <div class="item clearfix">
-            <div class="pull-left">接种日期</div>
-            <div class="pull-right">{{= it.Util.formatDate(it.healthNovaccinationDate)}}</div>
-          </div>
-          <div class="item clearfix">
-            <div class="pull-left">接种机构</div>
-            <div class="pull-right">{{= it.healthNovaccinationOrg}}</div>
-          </div>
+          <div class="container border-bottom bgWhite" data-PhealthNovaccination data-belong="PhealthNovaccinationcnt">
+            {{~ it.vaccineRecords :value:index}}
+              <div class="container">
+                <div class="container flex horizental" data-PhealthNovaccination>
+                  <div class="flex align-center justify-center border-right botto w100 bgWhite {{? it.vaccineRecords.length !== (index + 1)}}border-bottom{{?}}">
+                    {{= value.recoVaccineName}}
+                  </div>
+                  <div class="container {{? it.vaccineRecords.length !== (index + 1)}}border-bottom{{?}} bgWhite" data-norequired="healthNovaccination" data-belong="PhealthNovaccination">
+                    <div class="item clearfix">
+                      <div class="pull-left">接种日期</div>
+                      <div class="pull-right">{{= it.Util.formatDate(value.recoInouclationDate)}}</div>
+                    </div>
+                    <div class="item clearfix">
+                      <div class="pull-left">接种机构</div>
+                      <div class="pull-right">{{= value.recoInouclationSite}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {{~}}
         </div>
       </div>
     </div>
+    {{??}}
+      <div class="container">
+        <div class="container flex horizental" data-PhealthNovaccination>
+          <div class="flex align-center justify-center border-right w100 bgWhite border-bottom">
+            <div>非免</div>
+            <div>疫规</div>
+            <div>划预</div>
+            <div>防接</div>
+            <div>种史</div>
+          </div>
+          <div class="container border-bottom bgWhite" data-norequired="healthNovaccination" data-belong="PhealthNovaccination">
+            <div class="item clearfix">
+              <div class="pull-left">名称</div>
+              <div class="pull-right">{{= it.healthNovaccinationName}}</div>
+            </div>
+            <div class="item clearfix">
+              <div class="pull-left">接种日期</div>
+              <div class="pull-right">{{= it.Util.formatDate(it.healthNovaccinationDate)}}</div>
+            </div>
+            <div class="item clearfix">
+              <div class="pull-left">接种机构</div>
+              <div class="pull-right">{{= it.healthNovaccinationOrg}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {{?}}
+
+
   {{?}}
 
   <!--<div class="container">-->

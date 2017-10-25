@@ -1,0 +1,7 @@
+html,body{margin:0;padding:0;}
+.data-search{padding:10px;}
+#data-table td{text-align:center;}
+#data-table tbody tr:nth-child(odd){background-color:#f9f9f9;}
+#data-table tbody tr:nth-child(even){background-color:#fff;}
+#data-table tbody tr:last-child td{border-bottom:1px solid #111;}
+.pagenation{margin-top:10px;}

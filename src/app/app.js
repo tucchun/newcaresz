@@ -52,14 +52,14 @@ common.settings = {
   //440: 'healthChecklistExt',                     //体检扩展表
   450: 'pregnantWomen', //孕产妇结题
   460: 'archives', //添加历史&院外档案
-  500: 'healthAdvice' //健康建议
+  500: 'viewHealthAdvice' //健康建议
 };
 
 if (Util.demo) {
   paramObj = {
     'doc_id': 1,
     'user_id_doc': 2026,
-    'doc_type': 30
+    'doc_type': 200
   };
 }
 
@@ -74,7 +74,7 @@ function norequired($this, $html) {
       $this.remove();
     }
     let $parent_level2 = $html.find('[data-' + $this.data('belong') + ']');
-    if ($parent_level2.children(':last').children().size() === 0) {
+    if ($parent_level2.children(':last').children().size() == 0) {
       $parent_level2.remove();
     }
   } else {
@@ -95,7 +95,7 @@ function norequired($this, $html) {
   }
 
   let $parent_level1 = $html.find('[data-' + $parent_level2.data('belong') + ']');
-  if ($parent_level1.children(':last').children().size() === 0) {
+  if ($parent_level1.children(':last').children().size() == 0) {
     $parent_level1.remove();
   }
 
@@ -120,6 +120,18 @@ common.render = function(templateUrl, data, tab) {
       let html = template(data);
       let $html = $(html);
 
+      if (paramObj['doc_type'] == 190) {
+        var $tabCnts = $html.find(".js-tab-content"),
+          $tabs = $html.find(".js-tab-btn");
+        $tabs.on("touchend", function() {
+          $tabs.removeClass("primary-color").addClass("secondary-color");
+          $(this).removeClass("secondary-color").addClass("primary-color");
+          var target = $(this).data("target");
+          $tabCnts.addClass("hide");
+          $("#" + target).removeClass("hide");
+        });
+      }
+
       if (paramObj['doc_type'] == 220) {
         let $useMedicationList = $html.find('.js-useMedicationList');
         let $insulin = $useMedicationList.find('[data-flag]');
@@ -132,6 +144,21 @@ common.render = function(templateUrl, data, tab) {
           norequired($(this), $html);
         });
       }
+
+      if (paramObj['doc_type'] == 190 || paramObj['doc_type'] == 200) {
+        var $tabCnts = $html.find(".js-tab-content"),
+          $tabs = $html.find(".js-tab-btn");
+
+        $tabs.on("touchend", function(e) {
+          $tabs.removeClass("primary-color").addClass("secondary-color");
+          $(this).removeClass("secondary-color").addClass("primary-color");
+          var target = $(this).data("target");
+          $tabCnts.addClass("hide");
+          $html.find("#" + target).removeClass("hide");
+        });
+      }
+
+      $container.append($html);
 
       if (paramObj['doc_type'] == 450 || paramObj['doc_type'] == 460 || paramObj['doc_type'] == 40 || paramObj['doc_type'] == 50 || paramObj['doc_type'] == 60 || paramObj['doc_type'] == 70) {
         let dom_imgArr = $html.find('.js-img');
@@ -178,21 +205,6 @@ common.render = function(templateUrl, data, tab) {
         }
 
       }
-
-      if (paramObj['doc_type'] == 190 || paramObj['doc_type'] == 200) {
-        var $tabCnts = $html.find(".js-tab-content"),
-          $tabs = $html.find(".js-tab-btn");
-
-        $tabs.on("touchend", function(e) {
-          $tabs.removeClass("primary-color").addClass("secondary-color");
-          $(this).removeClass("secondary-color").addClass("primary-color");
-          var target = $(this).data("target");
-          $tabCnts.addClass("hide");
-          $html.find("#" + target).removeClass("hide");
-        });
-      }
-
-      $container.append($html);
     },
     error: function(err, errorType, msg) {
       console.log('当前网络不可用，请检查你的网络设置！' + msg);
@@ -200,9 +212,12 @@ common.render = function(templateUrl, data, tab) {
     }
   });
 };
-
-// 男童生长发育检测图 || 女童生长发育监测图
-if (paramObj["doc_type"] == 170 || paramObj["doc_type"] == 160) {
+// 老年人检查
+if (paramObj['doc_type'] == '501') {
+  location.href = '../../src/questionnaire/appViewHealthManagementForTheElderly.html?doc_id=' + paramObj['doc_id'] + '&user_id_doc=' + paramObj['user_id_doc'] + '&doc_type=' + paramObj['doc_type'];
+} else if (paramObj['doc_type'] == '502') {
+  location.href = '../../src/questionnaire/appViewElderlyLivingAbility.html?doc_id=' + paramObj['doc_id'] + '&user_id_doc=' + paramObj['user_id_doc'] + '&doc_type=' + paramObj['doc_type'];
+} else if (paramObj["doc_type"] == 170 || paramObj["doc_type"] == 160) { // 男童生长发育检测图 || 女童生长发育监测图
   let template = "../../src/web/template/" + common.settings[paramObj.doc_type] + ".template";
   common.render(template, {});
 } else {
@@ -218,7 +233,7 @@ if (paramObj["doc_type"] == 170 || paramObj["doc_type"] == 160) {
     success: function(data) {
       //            common.hideLoad();
       data = data || {};
-      if (data.ret_code === 1) {
+      if (data.ret_code == 1) {
         let template = '../../src/app/template/' + common.settings[paramObj.doc_type] + '.template';
         let templateData = data.ret_data;
         /*          if (templateData.imageUrlList && templateData.imageUrlList.length > 0) {

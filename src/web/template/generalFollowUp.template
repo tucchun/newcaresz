@@ -23,29 +23,33 @@
       </td>
     </tr>
     <tr>
-      <td class="label text-right bgColor">体质指数（BMI）（Kg/m²）</td>
+      <td class="label text-right bgColor">体质指数（BMI）</td>
       <td class="text-left">
        {{= (Number(it.residentBmi) || 0).toFixed(2)}}
       </td>
       <td class="label text-right bgColor">体温（°C）</td>
       <td class="text-left">
-        {{= it.residentTemperature}}
+        {{= it.residentTemperature || '未测量'}}
       </td>
     </tr>
     <tr>
       <td class="label text-right bgColor">血压（mmHg）</td>
       <td class="text-left">
-        {{= it.residentBloodPressureLow}}/{{= it.residentBloodPressureHeight}}
+        {{? it.residentBloodPressureLow || it.residentBloodPressureHeight}}
+        {{= it.residentBloodPressureLow }}/{{= it.residentBloodPressureHeight}}
+        {{??}}
+        未测量
+        {{?}}
       </td>
       <td class="label text-right bgColor">脉搏（bpm）</td>
       <td class="text-left">
-        {{= it.residentPulse}}
+        {{= it.residentPulse || '未测量'}}
       </td>
     </tr>
     <tr>
       <td class="label text-right bgColor">血糖（mmol/L）</td>
       <td class="text-left" colspan="3">
-        {{= it.residentBloodSugar}}
+        {{= it.residentBloodSugar || '未测量'}}
       </td>
     </tr>
     </tbody>

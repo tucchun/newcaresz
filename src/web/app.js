@@ -8,7 +8,6 @@ import '../../node_modules/viewerjs/dist/viewer.min.css';
 import '../../assets/css/flex.css';
 import './css/style.css';
 
-
 let common = {};
 let container = $("#container");
 let pattern = "noused";
@@ -54,9 +53,8 @@ common.settings = {
   //440: "healthChecklistExt",                     //体检扩展表
   450: "pregnantWomen", //孕产妇结题
   460: "archives", //添加历史&院外档案
-  500: "healthAdvice" //健康建议
+  500: "viewHealthAdvice" //健康建议
 };
-
 
 // console.log(paramObj);
 
@@ -87,8 +85,6 @@ function getModifyCollection(flag, $html) {
   return $norequiredList;
 }
 
-
-
 // 处理行
 function modifyCol($norequiredList) {
   $norequiredList.each(function(index) {
@@ -113,8 +109,6 @@ function modifyCol($norequiredList) {
     }
   });
 }
-
-
 
 // 整理数据
 function doArrange($norequiredList, $html) {
@@ -152,15 +146,15 @@ function doArrange($norequiredList, $html) {
         break;
       }
       $next = $next.next();
-      if ($next.index() < 0) break;
-    }
+      if ($next.index() < 0)
+        break;
+      }
     $enableList = $norequiredList.filter(":not([" + pattern + "])");
     if ($enableList.size() == 1 && !$.trim($enableList.eq(0).children(":last").html())) {
       $enableList.eq(0).hide();
       $enableList.eq(0).attr(pattern, pattern);
     }
   }
-
 
   $enableList = $list.filter(":not([" + pattern + "])");
   let enableSize = $enableList.size();
@@ -170,7 +164,6 @@ function doArrange($norequiredList, $html) {
     $enableList.eq(0).attr(pattern, pattern);
   }
 }
-
 
 function norequired($norequired, $html) {
   let $this = $norequired;
@@ -186,7 +179,10 @@ common.render = function(templateUrl, data) {
     url: templateUrl,
     dataType: "text",
     success: function(response) {
-      $.extend(data, { Util: Util, _: _ });
+      $.extend(data, {
+        Util: Util,
+        _: _
+      });
       let template = {};
       if (paramObj["doc_type"] == 20 || paramObj["doc_type"] == 180) {
         template = _.template(response);
@@ -202,7 +198,7 @@ common.render = function(templateUrl, data) {
         let $insulin = $useMedicationList.filter("[data-flag]");
         let temp = {
           name: $insulin.find(".js-useMedicationList-medDrugName").html(),
-          value: $insulin.find(".js-useMedicationList-medConsumption").html(),
+          value: $insulin.find(".js-useMedicationList-medConsumption").html()
         };
         $insulin.find(".js-useMedicationList-medDrugName").html($useMedicationList.last().find(".js-useMedicationList-medDrugName").html());
         $insulin.find(".js-useMedicationList-medConsumption").html($useMedicationList.last().find(".js-useMedicationList-medConsumption").html());
@@ -225,6 +221,16 @@ common.render = function(templateUrl, data) {
         }
 
       }
+
+      if (paramObj['doc_type'] == 10) {
+        $html.find("#js-residentHealthCover-next").on("touchend", function(e) {
+          console.log("居民健康档案onNext");
+          Util.onNext();
+        });
+      }
+
+      container.append($html);
+
       // 预览图片
       if (paramObj['doc_type'] == 450 || paramObj['doc_type'] == 460 || paramObj['doc_type'] == 40 || paramObj['doc_type'] == 50 || paramObj['doc_type'] == 60 || paramObj['doc_type'] == 70) {
         let dom_imgArr = $html.find('.js-img');
@@ -269,16 +275,7 @@ common.render = function(templateUrl, data) {
           // });
         }
 
-
       }
-      if(paramObj['doc_type'] == 10){
-        $html.find("#js-residentHealthCover-next").on("touchend", function(e){
-          console.log("居民健康档案onNext");
-          Util.onNext();
-        });
-      }
-
-      container.append($html);
     },
     error: function(err, errorType, msg) {
       // console.log("获取页面失败；" + msg);
@@ -287,19 +284,15 @@ common.render = function(templateUrl, data) {
   });
 }
 
-
-
-
-
-
-
-
 if (paramObj.isShowNext) {
   isShowNext = paramObj.isShowNext;
 }
-
-// 男童生长发育检测图 || 女童生长发育监测图
-if (paramObj["doc_type"] == 170 || paramObj["doc_type"] == 160) {
+// 老年人检查
+if (paramObj['doc_type'] == '501') {
+  location.href = '../../src/questionnaire/viewHealthManagementForTheElderly.html?doc_id=' + paramObj['doc_id'] + '&user_id_doc=' + paramObj['user_id_doc'] + '&doc_type=' + paramObj['doc_type'];
+} else if (paramObj['doc_type'] == '502') {
+  location.href = '../../src/questionnaire/viewElderlyLivingAbility.html?doc_id=' + paramObj['doc_id'] + '&user_id_doc=' + paramObj['user_id_doc'] + '&doc_type=' + paramObj['doc_type'];
+} else if (paramObj["doc_type"] == 170 || paramObj["doc_type"] == 160) { // 男童生长发育检测图 || 女童生长发育监测图
   let template = "../../src/web/template/" + common.settings[paramObj.doc_type] + ".template";
   common.render(template, {});
 } else {
@@ -311,10 +304,7 @@ if (paramObj["doc_type"] == 170 || paramObj["doc_type"] == 160) {
     url: Util.host + '/hca/web/inhabitant/getdoc',
     demoUrl: "../../assets/rss/" + common.settings[paramObj.doc_type] + ".json",
     data: JSON.stringify({
-      "doc_id": paramObj['doc_id'],
-      "user_id_doc": paramObj['user_id_doc'],
-      "doc_type": paramObj['doc_type'],
-      "src_type": src_type, //请求源的类型，如"HECadre APP"、"Inhabitant APP"等
+      "doc_id": paramObj['doc_id'], "user_id_doc": paramObj['user_id_doc'], "doc_type": paramObj['doc_type'], "src_type": src_type, //请求源的类型，如"HECadre APP"、"Inhabitant APP"等
       "pf_type": Util.pf_type, //请求源的终端平台类型，如"Android"、"iOS"、"Web"等
       "user_id": Util.userId || paramObj['user_id'], //用户ID，u64
       "auth_str": Util.getCommunicationAuth() || paramObj['authStr'] //通信认证密文串

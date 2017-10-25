@@ -1,0 +1,25 @@
+<div class="container" id="js-items">
+    <table class="tb tb-auto tb-border">
+        <thead>
+          <th colspan="4" class="bgColor text-left">
+            健康建议
+          </th>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="label text-right bgColor w200">医生:</td>
+            <td class="text-left w630" id="doctor">{{=it.createByName}}</td>
+            <td class="label text-right bgColor w200">创建时间:</td>
+            <td class="text-left w630" id="create-date">{{=it.Util.formatDate(it.createDate)}}</td>
+          </tr>
+          <tr>
+            <td class="label text-right bgColor">随访记录:</td>
+            <td class="text-left" colspan="3" id="record">{{=it.healthDescription}}</td>
+          </tr>
+          <tr>
+            <td class="label text-right bgColor">健康建议:</td>
+            <td class="text-left" colspan="3" id="advice">{{=it.doctorAdvice}}</td>
+          </tr>
+        </tbody>
+      </table>
+  </div>

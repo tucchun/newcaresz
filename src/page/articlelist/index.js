@@ -2,6 +2,7 @@ import Articles from '../../components/article/articles';
 import React from 'react';
 import ReactDom from 'react-dom';
 import Util from '../../../assets/js/Util';
+import $ from 'jquery';
 
 class Index extends React.Component {
   constructor(props) {
@@ -12,6 +13,7 @@ class Index extends React.Component {
       categoriesData: [],
       active: ''
     };
+    this.cache = {};
     console.log("constructor");
   }
 
@@ -29,18 +31,12 @@ class Index extends React.Component {
   }
 
   componentDidMount() {
-    this.fetchArticleData().then(data => {
-      this.setState({articleData: data});
-    }).catch(function(err) {
-      Util.alert(err);
-    });
-
-    this.fetchCategoriesData().then(data => {
-      data.splice(0, 0, {
+    Promise.all([this.fetchArticleData(), this.fetchCategoriesData()]).then(([ArticleData, CategoriesData]) => {
+      CategoriesData.splice(0, 0, {
         lookup_code: '',
         lookup_value: '全部'
       });
-      this.setState({categoriesData: data});
+      this.setState({articleData: ArticleData, categoriesData: CategoriesData});
     }).catch(function(err) {
       Util.alert(err);
     });

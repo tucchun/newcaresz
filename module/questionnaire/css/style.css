@@ -200,9 +200,14 @@ dd {
   position: absolute;
   top: 50%;
   left: 50%;
-  margin-left: -3.65rem;
-  margin-top: -5.28rem;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
   z-index: 11;
+}
+
+.module-content.content {
+  height: 4.12rem;
 }
 
 .module-bdground {
@@ -218,11 +223,19 @@ dd {
   font-size: .52rem;
   /*font-weight: 600;*/
   text-align: center;
-  padding: .44rem 0 0 0;
+  padding: .5rem 0 0 0;
+}
+.module-content-title.btn-wrap {
+  padding-top: .8rem;
 }
 
 .module-content-inner {
   padding: 0 .96rem;
+}
+.module-content-inner.content-inner {
+  text-align: center;
+  color: #00a0e9;
+  padding-top: .25rem;
 }
 
 .module-content-item {

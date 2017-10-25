@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>老年人中医药健康管理服务记录表</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <script type="text/javascript" src="../../static/assets/adaptive/adaptive-version2.js"></script>
+  <script>
+    // 设计图宽度
+    window['adaptive'].desinWidth = 750;
+    // body 字体大小 会将body字体大小设置为 baseFont / 100 + 'rem'
+    window['adaptive'].baseFont = 28;
+    window['adaptive'].maxWidth = 750;
+    window['adaptive'].init();
+  </script>
+  <!-- <link rel="stylesheet" href="./css/style.css"> -->
+  <link rel="stylesheet" href="../app/css/dist.css">
+</head>
+
+<body style="display:none;" id="body">
+    <div class="container wrap" id="js-items">
+        <div class="item">
+            <p class="question">
+                <span>1、您精力充沛吗?(指精神头足，乐于做事)</span>
+            </p>
+            <p class="text-right">
+                <span class="result"></span>
+            </p>
+        </div>
+        <div class="item">
+            <p class="question">
+                <span>2、您容易疲乏吗？(指体力如何，是否稍微活动一下或做一点家务劳动就感到累)</span>
+            </p>
+            <p class="text-right">
+                <span class="result"></span>
+            </p>
+        </div>
+        <div class="item">
+            <p class="question">
+                <span>3、您容易气短,呼吸急促,接不上气吗?</span>
+            </p>
+            <p class="text-right">
+                <span class="result"></span>
+            </p>
+        </div>
+        <div class="item">
+            <p class="question">
+                <span>4、您说话声音低弱无力吗?(指说话没有力气)</span>
+            </p>
+            <p class="text-right">
+                <span class="result"></span>
+            </p>
+        </div>
+        <div class="item">
+            <p class="question">
+                <span>5、您感到闷闷不乐,绪低沉吗?(指心情不愉快，情绪低落)</span>
+            </p>
+            <p class="text-right">
+                <span class="result"></span>
+            </p>
+        </div>
+        <div class="item">
+            <p class="question">
+                <span>6、您容易精神紧张,焦虑不安吗?(指遇事是否心情紧张)</span>
+            </p>
+            <p class="text-right">
+                <span class="result"></span>
+            </p>
+        </div>
+        <div class="item">
+            <p class="question">
+                <span>7、您因为生活状态改变而感到孤独,失落吗?</span>
+            </p>
+            <p class="text-right">
+                <span class="result"></span>
+            </p>
+        </div>
+        <div class="item">
+            <p class="question">
+                <span>8、您容易感到害怕或受到惊吓吗?</span>
+            </p>
+            <p class="text-right">
+                <span class="result"></span>
+            </p>
+        </div>
+        <div class="item">
+            <p class="question">
+                <span>9、您感到身体超重不轻松吗?(感觉身体沉重)[BMI指数=体重(kg)/身高²(m)]</span>
+            </p>
+            <p class="text-right">
+                <span class="result"></span>
+            </p>
+        </div>
+        <div class="item">
+            <p class="question">
+                <span>10、您眼睛干涩吗?</span>
+            </p>
+            <p class="text-right">
+                <span class="result"></span>
+            </p>
+        </div>
+        <div class="item">
+            <p class="question">
+                <span>11、您手脚发凉吗?(不包含因周围温度低或穿的少导致的手脚发冷)</span>
+            </p>
+            <p class="text-right">
+                <span class="result"></span>
+            </p>
+        </div>
+        <div class="item">
+            <p class="question">
+                <span>12、您胃脘部,背部或腰膝怕冷吗?(指上腹、背部、腰部或膝关节等,有一处或多处怕冷)</span>
+            </p>
+            <p class="text-right">
+                <span class="result"></span>
+            </p>
+        </div>
+        <div class="item">
+            <p class="question">
+                <span>13、您比一般人耐受不了寒冷吗?(指比别人容易害怕冬天或是夏天的冷空调、电扇等)</span>
+            </p>
+            <p class="text-right">
+                <span class="result"></span>
+            </p>
+        </div>
+        <div class="item">
+            <p class="question">
+                <span>14、您容易患感冒吗?(指每年感冒的次数)</span>
+            </p>
+            <p class="text-right">
+                <span class="result"></span>
+            </p>
+        </div>
+        <div class="item">
+            <p class="question">
+                <span>15、您没有感冒时也会鼻塞、流鼻涕吗?</span>
+            </p>
+            <p class="text-right">
+                <span class="result"></span>
+            </p>
+        </div>
+        <div class="item">
+            <p class="question">
+                <span>16、您有口粘口腻,或睡眠打鼾吗?</span>
+            </p>
+            <p class="text-right">
+                <span class="result"></span>
+            </p>
+        </div>
+        <div class="item">
+            <p class="question">
+                <span>17、您容易过敏吗?(对药物、食物、气味、花粉或在季节交替、气候变化时)</span>
+            </p>
+            <p class="text-right">
+                <span class="result"></span>
+            </p>
+        </div>
+        <div class="item">
+            <p class="question">
+                <span>18、您的皮肤容易起荨麻疹吗?(包括风团、风疹块、风疙瘩)</span>
+            </p>
+            <p class="text-right">
+                <span class="result"></span>
+            </p>
+        </div>
+        <div class="item">
+            <p class="question">
+                <span>19、您的皮肤在不知不觉中会出现青紫瘀斑、皮下出血吗?(指皮肤在没有外伤的情况下出现青一块紫一块的情况)</span>
+            </p>
+            <p class="text-right">
+                <span class="result"></span>
+            </p>
+        </div>
+        <div class="item">
+            <p class="question">
+                <span>20、您的皮肤一抓就红，并出现抓痕吗?(指被指甲或钝物划过后皮肤的反应)</span>
+            </p>
+            <p class="text-right">
+                <span class="result"></span>
+            </p>
+        </div>
+        <div class="item">
+            <p class="question">
+                <span>21、您皮肤或口唇干吗?</span>
+            </p>
+            <p class="text-right">
+                <span class="result"></span>
+            </p>
+        </div>
+        <div class="item">
+            <p class="question">
+                <span>22、您有肢体麻木或固定部位疼痛的感觉吗?</span>
+            </p>
+            <p class="text-right">
+                <span class="result"></span>
+            </p>
+        </div>
+        <div class="item">
+            <p class="question">
+                <span>23、您面部或鼻部有油腻感或者油亮发光吗?(指脸上或鼻子)</span>
+            </p>
+            <p class="text-right">
+                <span class="result"></span>
+            </p>
+        </div>
+        <div class="item">
+            <p class="question">
+                <span>24、您面色或目眶晦黯，或出现褐色斑块/斑点吗?</span>
+            </p>
+            <p class="text-right">
+                <span class="result"></span>
+            </p>
+        </div>
+        <div class="item">
+            <p class="question">
+                <span>25、您有皮肤湿疹、疮疖吗?</span>
+            </p>
+            <p class="text-right">
+                <span class="result"></span>
+            </p>
+        </div>
+        <div class="item">
+            <p class="question">
+                <span>26、您感到口干咽燥、总想喝水吗?</span>
+            </p>
+            <p class="text-right">
+                <span class="result"></span>
+            </p>
+        </div>
+        <div class="item">
+            <p class="question">
+                <span>27、您感到口苦或嘴里有异味吗?(指口苦或口臭)</span>
+            </p>
+            <p class="text-right">
+                <span class="result"></span>
+            </p>
+        </div>
+        <div class="item">
+            <p class="question">
+                <span>28、您腹部肥大吗?(指腹部脂肪肥厚)</span>
+            </p>
+            <p class="text-right">
+                <span class="result"></span>
+            </p>
+        </div>
+        <div class="item">
+            <p class="question">
+                <span>29、您吃(喝)凉的东西会感到不舒服或者怕吃(喝)凉的东西吗?(指不喜欢吃凉的食物，或吃了凉的食物后会不舒服)</span>
+            </p>
+            <p class="text-right">
+                <span class="result"></span>
+            </p>
+        </div>
+        <div class="item">
+            <p class="question">
+                <span>30、您有大便黏滞不爽、解不尽的感觉吗?(大便容易粘在马桶或便坑壁上)</span>
+            </p>
+            <p class="text-right">
+                <span class="result"></span>
+            </p>
+        </div>
+        <div class="item">
+            <p class="question">
+                <span>31、您容易大便干燥吗?</span>
+            </p>
+            <p class="text-right">
+                <span class="result"></span>
+            </p>
+        </div>
+        <div class="item">
+            <p class="question">
+                <span>32、您舌苔厚腻或有舌苔厚厚的感觉吗?(如果自我感觉不清楚可由调查员观察后填写)</span>
+            </p>
+            <p class="text-right">
+                <span class="result"></span>
+            </p>
+        </div>
+        <div class="item">
+            <p class="question">
+                <span>33、您舌下静脉瘀紫或增粗吗?(可由调查员辅助观察后填写)</span>
+            </p>
+            <p class="text-right">
+                <span class="result"></span>
+            </p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="item bgColor">
+            <div class="sub-title">辨识结果</div>
+        </div>
+    </div>
+    <div class="container wrap" id="js-score">
+        <div class="item clearfix">
+            <p class="pull-left"><span>和平质</span></p>
+            <p class="pull-right"><span class="tcm-des"></span>（得分：<span class="tcm-score"></span>分）</p>
+        </div>
+        <div class="item clearfix">
+            <p class="pull-left"><span>阳虚质</span></p>
+            <p class="pull-right"><span class="tcm-des"></span>（得分：<span class="tcm-score"></span>分）</p>
+        </div>
+        <div class="item clearfix">
+            <p class="pull-left"><span>气虚质</span></p>
+            <p class="pull-right"><span class="tcm-des"></span>（得分：<span class="tcm-score"></span>分）</p>
+        </div>
+        <div class="item clearfix">
+            <p class="pull-left"><span>阴虚质</span></p>
+            <p class="pull-right"><span class="tcm-des"></span>（得分：<span class="tcm-score"></span>分）</p>
+        </div>
+        <div class="item clearfix">
+            <p class="pull-left"><span>痰热质</span></p>
+            <p class="pull-right"><span class="tcm-des"></span>（得分：<span class="tcm-score"></span>分）</p>
+        </div>
+        <div class="item clearfix">
+            <p class="pull-left"><span>湿热质</span></p>
+            <p class="pull-right"><span class="tcm-des"></span>（得分：<span class="tcm-score"></span>分）</p>
+        </div>
+        <div class="item clearfix">
+            <p class="pull-left"><span>血瘀质</span></p>
+            <p class="pull-right"><span class="tcm-des"></span>（得分：<span class="tcm-score"></span>分）</p>
+        </div>
+        <div class="item clearfix">
+            <p class="pull-left"><span>气郁质</span></p>
+            <p class="pull-right"><span class="tcm-des"></span>（得分：<span class="tcm-score"></span>分）</p>
+        </div>
+        <div class="item clearfix">
+            <p class="pull-left"><span>特秉质</span></p>
+            <p class="pull-right"><span class="tcm-des"></span>（得分：<span class="tcm-score"></span>分）</p>
+        </div>
+    </div>
+  <script src="../../static/assets/jquery/jquery-1.9.1.min.js"></script>
+  <script src="../../static/js/Util.js"></script>
+  <script src="../../static/assets/doT-master/doT.min.js"></script>
+  <script>
+
+    window.onload = function () {
+        var params = Util.param(location.href);
+
+        // $("#js-tool").on("touchend", function() {
+        //   var $win = $(window);
+        //   $win.scrollTop($(document).height());
+        // })
+
+
+        var src_type = "HECadre APP";
+        if (params['src_type'] == 'DOCTOR') {
+        src_type = 'Web Admin';
+        }
+
+        Util.fetch({
+        url: Util.host + '/hca/web/inhabitant/getdoc',
+        demoUrl: "../../assets/rss/viewHealthManagementForTheElderly.json",
+        data: JSON.stringify({
+            "doc_id": params['doc_id'],
+            "user_id_doc": params['user_id_doc'],
+            "doc_type": 501,
+            "src_type": "Inhabitant APP", //请求源的类型，如"HECadre APP"、"Inhabitant APP"等
+            "pf_type": Util.pf_type, //请求源的终端平台类型，如"Android"、"iOS"、"Web"等
+            "user_id": Util.userId || params['user_id'], //用户ID，u64
+            "auth_str": Util.getCommunicationAuth() || params['authStr'] //通信认证密文串
+        }),
+        success: function(data) {
+            if (data.ret_code === 1) {
+            var items = $("#js-items .item");
+            var itemsresultArr = ['没有(根本不/从来没有)', '很少(有一点/偶尔)', '有时(有些/少数时间)', '经常(相当/多数时间)', '总是(非常/每天)'];
+            
+            var itemsData = data.ret_data.items;
+            for (var i=0; i<items.length; i++) {
+                switch (itemsData['tcm_item'+(i+1)]){
+                case 1:
+                    items.eq(i).find('.result').text(itemsresultArr[0]);
+                    break;
+                case 2:
+                    items.eq(i).find('.result').text(itemsresultArr[1]);
+                    break;
+                case 3:
+                    items.eq(i).find('.result').text(itemsresultArr[2]);
+                    break;
+                case 4:
+                    items.eq(i).find('.result').text(itemsresultArr[3]);
+                    break;
+                case 5:
+                    items.eq(i).find('.result').text(itemsresultArr[4]);
+                    break;
+                default:
+                items.eq(i).find('.result').text(itemsresultArr[0]);
+                }
+            }
+
+            showScore(data.ret_data.score)
+
+            } else {
+            Util.alert(data.ret_msg || "查询信息错误！");
+            console.log(data.ret_msg || "查询信息错误！");
+            }
+        },
+        function(err) {
+            Util.alert("当前网络不可用，请检查你的网络设置！");
+            console.log(err);
+        }
+        });
+
+      $('#body').show();
+    }
+
+    function showScore (score) {
+      var scoreItems = $("#js-score .item");
+      scoreItems.eq(0).find('.tcm-des').text(score.tcmPeaceDes);
+      scoreItems.eq(0).find('.tcm-score').text(score.tcmPeaceScore);
+
+      scoreItems.eq(1).find('.tcm-des').text(score.tcmYangDes);
+      scoreItems.eq(1).find('.tcm-score').text(score.tcmYangScore);
+
+      scoreItems.eq(2).find('.tcm-des').text(score.tcmDeficiencyDes);
+      scoreItems.eq(2).find('.tcm-score').text(score.tcmDeficiencyScore);
+
+      scoreItems.eq(3).find('.tcm-des').text(score.tcmYinDes);
+      scoreItems.eq(3).find('.tcm-score').text(score.tcmYinScore);
+
+      scoreItems.eq(4).find('.tcm-des').text(score.tcmPhlegmDes);
+      scoreItems.eq(4).find('.tcm-score').text(score.tcmPhlegmScore);
+
+      scoreItems.eq(5).find('.tcm-des').text(score.tcmDampDes);
+      scoreItems.eq(5).find('.tcm-score').text(score.tcmDampScore);
+
+      scoreItems.eq(6).find('.tcm-des').text(score.tcmBloodDes);
+      scoreItems.eq(6).find('.tcm-score').text(score.tcmBloodScore);
+
+      scoreItems.eq(7).find('.tcm-des').text(score.tcmStagnationDes);
+      scoreItems.eq(7).find('.tcm-score').text(score.tcmStagnationScore);
+
+      scoreItems.eq(8).find('.tcm-des').text(score.tcmSpecialDes);
+      scoreItems.eq(8).find('.tcm-score').text(score.tcmSpecialScore);
+    }
+  </script>
+</body>
+
+</html>

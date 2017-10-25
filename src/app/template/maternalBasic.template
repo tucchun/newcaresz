@@ -12,7 +12,7 @@
     <div class="pull-right">{{= it.pregCountry}}</div>
   </div>
   <div class="item clearfix">
-    <div class="pull-left">身份民（护照）号</div>
+    <div class="pull-left">身份证（护照）号</div>
     <div class="pull-right">{{= it.residentCard}}</div>
   </div>
   <div class="item clearfix">

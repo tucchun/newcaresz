@@ -1,0 +1,21 @@
+{
+  "ret_code": 1,
+  "ret_data": {
+    "selfId": 6,
+    "actId": 0,
+    "docType": null,
+    "docId": null,
+    "userId": 8000000051,
+    "selfMeal": 0,
+    "selfFreshen": 3,
+    "selfDressing": 0,
+    "selfToilet": 1,
+    "selfActivity": 0,
+    "selfTotal": 4,
+    "selfResult": "2",
+    "selfDate": 1507876728795,
+    "createBy": null,
+    "residentName": "刘玉合",
+    "residentNo": "44030500100100030"
+  }
+}

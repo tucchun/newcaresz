@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>健康建议</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <script type="text/javascript" src="../../static/assets/adaptive/adaptive.js"></script>
+  <script>
+    // 设计图宽度
+    window['adaptive'].desinWidth = 1920;
+    // body 字体大小 会将body字体大小设置为 baseFont / 100 + 'rem'
+    window['adaptive'].baseFont = 30;
+    window['adaptive'].maxWidth = 1920;
+    window['adaptive'].init();
+  </script>
+  <link rel="stylesheet" href="./css/style.css?v=1.0.8">
+  <style>
+    body {
+        background-color: #f7f7f7;
+    }
+    .container {
+        margin-top: 1rem;
+    }
+    table {
+        border-collapse: collapse;
+    }
+    table .text-left {
+        text-align: left;
+    }
+    table .text-right {
+        text-align: right;
+    }
+    table.tb td, table.tb th {
+        padding: 10px 15px;
+        line-height: 2;
+    }
+    td.w200 {
+        width: 20%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container" id="js-items">
+    <table class="tb tb-auto tb-border">
+        <thead>
+          <th colspan="4" class="bgColor text-left">
+            健康建议
+          </th>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="label text-right bgColor w200">医生:</td>
+            <td class="text-left w630" id="doctor"></td>
+            <td class="label text-right bgColor w200">创建时间:</td>
+            <td class="text-left w630" id="create-date"></td>
+          </tr>
+          <tr>
+            <td class="label text-right bgColor">随访记录:</td>
+            <td class="text-left" colspan="3" id="record"></td>
+          </tr>
+          <tr>
+            <td class="label text-right bgColor">健康建议:</td>
+            <td class="text-left" colspan="3" id="advice"></td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+  <script src="../../static/assets/jquery/jquery-1.9.1.min.js"></script>
+  <script src="../../static/js/Util.js"></script>
+  <script src="../../static/js/jquery.validate.js"></script>
+  <script src="../../static/js/messages_zh.js"></script>
+  <script>
+    var params = Util.param(location.href);
+
+    var src_type = "HECadre APP";
+    if (params['src_type'] == 'DOCTOR') {
+      src_type = 'Web Admin';
+    }
+
+    Util.fetch({
+      url: Util.host + '/hca/web/inhabitant/getdoc',
+      demoUrl: "../../assets/rss/viewHealthAdvice.json",
+      data: JSON.stringify({
+        "doc_id": params['doc_id'],
+        "user_id_doc": params['user_id_doc'],
+        "doc_type": 500,
+        "src_type": src_type, //请求源的类型，如"HECadre APP"、"Inhabitant APP"等
+        "pf_type": Util.pf_type, //请求源的终端平台类型，如"Android"、"iOS"、"Web"等
+        "user_id": Util.userId || params['user_id'], //用户ID，u64
+        "auth_str": Util.getCommunicationAuth() || params['authStr'] //通信认证密文串
+      }),
+      success: function(data) {
+        if (data.ret_code === 1) {
+          //var items = $("#js-items .js-item");
+      
+          var retData = data.ret_data;
+          $('#doctor').text(retData.createByName);
+          $('#create-date').text(retData.createDate);
+          $('#record').text(retData.healthDescription);
+          $('#advice').text(retData.doctorAdvice);
+
+        } else {
+          Util.alert(data.ret_msg || "查询信息错误！");
+          console.log(data.ret_msg || "查询信息错误！");
+        }
+      },
+      function(err) {
+        Util.alert("当前网络不可用，请检查你的网络设置！");
+        console.log(err);
+      }
+    });
+
+    function result(code){
+
+    }
+  </script>
+</body>
+
+</html>

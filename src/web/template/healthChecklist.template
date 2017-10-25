@@ -47,8 +47,23 @@
       <tr>
         <td colspan="2" class="label text-right bgColor">血压</td>
         <td class="text-left">
-          <div>左侧:{{= it.examLeftBloodLow}}/{{= it.examLeftBloodHigh}}mmHg</div>
-          <div>右侧:{{= it.examRightBloodLow}}/{{= it.examRightBloodHigh}}mmHg</div>
+          <div>
+            左侧:
+            {{? it.examLeftBloodLow || it.examLeftBloodHigh}}
+              {{= it.examLeftBloodLow}}/{{= it.examLeftBloodHigh}}mmHg
+            {{??}}
+              未测量
+            {{?}}
+
+          </div>
+          <div>
+            右侧:
+            {{? it.examRightBloodLow || it.examRightBloodHigh}}
+              {{= it.examRightBloodLow}}/{{= it.examRightBloodHigh}}mmHg
+            {{??}}
+              未测量
+            {{?}}
+          </div>
         </td>
       </tr>
       <tr>
@@ -65,7 +80,7 @@
       </tr>
       <tr>
         <td colspan="2" class="label text-right bgColor">体质指数（BMI ）</td>
-        <td class="text-left">{{= (Number(it.examBmi) || 0).toFixed(2)}}Kg/m2</td>
+        <td class="text-left">{{= (Number(it.examBmi) || 0).toFixed(2)}}</td>
       </tr>
       <tr data-examHealthStatusDes>
         <td colspan="2" class="label text-right bgColor" data-norequired="examHealthStatusDes" data-belong="examOlderHealth">老年人健康状态自我评估*</td>
@@ -84,7 +99,7 @@
         <td class="text-left">{{= it.elderEmotionDes}}</td>
       </tr>
       {{? it.examExerciseFrequency != 4}}
-      <tr>
+      <tr data-lifestyle>
         <td rowspan="{{= 8 + (it.careerDisease.careerFlag === 1 ? it.careerDisease.protectMeasures.length : 0) + (it.examSmokingStatus == 3 ? 3: 0) + (it.examDrinkingFrequency != 1 ? 5: 0) }}" class="label text-center bgColor">生活方式</td>
         <td rowspan="4" class="label text-center bgColor w115">体育锻炼</td>
         <td class="label text-right bgColor w200">锻炼频率</td>
@@ -103,7 +118,7 @@
         <td class="text-left">{{= it.examExerciseType}}</td>
       </tr>
       {{??}}
-      <tr>
+      <tr data-lifestyle>
         <td rowspan="{{= 5 + (it.careerDisease.careerFlag === 1 ? it.careerDisease.protectMeasures.length : 0) + (it.examSmokingStatus == 3 ? 3: 0) + (it.examDrinkingFrequency != 1 ? 5: 0) }}" class="label text-center bgColor">生活方式</td>
         <td class="label text-center bgColor w115">体育锻炼</td>
         <td class="label text-right bgColor w200">锻炼频率</td>
@@ -114,33 +129,35 @@
         <td colspan="2" class="label text-right bgColor">饮食习惯</td>
         <td class="text-left">{{= it.eatHabitsDes}}</td>
       </tr>
-      {{? it.examSmokingStatus == 3}}
-      <tr>
-        <td rowspan="4" class="label text-center bgColor">吸烟情况</td>
+      <tr data-smokingState>
+        <td rowspan="4" class="label text-center bgColor" data-norequired="smokingState" data-belong="lifestyle">吸烟情况</td>
         <td class="label text-right bgColor">吸烟状况</td>
         <td class="text-left">{{= it.smokingStateDes}}</td>
       </tr>
       <tr>
         <td class="label text-right bgColor">日吸烟量</td>
-        <td class="text-left">平均{{= it.examSmokingQuantity}}支</td>
+        <td class="text-left">
+          {{? it.examSmokingQuantity}}
+            平均{{= it.examSmokingQuantity}}支
+          {{?}}
+        </td>
       </tr>
       <tr>
         <td class="label text-right bgColor">开始吸烟年龄</td>
-        <td class="text-left">{{= it.examSmokingBegin}}岁</td>
-      </tr>
-      <tr>
-        <td class="label text-right bgColor">戒烟年龄</td>
         <td class="text-left">
-          {{? it.examSmokingCessation == 0}} 无 {{??}} {{= it.examSmokingCessation}}岁 {{?}}
+          {{? it.examSmokingBegin}}
+          {{= it.examSmokingBegin}}岁
+          {{?}}
         </td>
       </tr>
-      {{??}}
-      <tr>
-        <td class="label text-center bgColor">吸烟情况</td>
-        <td class="label text-right bgColor">吸烟状况</td>
-        <td class="text-left">{{= it.smokingStateDes}}</td>
+      <tr data-smokingState>
+        <td class="label text-right bgColor">戒烟年龄</td>
+        <td class="text-left">
+          {{? it.examSmokingCessation }} {{= it.examSmokingCessation}}岁 {{?}}
+        </td>
       </tr>
-      {{?}} {{? it.examDrinkingFrequency != 1}}
+
+      {{? it.examDrinkingFrequency != 1}}
       <tr>
         <td rowspan="6" class="label text-center bgColor">饮酒情况</td>
         <td class="label text-right bgColor">饮酒频率</td>
@@ -176,7 +193,7 @@
         <td class="text-left">从不</td>
       </tr>
       {{?}} {{? it.careerDisease.careerFlag === 1}}
-      <tr>
+      <tr data-lifestyle>
         <td rowspan="{{= it.careerDisease.protectMeasures.length + 1}} " class="label text-center bgColor">
           职业病危害因素接触史
         </td>
@@ -188,7 +205,7 @@
         <td class="text-left">{{= it._.values(value)[0]}}</td>
       </tr>
       {{~}} {{??}}
-      <tr>
+      <tr data-lifestyle>
         <td class="label text-center bgColor">
           职业病危害因素接触史
         </td>
@@ -591,7 +608,7 @@
         </tr>
         <tr>
           <td colspan="2 " class="text-right bgColor label ">湿热质 </td>
-          <td class="text-left ">{{= it.tcmConstitution && it.tcmConstitution.tcmPhlegmDes}}</td>
+          <td class="text-left ">{{= it.tcmConstitution && it.tcmConstitution.tcmDampDes}}</td>
         </tr>
         <tr>
           <td colspan="2 " class="text-right bgColor label ">血瘀质</td>
@@ -637,160 +654,212 @@
         <td class="text-left ">{{= it.pdhOtherDiseasesDes}}</td>
       </tr>
       {{? it['__doc_type__'] != 31}}
-        <tr data-belongExamHospital data-examHospital>
-          <td class="text-center label bgColor " rowspan="10 ">住院治疗情况</td>
-          <td class="text-center label bgColor " rowspan="5 " data-norequired="examHospital " data-belong="belongExamHospital ">住院史*</td>
-          <td class="text-right bgColor label ">入院日期</td>
-          <td class="text-left ">{{= it.Util.formatDate(it.examHospitalIn)}}</td>
-        </tr>
-        <tr>
-          <td class="text-right bgColor label ">出院日期</td>
-          <td class="text-left ">{{= it.Util.formatDate(it.examHospitalOut)}}</td>
-        </tr>
-        <tr>
-          <td class="text-right bgColor label ">原因</td>
-          <td class="text-left ">{{= it.examHospitalReason}}</td>
-        </tr>
-        <tr>
-          <td class="text-right bgColor label ">医疗机构名称</td>
-          <td class="text-left ">{{= it.examHospitalName}}</td>
-        </tr>
-        <tr data-examHospital>
-          <td class="text-right bgColor label ">病案号</td>
-          <td class="text-left ">{{= it.examHospitalNo}}</td>
-        </tr>
-        <tr data-examBed>
-          <td class="text-center label bgColor " rowspan="5 " data-norequired="examBed " data-belong="belongExamHospital ">家庭病床史</td>
-          <td class="text-right bgColor label ">建床日期</td>
-          <td class="text-left ">{{= it.Util.formatDate(it.examBedIn)}}</td>
-        </tr>
-        <tr>
-          <td class="text-right bgColor label ">撤床日期</td>
-          <td class="text-left ">{{= it.Util.formatDate(it.examBedOut)}}</td>
-        </tr>
-        <tr>
-          <td class="text-right bgColor label ">原因</td>
-          <td class="text-left ">{{= it.examBedReason}}</td>
-        </tr>
-        <tr>
-          <td class="text-right bgColor label ">医疗机构名称</td>
-          <td class="text-left ">{{= it.examBedOrg}}</td>
-        </tr>
-        <tr data-belongExamHospital data-examBed>
-          <td class="text-right bgColor label ">病案号</td>
-          <td class="text-left ">{{= it.examBedNo}}</td>
-        </tr>
-        <tr data-examDrug data-belongExamDrug>
-          <td class="text-center label bgColor " rowspan="5 " data-norequired="examDrug " data-belong="belongexamDrug ">主要用药情况</td>
-          <td class="text-right bgColor label " colspan="2 ">药物名称</td>
-          <td class="text-left ">{{= it.examDrugName}}</td>
-        </tr>
-        <tr>
-          <td class="text-right bgColor label " colspan="2 ">用法</td>
-          <td class="text-left ">{{= it.examDrugUse}}</td>
-        </tr>
-        <tr>
-          <td class="text-right bgColor label " colspan="2 ">用量</td>
-          <td class="text-left ">{{= it.examDrugDosage}}</td>
-        </tr>
-        <tr>
-          <td class="text-right bgColor label " colspan="2 ">用药时间</td>
-          <td class="text-left ">
-          {{? it.examDrupUnit}}
-            {{= it.examDrugDate}}{{= it.examDrupUnit}}</td>
-          {{??}}
-            {{= it.Util.formatDate(it.examDrugDate)}}
+        {{? it.hospitalizationHistoryList || it.familyBedList}}
+
+          {{? it.hospitalizationHistoryList.length > 0 || it.familyBedList.length > 0}}
+            <tr>
+              <td class="text-center label bgColor" rowspan="{{= it.hospitalizationHistoryList.length * 5 + it.familyBedList.length * 5}}">住院治疗情况</td>
           {{?}}
-        </tr>
-        <tr data-examDrug data-belongExamDrug>
-          <td class="text-right bgColor label " colspan="2 ">服药依从性</td>
-          <td class="text-left ">{{= it.examDrugDependenceDes}}</td>
-        </tr>
-        <tr data-healthNovaccination data-belongHealthNovaccination>
-          <td class="text-center label bgColor " rowspan="3 " data-norequired="healthNovaccination " data-belong="belongHealthNovaccination "  >
-            <div>非免疫规划</div>
-            <div>预防接种史</div>
-          </td>
-          <td class="text-right bgColor label " colspan="2 ">名称</td>
-          <td class="text-left ">{{= it.healthNovaccinationName}}</td>
-        </tr>
-        <tr>
-          <td class="text-right bgColor label " colspan="2 ">接种日期</td>
-          <td class="text-left ">{{= it.Util.formatDate(it.healthNovaccinationDate)}}</td>
-        </tr>
-        <tr data-healthNovaccination data-belongHealthNovaccination>
-          <td class="text-right bgColor label " colspan="2 ">接种机构</td>
-          <td class="text-left ">{{= it.healthNovaccinationOrg}}</td>
-        </tr>
+
+          {{~ it.hospitalizationHistoryList :value:index}}
+            {{? index != 0}}
+              <tr>
+            {{?}}
+
+              <td class="text-center label bgColor" rowspan="5" >住院史{{= index+1}}*</td>
+              <td class="text-right bgColor label">入院日期</td>
+              <td class="text-left">{{= it.Util.formatDate(value.checkDate)}}</td>
+            </tr>
+            <tr>
+              <td class="text-right bgColor label ">出院日期</td>
+              <td class="text-left ">{{= it.Util.formatDate(value.leaveDate)}}</td>
+            </tr>
+            <tr>
+              <td class="text-right bgColor label ">原因</td>
+              <td class="text-left ">{{= value.reason}}</td>
+            </tr>
+            <tr>
+              <td class="text-right bgColor label ">医疗机构名称</td>
+              <td class="text-left ">{{= value.medicalInstitutionName}}</td>
+            </tr>
+            <tr data-examHospital>
+              <td class="text-right bgColor label ">病案号</td>
+              <td class="text-left ">{{= value.medicalRecordNo}}</td>
+            </tr>
+          {{~}}
+
+          {{~ it.familyBedList :value:index}}
+            {{? index != 0 || (!it.hospitalizationHistoryList && it.hospitalizationHistoryList.length > 0)}}
+            <tr >
+            {{?}}
+              <td class="text-center label bgColor " rowspan="5" data-norequired="examBed" data-belong="belongExamHospital">家庭病床史{{= index+1}}*</td>
+              <td class="text-right bgColor label ">建床日期</td>
+              <td class="text-left ">{{= it.Util.formatDate(value.fbedConstructionDate)}}</td>
+            </tr>
+            <tr>
+              <td class="text-right bgColor label ">撤床日期</td>
+              <td class="text-left ">{{= it.Util.formatDate(value.fbedFromDate)}}</td>
+            </tr>
+            <tr>
+              <td class="text-right bgColor label ">原因</td>
+              <td class="text-left ">{{= value.fbedReason}}</td>
+            </tr>
+            <tr>
+              <td class="text-right bgColor label ">医疗机构名称</td>
+              <td class="text-left ">{{= value.fbedMedicalName}}</td>
+            </tr>
+            <tr data-belongExamHospital data-examBed>
+              <td class="text-right bgColor label ">病案号</td>
+              <td class="text-left ">{{= value.fbedNo}}</td>
+            </tr>
+
+          {{~}}
+
+        {{??}}
+          <tr data-belongExamHospital data-examHospital>
+            <td class="text-center label bgColor" rowspan="10">住院治疗情况</td>
+            <td class="text-center label bgColor" rowspan="5" data-norequired="examHospital " data-belong="belongExamHospital">住院史*</td>
+            <td class="text-right bgColor label">入院日期</td>
+            <td class="text-left">{{= it.Util.formatDate(it.examHospitalIn)}}</td>
+          </tr>
+          <tr>
+            <td class="text-right bgColor label ">出院日期</td>
+            <td class="text-left ">{{= it.Util.formatDate(it.examHospitalOut)}}</td>
+          </tr>
+          <tr>
+            <td class="text-right bgColor label ">原因</td>
+            <td class="text-left ">{{= it.examHospitalReason}}</td>
+          </tr>
+          <tr>
+            <td class="text-right bgColor label ">医疗机构名称</td>
+            <td class="text-left ">{{= it.examHospitalName}}</td>
+          </tr>
+          <tr data-examHospital>
+            <td class="text-right bgColor label ">病案号</td>
+            <td class="text-left ">{{= it.examHospitalNo}}</td>
+          </tr>
+          <tr data-examBed>
+            <td class="text-center label bgColor " rowspan="5" data-norequired="examBed" data-belong="belongExamHospital">家庭病床史</td>
+            <td class="text-right bgColor label ">建床日期</td>
+            <td class="text-left ">{{= it.Util.formatDate(it.examBedIn)}}</td>
+          </tr>
+          <tr>
+            <td class="text-right bgColor label ">撤床日期</td>
+            <td class="text-left ">{{= it.Util.formatDate(it.examBedOut)}}</td>
+          </tr>
+          <tr>
+            <td class="text-right bgColor label ">原因</td>
+            <td class="text-left ">{{= it.examBedReason}}</td>
+          </tr>
+          <tr>
+            <td class="text-right bgColor label ">医疗机构名称</td>
+            <td class="text-left ">{{= it.examBedOrg}}</td>
+          </tr>
+          <tr data-belongExamHospital data-examBed>
+            <td class="text-right bgColor label ">病案号</td>
+            <td class="text-left ">{{= it.examBedNo}}</td>
+          </tr>
+        {{?}}
+
+        {{? it.medicationUses && it.medicationUses.length > 0}}
+          {{~ it.medicationUses :value:index}}
+            <tr>
+              {{? index == 0}}
+                <td class="text-center label bgColor " rowspan="{{= it.medicationUses.length * 4}}">主要用药情况</td>
+              {{?}}
+              <td class="text-center bgColor label " rowspan="4">{{= value.medDrugName}}</td>
+              <td class="text-right bgColor label ">用法</td>
+              <td class="text-left ">{{= value.medUsage}}</td>
+            </tr>
+            <tr>
+              <td class="text-right bgColor label">用量</td>
+              <td class="text-left ">{{= value.medConsumption}}</td>
+            </tr>
+            <tr>
+            <td class="text-right bgColor label">用药时间</td>
+            <td class="text-left ">
+              {{=value.medMedicationTime }}{{= value.medDrupRate}}
+            </tr>
+            <tr>
+              <td class="text-right bgColor label">服药依从性</td>
+              <td class="text-left ">{{= value.medComplianceDes}}</td>
+            </tr>
+          {{~}}
+        {{??}}
+          <tr data-examDrug data-belongExamDrug>
+            <td class="text-center label bgColor " rowspan="5 " data-norequired="examDrug " data-belong="belongexamDrug ">主要用药情况</td>
+            <td class="text-right bgColor label " colspan="2 ">药物名称</td>
+            <td class="text-left ">{{= it.examDrugName}}</td>
+          </tr>
+          <tr>
+            <td class="text-right bgColor label " colspan="2 ">用法</td>
+            <td class="text-left ">{{= it.examDrugUse}}</td>
+          </tr>
+          <tr>
+            <td class="text-right bgColor label " colspan="2 ">用量</td>
+            <td class="text-left ">{{= it.examDrugDosage}}</td>
+          </tr>
+          <tr>
+            <td class="text-right bgColor label " colspan="2 ">用药时间</td>
+            <td class="text-left ">
+            {{? it.examDrupUnit}}
+              {{= it.examDrugDate}}{{= it.examDrupUnit}}</td>
+            {{??}}
+              {{= it.Util.formatDate(it.examDrugDate)}}
+            {{?}}
+
+          </tr>
+          <tr data-examDrug data-belongExamDrug>
+            <td class="text-right bgColor label " colspan="2 ">服药依从性</td>
+            <td class="text-left ">{{= it.examDrugDependenceDes}}</td>
+          </tr>
+        {{?}}
+
+
+
+        {{? it.vaccineRecords && it.vaccineRecords.length > 0}}
+          {{~ it.vaccineRecords :value:index}}
+            <tr>
+              {{? index == 0}}
+                <td class="text-center label bgColor " rowspan="{{= it.vaccineRecords.length * 2}}" data-norequired="healthNovaccination " data-belong="belongHealthNovaccination "  >
+                  <div>非免疫规划</div>
+                  <div>预防接种史</div>
+                </td>
+              {{?}}
+
+              <td class="text-center bgColor label " rowspan="2">{{= value.recoVaccineName}}</td>
+              <td class="text-right bgColor label ">接种日期</td>
+              <td class="text-left ">{{= it.Util.formatDate(value.recoInouclationDate)}}</td>
+            </tr>
+            <tr>
+              <td class="text-right bgColor label">接种机构</td>
+              <td class="text-left ">{{= value.recoInouclationSite}}</td>
+            </tr>
+          {{~}}
+        {{??}}
+          <tr data-healthNovaccination data-belongHealthNovaccination>
+            <td class="text-center label bgColor " rowspan="3 " data-norequired="healthNovaccination " data-belong="belongHealthNovaccination "  >
+              <div>非免疫规划</div>
+              <div>预防接种史</div>
+            </td>
+            <td class="text-right bgColor label " colspan="2 ">名称</td>
+            <td class="text-left ">{{= it.healthNovaccinationName}}</td>
+          </tr>
+          <tr>
+            <td class="text-right bgColor label " colspan="2 ">接种日期</td>
+            <td class="text-left ">{{= it.Util.formatDate(it.healthNovaccinationDate)}}</td>
+          </tr>
+          <tr data-healthNovaccination data-belongHealthNovaccination>
+            <td class="text-right bgColor label " colspan="2 ">接种机构</td>
+            <td class="text-left ">{{= it.healthNovaccinationOrg}}</td>
+          </tr>
+        {{?}}
+
+
       {{?}}
 
-      <tr>
-        <td class="text-center label bgColor " rowspan="12">主要用药情况</td>
-        <td class="text-center bgColor label " rowspan="4">{{= it.examDrugName}}1111</td>
-        <td class="text-right bgColor label ">用法</td>
-        <td class="text-left ">{{= it.examDrugUse}}</td>
-      </tr>
-      <tr>
-        <td class="text-right bgColor label">用量</td>
-        <td class="text-left ">{{= it.examDrugDosage}}</td>
-      </tr>
-      <tr>
-      <td class="text-right bgColor label">用药时间</td>
-      <td class="text-left ">
-        {{? it.examDrupUnit}}
-          {{= it.examDrugDate}}{{= it.examDrupUnit}}</td>
-        {{??}}
-          {{= it.Util.formatDate(it.examDrugDate)}}
-        {{?}}
-      </tr>
-      <tr>
-        <td class="text-right bgColor label">服药依从性</td>
-        <td class="text-left ">{{= it.examDrugDosage}}</td>
-      </tr>
-      <tr>
-        <td class="text-center bgColor label " rowspan="4">{{= it.examDrugName}}1111</td>
-        <td class="text-right bgColor label ">用法</td>
-        <td class="text-left ">{{= it.examDrugUse}}</td>
-      </tr>
-      <tr>
-        <td class="text-right bgColor label">用量</td>
-        <td class="text-left ">{{= it.examDrugDosage}}</td>
-      </tr>
-      <tr>
-      <td class="text-right bgColor label">用药时间</td>
-      <td class="text-left ">
-        {{? it.examDrupUnit}}
-          {{= it.examDrugDate}}{{= it.examDrupUnit}}</td>
-        {{??}}
-          {{= it.Util.formatDate(it.examDrugDate)}}
-        {{?}}
-      </tr>
-      <tr>
-        <td class="text-right bgColor label">服药依从性</td>
-        <td class="text-left ">{{= it.examDrugDosage}}</td>
-      </tr>
-      <tr>
-        <td class="text-center bgColor label " rowspan="4">{{= it.examDrugName}}1111</td>
-        <td class="text-right bgColor label ">用法</td>
-        <td class="text-left ">{{= it.examDrugUse}}</td>
-      </tr>
-      <tr>
-        <td class="text-right bgColor label">用量</td>
-        <td class="text-left ">{{= it.examDrugDosage}}</td>
-      </tr>
-      <tr>
-      <td class="text-right bgColor label">用药时间</td>
-      <td class="text-left ">
-        {{? it.examDrupUnit}}
-          {{= it.examDrugDate}}{{= it.examDrupUnit}}</td>
-        {{??}}
-          {{= it.Util.formatDate(it.examDrugDate)}}
-        {{?}}
-      </tr>
-      <tr>
-        <td class="text-right bgColor label">服药依从性</td>
-        <td class="text-left ">{{= it.examDrugDosage}}</td>
-      </tr>
+
+
 
       <tr data-belonghealthAssessmentDes data-healthAssessmentDes>
         <td class="text-center label bgColor " data-belong="belonghealthAssessmentDes " data-norequired="healthAssessmentDes ">健康评价</td>

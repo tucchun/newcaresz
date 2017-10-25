@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>老年人中医药健康管理服务记录表</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <script type="text/javascript" src="../../static/assets/adaptive/adaptive.js"></script>
+  <script>
+    // 设计图宽度
+    window['adaptive'].desinWidth = 1920;
+    // body 字体大小 会将body字体大小设置为 baseFont / 100 + 'rem'
+    window['adaptive'].baseFont = 30;
+    window['adaptive'].maxWidth = 1920;
+    window['adaptive'].init();
+  </script>
+  <link rel="stylesheet" href="./css/style.css?v=1.0.8.1">
+</head>
+
+<body>
+  <a href="#result">
+    <div class="tool" id="js-tool">
+      辨识结果
+      <i class="tool-icon"></i>
+    </div>
+</a>
+  <form id="js-healthManagementForTheElderly-form">
+    <div class="container sub-title">
+    </div>
+    <div class="container border" id="js-items">
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>01 您精力充沛吗?(指精神头足，乐于做事)</dt>
+          <dd class="result"></dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>02 您容易疲乏吗？(指体力如何，是否稍微活动一下或做一点家务劳动就感到累)</dt>
+          <dd class="result"></dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>03 您容易气短,呼吸急促,接不上气吗?</dt>
+          <dd class="result"></dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>04 您说话声音低弱无力吗?(指说话没有力气)</dt>
+          <dd class="result"></dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>05 您感到闷闷不乐,绪低沉吗?(指心情不愉快，情绪低落)</dt>
+          <dd class="result"></dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>06 您容易精神紧张,焦虑不安吗?(指遇事是否心情紧张)</dt>
+          <dd class="result"></dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>07 您因为生活状态改变而感到孤独,失落吗?</dt>
+          <dd class="result"></dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>08 您容易感到害怕或受到惊吓吗?</dt>
+          <dd class="result"></dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>09 您感到身体超重不轻松吗?(感觉身体沉重)[BMI指数=体重(kg)/身高²(m)]</dt>
+          <dd class="result"></dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>10 您眼睛干涩吗?</dt>
+          <dd class="result"></dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>11 您手脚发凉吗?(不包含因周围温度低或穿的少导致的手脚发冷)</dt>
+          <dd class="result"></dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>12 您胃脘部,背部或腰膝怕冷吗?(指上腹、背部、腰部或膝关节等,有一处或多处怕冷)</dt>
+          <dd class="result"></dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>13 您比一般人耐受不了寒冷吗?(指比别人容易害怕冬天或是夏天的冷空调、电扇等)</dt>
+          <dd class="result"></dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>14 您容易患感冒吗?(指每年感冒的次数)</dt>
+          <dd class="result"></dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>15 您没有感冒时也会鼻塞、流鼻涕吗?</dt>
+          <dd class="result"></dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>16 您有口粘口腻,或睡眠打鼾吗?</dt>
+          <dd class="result"></dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>17 您容易过敏吗?(对药物、食物、气味、花粉或在季节交替、气候变化时)</dt>
+          <dd class="result"></dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>18 您的皮肤容易起荨麻疹吗?(包括风团、风疹块、风疙瘩)</dt>
+          <dd class="result"></dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>19 您的皮肤在不知不觉中会出现青紫瘀斑、皮下出血吗?(指皮肤在没有外伤的情况下出现青一块紫一块的情况)</dt>
+          <dd class="result"></dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>20 您的皮肤一抓就红，并出现抓痕吗?(指被指甲或钝物划过后皮肤的反应)</dt>
+          <dd class="result"></dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>21 您皮肤或口唇干吗?</dt>
+          <dd class="result"></dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>22 您有肢体麻木或固定部位疼痛的感觉吗?</dt>
+          <dd class="result"></dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>23 您面部或鼻部有油腻感或者油亮发光吗?(指脸上或鼻子)</dt>
+          <dd class="result"></dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>24 您面色或目眶晦黯，或出现褐色斑块/斑点吗?</dt>
+          <dd class="result"></dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>25 您有皮肤湿疹、疮疖吗?</dt>
+          <dd class="result"></dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>26 您感到口干咽燥、总想喝水吗?</dt>
+          <dd class="result"></dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>27 您感到口苦或嘴里有异味吗?(指口苦或口臭)</dt>
+          <dd class="result"></dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>28 您腹部肥大吗?(指腹部脂肪肥厚)</dt>
+          <dd class="result"></dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>29 您吃(喝)凉的东西会感到不舒服或者怕吃(喝)凉的东西吗?(指不喜欢吃凉的食物，或吃了凉的食物后会不舒服)</dt>
+          <dd class="result"></dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>30 您有大便黏滞不爽、解不尽的感觉吗?(大便容易粘在马桶或便坑壁上)</dt>
+          <dd class="result"></dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>31 您容易大便干燥吗?</dt>
+          <dd class="result"></dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>32 您舌苔厚腻或有舌苔厚厚的感觉吗?(如果自我感觉不清楚可由调查员观察后填写)</dt>
+          <dd class="result"></dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dt>33 您舌下静脉瘀紫或增粗吗?(可由调查员辅助观察后填写)</dt>
+          <dd class="result"></dd>
+        </dl>
+      </div>
+    </div>
+    <div class="container title">
+      <a name="result">辨识结果</a>
+    </div>
+    <div class="container border" id="js-score">
+      <div class="item">
+        <dl class="inline-dl">
+          <dd>
+            <label>
+              <span>和平质</span>
+              <span class="tcm-des"></span>（得分：<span class="tcm-score"></span>）
+            </label>
+          </dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dd>
+            <label>
+              <span>阳虚质</span>
+              <span class="tcm-des"></span>（得分：<span class="tcm-score"></span>）
+            </label>
+          </dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dd>
+            <label>
+              <span>气虚质</span>
+              <span class="tcm-des"></span>（得分：<span class="tcm-score"></span>）
+            </label>
+          </dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dd>
+            <label>
+              <span>阴虚质</span>
+              <span class="tcm-des"></span>（得分：<span class="tcm-score"></span>）
+            </label>
+          </dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dd>
+            <label>
+              <span>痰热质</span>
+              <span class="tcm-des"></span>（得分：<span class="tcm-score"></span>）
+            </label>
+          </dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dd>
+            <label>
+              <span>湿热质</span>
+              <span class="tcm-des"></span>（得分：<span class="tcm-score"></span>）
+            </label>
+          </dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dd>
+            <label>
+              <span>血瘀质</span>
+              <span class="tcm-des"></span>（得分：<span class="tcm-score"></span>）
+            </label>
+          </dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dd>
+            <label>
+              <span>气郁质</span>
+              <span class="tcm-des"></span>（得分：<span class="tcm-score"></span>）
+            </label>
+          </dd>
+        </dl>
+      </div>
+      <div class="item">
+        <dl class="inline-dl">
+          <dd>
+            <label>
+              <span>特秉质</span>
+              <span class="tcm-des"></span>（得分：<span class="tcm-score"></span>）
+            </label>
+          </dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+  </form>
+
+  <script src="../../static/assets/jquery/jquery-1.9.1.min.js"></script>
+  <script src="../../static/js/Util.js"></script>
+  <script src="../../static/assets/doT-master/doT.min.js"></script>
+  <script type="text/x-dot-template" id="js-result-template">
+    <div class="module-content-item clearfix">
+      <div>平和质</div>
+      <div>{{= it.tcmPeaceDes }}(得分:{{= it.tcmPeaceScore}})</div>
+    </div>
+    <div class="module-content-item clearfix">
+      <div>阳虚质</div>
+      <div>{{= it.tcmYangDes}}(得分:{{= it.tcmYangScore}})</div>
+    </div>
+    <div class="module-content-item clearfix">
+      <div>气虚质</div>
+      <div>{{= it.tcmDeficiencyDes}}(得分:{{= it.tcmDeficiencyScore}})</div>
+    </div>
+    <div class="module-content-item clearfix">
+      <div>阴虚质</div>
+      <div>{{= it.tcmYinDes}}(得分:{{= it.tcmYinScore}})</div>
+    </div>
+    <div class="module-content-item clearfix">
+      <div>痰湿质</div>
+      <div>{{= it.tcmPhlegmDes}}(得分:{{= it.tcmPhlegmScore}})</div>
+    </div>
+    <div class="module-content-item clearfix">
+      <div>湿热质</div>
+      <div>{{= it.tcmDampDes}}(得分:{{= it.tcmDampScore}})</div>
+    </div>
+    <div class="module-content-item clearfix">
+      <div>血瘀质</div>
+      <div>{{= it.tcmBloodDes}}(得分:{{= it.tcmBloodScore}})</div>
+    </div>
+    <div class="module-content-item clearfix">
+      <div>气郁质</div>
+      <div>{{= it.tcmStagnationDes}}(得分:{{= it.tcmStagnationScore}})</div>
+    </div>
+    <div class="module-content-item clearfix">
+      <div>特秉质</div>
+      <div>{{= it.tcmSpecialDes}}(得分:{{= it.tcmSpecialScore}})</div>
+    </div>
+  </script>
+  <script>
+
+    var params = Util.param(location.href);
+
+    // $("#js-tool").on("touchend", function() {
+    //   var $win = $(window);
+    //   $win.scrollTop($(document).height());
+    // })
+
+
+    var src_type = "HECadre APP";
+    if (params['src_type'] == 'DOCTOR') {
+      src_type = 'Web Admin';
+    }
+
+    Util.fetch({
+      url: Util.host + '/hca/web/inhabitant/getdoc',
+      demoUrl: "../../assets/rss/viewHealthManagementForTheElderly.json",
+      data: JSON.stringify({
+        "doc_id": params['doc_id'],
+        "user_id_doc": params['user_id_doc'],
+        "doc_type": 501,
+        "src_type": src_type, //请求源的类型，如"HECadre APP"、"Inhabitant APP"等
+        "pf_type": Util.pf_type, //请求源的终端平台类型，如"Android"、"iOS"、"Web"等
+        "user_id": Util.userId || params['user_id'], //用户ID，u64
+        "auth_str": Util.getCommunicationAuth() || params['authStr'] //通信认证密文串
+      }),
+      success: function(data) {
+        if (data.ret_code === 1) {
+          var items = $("#js-items .item");
+          var itemsresultArr = ['没有(根本不/从来没有)', '很少(有一点/偶尔)', '有时(有些/少数时间)', '经常(相当/多数时间)', '总是(非常/每天)'];
+          
+          var itemsData = data.ret_data.items;
+          for (var i=0; i<items.length; i++) {
+            switch (itemsData['tcm_item'+(i+1)]){
+              case 1:
+                items.eq(i).find('dd').text(itemsresultArr[0]);
+                break;
+              case 2:
+                items.eq(i).find('dd').text(itemsresultArr[1]);
+                break;
+              case 3:
+                items.eq(i).find('dd').text(itemsresultArr[2]);
+                break;
+              case 4:
+                items.eq(i).find('dd').text(itemsresultArr[3]);
+                break;
+              case 5:
+                items.eq(i).find('dd').text(itemsresultArr[4]);
+                break;
+              default:
+               items.eq(i).find('dd').text(itemsresultArr[0]);
+            }
+          }
+
+          showScore(data.ret_data.score)
+
+        } else {
+          Util.alert(data.ret_msg || "查询信息错误！");
+          console.log(data.ret_msg || "查询信息错误！");
+        }
+      },
+      function(err) {
+        Util.alert("当前网络不可用，请检查你的网络设置！");
+        console.log(err);
+      }
+    });
+
+
+    function showScore (score) {
+      var scoreItems = $("#js-score .item");
+      scoreItems.eq(0).find('.tcm-des').text(score.tcmPeaceDes);
+      scoreItems.eq(0).find('.tcm-score').text(score.tcmPeaceScore);
+
+      scoreItems.eq(1).find('.tcm-des').text(score.tcmYangDes);
+      scoreItems.eq(1).find('.tcm-score').text(score.tcmYangScore);
+
+      scoreItems.eq(2).find('.tcm-des').text(score.tcmDeficiencyDes);
+      scoreItems.eq(2).find('.tcm-score').text(score.tcmDeficiencyScore);
+
+      scoreItems.eq(3).find('.tcm-des').text(score.tcmYinDes);
+      scoreItems.eq(3).find('.tcm-score').text(score.tcmYinScore);
+
+      scoreItems.eq(4).find('.tcm-des').text(score.tcmPhlegmDes);
+      scoreItems.eq(4).find('.tcm-score').text(score.tcmPhlegmScore);
+
+      scoreItems.eq(5).find('.tcm-des').text(score.tcmDampDes);
+      scoreItems.eq(5).find('.tcm-score').text(score.tcmDampScore);
+
+      scoreItems.eq(6).find('.tcm-des').text(score.tcmBloodDes);
+      scoreItems.eq(6).find('.tcm-score').text(score.tcmBloodScore);
+
+      scoreItems.eq(7).find('.tcm-des').text(score.tcmStagnationDes);
+      scoreItems.eq(7).find('.tcm-score').text(score.tcmStagnationScore);
+
+      scoreItems.eq(8).find('.tcm-des').text(score.tcmSpecialDes);
+      scoreItems.eq(8).find('.tcm-score').text(score.tcmSpecialScore);
+    }
+  </script>
+</body>
+
+</html>

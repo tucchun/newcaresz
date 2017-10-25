@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>健康建议</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <script type="text/javascript" src="../../static/assets/adaptive/adaptive-version2.js"></script>
+  <script>
+    // 设计图宽度
+    window['adaptive'].desinWidth = 750;
+    // body 字体大小 会将body字体大小设置为 baseFont / 100 + 'rem'
+    window['adaptive'].baseFont = 28;
+    window['adaptive'].maxWidth = 750;
+    window['adaptive'].init();
+  </script>
+  <!-- <link rel="stylesheet" href="./css/style.css"> -->
+  <link rel="stylesheet" href="../app/css/dist.css">
+</head>
+
+<body class="bgColor">
+    <div class="container wrap" id="js-items">
+        <div class="item clearfix">
+            <p class="pull-left" style="color:#666;">医生</p>
+            <p class="pull-right"><span id="doctor"></span></p>
+        </div>
+        <div class="item clearfix">
+            <p class="pull-left" style="color:#666;">创建时间</p>
+            <p class="pull-right"><span id="create-date"></span></p>
+        </div>
+        <div class="item">
+            <p class="question">
+                <span>随访记录</span>
+            </p>
+            <p>
+                <span class="result" id="record"></span>
+            </p>
+        </div>
+        <div class="item">
+            <p class="question">
+                <span>健康建议</span>
+            </p>
+            <p>
+                <span class="result" id="advice"></span>
+            </p>
+        </div>
+    </div>
+  <script src="../../static/assets/jquery/jquery-1.9.1.min.js"></script>
+  <script src="../../static/js/Util.js"></script>
+  <script src="../../static/js/jquery.validate.js"></script>
+  <script src="../../static/js/messages_zh.js"></script>
+  <script>
+    var params = Util.param(location.href);
+
+    var src_type = "HECadre APP";
+    if (params['src_type'] == 'DOCTOR') {
+      src_type = 'Web Admin';
+    }
+
+    Util.fetch({
+      url: Util.host + '/hca/web/inhabitant/getdoc',
+      demoUrl: "../../assets/rss/viewHealthAdvice.json",
+      data: JSON.stringify({
+        "doc_id": params['doc_id'],
+        "user_id_doc": params['user_id_doc'],
+        "doc_type": 500,
+        "src_type": "Inhabitant APP", //请求源的类型，如"HECadre APP"、"Inhabitant APP"等
+        "pf_type": Util.pf_type, //请求源的终端平台类型，如"Android"、"iOS"、"Web"等
+        "user_id": Util.userId || params['user_id'], //用户ID，u64
+        "auth_str": Util.getCommunicationAuth() || params['authStr'] //通信认证密文串
+      }),
+      success: function(data) {
+        if (data.ret_code === 1) {
+          //var items = $("#js-items .item");
+      
+          var retData = data.ret_data;
+
+          $('#doctor').text(retData.createByName);
+          $('#create-date').text(retData.createDate);
+          $('#record').text(retData.healthDescription);
+          $('#advice').text(retData.doctorAdvice);
+
+        } else {
+          Util.alert(data.ret_msg || "查询信息错误！");
+          console.log(data.ret_msg || "查询信息错误！");
+        }
+      },
+      function(err) {
+        Util.alert("当前网络不可用，请检查你的网络设置！");
+        console.log(err);
+      }
+    });
+
+    function result(code){
+
+    }
+  </script>
+</body>
+
+</html>

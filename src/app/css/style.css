@@ -19,7 +19,9 @@ li {
 textarea {
   resize: none;
 }
-
+p{
+  margin: 0;
+}
 
 /*tools*/
 
@@ -208,6 +210,15 @@ body * {
   padding: 0 .3rem .25rem .3rem;
   background-color: #ffffff;
   border-bottom: 1px solid #e5e5e5;
+}
+
+.wrap .item {
+  padding: .25rem .3rem;
+  color: #333;
+}
+.wrap .item .question {
+  color: #666;
+  padding-bottom: .15rem;
 }
 
 .item>div {

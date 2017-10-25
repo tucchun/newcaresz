@@ -166,6 +166,18 @@
     <button type="button" id="js-elderlyLivingAbility-submit" class="btn">提&nbsp;交</button>
   </div>
 </form>
+<div class="module" style="display: none" id="js-moudule">
+    <div class="module-content content">
+      <div class="module-content-title">评估结果</div>
+      <div class="module-content-inner content-inner" id='js-moudule-result'>
+        <span id="self-result"></span>(<span id="total"></span>分)
+      </div>
+      <div class="module-content-title">
+        <button class="btn" type="button" id="js-finish" style="padding: .15rem 1rem">确认</button>
+      </div>
+    </div>
+    <div class="module-bdground"></div>
+  </div>
 <script src="../../static/assets/jquery/jquery-1.9.1.min.js"></script>
 <script src="../../static/js/Util.js"></script>
 <script src="../../static/js/jquery.validate.js"></script>
@@ -188,14 +200,17 @@
 
   $("#js-elderlyLivingAbility-submit").on("touchend", function(e){
 
-
       if(validate.form()){
           var paramArr = $("#js-elderlyLivingAbility-form").serializeArray();
           var paramObj = {};
+          paramObj['self_total'] = 0;
           for(var i = 0; i < paramArr.length; i++){
-              paramObj[paramArr[i]["name"]] = paramArr[i]["value"];
+              paramObj[paramArr[i]["name"]] = parseInt(paramArr[i]["value"]);
+              paramObj['self_total'] += parseInt(paramArr[i]["value"]);
           }
-//      common.load();
+
+          //common.load();
+
           paramObj["user_id_doc"] = params["user_id_doc"];
           paramObj["activity_id"] = params["activity_id"];
           paramObj["src_type"] = "HECadre APP", //请求源的类型，如"HECadre APP"、"Inhabitant APP"等
@@ -203,14 +218,36 @@
           paramObj["user_id"] = Util.userId; //用户ID，u64
           paramObj["auth_str"] = Util.getCommunicationAuth(); //通信认证密文串
 
+          console.log(paramObj)
+          
           Util.fetch({
               url: Util.host + '/hca/web/hecadre/oldselfcare',
+              demoUrl: "../../assets/rss/viewElderlyLivingAbility.json",
               data: JSON.stringify(paramObj),
               success: function(data){
-//              common.hideLoad();
+                //common.hideLoad();
+                console.log(data)
                   data = data || {};
                   if(data.ret_code === 1){
-                      Util.result();
+                      $('#js-moudule').show();
+
+                      var selfTotal = data.ret_data.selfTotal;
+                      if(selfTotal>=0&&selfTotal<=3){
+                        $('#self-result').text('可自理');
+                      }else if(selfTotal>=4&&selfTotal<=8){
+                        $('#self-result').text('轻度依赖');
+                      }else if(selfTotal>=9&&selfTotal<=18){
+                        $('#self-result').text('中度依赖');
+                      }else if(selfTotal>=19){
+                        $('#self-result').text('不能自理');
+                      }else{
+                        $('#self-result').text('可自理');
+                      }
+                      $('#total').text(selfTotal);
+
+                      $("#js-finish").on("touchend", function(e){
+                        Util.result();
+                      })
                   }else{
                       alert(data.ret_msg || "查询信息错误！");
                   }

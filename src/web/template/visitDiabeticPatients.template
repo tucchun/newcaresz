@@ -57,7 +57,7 @@
       </tr>
       <tr>
         <td colspan="2" class="text-right bgColor label">
-          体质指数(kg/m2)
+          体质指数
         </td>
         <td class="text-left" colspan="3">
             {{= (it.diabCurrentBodyspi || 0).toFixed(2) }}/{{= (it.diabTargetBodyspi || 0).toFixed(2)}}
@@ -76,7 +76,7 @@
           其他
         </td>
         <td class="text-left" colspan="3">
-          {{=it.diabBodyOther}}
+          {{=it.diabBodyOther || '无'}}
         </td>
       </tr>
       <tr>

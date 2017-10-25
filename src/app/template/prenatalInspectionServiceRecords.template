@@ -213,7 +213,7 @@
     </div>
     <div class="item clearfix">
       <div class="pull-left">体质指数</div>
-      <div class="pull-right">{{= (Number(it.bodyMassIndex) || 0).toFixed(2)}}<span class="unit">kg/m²</span></div>
+      <div class="pull-right">{{= (Number(it.bodyMassIndex) || 0).toFixed(2)}}</div>
     </div>
     <div class="item clearfix">
       <div class="pull-left">血压</div>

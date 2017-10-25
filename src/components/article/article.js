@@ -29,7 +29,7 @@ class Article extends React.Component {
 
   doClick(e){
     let url = e.currentTarget.dataset.url;
-    location.href = url;
+    // location.href = url;
     this.props.onArticleClick(url);
   }
 }

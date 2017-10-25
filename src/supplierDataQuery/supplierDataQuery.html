@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0">
+    <title>血糖检查数据查询</title>
+    <link rel="stylesheet" href="css/layout.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css">
+    <!--<link rel="stylesheet" type="text/css" href="jquery-ui.min.css">-->
+    <link rel="stylesheet" type="text/css" href="../../static/css/page.css">
+    <script type="text/javascript" language="javascript" src="js/jquery-1.9.1.min.js"></script>
+    <!--<script type="text/javascript" language="javascript" src="js/jquery.dataTables.js"></script>-->
+    <script type="text/javascript" language="javascript" src="js/jquery-ui.min.js"></script>
+</head>
+<body class="dt-example">
+<div class="container">
+    <section>
+        <div class="data-search">
+            <label for="serial">设备序列号：<input type="text" id="serial" /></label>
+            <!--<span>上传日期：<label for="start_time"><input type="text" id="start_time"></label>-<label for="end_time"><input
+                    type="text" id="end_time"></label></span>-->
+            <button id="searchAction" type="button">查询</button>
+        </div>
+        <table id="data-table" class="dataTable" cellspacing="0" width="100%">
+            <thead>
+            <tr>
+                <th>设备序列号</th>
+                <th>检测值(单位mmol/L)</th>
+                <th>上传时间</th>
+            </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </section>
+    <div class="pagenation clearfix">
+    </div>
+</div>
+</body>
+<script type="text/javascript" language="javascript">
+    $(document).ready(function() {
+        var pageNumber = 1,pageCount = 1;
+        getData(1);
+        $('#searchAction').on('click',function(){
+            getData(1,$('#serial').val());
+        });
+        $('.pagenation').on('click','a',function(){
+            var page = $(this).attr('data-page'),sn = $('#serial').val();
+            getData(page,sn);
+        });
+        function getData(pageNumber,sn){
+            if(pageNumber > pageCount){
+                return;
+            }
+            $.ajax({
+                url:'/hca/p3/aal/getBloodSugarPage',
+                type:'get',
+                dataType:'json',
+                data:{
+                    pageNumber:pageNumber,
+                    pageSize:50,
+                    equipmentSn:sn || ''
+                },
+                success:function (data) {
+                    if(data.ret_code == 1){
+                        pageCount = Math.ceil(data.ret_data.count / 50) == 0 ? 1 : Math.ceil(data.ret_data.count / 50);
+                        generPage(pageCount,pageNumber);
+                        rendenter(data.ret_data.page);
+                        pageNumber += 1;
+                    }
+                }
+            });
+        }
+        function rendenter(list){
+            if(list){
+                var len = list.length,tr = [];
+                for(var i = 0;i<len;i++){
+                    console.log(list[i]);
+                    tr.push('<tr><td>'+list[i].equipmentSn+'</td><td>'+list[i].bloodSugar+'</td><td>'+list[i].createTime+'</td></tr>');
+                }
+                $('#data-table tbody').html(tr.join(''));
+            }else{
+                $('#data-table tbody').html('<tr><td colspan = "3">暂无数据</td></tr>');
+            }
+        }
+        function generPage(pageCount,currentPage){
+            var a_arr = [];
+            var str_a = '<a href="#" data-page=' + (currentPage - 1 == 0 ? 1 : currentPage - 1 ) +'>上一页</a>'
+            a_arr.push('<a href="#" data-page="1">首页</a>',str_a);
+            for(var i = 0;i<pageCount;i++){
+               	if(currentPage-1 == i){
+                       a_arr.push('<span data-page='+(i+1)+'>'+(i+1)+'</span>');
+                   }else{
+                       a_arr.push('<a href="#" data-page='+(i+1)+'>'+(i+1)+'</a>');
+                   }
+            }
+            a_arr.push('<a href="#" data-page='+ (currentPage - 0 +1) +'>下一页</a>');
+            a_arr.push('<a href="#" data-page='+ pageCount +'>末页</a>');
+            $('.pagenation').html(a_arr.join(''));
+        }
+    });
+</script>
+</html>

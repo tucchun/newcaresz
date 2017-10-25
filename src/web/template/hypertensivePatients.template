@@ -57,7 +57,7 @@
       </tr>
       <tr>
         <td class="text-right bgColor label">
-          体质指数(kg/m2)
+          体质指数
         </td>
         <td class="text-left" colspan="3">
           {{= (it.hyperCurrentConstitution || 0).toFixed(2) }}/{{= (it.hyperTargerConstition || 0).toFixed(2)}}
