@@ -3,15 +3,39 @@
   "ret_data": [
     {
       "lookup_value": "高血压",
-      "lookup_code": "CATEGORY_1"
+      "lookup_code": "CATEGORY_1h"
     },
     {
       "lookup_value": "糖尿病",
-      "lookup_code": "CATEGORY_2"
+      "lookup_code": "CATEGORY_2g"
     },
     {
       "lookup_value": "冠心病",
-      "lookup_code": "CATEGORY_3"
+      "lookup_code": "CATEGORY_3d"
+    },
+    {
+      "lookup_value": "高血压",
+      "lookup_code": "CATEGORY_10"
+    },
+    {
+      "lookup_value": "糖尿病",
+      "lookup_code": "CATEGORY_21"
+    },
+    {
+      "lookup_value": "冠心病",
+      "lookup_code": "CATEGORY_31"
+    },
+    {
+      "lookup_value": "高血压",
+      "lookup_code": "CATEGORY_12"
+    },
+    {
+      "lookup_value": "糖尿病",
+      "lookup_code": "CATEGORY_23"
+    },
+    {
+      "lookup_value": "冠心病",
+      "lookup_code": "CATEGORY_34"
     }
   ]
 }

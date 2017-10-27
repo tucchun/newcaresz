@@ -36,6 +36,17 @@ class Index extends React.Component {
         lookup_code: '',
         lookup_value: '全部'
       });
+      this.cache[this.state.active] = {
+        params: {
+          "begin": 0,
+          "count": 10,
+          "article_category": this.state.active
+        },
+        data: {
+          "articleList": ArticleData
+        },
+        scrollTop: 0
+      };
       this.setState({articleData: ArticleData, categoriesData: CategoriesData});
     }).catch(function(err) {
       Util.alert(err);
