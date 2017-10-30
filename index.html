@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
+
 <body>
   <script>
     // function foo(){
@@ -14,8 +16,8 @@
     //   }, 100);
     // }
 
-    function foo(){
-      setTimeout(function(){
+    function foo() {
+      setTimeout(function() {
         console.log('id', this.id)
       }, 100);
     }
@@ -24,14 +26,16 @@
 
     var id = 21;
 
-    foo.call({id: 42})
+    foo.call({
+      id: 42
+    })
 
-    function Timer(){
+    function Timer() {
       this.s1 = 0;
       this.s2 = 0;
       setInterval(() => this.s1++, 1000);
 
-      setInterval(function(){
+      setInterval(function() {
         this.s2++;
       }, 1000);
     }
@@ -45,18 +49,18 @@
     var handler = {
       id: '123456',
 
-      init: function(){
+      init: function() {
         document.addEventListener('click', event => this.doSomething(event.type), false);
       },
 
-      doSomething: function(type){
+      doSomething: function(type) {
         console.log('Handling ' + type + ' for' + this.id);
       }
     };
 
     handler.init();
 
-    function fn(){
+    function fn() {
       return () => {
         return () => {
           return () => {
@@ -66,7 +70,40 @@
       }
     }
 
-    var f = fn.call({id: 1});
+    var f = fn.call({
+      id: 1
+    });
+
+    var t1 = f.call({
+      id: 2
+    })()();
+    var t2 = f().call({
+      id: 3
+    })();
+    var t3 = f()().call({
+      id: 4
+    });
+
+    function foo2() {
+      setTimeout(() => {
+        console.log('args:', arguments)
+      }, 100);
+    }
+
+    foo2(2, 4, 6, 8);
+
+    (function() {
+      return [
+        (() => {
+          console.log(this.x)
+        }).bind({
+          x: 'inner'
+        })()
+      ];
+    }).call({
+      x: 'outer'
+    });
   </script>
 </body>
+
 </html>

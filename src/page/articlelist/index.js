@@ -20,34 +20,38 @@ class Index extends React.Component {
   }
 
   handleCategoryClick(flag) {
-    this.fetchArticleData().then((articleList) => {
-      this.setState({articleData: articleList, active: flag});
-    });
+    if (flag !== this.state.active) {
+      $(window).scrollTop(0);
+      this.fetchArticleData().then((articleList) => {
+        console.log(articleList)
+        this.setState({articleData: articleList, active: flag});
+      });
+    }
+
   }
 
   handleScroll() {
     //  滚动事件
-    if (this.handleScroll.state === 1)
-      return false;
+    if (this.handleScroll.state === 0) {
 
-    var viewH = $(window).height(),
-      contentH = $("html").height(),
-      scrollTop = $(window).scrollTop();
-    if (viewH + scrollTop >= contentH) {
+      var viewH = $(window).height(),
+        contentH = $("html").height(),
+        scrollTop = $(window).scrollTop();
+      if (viewH + scrollTop >= contentH) {
 
-      this.handleScroll.state = 1;
+        this.handleScroll.state = 1;
 
-      this.fetchArticleData().then(articleList => {
-        this.handleScroll.state = 0;
-
-        this.setState({
-          articleData: articleList.cocat(this.state.articleData)
+        this.fetchArticleData().then(articleList => {
+          this.handleScroll.state = 0;
+          this.setState({
+            articleData: articleList.concat(this.state.articleData)
+          });
+        }).catch(err => {
+          console.log(err);
+          this.handleScroll.state = 0;
         });
-      }).catch(() => {
-        this.handleScroll.state = 0;
-      });
+      }
     }
-    return undefined;
   }
 
   componentWillMount() {
@@ -81,9 +85,7 @@ class Index extends React.Component {
       Util.alert(err);
     });
 
-
     window.onscroll = this.handleScroll;
-
 
     console.log("componentDidMount");
 
@@ -95,10 +97,7 @@ class Index extends React.Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     console.log("shouldComponentUpdate");
-    if (this.state.active !== nextState.active)
-      return true;
-
-    return false;
+    return true;
   }
 
   componentWillUpdate() {
