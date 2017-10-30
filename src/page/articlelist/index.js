@@ -8,17 +8,46 @@ class Index extends React.Component {
   constructor(props) {
     super(props);
     this.handleCategoryClick = this.handleCategoryClick.bind(this);
+    this.handleScroll = this.handleScroll.bind(this);
+    this.handleScroll.state = 0;
     this.state = {
       articleData: [],
       categoriesData: [],
-      active: ''
+      active: undefined
     };
     this.cache = {};
     console.log("constructor");
   }
 
   handleCategoryClick(flag) {
-    this.setState({active: flag});
+    this.fetchArticleData().then((articleList) => {
+      this.setState({articleData: articleList, active: flag});
+    });
+  }
+
+  handleScroll() {
+    //  滚动事件
+    if (this.handleScroll.state === 1)
+      return false;
+
+    var viewH = $(window).height(),
+      contentH = $("html").height(),
+      scrollTop = $(window).scrollTop();
+    if (viewH + scrollTop >= contentH) {
+
+      this.handleScroll.state = 1;
+
+      this.fetchArticleData().then(articleList => {
+        this.handleScroll.state = 0;
+
+        this.setState({
+          articleData: articleList.cocat(this.state.articleData)
+        });
+      }).catch(() => {
+        this.handleScroll.state = 0;
+      });
+    }
+    return undefined;
   }
 
   componentWillMount() {
@@ -47,20 +76,29 @@ class Index extends React.Component {
         },
         scrollTop: 0
       };
-      this.setState({articleData: ArticleData, categoriesData: CategoriesData});
+      this.setState({articleData: ArticleData, categoriesData: CategoriesData, active: ''});
     }).catch(function(err) {
       Util.alert(err);
     });
+
+
+    window.onscroll = this.handleScroll;
+
+
     console.log("componentDidMount");
+
   }
 
   componentWillReceiveProps() {
     console.log("componentWillReceiveProps");
   }
 
-  shouldComponentUpdate() {
+  shouldComponentUpdate(nextProps, nextState) {
     console.log("shouldComponentUpdate");
-    return true;
+    if (this.state.active !== nextState.active)
+      return true;
+
+    return false;
   }
 
   componentWillUpdate() {
