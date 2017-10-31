@@ -158,7 +158,6 @@ class Index extends React.Component {
       Util.alert(err);
     });
     let $articles = $(this.refs.articles);
-    let tid = {};
     window.onscroll = this.handleScroll;
     this.$categories = $articles.find("#js-category");
     this.$loading_tip = $articles.find("#js-loading-tip");
@@ -166,14 +165,14 @@ class Index extends React.Component {
     this.$articleList = $articles.find("#js-article-list");
     this.doAutoSize();
     window.addEventListener('resize', () => {
-      clearTimeout(tid);
-      tid = setTimeout(this.doAutoSize, 300);
+      clearTimeout(this.resize);
+      this.resize = setTimeout(this.doAutoSize, 300);
     }, false);
     // 浏览器缓存中读取时也需要重新设置rem基准值
     window.addEventListener('pageshow', e => {
       if (e.persisted) {
-        clearTimeout(tid);
-        tid = setTimeout(this.doAutoSize, 300);
+        clearTimeout(this.pageshow);
+        this.pageshow = setTimeout(this.doAutoSize, 300);
       }
     }, false);
     console.log("componentDidMount");
@@ -201,6 +200,8 @@ class Index extends React.Component {
   }
 
   componentWillUnmount() {
+    clearTimeout(this.resize);
+    clearTimeout(this.pageshow);
     console.log("componentWillUnmount");
   }
 
