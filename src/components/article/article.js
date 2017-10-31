@@ -7,14 +7,17 @@ class Article extends React.Component {
     this.doClick = this.doClick.bind(this);
   }
   render() {
-    const {article_id, article_category, article_title, article_author, create_dateStr, article_img_url} = this.props;
-    const source = window.screen.width > 750
-      ? 'hecadre'
-      : 'article_list';
-    const url = "./article_detail.html?article_id=" + article_id + "&source=" + source;
+    const {
+      article_id,
+      article_category,
+      article_title,
+      article_author,
+      create_dateStr,
+      article_img_url
+    } = this.props;
 
     return (
-      <li onClick={this.doClick} className={"box js-article-item js-" + article_category} data-url={url}>
+      <li onClick={this.doClick} data-articleid={article_id} className={"box js-article-item js-" + article_category}>
         <div className="flex article-list-category">
           <p className="title">{article_title}</p>
           <div className="author">
@@ -27,10 +30,8 @@ class Article extends React.Component {
     );
   }
 
-  doClick(e){
-    let url = e.currentTarget.dataset.url;
-    // location.href = url;
-    this.props.onArticleClick(url);
+  doClick(e) {
+    this.props.onArticleClick(e.currentTarget.dataset.articleid);
   }
 }
 
@@ -51,7 +52,7 @@ Article.defaultProps = {
   article_author: '',
   create_dateStr: '',
   article_img_url: '',
-  onArticleClick: function(){}
+  onArticleClick: function() {}
 };
 
 export default Article;
